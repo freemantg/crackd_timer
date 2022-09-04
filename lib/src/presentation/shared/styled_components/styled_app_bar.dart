@@ -5,37 +5,52 @@ import '../../../shared/styles.dart';
 class StyledAppBar extends StatelessWidget implements PreferredSizeWidget {
   const StyledAppBar({
     Key? key,
-    this.action,
+    this.title = '',
+    this.centerTitle = true,
   }) : super(key: key);
 
-  final Widget? action;
+  final String title;
+  final bool centerTitle;
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      centerTitle: true,
-      actions: [
-        action ??
-            Padding(
-              padding: const EdgeInsets.all(Insets.sm),
-              child: Container(
-                margin: const EdgeInsets.all(8.0),
-                padding: const EdgeInsets.symmetric(horizontal: Insets.m),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(18.0),
-                ),
-                child: const Icon(
-                  Icons.check_rounded,
-                  color: Color(0xFF6A6DB0),
-                ),
-              ),
-            ),
+      centerTitle: false,
+      title: Text(title),
+      actions: const [
+        Padding(
+          padding: EdgeInsets.all(Insets.m),
+          child: StyledSaveButton(),
+        ),
       ],
     );
   }
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+
+class StyledSaveButton extends StatelessWidget {
+  const StyledSaveButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: Insets.m),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(TextOpacity.highEmphasis),
+        borderRadius: BorderRadius.circular(18.0),
+      ),
+      child: Icon(
+        Icons.check_rounded,
+        color: theme.primaryColor,
+      ),
+    );
+  }
 }

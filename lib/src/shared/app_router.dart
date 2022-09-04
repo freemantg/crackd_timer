@@ -1,27 +1,24 @@
-import 'package:auto_route/annotations.dart';
-import 'package:robot_timer/src/presentation/add_task_page.dart';
-import 'package:robot_timer/src/presentation/settings_page.dart';
-import 'package:robot_timer/src/presentation/stats_page.dart';
-import 'package:robot_timer/src/presentation/task_timer.dart';
-import 'package:robot_timer/src/presentation/tasks_page.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:robot_timer/src/presentation/add_task/add_task_page.dart';
+import 'package:robot_timer/src/presentation/home/home_page.dart';
+import 'package:robot_timer/src/presentation/settings/settings_page.dart';
+import 'package:robot_timer/src/presentation/timer/timer_page.dart';
 
-import '../presentation/home_page.dart';
+import '../presentation/tasks/tasks_page.dart';
 
-@MaterialAutoRouter(
+@CustomAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: [
     AutoRoute(
       path: '/',
       page: HomePage,
-      initial: true,
       children: [
         AutoRoute(page: TasksPage),
-        AutoRoute(page: TaskTimerPage),
-        AutoRoute(page: StatsPage),
+        AutoRoute(page: TimerPage),
         AutoRoute(page: SettingsPage),
-        AutoRoute(page: AddTaskPage)
       ],
     ),
+    CustomRoute(page: AddTaskPage),
   ],
 )
 class $AppRouter {}

@@ -2,44 +2,71 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../shared/styles.dart';
+import '../../home/widgets/navigation_tab_items.dart';
 
 class StyledBottomNavigationBar extends StatelessWidget {
+  final int currentIndex;
+  final void Function(int) onTap;
+
   const StyledBottomNavigationBar({
     Key? key,
+    required this.currentIndex,
+    required this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.bottomCenter,
-      children: const [
-        StyledBottomAppBarIcons(),
-        StyledBAB(),
+      children: [
+        StyledBottomAppBarIcons(
+          onTap: (index) => onTap(index),
+          activeBarItem: NavigationBarItem.values[currentIndex],
+        ),
       ],
     );
   }
 }
 
-class StyledBAB extends StatelessWidget {
-  const StyledBAB({
+class StyledBottomAppBarIcons extends StatelessWidget {
+  const StyledBottomAppBarIcons({
     Key? key,
+    required this.onTap,
+    required this.activeBarItem,
   }) : super(key: key);
 
+  final void Function(int) onTap;
+  final NavigationBarItem activeBarItem;
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: Insets.m),
-      child: Material(
-        elevation: 8,
-        shadowColor: const Color(0xFF6A6DB0),
-        color: const Color(0xFF7C79CA),
-        borderRadius: BorderRadius.circular(22.0),
-        child: InkWell(
-          borderRadius: BorderRadius.circular(22.0),
-          onTap: () {},
-          child: const Padding(
-            padding: EdgeInsets.all(17.0),
-            child: FaIcon(FontAwesomeIcons.plus, color: Colors.white),
+    return Container(
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(30.0)),
+        boxShadow: [
+          BoxShadow(color: Colors.black12, blurRadius: 30.0),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(30.0)),
+        child: BottomAppBar(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: Insets.m,
+              horizontal: Insets.sm,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: NavigationBarItem.values
+                  .map(
+                    (e) => StyledBottomNavigationBarItem(
+                      barItem: e,
+                      onTap: (index) => onTap(index),
+                      activeBarItem: activeBarItem,
+                    ),
+                  )
+                  .toList(),
+            ),
           ),
         ),
       ),
@@ -47,44 +74,34 @@ class StyledBAB extends StatelessWidget {
   }
 }
 
-class StyledBottomAppBarIcons extends StatelessWidget {
-  const StyledBottomAppBarIcons({Key? key}) : super(key: key);
+class StyledBottomNavigationBarItem extends StatelessWidget {
+  final NavigationBarItem barItem;
+  final NavigationBarItem activeBarItem;
+  final void Function(int index) onTap;
+
+  const StyledBottomNavigationBarItem({
+    super.key,
+    required this.barItem,
+    required this.activeBarItem,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: const BorderRadius.vertical(top: Radius.circular(32.0)),
-      child: BottomAppBar(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: Insets.l - 2.0,
-            horizontal: Insets.m,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            textBaseline: TextBaseline.alphabetic,
-            crossAxisAlignment: CrossAxisAlignment.baseline,
-            children: const [
-              FaIcon(FontAwesomeIcons.list, size: 22),
-              FaIcon(FontAwesomeIcons.stopwatch,
-                  size: 22, color: Color(0xFFC3C6D1)),
-              SizedBox(width: 32),
-              FaIcon(FontAwesomeIcons.chartBar,
-                  size: 22, color: Color(0xFFC3C6D1)),
-              FaIcon(FontAwesomeIcons.gear, size: 22, color: Color(0xFFC3C6D1)),
-            ],
-          ),
+    final theme = Theme.of(context);
+
+    return GestureDetector(
+      onTap: () => onTap(barItem.index),
+      child: Padding(
+        padding: const EdgeInsets.all(Insets.m),
+        child: FaIcon(
+          barItemIcon[barItem],
+          size: 22.0,
+          color: (barItem == activeBarItem)
+              ? theme.colorScheme.primary
+              : theme.hintColor,
         ),
       ),
     );
-  }
-}
-
-class BottomNavigationBarItem extends StatelessWidget {
-  const BottomNavigationBarItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }

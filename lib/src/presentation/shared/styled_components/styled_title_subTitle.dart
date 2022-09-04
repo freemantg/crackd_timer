@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../shared/styles.dart';
-import '../text_styles.dart';
+import '../../../shared/text_styles.dart';
 
 class StyledTitleAndSubtitle extends StatelessWidget {
   const StyledTitleAndSubtitle({
