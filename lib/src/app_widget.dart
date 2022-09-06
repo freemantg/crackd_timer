@@ -21,19 +21,53 @@ class AppWidget extends StatelessWidget {
           create: (_) => SettingsBloc(),
         ),
         BlocProvider(
-          create: (_) => TimerBloc(ticker: const Ticker()),
+          create: (context) => TimerBloc(ticker: const Ticker()),
         )
       ],
-      child: BlocBuilder<ThemeCubit, AppTheme>(
-        builder: (context, appTheme) {
-          return MaterialApp.router(
-            routerDelegate: Provider.of<AppRouter>(context).delegate(),
-            routeInformationParser:
-                Provider.of<AppRouter>(context).defaultRouteParser(),
-            theme: appTheme.themeData,
-          );
-        },
+      child: MultiBlocListener(
+        listeners: [
+          BlocListener<SettingsBloc, SettingsState>(
+              listenWhen: (previous, current) => previous != current,
+              listener: (context, state) => _updateDurationActor(context)),
+          BlocListener<TimerBloc, TimerState>(
+              listenWhen: (previous, current) =>
+                  previous.timerType != current.timerType,
+              listener: (context, state) => _updateDurationActor(context)),
+        ],
+        child: BlocBuilder<ThemeCubit, AppTheme>(
+          builder: (context, appTheme) {
+            return MaterialApp.router(
+              routerDelegate: Provider.of<AppRouter>(context).delegate(),
+              routeInformationParser:
+                  Provider.of<AppRouter>(context).defaultRouteParser(),
+              theme: appTheme.themeData,
+            );
+          },
+        ),
       ),
     );
+  }
+
+  _updateDurationActor(BuildContext context) {
+    final timerBloc = context.read<TimerBloc>();
+    final settingsBloc = context.read<SettingsBloc>();
+
+    switch (timerBloc.state.timerType) {
+      case TimerType.focus:
+        return timerBloc.add(
+          TimerEvent.updateDuration(duration: settingsBloc.state.focusTime),
+        );
+
+      case TimerType.shortBreak:
+        return timerBloc.add(
+          TimerEvent.updateDuration(
+              duration: settingsBloc.state.shortBreakTime),
+        );
+
+      case TimerType.longBreak:
+        return timerBloc.add(
+          TimerEvent.updateDuration(duration: settingsBloc.state.longBreakTime),
+        );
+    }
   }
 }

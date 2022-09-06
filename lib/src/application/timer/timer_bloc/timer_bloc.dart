@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:robot_timer/src/application/settings/constants.dart';
 import 'package:robot_timer/src/infrastructure/timer/ticker.dart';
 
 part 'timer_event.dart';
@@ -10,19 +11,17 @@ part 'timer_bloc.freezed.dart';
 
 class TimerBloc extends Bloc<TimerEvent, TimerState> {
   final Ticker _ticker;
-  static const int _duration = 60;
 
   StreamSubscription<int>? _tickerSubscription;
 
   TimerBloc({required Ticker ticker})
       : _ticker = ticker,
-        super(const TimerState.initial(duration: 1500)) {
+        super(const TimerState.initial()) {
     on<TimerEvent>(
       (event, emit) {
         event.map(
           started: (event) {
             print('STARTED');
-            emit(TimerState.initial(duration: event.duration));
             _tickerSubscription?.cancel();
             _tickerSubscription = _ticker.tick(ticks: event.duration).listen(
                   (duration) => add(TimerEvent.ticked(duration: duration)),
@@ -32,28 +31,65 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
             print('TICKED');
             emit(
               event.duration > 0
-                  ? TimerState.running(duration: event.duration)
-                  : TimerState.complete(duration: state.duration),
+                  ? TimerState.running(
+                      duration: event.duration,
+                      timerType: state.timerType,
+                    )
+                  : TimerState.complete(
+                      duration: state.duration,
+                      timerType: state.timerType,
+                    ),
             );
           },
-          paused: (event) {
+          paused: (_) {
             print('PAUSED');
-
             if (state is _TimerRunning) {
               _tickerSubscription?.pause();
-              emit(TimerState.paused(duration: state.duration));
+              emit(
+                TimerState.paused(
+                  duration: state.duration,
+                  timerType: state.timerType,
+                ),
+              );
             }
           },
-          resumed: (event) {
+          resumed: (_) {
             print('RESUMED');
             if (state is _TimerPaused) {
               _tickerSubscription?.resume();
-              emit(TimerState.running(duration: state.duration));
+              emit(
+                TimerState.running(
+                  duration: state.duration,
+                  timerType: state.timerType,
+                ),
+              );
             }
           },
           reset: (event) {
             _tickerSubscription?.cancel();
-            emit(const TimerState.initial(duration: _duration));
+            emit(
+              TimerState.initial(
+                duration: event.duration * 60,
+                timerType: state.timerType,
+              ),
+            );
+          },
+          updateDuration: (event) {
+            print('UPDATEDURATION');
+            print(event.duration);
+            _tickerSubscription?.cancel();
+            emit(TimerState.initial(
+              duration: event.duration * 60,
+              timerType: state.timerType,
+            ));
+            print(state);
+          },
+          updateTimerType: (_) {
+            _tickerSubscription?.cancel();
+            emit(TimerState.initial(
+              timerType: TimerType.shortBreak,
+              duration: state.duration,
+            ));
           },
         );
       },

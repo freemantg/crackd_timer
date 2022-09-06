@@ -8,7 +8,7 @@ class SettingsState with _$SettingsState {
     required int longBreakTime,
   }) = _SettingsState;
 
-  factory SettingsState.initial() => const SettingsState(
+  factory SettingsState.initial() => SettingsState(
         focusTime: DefaultSettings.focusTime,
         shortBreakTime: DefaultSettings.shortBreak,
         longBreakTime: DefaultSettings.longBreak,
