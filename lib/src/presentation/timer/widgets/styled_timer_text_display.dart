@@ -24,7 +24,7 @@ class StyledTimerTextDisplay extends StatelessWidget {
   _buildTimerText(TimerType timerType) {
     switch (timerType) {
       case TimerType.focus:
-        return 'Pomodoro Time, Stay focused!';
+        return 'Pomodoro time. Stay focused!';
       default:
         return 'Take a break!';
     }

@@ -14,6 +14,7 @@
 import 'package:auto_route/auto_route.dart' as _i6;
 import 'package:flutter/material.dart' as _i7;
 
+import '../domain/tasks/task.dart' as _i8;
 import '../presentation/add_task/add_task_page.dart' as _i2;
 import '../presentation/home/home_page.dart' as _i1;
 import '../presentation/settings/settings_page.dart' as _i5;
@@ -34,9 +35,11 @@ class AppRouter extends _i6.RootStackRouter {
           barrierDismissible: false);
     },
     AddTaskRoute.name: (routeData) {
+      final args = routeData.argsAs<AddTaskRouteArgs>(
+          orElse: () => const AddTaskRouteArgs());
       return _i6.CustomPage<dynamic>(
           routeData: routeData,
-          child: const _i2.AddTaskPage(),
+          child: _i2.AddTaskPage(key: args.key, task: args.task),
           opaque: true,
           barrierDismissible: false);
     },
@@ -88,10 +91,26 @@ class HomeRoute extends _i6.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.AddTaskPage]
-class AddTaskRoute extends _i6.PageRouteInfo<void> {
-  const AddTaskRoute() : super(AddTaskRoute.name, path: '/add-task-page');
+class AddTaskRoute extends _i6.PageRouteInfo<AddTaskRouteArgs> {
+  AddTaskRoute({_i7.Key? key, _i8.Task? task})
+      : super(AddTaskRoute.name,
+            path: '/add-task-page',
+            args: AddTaskRouteArgs(key: key, task: task));
 
   static const String name = 'AddTaskRoute';
+}
+
+class AddTaskRouteArgs {
+  const AddTaskRouteArgs({this.key, this.task});
+
+  final _i7.Key? key;
+
+  final _i8.Task? task;
+
+  @override
+  String toString() {
+    return 'AddTaskRouteArgs{key: $key, task: $task}';
+  }
 }
 
 /// generated route for

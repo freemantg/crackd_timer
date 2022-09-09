@@ -9,14 +9,26 @@ class StyledTimerDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final duration = context.select((TimerBloc bloc) => bloc.state.duration);
-    
-    final minutesStr =
-        ((duration / 60) % 60).floor().toString().padLeft(2, '0');
-    final secondsStr = (duration % 60).floor().toString().padLeft(2, '0');
-    return Text(
-      '$minutesStr:$secondsStr',
-      style: TextStyles.h1HighOpacity.copyWith(fontSize: 96.0),
+    return BlocBuilder<TimerBloc, TimerState>(
+      builder: (context, state) {
+        return Text(
+          _printDuration(state.duration),
+          style: TextStyles.h1HighOpacity.copyWith(
+            fontSize: state.duration >= 3600 ? 72 : 96.0,
+          ),
+        );
+      },
     );
   }
+}
+
+String _printDuration(int timerDuration) {
+  final duration = Duration(seconds: timerDuration);
+
+  String twoDigits(int n) => n.toString().padLeft(2, "0");
+  String twoDigitHours =
+      duration.inHours <= 0 ? '' : '${twoDigits(duration.inHours)}:';
+  String twoDigitMinutes = twoDigits(duration.inMinutes.remainder(60));
+  String twoDigitSeconds = twoDigits(duration.inSeconds.remainder(60));
+  return "$twoDigitHours$twoDigitMinutes:$twoDigitSeconds";
 }

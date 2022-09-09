@@ -97,7 +97,8 @@ class __$$_EmojiCopyWithImpl<$Res> extends _$EmojiCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_Emoji extends _Emoji {
   const _$_Emoji({required this.emoji, required this.category}) : super._();
 

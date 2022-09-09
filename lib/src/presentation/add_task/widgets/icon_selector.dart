@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../application/tasks/task_form/bloc/task_form_bloc.dart';
 import '../../../domain/emojis/emoji.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
@@ -17,41 +19,39 @@ class IconSelector extends StatelessWidget {
     final theme = Theme.of(context);
     final categories = emojis.map((e) => e.category).toSet().toList();
 
-    return Expanded(
-      child: DefaultTabController(
-        length: categories.length,
-        child: Column(
-          children: [
-            TabBar(
-              isScrollable: true,
-              physics: const BouncingScrollPhysics(),
-              //INDICATOR
-              indicatorColor: theme.primaryColor,
-              indicatorSize: TabBarIndicatorSize.label,
-              indicatorPadding: const EdgeInsets.only(right: Insets.l),
-              //LABEL
-              labelPadding: const EdgeInsets.only(right: Insets.l),
-              labelStyle: TextStyles.title1,
-              labelColor: theme.colorScheme.onSurface
-                  .withOpacity(TextOpacity.mediumEmphasis),
-              unselectedLabelColor: theme.highlightColor,
-              tabs: categories.map((e) => Tab(text: e)).toList(),
+    return DefaultTabController(
+      length: categories.length,
+      child: Column(
+        children: [
+          TabBar(
+            isScrollable: true,
+            physics: const BouncingScrollPhysics(),
+            //INDICATOR
+            indicatorColor: theme.primaryColor,
+            indicatorSize: TabBarIndicatorSize.label,
+            indicatorPadding: const EdgeInsets.only(right: Insets.l),
+            //LABEL
+            labelPadding: const EdgeInsets.only(right: Insets.l),
+            labelStyle: TextStyles.title1,
+            labelColor: theme.colorScheme.onSurface
+                .withOpacity(TextOpacity.mediumEmphasis),
+            unselectedLabelColor: theme.highlightColor,
+            tabs: categories.map((e) => Tab(text: e)).toList(),
+          ),
+          Expanded(
+            child: TabBarView(
+              clipBehavior: Clip.none,
+              children: categories.map(
+                (category) {
+                  final categoryEmojis = emojis
+                      .where((emoji) => emoji.category == category)
+                      .toList();
+                  return _EmojiGridView(emojis: categoryEmojis);
+                },
+              ).toList(),
             ),
-            Expanded(
-              child: TabBarView(
-                clipBehavior: Clip.none,
-                children: categories.map(
-                  (category) {
-                    final categoryEmojis = emojis
-                        .where((emoji) => emoji.category == category)
-                        .toList();
-                    return _EmojiGridView(emojis: categoryEmojis);
-                  },
-                ).toList(),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -68,6 +68,7 @@ class _EmojiGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      shrinkWrap: true,
       itemCount: emojis.length,
       physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.only(top: Insets.m),
@@ -92,18 +93,31 @@ class _EmojiTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // decoration: BoxDecoration(
-      //   color: Colors.red.withOpacity(0.2),
-      //   borderRadius: BorderRadius.circular(Corners.s10),
-      // ),
-      child: Center(
-        child: Text(
-          emoji.emoji,
-          style: TextStyles.h1,
-          textAlign: TextAlign.center,
-        ),
-      ),
+    return BlocBuilder<TaskFormBloc, TaskFormState>(
+      builder: (context, state) {
+        bool isSelected = state.task.emoji == emoji;
+
+        return GestureDetector(
+          onTap: () => context.read<TaskFormBloc>().add(
+                TaskFormEvent.emojiChanged(emoji),
+              ),
+          child: Container(
+            decoration: isSelected
+                ? BoxDecoration(
+                    color: state.task.taskColor,
+                    borderRadius: BorderRadius.circular(Corners.s10),
+                  )
+                : null,
+            child: Center(
+              child: Text(
+                emoji.emoji,
+                style: TextStyles.h1,
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

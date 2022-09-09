@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../application/timer/timer_bloc/timer_bloc.dart';
 import '../../../shared/styles.dart';
 import '../../shared/styled_components/purple_pomodoro_logo.dart';
 import '../../../shared/text_styles.dart';
@@ -13,10 +15,17 @@ class PomodoroCounter extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return StyledLowOpacityContainer(
+    return _StyledLowOpacityContainer(
       child: Column(
         children: [
-          Text('Pomodoros', style: TextStyles.title1MediumOpacity),
+          BlocBuilder<TimerBloc, TimerState>(
+            builder: (context, state) {
+              return Text(
+                _buildTimerText(state.timerType),
+                style: TextStyles.title1MediumOpacity,
+              );
+            },
+          ),
           const HSpace(size: Insets.sm),
           Row(
             mainAxisSize: MainAxisSize.min,
@@ -37,13 +46,25 @@ class PomodoroCounter extends StatelessWidget {
       ),
     );
   }
+
+  String _buildTimerText(TimerType timerType) {
+    switch (timerType) {
+      case TimerType.focus:
+        return 'Pomodoro';
+
+      case TimerType.shortBreak:
+        return 'Short Break';
+
+      case TimerType.longBreak:
+        return 'Long Break';
+    }
+  }
 }
 
-class StyledLowOpacityContainer extends StatelessWidget {
+class _StyledLowOpacityContainer extends StatelessWidget {
   final Widget child;
 
-  const StyledLowOpacityContainer({
-    super.key,
+  const _StyledLowOpacityContainer({
     required this.child,
   });
 

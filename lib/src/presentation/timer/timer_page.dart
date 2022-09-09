@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:robot_timer/src/application/timer/timer_bloc/timer_bloc.dart';
 import 'package:robot_timer/src/presentation/timer/widgets/timer_main_action_button.dart';
 
 import '../../shared/styles.dart';
@@ -30,22 +28,16 @@ class _TimerBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        const Spacer(),
-        IconButton(
-          onPressed: () => context.read<TimerBloc>().add(
-                const TimerEvent.updateTimerType(),
-              ),
-          icon: const Icon(Icons.apple),
-        ),
-        const PomodoroCounter(),
-        const HSpace(size: Insets.xl),
-        const StyledTimerDisplay(),
-        const HSpace(size: Insets.xs),
-        const StyledTimerTextDisplay(),
-        const Spacer(),
-        const TimerMainActionButton(),
-        const Spacer(flex: 2),
+      children: const [
+        Spacer(),
+        PomodoroCounter(),
+        HSpace(size: Insets.xl),
+        StyledTimerDisplay(),
+        HSpace(size: Insets.xs),
+        StyledTimerTextDisplay(),
+        Spacer(),
+        TimerMainActionButton(),
+        Spacer(flex: 2),
       ],
     );
   }

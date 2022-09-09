@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 
+import '../../../../injection_container.dart';
 import '../../../shared/app_router.gr.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
@@ -16,8 +16,7 @@ class AddPomodoroCard extends StatelessWidget {
     final theme = Theme.of(context);
 
     return GestureDetector(
-      onTap: () => Provider.of<AppRouter>(context, listen: false)
-          .push(const AddTaskRoute()),
+      onTap: () => getIt<AppRouter>().push(AddTaskRoute()),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Corners.s10),

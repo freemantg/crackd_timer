@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../application/tasks/task_form/bloc/task_form_bloc.dart';
 import '../../../shared/colors_list.dart';
 import '../../../shared/styles.dart';
-import '../../shared/styled_components/styled_app_bar.dart';
 import '../../../shared/text_styles.dart';
 
 class ColorSelector extends StatelessWidget {
@@ -16,17 +16,18 @@ class ColorSelector extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(
         Insets.l,
-        Insets.l,
+        Insets.sm,
         Insets.l,
         Insets.m,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Align(
-            alignment: Alignment.centerRight,
-            child: StyledSaveButton(),
-          ),
+          const Center(
+              child: Icon(
+            Icons.keyboard_arrow_down,
+            color: Colors.white54,
+          )),
           Text(
             'Color',
             style: TextStyles.title1.copyWith(
@@ -53,7 +54,7 @@ class ColorSelector extends StatelessWidget {
   }
 }
 
-class _ColorTile extends HookWidget {
+class _ColorTile extends StatelessWidget {
   const _ColorTile({
     Key? key,
     required this.color,
@@ -63,19 +64,28 @@ class _ColorTile extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var isSelected = useState(false);
+    return BlocBuilder<TaskFormBloc, TaskFormState>(
+      builder: (context, state) {
+        final isSelected = state.task.taskColor == color;
 
-    return Container(
-      margin: const EdgeInsets.only(right: Insets.m),
-      height: 48,
-      width: 48,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(Corners.s10),
-        border: isSelected.value
-            ? Border.all(color: Theme.of(context).primaryColor, width: 1.5)
-            : null,
-      ),
+        return GestureDetector(
+          onTap: () => context
+              .read<TaskFormBloc>()
+              .add(TaskFormEvent.colorChanged(color)),
+          child: Container(
+            margin: const EdgeInsets.only(right: Insets.m),
+            height: 48,
+            width: 48,
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.circular(Corners.s10),
+              border: isSelected
+                  ? Border.all(color: Colors.white, width: 4.0)
+                  : null,
+            ),
+          ),
+        );
+      },
     );
   }
 }

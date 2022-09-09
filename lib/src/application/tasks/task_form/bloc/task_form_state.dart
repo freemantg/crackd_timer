@@ -1,0 +1,18 @@
+part of 'task_form_bloc.dart';
+
+@freezed
+class TaskFormState with _$TaskFormState {
+  const factory TaskFormState({
+    required Task task,
+    required bool showErrorMessages,
+    required bool isEditing,
+    required bool isSaving,
+  }) = _TaskFormState;
+
+  factory TaskFormState.initial() => TaskFormState(
+        task: Task.empty(),
+        showErrorMessages: false,
+        isEditing: false,
+        isSaving: false,
+      );
+}

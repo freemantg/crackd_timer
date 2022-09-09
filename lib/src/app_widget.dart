@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
+import 'package:robot_timer/injection_container.dart';
 import 'package:robot_timer/src/application/settings/settings_bloc/settings_bloc.dart';
+import 'package:robot_timer/src/application/tasks/task_watcher/task_watcher_bloc.dart';
 import 'package:robot_timer/src/application/timer/timer_bloc/timer_bloc.dart';
 
 import 'application/settings/theme_cubit/theme_cubit.dart';
-import 'infrastructure/timer/ticker.dart';
+import 'application/tasks/bloc/task_actor_bloc.dart';
 import 'shared/app_router.gr.dart';
 import 'shared/app_themes.dart';
 
@@ -18,10 +19,17 @@ class AppWidget extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => SettingsBloc(),
+          create: (_) => getIt<SettingsBloc>(),
         ),
         BlocProvider(
-          create: (context) => TimerBloc(ticker: const Ticker()),
+          create: (context) => getIt<TimerBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<TaskWatcherBloc>()
+            ..add(const TaskWatcherEvent.watchAllStarted()),
+        ),
+        BlocProvider(
+          create: (context) => getIt<TaskActorBloc>(),
         )
       ],
       child: MultiBlocListener(
@@ -37,9 +45,8 @@ class AppWidget extends StatelessWidget {
         child: BlocBuilder<ThemeCubit, AppTheme>(
           builder: (context, appTheme) {
             return MaterialApp.router(
-              routerDelegate: Provider.of<AppRouter>(context).delegate(),
-              routeInformationParser:
-                  Provider.of<AppRouter>(context).defaultRouteParser(),
+              routerDelegate: getIt<AppRouter>().delegate(),
+              routeInformationParser: getIt<AppRouter>().defaultRouteParser(),
               theme: appTheme.themeData,
             );
           },

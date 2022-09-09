@@ -3,12 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:robot_timer/src/presentation/shared/styled_components/purple_pomodoro_logo.dart';
+import 'package:robot_timer/src/presentation/tasks/widgets/pomodoro_card.dart';
 
 import 'package:robot_timer/src/shared/text_styles.dart';
-import 'package:robot_timer/src/presentation/tasks/widgets/pomodoro_card.dart';
 import 'package:robot_timer/src/shared/styles.dart';
 
-import '../../application/settings/settings_bloc/settings_bloc.dart';
+import '../../application/tasks/task_watcher/task_watcher_bloc.dart';
 import '../shared/styled_components/styled_curved_decoration.dart';
 import 'widgets/add_pomodoro_card.dart';
 import 'widgets/date_displayer.dart';
@@ -60,19 +60,30 @@ class TasksPage extends StatelessWidget {
                 child: SingleChildScrollView(
                   controller: scrollController,
                   physics: const BouncingScrollPhysics(),
-                  child: StaggeredGrid.count(
-                    crossAxisCount: 2,
-                    children: [
-                      const AddPomodoroCard(),
-                      BlocBuilder<SettingsBloc, SettingsState>(
-                        builder: (context, state) {
-                          return PomodoroCard(
-                            title: state.focusTime.toString(),
-                            description: state.longBreakTime.toString(),
+                  child: BlocBuilder<TaskWatcherBloc, TaskWatcherState>(
+                    buildWhen: (previous, current) => previous != current,
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        loadInProgress: (_) =>
+                            const CircularProgressIndicator(),
+                        loadSuccess: (state) {
+                          return StaggeredGrid.count(
+                            crossAxisCount: state.tasks.length > 1 ? 2 : 1,
+                            children: [
+                              ...state.tasks
+                                  .map((task) => PomodoroCard(task: task))
+                                  .toList(),
+                              const AddPomodoroCard(),
+                            ],
                           );
                         },
-                      )
-                    ],
+                        orElse: () => Container(
+                          height: 24,
+                          width: 24,
+                          color: Colors.red,
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
