@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:robot_timer/src/presentation/settings/widgets/alarm_settings.dart';
 import 'package:robot_timer/src/presentation/settings/widgets/theme_settings.dart';
+import 'package:robot_timer/src/presentation/shared/styled_components/styled_app_bar.dart';
 
 import '../../shared/styles.dart';
-import '../shared/styled_components/styled_app_bar.dart';
 import '../shared/styled_components/styled_curved_decoration.dart';
 import 'widgets/pomodoro_settings.dart';
 import 'widgets/styled_title_text.dart';
@@ -14,7 +14,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const StyledAppBar(),
+      appBar: StyledAppBar.settingsPage(),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(

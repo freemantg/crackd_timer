@@ -48,7 +48,6 @@ class TaskRepository implements TasksInterface {
 
   @override
   Future<Either<TaskFailure, Unit>> update(Task task) async {
-    print(task.uniqueId.value);
     try {
       await _localSource.update(TaskDto.fromDomain(task));
       return const Right(unit);

@@ -25,7 +25,9 @@ class TitleTextFormField extends HookWidget {
       builder: (context, state) {
         return Row(
           children: [
-            const Expanded(child: AppearanceSelector()),
+            const Expanded(
+              child: AppearanceSelector(),
+            ),
             const VSpace(size: Insets.sm),
             Expanded(
               flex: 4,

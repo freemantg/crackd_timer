@@ -2,7 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:robot_timer/src/infrastructure/core/task_repository.dart';
+import 'package:dartz/dartz.dart' hide Task;
 
+import '../../../../domain/core/task_failure.dart';
 import '../../../../domain/emojis/emoji.dart';
 import '../../../../domain/tasks/task.dart';
 
@@ -16,7 +18,7 @@ class TaskFormBloc extends Bloc<TaskFormEvent, TaskFormState> {
   TaskFormBloc(TaskRepository taskRepository)
       : _taskRepository = taskRepository,
         super(TaskFormState.initial()) {
-    on<TaskFormEvent>((event, emit) async {
+    on<TaskFormEvent>((event, emit)  {
       event.when(
         initialized: (event) {
           final initialTask = event;
@@ -82,14 +84,26 @@ class TaskFormBloc extends Bloc<TaskFormEvent, TaskFormState> {
           );
         },
         saved: () async {
-          emit(state.copyWith(isSaving: true));
-          state.isEditing
+          emit(state.copyWith(
+            isSaving: true,
+            saveFailureOrSuccessOption: none(),
+          ));
+
+          final failureOrSuccess = state.isEditing
               ? await _taskRepository.update(state.task)
               : await _taskRepository.create(state.task);
-          emit(state.copyWith(isSaving: false));
-          if (!state.isSaving) {
-            emit(TaskFormState.initial());
-          }
+
+          add(TaskFormEvent.saveInProgress(failureOrSuccess));
+        },
+        saveInProgress: (failureOrSuccess) {
+          failureOrSuccess.fold(
+            (l) => emit(state.copyWith(
+                isSaving: false,
+                saveFailureOrSuccessOption: optionOf(left(l)))),
+            (r) => emit(state.copyWith(
+                isSaving: false,
+                saveFailureOrSuccessOption: optionOf(right(r)))),
+          );
         },
       );
     });

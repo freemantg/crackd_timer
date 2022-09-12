@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:robot_timer/src/presentation/shared/styled_components/styled_app_bar.dart';
 
 import '../../../injection_container.dart';
 import '../../application/tasks/task_form/bloc/task_form_bloc.dart';
 import '../../domain/tasks/task.dart';
+import '../../shared/app_router.gr.dart';
 import '../../shared/styles.dart';
-import '../shared/styled_components/styled_app_bar.dart';
 import '../shared/styled_components/styled_curved_decoration.dart';
 import '../shared/styled_components/styled_title_subtitle.dart';
 import '../../shared/text_styles.dart';
@@ -20,18 +21,29 @@ class AddTaskPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: StyledAppBar(title: (task != null) ? 'Edit Task' : 'New Task'),
-      body: BlocProvider(
-        create: (context) => getIt<TaskFormBloc>()
-          ..add(
-            TaskFormEvent.initialized(initialTask: task),
+    return BlocProvider(
+      create: (context) => getIt<TaskFormBloc>()
+        ..add(TaskFormEvent.initialized(initialTask: task)),
+      child: BlocListener<TaskFormBloc, TaskFormState>(
+        listenWhen: (previous, current) =>
+            previous.saveFailureOrSuccessOption !=
+            current.saveFailureOrSuccessOption,
+        listener: (context, state) {
+          state.saveFailureOrSuccessOption.fold(
+              () {},
+              (either) => either.fold(
+                    (failure) => null,
+                    (success) => getIt<AppRouter>().popUntilRoot(),
+                  ));
+        },
+        child: Scaffold(
+          appBar: StyledAppBar.addTaskPage(),
+          body: Stack(
+            children: [
+              const _StyledInstructions(),
+              _StyledAddTaskBottomSheet(task: task),
+            ],
           ),
-        child: Stack(
-          children: [
-            const _StyledInstructions(),
-            _StyledAddTaskBottomSheet(task: task),
-          ],
         ),
       ),
     );

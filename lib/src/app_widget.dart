@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:robot_timer/injection_container.dart';
+import 'package:robot_timer/src/application/core/task_cubit/task_cubit.dart';
 import 'package:robot_timer/src/application/settings/settings_bloc/settings_bloc.dart';
 import 'package:robot_timer/src/application/tasks/task_watcher/task_watcher_bloc.dart';
 import 'package:robot_timer/src/application/timer/timer_bloc/timer_bloc.dart';
 
 import 'application/settings/theme_cubit/theme_cubit.dart';
-import 'application/tasks/bloc/task_actor_bloc.dart';
+import 'application/tasks/task_actor/task_actor_bloc.dart';
 import 'shared/app_router.gr.dart';
 import 'shared/app_themes.dart';
 
@@ -30,6 +31,12 @@ class AppWidget extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<TaskActorBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => getIt<TaskCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => getIt<ThemeCubit>(),
         )
       ],
       child: MultiBlocListener(
@@ -41,6 +48,14 @@ class AppWidget extends StatelessWidget {
               listenWhen: (previous, current) =>
                   previous.timerType != current.timerType,
               listener: (context, state) => _updateDurationActor(context)),
+          BlocListener<TaskActorBloc, TaskActorState>(
+            listener: (context, state) {
+              state.maybeMap(
+                actionSuccess: (_) {},
+                orElse: () {},
+              );
+            },
+          )
         ],
         child: BlocBuilder<ThemeCubit, AppTheme>(
           builder: (context, appTheme) {

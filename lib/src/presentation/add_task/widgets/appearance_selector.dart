@@ -16,27 +16,31 @@ class AppearanceSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final taskFormState = context.select((TaskFormBloc bloc) => bloc.state);
-
-    return GestureDetector(
-      onTap: () => _showCustomizeModalButtonSheet(context),
-      child: Container(
-        height: 48.0 + Insets.m,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(Corners.s10),
-          color: taskFormState.task.taskColor,
-        ),
-        child: Center(
-          child: Text(
-            taskFormState.task.emoji.emoji,
-            style: TextStyles.h1,
+    return BlocBuilder<TaskFormBloc, TaskFormState>(
+      builder: (context, state) {
+        return GestureDetector(
+          onTap: () => _showCustomizeModalButtonSheet(context),
+          child: Container(
+            height: 48.0 + Insets.m,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(Corners.s10),
+              color: state.task.taskColor,
+            ),
+            child: Center(
+              child: Text(
+                state.task.emoji.emoji,
+                style: TextStyles.h1,
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
   _showCustomizeModalButtonSheet(BuildContext context) {
+    final taskFormBloc = context.read<TaskFormBloc>();
+
     return showModalBottomSheet(
         isScrollControlled: true,
         clipBehavior: Clip.hardEdge,
@@ -45,28 +49,31 @@ class AppearanceSelector extends StatelessWidget {
         ),
         context: context,
         builder: (context) {
-          return FractionallySizedBox(
-            heightFactor: 0.8,
-            child: Column(
-              children: [
-                const ColorSelector(),
-                _StyledContainer(
-                  child: BlocProvider(
-                    create: (context) =>
-                        getIt<EmojisBloc>()..add(const EmojisEvent.started()),
-                    child: BlocBuilder<EmojisBloc, EmojisState>(
-                      builder: (context, state) {
-                        return state.maybeMap(
-                          loadSuccess: (state) =>
-                              IconSelector(emojis: state.emojis),
-                          orElse: () =>
-                              const Center(child: CircularProgressIndicator()),
-                        );
-                      },
+          return BlocProvider.value(
+            value: taskFormBloc,
+            child: FractionallySizedBox(
+              heightFactor: 0.8,
+              child: Column(
+                children: [
+                  const ColorSelector(),
+                  _StyledContainer(
+                    child: BlocProvider(
+                      create: (context) =>
+                          getIt<EmojisBloc>()..add(const EmojisEvent.started()),
+                      child: BlocBuilder<EmojisBloc, EmojisState>(
+                        builder: (context, state) {
+                          return state.maybeMap(
+                            loadSuccess: (state) =>
+                                IconSelector(emojis: state.emojis),
+                            orElse: () => const Center(
+                                child: CircularProgressIndicator()),
+                          );
+                        },
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         });

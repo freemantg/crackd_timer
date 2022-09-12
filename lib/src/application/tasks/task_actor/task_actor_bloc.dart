@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart' hide Task;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:robot_timer/src/infrastructure/core/task_repository.dart';
 
@@ -16,25 +17,28 @@ class TaskActorBloc extends Bloc<TaskActorEvent, TaskActorState> {
         super(const _Initial()) {
     on<TaskActorEvent>(
       (event, emit) async {
-        await event.when<Future<void>>(
+        event.when(
           deleted: (task) async {
-            print('deetoeededed');
             emit(const TaskActorState.actionInProgress());
-            final failureOrAction = await _taskRepository.delete(task);
-            print(failureOrAction);
-            emit(
-              failureOrAction.fold(
-                (l) => TaskActorState.actionFailure(l),
-                (r) => const TaskActorState.actionSuccess(),
-              ),
-            );
+            final failureOrSuccess = await _taskRepository.delete(task);
+            add(TaskActorEvent.update(failureOrSuccess));
           },
           completeToggled: (task) async {
             emit(const TaskActorState.actionInProgress());
-            final failureOrAction = await _taskRepository
+            final failureOrSuccess = await _taskRepository
                 .update(task.copyWith(completed: !task.completed));
+            add(TaskActorEvent.update(failureOrSuccess));
+          },
+          incrementPomodoro: (Task task) async {
+            emit(const TaskActorState.actionInProgress());
+            final failureOrSuccess = await _taskRepository.update(
+              task.copyWith(completedSessions: task.completedSessions + 1),
+            );
+            add(TaskActorEvent.update(failureOrSuccess));
+          },
+          update: (failureOrSuccess) {
             emit(
-              failureOrAction.fold(
+              failureOrSuccess.fold(
                 (l) => TaskActorState.actionFailure(l),
                 (r) => const TaskActorState.actionSuccess(),
               ),

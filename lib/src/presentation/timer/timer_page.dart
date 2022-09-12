@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:robot_timer/src/presentation/shared/styled_components/styled_app_bar.dart';
 import 'package:robot_timer/src/presentation/timer/widgets/timer_main_action_button.dart';
 
 import '../../shared/styles.dart';
-import '../shared/styled_components/styled_app_bar.dart';
 
 import 'widgets/pomodoro_counter.dart';
 import 'widgets/styled_timer_display.dart';
@@ -13,9 +13,9 @@ class TimerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: StyledAppBar(title: 'Add new task'),
-      body: _TimerBody(),
+    return Scaffold(
+      appBar: StyledAppBar.timerPage(),
+      body: const _TimerBody(),
     );
   }
 }

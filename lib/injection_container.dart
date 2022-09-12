@@ -1,5 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:robot_timer/src/application/add_task/emojis/emojis_bloc.dart';
+import 'package:robot_timer/src/application/core/task_cubit/task_cubit.dart';
+import 'package:robot_timer/src/application/settings/theme_cubit/theme_cubit.dart';
 import 'package:robot_timer/src/application/tasks/task_form/bloc/task_form_bloc.dart';
 import 'package:robot_timer/src/application/tasks/task_watcher/task_watcher_bloc.dart';
 import 'package:robot_timer/src/application/timer/timer_bloc/timer_bloc.dart';
@@ -9,7 +11,7 @@ import 'package:robot_timer/src/infrastructure/emojis/emoji_repository.dart';
 import 'package:robot_timer/src/shared/app_router.gr.dart';
 
 import 'src/application/settings/settings_bloc/settings_bloc.dart';
-import 'src/application/tasks/bloc/task_actor_bloc.dart';
+import 'src/application/tasks/task_actor/task_actor_bloc.dart';
 import 'src/infrastructure/core/sembast_database.dart';
 import 'src/infrastructure/timer/ticker.dart';
 
@@ -17,12 +19,16 @@ final getIt = GetIt.instance;
 
 Future<void> init() async {
   //Blocs
-  getIt.registerFactory(() => SettingsBloc());
-  getIt.registerFactory(() => TimerBloc(ticker: getIt()));
-  getIt.registerFactory(() => EmojisBloc(getIt()));
   getIt.registerFactory(() => TaskWatcherBloc(getIt()));
   getIt.registerFactory(() => TaskFormBloc(getIt()));
   getIt.registerFactory(() => TaskActorBloc(getIt()));
+  getIt.registerFactory(() => TimerBloc(ticker: getIt()));
+  getIt.registerFactory(() => SettingsBloc());
+  getIt.registerFactory(() => EmojisBloc(getIt()));
+
+  //Cubits
+  getIt.registerFactory(() => TaskCubit());
+  getIt.registerFactory(() => ThemeCubit());
 
   //Router
   getIt.registerLazySingleton(() => AppRouter());

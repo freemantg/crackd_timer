@@ -3,11 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../../injection_container.dart';
-import '../../../application/tasks/bloc/task_actor_bloc.dart';
-import '../../../application/tasks/task_form/bloc/task_form_bloc.dart';
+import '../../../application/core/task_cubit/task_cubit.dart';
+import '../../../application/tasks/task_actor/task_actor_bloc.dart';
 import '../../../domain/tasks/task.dart';
-import '../../../shared/app_router.gr.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
 
@@ -20,16 +18,10 @@ class PomodoroCard extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final showDeleteButton = useState(false);
 
     return GestureDetector(
-      onTap: () => {
-        getIt<AppRouter>().push(AddTaskRoute(task: task)),
-        context.read<TaskFormBloc>().add(
-              TaskFormEvent.initialized(initialTask: task),
-            )
-      },
+      onTap: () => context.read<TaskCubit>().updateTask(task),
       onLongPress: () => showDeleteButton.value = !showDeleteButton.value,
       child: Card(
         shape: RoundedRectangleBorder(
@@ -43,7 +35,13 @@ class PomodoroCard extends HookWidget {
             children: [
               Row(
                 children: [
-                  Text(task.emoji.emoji, style: TextStyles.h2),
+                  GestureDetector(
+                      onTap: () {
+                        context
+                            .read<TaskActorBloc>()
+                            .add(TaskActorEvent.incrementPomodoro(task));
+                      },
+                      child: Text(task.emoji.emoji, style: TextStyles.h2)),
                   const Spacer(),
                   if (showDeleteButton.value)
                     GestureDetector(
@@ -51,9 +49,12 @@ class PomodoroCard extends HookWidget {
                         FontAwesomeIcons.xmark,
                         color: Colors.white70,
                       ),
-                      onTap: () => context.read<TaskActorBloc>().add(
-                            TaskActorEvent.deleted(task),
-                          ),
+                      onTap: () {
+                        showDeleteButton.value = !showDeleteButton.value;
+                        context.read<TaskActorBloc>().add(
+                              TaskActorEvent.deleted(task),
+                            );
+                      },
                     ),
                 ],
               ),
@@ -139,9 +140,9 @@ class _StyledCheckBox extends StatelessWidget {
         fillColor: MaterialStatePropertyAll(
           theme.backgroundColor.withOpacity(TextOpacity.lowEmphasis),
         ),
-        onChanged: (_) => context.read<TaskActorBloc>().add(
-              TaskActorEvent.completeToggled(task),
-            ),
+        onChanged: (_) => context
+            .read<TaskActorBloc>()
+            .add(TaskActorEvent.completeToggled(task)),
       ),
     );
   }

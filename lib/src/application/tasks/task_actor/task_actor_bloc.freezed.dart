@@ -16,23 +16,29 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TaskActorEvent {
-  Task get task => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Task task) deleted,
     required TResult Function(Task task) completeToggled,
+    required TResult Function(Task task) incrementPomodoro,
+    required TResult Function(Either<TaskFailure, Unit> failureOrSuccess)
+        update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Task task)? deleted,
     TResult Function(Task task)? completeToggled,
+    TResult Function(Task task)? incrementPomodoro,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Task task)? deleted,
     TResult Function(Task task)? completeToggled,
+    TResult Function(Task task)? incrementPomodoro,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,24 +46,26 @@ mixin _$TaskActorEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Deleted value) deleted,
     required TResult Function(_CompleteToggled value) completeToggled,
+    required TResult Function(_IncrementPomodoro value) incrementPomodoro,
+    required TResult Function(_Updated value) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Deleted value)? deleted,
     TResult Function(_CompleteToggled value)? completeToggled,
+    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult Function(_Updated value)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Deleted value)? deleted,
     TResult Function(_CompleteToggled value)? completeToggled,
+    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult Function(_Updated value)? update,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $TaskActorEventCopyWith<TaskActorEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -66,9 +74,6 @@ abstract class $TaskActorEventCopyWith<$Res> {
   factory $TaskActorEventCopyWith(
           TaskActorEvent value, $Res Function(TaskActorEvent) then) =
       _$TaskActorEventCopyWithImpl<$Res>;
-  $Res call({Task task});
-
-  $TaskCopyWith<$Res> get task;
 }
 
 /// @nodoc
@@ -79,37 +84,15 @@ class _$TaskActorEventCopyWithImpl<$Res>
   final TaskActorEvent _value;
   // ignore: unused_field
   final $Res Function(TaskActorEvent) _then;
-
-  @override
-  $Res call({
-    Object? task = freezed,
-  }) {
-    return _then(_value.copyWith(
-      task: task == freezed
-          ? _value.task
-          : task // ignore: cast_nullable_to_non_nullable
-              as Task,
-    ));
-  }
-
-  @override
-  $TaskCopyWith<$Res> get task {
-    return $TaskCopyWith<$Res>(_value.task, (value) {
-      return _then(_value.copyWith(task: value));
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_DeletedCopyWith<$Res>
-    implements $TaskActorEventCopyWith<$Res> {
+abstract class _$$_DeletedCopyWith<$Res> {
   factory _$$_DeletedCopyWith(
           _$_Deleted value, $Res Function(_$_Deleted) then) =
       __$$_DeletedCopyWithImpl<$Res>;
-  @override
   $Res call({Task task});
 
-  @override
   $TaskCopyWith<$Res> get task;
 }
 
@@ -132,6 +115,13 @@ class __$$_DeletedCopyWithImpl<$Res> extends _$TaskActorEventCopyWithImpl<$Res>
           : task // ignore: cast_nullable_to_non_nullable
               as Task,
     ));
+  }
+
+  @override
+  $TaskCopyWith<$Res> get task {
+    return $TaskCopyWith<$Res>(_value.task, (value) {
+      return _then(_value.copyWith(task: value));
+    });
   }
 }
 
@@ -170,6 +160,9 @@ class _$_Deleted implements _Deleted {
   TResult when<TResult extends Object?>({
     required TResult Function(Task task) deleted,
     required TResult Function(Task task) completeToggled,
+    required TResult Function(Task task) incrementPomodoro,
+    required TResult Function(Either<TaskFailure, Unit> failureOrSuccess)
+        update,
   }) {
     return deleted(task);
   }
@@ -179,6 +172,8 @@ class _$_Deleted implements _Deleted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Task task)? deleted,
     TResult Function(Task task)? completeToggled,
+    TResult Function(Task task)? incrementPomodoro,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
   }) {
     return deleted?.call(task);
   }
@@ -188,6 +183,8 @@ class _$_Deleted implements _Deleted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Task task)? deleted,
     TResult Function(Task task)? completeToggled,
+    TResult Function(Task task)? incrementPomodoro,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
     required TResult orElse(),
   }) {
     if (deleted != null) {
@@ -201,6 +198,8 @@ class _$_Deleted implements _Deleted {
   TResult map<TResult extends Object?>({
     required TResult Function(_Deleted value) deleted,
     required TResult Function(_CompleteToggled value) completeToggled,
+    required TResult Function(_IncrementPomodoro value) incrementPomodoro,
+    required TResult Function(_Updated value) update,
   }) {
     return deleted(this);
   }
@@ -210,6 +209,8 @@ class _$_Deleted implements _Deleted {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Deleted value)? deleted,
     TResult Function(_CompleteToggled value)? completeToggled,
+    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult Function(_Updated value)? update,
   }) {
     return deleted?.call(this);
   }
@@ -219,6 +220,8 @@ class _$_Deleted implements _Deleted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Deleted value)? deleted,
     TResult Function(_CompleteToggled value)? completeToggled,
+    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult Function(_Updated value)? update,
     required TResult orElse(),
   }) {
     if (deleted != null) {
@@ -231,24 +234,19 @@ class _$_Deleted implements _Deleted {
 abstract class _Deleted implements TaskActorEvent {
   const factory _Deleted(final Task task) = _$_Deleted;
 
-  @override
   Task get task;
-  @override
   @JsonKey(ignore: true)
   _$$_DeletedCopyWith<_$_Deleted> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_CompleteToggledCopyWith<$Res>
-    implements $TaskActorEventCopyWith<$Res> {
+abstract class _$$_CompleteToggledCopyWith<$Res> {
   factory _$$_CompleteToggledCopyWith(
           _$_CompleteToggled value, $Res Function(_$_CompleteToggled) then) =
       __$$_CompleteToggledCopyWithImpl<$Res>;
-  @override
   $Res call({Task task});
 
-  @override
   $TaskCopyWith<$Res> get task;
 }
 
@@ -273,6 +271,13 @@ class __$$_CompleteToggledCopyWithImpl<$Res>
           : task // ignore: cast_nullable_to_non_nullable
               as Task,
     ));
+  }
+
+  @override
+  $TaskCopyWith<$Res> get task {
+    return $TaskCopyWith<$Res>(_value.task, (value) {
+      return _then(_value.copyWith(task: value));
+    });
   }
 }
 
@@ -311,6 +316,9 @@ class _$_CompleteToggled implements _CompleteToggled {
   TResult when<TResult extends Object?>({
     required TResult Function(Task task) deleted,
     required TResult Function(Task task) completeToggled,
+    required TResult Function(Task task) incrementPomodoro,
+    required TResult Function(Either<TaskFailure, Unit> failureOrSuccess)
+        update,
   }) {
     return completeToggled(task);
   }
@@ -320,6 +328,8 @@ class _$_CompleteToggled implements _CompleteToggled {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Task task)? deleted,
     TResult Function(Task task)? completeToggled,
+    TResult Function(Task task)? incrementPomodoro,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
   }) {
     return completeToggled?.call(task);
   }
@@ -329,6 +339,8 @@ class _$_CompleteToggled implements _CompleteToggled {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Task task)? deleted,
     TResult Function(Task task)? completeToggled,
+    TResult Function(Task task)? incrementPomodoro,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
     required TResult orElse(),
   }) {
     if (completeToggled != null) {
@@ -342,6 +354,8 @@ class _$_CompleteToggled implements _CompleteToggled {
   TResult map<TResult extends Object?>({
     required TResult Function(_Deleted value) deleted,
     required TResult Function(_CompleteToggled value) completeToggled,
+    required TResult Function(_IncrementPomodoro value) incrementPomodoro,
+    required TResult Function(_Updated value) update,
   }) {
     return completeToggled(this);
   }
@@ -351,6 +365,8 @@ class _$_CompleteToggled implements _CompleteToggled {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Deleted value)? deleted,
     TResult Function(_CompleteToggled value)? completeToggled,
+    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult Function(_Updated value)? update,
   }) {
     return completeToggled?.call(this);
   }
@@ -360,6 +376,8 @@ class _$_CompleteToggled implements _CompleteToggled {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Deleted value)? deleted,
     TResult Function(_CompleteToggled value)? completeToggled,
+    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult Function(_Updated value)? update,
     required TResult orElse(),
   }) {
     if (completeToggled != null) {
@@ -372,11 +390,313 @@ class _$_CompleteToggled implements _CompleteToggled {
 abstract class _CompleteToggled implements TaskActorEvent {
   const factory _CompleteToggled(final Task task) = _$_CompleteToggled;
 
-  @override
   Task get task;
-  @override
   @JsonKey(ignore: true)
   _$$_CompleteToggledCopyWith<_$_CompleteToggled> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_IncrementPomodoroCopyWith<$Res> {
+  factory _$$_IncrementPomodoroCopyWith(_$_IncrementPomodoro value,
+          $Res Function(_$_IncrementPomodoro) then) =
+      __$$_IncrementPomodoroCopyWithImpl<$Res>;
+  $Res call({Task task});
+
+  $TaskCopyWith<$Res> get task;
+}
+
+/// @nodoc
+class __$$_IncrementPomodoroCopyWithImpl<$Res>
+    extends _$TaskActorEventCopyWithImpl<$Res>
+    implements _$$_IncrementPomodoroCopyWith<$Res> {
+  __$$_IncrementPomodoroCopyWithImpl(
+      _$_IncrementPomodoro _value, $Res Function(_$_IncrementPomodoro) _then)
+      : super(_value, (v) => _then(v as _$_IncrementPomodoro));
+
+  @override
+  _$_IncrementPomodoro get _value => super._value as _$_IncrementPomodoro;
+
+  @override
+  $Res call({
+    Object? task = freezed,
+  }) {
+    return _then(_$_IncrementPomodoro(
+      task == freezed
+          ? _value.task
+          : task // ignore: cast_nullable_to_non_nullable
+              as Task,
+    ));
+  }
+
+  @override
+  $TaskCopyWith<$Res> get task {
+    return $TaskCopyWith<$Res>(_value.task, (value) {
+      return _then(_value.copyWith(task: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_IncrementPomodoro implements _IncrementPomodoro {
+  const _$_IncrementPomodoro(this.task);
+
+  @override
+  final Task task;
+
+  @override
+  String toString() {
+    return 'TaskActorEvent.incrementPomodoro(task: $task)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_IncrementPomodoro &&
+            const DeepCollectionEquality().equals(other.task, task));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(task));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_IncrementPomodoroCopyWith<_$_IncrementPomodoro> get copyWith =>
+      __$$_IncrementPomodoroCopyWithImpl<_$_IncrementPomodoro>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Task task) deleted,
+    required TResult Function(Task task) completeToggled,
+    required TResult Function(Task task) incrementPomodoro,
+    required TResult Function(Either<TaskFailure, Unit> failureOrSuccess)
+        update,
+  }) {
+    return incrementPomodoro(task);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Task task)? deleted,
+    TResult Function(Task task)? completeToggled,
+    TResult Function(Task task)? incrementPomodoro,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
+  }) {
+    return incrementPomodoro?.call(task);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Task task)? deleted,
+    TResult Function(Task task)? completeToggled,
+    TResult Function(Task task)? incrementPomodoro,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
+    required TResult orElse(),
+  }) {
+    if (incrementPomodoro != null) {
+      return incrementPomodoro(task);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Deleted value) deleted,
+    required TResult Function(_CompleteToggled value) completeToggled,
+    required TResult Function(_IncrementPomodoro value) incrementPomodoro,
+    required TResult Function(_Updated value) update,
+  }) {
+    return incrementPomodoro(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Deleted value)? deleted,
+    TResult Function(_CompleteToggled value)? completeToggled,
+    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult Function(_Updated value)? update,
+  }) {
+    return incrementPomodoro?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Deleted value)? deleted,
+    TResult Function(_CompleteToggled value)? completeToggled,
+    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult Function(_Updated value)? update,
+    required TResult orElse(),
+  }) {
+    if (incrementPomodoro != null) {
+      return incrementPomodoro(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _IncrementPomodoro implements TaskActorEvent {
+  const factory _IncrementPomodoro(final Task task) = _$_IncrementPomodoro;
+
+  Task get task;
+  @JsonKey(ignore: true)
+  _$$_IncrementPomodoroCopyWith<_$_IncrementPomodoro> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UpdatedCopyWith<$Res> {
+  factory _$$_UpdatedCopyWith(
+          _$_Updated value, $Res Function(_$_Updated) then) =
+      __$$_UpdatedCopyWithImpl<$Res>;
+  $Res call({Either<TaskFailure, Unit> failureOrSuccess});
+}
+
+/// @nodoc
+class __$$_UpdatedCopyWithImpl<$Res> extends _$TaskActorEventCopyWithImpl<$Res>
+    implements _$$_UpdatedCopyWith<$Res> {
+  __$$_UpdatedCopyWithImpl(_$_Updated _value, $Res Function(_$_Updated) _then)
+      : super(_value, (v) => _then(v as _$_Updated));
+
+  @override
+  _$_Updated get _value => super._value as _$_Updated;
+
+  @override
+  $Res call({
+    Object? failureOrSuccess = freezed,
+  }) {
+    return _then(_$_Updated(
+      failureOrSuccess == freezed
+          ? _value.failureOrSuccess
+          : failureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<TaskFailure, Unit>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Updated implements _Updated {
+  const _$_Updated(this.failureOrSuccess);
+
+  @override
+  final Either<TaskFailure, Unit> failureOrSuccess;
+
+  @override
+  String toString() {
+    return 'TaskActorEvent.update(failureOrSuccess: $failureOrSuccess)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Updated &&
+            const DeepCollectionEquality()
+                .equals(other.failureOrSuccess, failureOrSuccess));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failureOrSuccess));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_UpdatedCopyWith<_$_Updated> get copyWith =>
+      __$$_UpdatedCopyWithImpl<_$_Updated>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Task task) deleted,
+    required TResult Function(Task task) completeToggled,
+    required TResult Function(Task task) incrementPomodoro,
+    required TResult Function(Either<TaskFailure, Unit> failureOrSuccess)
+        update,
+  }) {
+    return update(failureOrSuccess);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Task task)? deleted,
+    TResult Function(Task task)? completeToggled,
+    TResult Function(Task task)? incrementPomodoro,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
+  }) {
+    return update?.call(failureOrSuccess);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Task task)? deleted,
+    TResult Function(Task task)? completeToggled,
+    TResult Function(Task task)? incrementPomodoro,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
+    required TResult orElse(),
+  }) {
+    if (update != null) {
+      return update(failureOrSuccess);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Deleted value) deleted,
+    required TResult Function(_CompleteToggled value) completeToggled,
+    required TResult Function(_IncrementPomodoro value) incrementPomodoro,
+    required TResult Function(_Updated value) update,
+  }) {
+    return update(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Deleted value)? deleted,
+    TResult Function(_CompleteToggled value)? completeToggled,
+    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult Function(_Updated value)? update,
+  }) {
+    return update?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Deleted value)? deleted,
+    TResult Function(_CompleteToggled value)? completeToggled,
+    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult Function(_Updated value)? update,
+    required TResult orElse(),
+  }) {
+    if (update != null) {
+      return update(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Updated implements TaskActorEvent {
+  const factory _Updated(final Either<TaskFailure, Unit> failureOrSuccess) =
+      _$_Updated;
+
+  Either<TaskFailure, Unit> get failureOrSuccess;
+  @JsonKey(ignore: true)
+  _$$_UpdatedCopyWith<_$_Updated> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

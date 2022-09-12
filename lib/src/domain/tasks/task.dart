@@ -21,7 +21,7 @@ abstract class Task with _$Task {
   }) = _Task;
 
   factory Task.empty() => Task(
-    uniqueId: UniqueId(),
+        uniqueId: UniqueId(),
         title: '',
         description: '',
         emoji: Emoji.initial(),

@@ -18,7 +18,7 @@ import '../presentation/tasks/tasks_page.dart';
         AutoRoute(page: SettingsPage),
       ],
     ),
-    CustomRoute(page: AddTaskPage),
+    AutoRoute(page: AddTaskPage),
   ],
 )
 class $AppRouter {}

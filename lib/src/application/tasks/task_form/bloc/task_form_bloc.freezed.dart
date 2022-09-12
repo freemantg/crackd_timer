@@ -27,6 +27,8 @@ mixin _$TaskFormEvent {
     required TResult Function() incrementPomodoro,
     required TResult Function() decrementPomodoro,
     required TResult Function() saved,
+    required TResult Function(Either<TaskFailure, Unit> failureOrSuccess)
+        saveInProgress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,6 +42,8 @@ mixin _$TaskFormEvent {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +57,8 @@ mixin _$TaskFormEvent {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -68,6 +74,7 @@ mixin _$TaskFormEvent {
     required TResult Function(_IncrementPomodoro value) incrementPomodoro,
     required TResult Function(_DecrementPomodoro value) decrementPomodoro,
     required TResult Function(_Saved value) saved,
+    required TResult Function(_SaveInProgress value) saveInProgress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +88,7 @@ mixin _$TaskFormEvent {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -94,6 +102,7 @@ mixin _$TaskFormEvent {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -204,6 +213,8 @@ class _$_Initialized implements _Initialized {
     required TResult Function() incrementPomodoro,
     required TResult Function() decrementPomodoro,
     required TResult Function() saved,
+    required TResult Function(Either<TaskFailure, Unit> failureOrSuccess)
+        saveInProgress,
   }) {
     return initialized(initialTask);
   }
@@ -220,6 +231,8 @@ class _$_Initialized implements _Initialized {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
   }) {
     return initialized?.call(initialTask);
   }
@@ -236,6 +249,8 @@ class _$_Initialized implements _Initialized {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -257,6 +272,7 @@ class _$_Initialized implements _Initialized {
     required TResult Function(_IncrementPomodoro value) incrementPomodoro,
     required TResult Function(_DecrementPomodoro value) decrementPomodoro,
     required TResult Function(_Saved value) saved,
+    required TResult Function(_SaveInProgress value) saveInProgress,
   }) {
     return initialized(this);
   }
@@ -273,6 +289,7 @@ class _$_Initialized implements _Initialized {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
   }) {
     return initialized?.call(this);
   }
@@ -289,6 +306,7 @@ class _$_Initialized implements _Initialized {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -381,6 +399,8 @@ class _$_TitleChanged implements _TitleChanged {
     required TResult Function() incrementPomodoro,
     required TResult Function() decrementPomodoro,
     required TResult Function() saved,
+    required TResult Function(Either<TaskFailure, Unit> failureOrSuccess)
+        saveInProgress,
   }) {
     return titleChanged(titleStr);
   }
@@ -397,6 +417,8 @@ class _$_TitleChanged implements _TitleChanged {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
   }) {
     return titleChanged?.call(titleStr);
   }
@@ -413,6 +435,8 @@ class _$_TitleChanged implements _TitleChanged {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
     required TResult orElse(),
   }) {
     if (titleChanged != null) {
@@ -434,6 +458,7 @@ class _$_TitleChanged implements _TitleChanged {
     required TResult Function(_IncrementPomodoro value) incrementPomodoro,
     required TResult Function(_DecrementPomodoro value) decrementPomodoro,
     required TResult Function(_Saved value) saved,
+    required TResult Function(_SaveInProgress value) saveInProgress,
   }) {
     return titleChanged(this);
   }
@@ -450,6 +475,7 @@ class _$_TitleChanged implements _TitleChanged {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
   }) {
     return titleChanged?.call(this);
   }
@@ -466,6 +492,7 @@ class _$_TitleChanged implements _TitleChanged {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
     required TResult orElse(),
   }) {
     if (titleChanged != null) {
@@ -560,6 +587,8 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     required TResult Function() incrementPomodoro,
     required TResult Function() decrementPomodoro,
     required TResult Function() saved,
+    required TResult Function(Either<TaskFailure, Unit> failureOrSuccess)
+        saveInProgress,
   }) {
     return descriptionChanged(descriptionStr);
   }
@@ -576,6 +605,8 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
   }) {
     return descriptionChanged?.call(descriptionStr);
   }
@@ -592,6 +623,8 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -613,6 +646,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     required TResult Function(_IncrementPomodoro value) incrementPomodoro,
     required TResult Function(_DecrementPomodoro value) decrementPomodoro,
     required TResult Function(_Saved value) saved,
+    required TResult Function(_SaveInProgress value) saveInProgress,
   }) {
     return descriptionChanged(this);
   }
@@ -629,6 +663,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
   }) {
     return descriptionChanged?.call(this);
   }
@@ -645,6 +680,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -741,6 +777,8 @@ class _$_ActiveSessionsChanged implements _ActiveSessionsChanged {
     required TResult Function() incrementPomodoro,
     required TResult Function() decrementPomodoro,
     required TResult Function() saved,
+    required TResult Function(Either<TaskFailure, Unit> failureOrSuccess)
+        saveInProgress,
   }) {
     return activeSessionsChanged(activeSessions);
   }
@@ -757,6 +795,8 @@ class _$_ActiveSessionsChanged implements _ActiveSessionsChanged {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
   }) {
     return activeSessionsChanged?.call(activeSessions);
   }
@@ -773,6 +813,8 @@ class _$_ActiveSessionsChanged implements _ActiveSessionsChanged {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
     required TResult orElse(),
   }) {
     if (activeSessionsChanged != null) {
@@ -794,6 +836,7 @@ class _$_ActiveSessionsChanged implements _ActiveSessionsChanged {
     required TResult Function(_IncrementPomodoro value) incrementPomodoro,
     required TResult Function(_DecrementPomodoro value) decrementPomodoro,
     required TResult Function(_Saved value) saved,
+    required TResult Function(_SaveInProgress value) saveInProgress,
   }) {
     return activeSessionsChanged(this);
   }
@@ -810,6 +853,7 @@ class _$_ActiveSessionsChanged implements _ActiveSessionsChanged {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
   }) {
     return activeSessionsChanged?.call(this);
   }
@@ -826,6 +870,7 @@ class _$_ActiveSessionsChanged implements _ActiveSessionsChanged {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
     required TResult orElse(),
   }) {
     if (activeSessionsChanged != null) {
@@ -919,6 +964,8 @@ class _$_ColorChanged implements _ColorChanged {
     required TResult Function() incrementPomodoro,
     required TResult Function() decrementPomodoro,
     required TResult Function() saved,
+    required TResult Function(Either<TaskFailure, Unit> failureOrSuccess)
+        saveInProgress,
   }) {
     return colorChanged(color);
   }
@@ -935,6 +982,8 @@ class _$_ColorChanged implements _ColorChanged {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
   }) {
     return colorChanged?.call(color);
   }
@@ -951,6 +1000,8 @@ class _$_ColorChanged implements _ColorChanged {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
     required TResult orElse(),
   }) {
     if (colorChanged != null) {
@@ -972,6 +1023,7 @@ class _$_ColorChanged implements _ColorChanged {
     required TResult Function(_IncrementPomodoro value) incrementPomodoro,
     required TResult Function(_DecrementPomodoro value) decrementPomodoro,
     required TResult Function(_Saved value) saved,
+    required TResult Function(_SaveInProgress value) saveInProgress,
   }) {
     return colorChanged(this);
   }
@@ -988,6 +1040,7 @@ class _$_ColorChanged implements _ColorChanged {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
   }) {
     return colorChanged?.call(this);
   }
@@ -1004,6 +1057,7 @@ class _$_ColorChanged implements _ColorChanged {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
     required TResult orElse(),
   }) {
     if (colorChanged != null) {
@@ -1105,6 +1159,8 @@ class _$_EmojiChanged implements _EmojiChanged {
     required TResult Function() incrementPomodoro,
     required TResult Function() decrementPomodoro,
     required TResult Function() saved,
+    required TResult Function(Either<TaskFailure, Unit> failureOrSuccess)
+        saveInProgress,
   }) {
     return emojiChanged(emoji);
   }
@@ -1121,6 +1177,8 @@ class _$_EmojiChanged implements _EmojiChanged {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
   }) {
     return emojiChanged?.call(emoji);
   }
@@ -1137,6 +1195,8 @@ class _$_EmojiChanged implements _EmojiChanged {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
     required TResult orElse(),
   }) {
     if (emojiChanged != null) {
@@ -1158,6 +1218,7 @@ class _$_EmojiChanged implements _EmojiChanged {
     required TResult Function(_IncrementPomodoro value) incrementPomodoro,
     required TResult Function(_DecrementPomodoro value) decrementPomodoro,
     required TResult Function(_Saved value) saved,
+    required TResult Function(_SaveInProgress value) saveInProgress,
   }) {
     return emojiChanged(this);
   }
@@ -1174,6 +1235,7 @@ class _$_EmojiChanged implements _EmojiChanged {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
   }) {
     return emojiChanged?.call(this);
   }
@@ -1190,6 +1252,7 @@ class _$_EmojiChanged implements _EmojiChanged {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
     required TResult orElse(),
   }) {
     if (emojiChanged != null) {
@@ -1258,6 +1321,8 @@ class _$_IncrementPomodoro implements _IncrementPomodoro {
     required TResult Function() incrementPomodoro,
     required TResult Function() decrementPomodoro,
     required TResult Function() saved,
+    required TResult Function(Either<TaskFailure, Unit> failureOrSuccess)
+        saveInProgress,
   }) {
     return incrementPomodoro();
   }
@@ -1274,6 +1339,8 @@ class _$_IncrementPomodoro implements _IncrementPomodoro {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
   }) {
     return incrementPomodoro?.call();
   }
@@ -1290,6 +1357,8 @@ class _$_IncrementPomodoro implements _IncrementPomodoro {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
     required TResult orElse(),
   }) {
     if (incrementPomodoro != null) {
@@ -1311,6 +1380,7 @@ class _$_IncrementPomodoro implements _IncrementPomodoro {
     required TResult Function(_IncrementPomodoro value) incrementPomodoro,
     required TResult Function(_DecrementPomodoro value) decrementPomodoro,
     required TResult Function(_Saved value) saved,
+    required TResult Function(_SaveInProgress value) saveInProgress,
   }) {
     return incrementPomodoro(this);
   }
@@ -1327,6 +1397,7 @@ class _$_IncrementPomodoro implements _IncrementPomodoro {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
   }) {
     return incrementPomodoro?.call(this);
   }
@@ -1343,6 +1414,7 @@ class _$_IncrementPomodoro implements _IncrementPomodoro {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
     required TResult orElse(),
   }) {
     if (incrementPomodoro != null) {
@@ -1406,6 +1478,8 @@ class _$_DecrementPomodoro implements _DecrementPomodoro {
     required TResult Function() incrementPomodoro,
     required TResult Function() decrementPomodoro,
     required TResult Function() saved,
+    required TResult Function(Either<TaskFailure, Unit> failureOrSuccess)
+        saveInProgress,
   }) {
     return decrementPomodoro();
   }
@@ -1422,6 +1496,8 @@ class _$_DecrementPomodoro implements _DecrementPomodoro {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
   }) {
     return decrementPomodoro?.call();
   }
@@ -1438,6 +1514,8 @@ class _$_DecrementPomodoro implements _DecrementPomodoro {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
     required TResult orElse(),
   }) {
     if (decrementPomodoro != null) {
@@ -1459,6 +1537,7 @@ class _$_DecrementPomodoro implements _DecrementPomodoro {
     required TResult Function(_IncrementPomodoro value) incrementPomodoro,
     required TResult Function(_DecrementPomodoro value) decrementPomodoro,
     required TResult Function(_Saved value) saved,
+    required TResult Function(_SaveInProgress value) saveInProgress,
   }) {
     return decrementPomodoro(this);
   }
@@ -1475,6 +1554,7 @@ class _$_DecrementPomodoro implements _DecrementPomodoro {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
   }) {
     return decrementPomodoro?.call(this);
   }
@@ -1491,6 +1571,7 @@ class _$_DecrementPomodoro implements _DecrementPomodoro {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
     required TResult orElse(),
   }) {
     if (decrementPomodoro != null) {
@@ -1551,6 +1632,8 @@ class _$_Saved implements _Saved {
     required TResult Function() incrementPomodoro,
     required TResult Function() decrementPomodoro,
     required TResult Function() saved,
+    required TResult Function(Either<TaskFailure, Unit> failureOrSuccess)
+        saveInProgress,
   }) {
     return saved();
   }
@@ -1567,6 +1650,8 @@ class _$_Saved implements _Saved {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
   }) {
     return saved?.call();
   }
@@ -1583,6 +1668,8 @@ class _$_Saved implements _Saved {
     TResult Function()? incrementPomodoro,
     TResult Function()? decrementPomodoro,
     TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
     required TResult orElse(),
   }) {
     if (saved != null) {
@@ -1604,6 +1691,7 @@ class _$_Saved implements _Saved {
     required TResult Function(_IncrementPomodoro value) incrementPomodoro,
     required TResult Function(_DecrementPomodoro value) decrementPomodoro,
     required TResult Function(_Saved value) saved,
+    required TResult Function(_SaveInProgress value) saveInProgress,
   }) {
     return saved(this);
   }
@@ -1620,6 +1708,7 @@ class _$_Saved implements _Saved {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
   }) {
     return saved?.call(this);
   }
@@ -1636,6 +1725,7 @@ class _$_Saved implements _Saved {
     TResult Function(_IncrementPomodoro value)? incrementPomodoro,
     TResult Function(_DecrementPomodoro value)? decrementPomodoro,
     TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
     required TResult orElse(),
   }) {
     if (saved != null) {
@@ -1650,11 +1740,201 @@ abstract class _Saved implements TaskFormEvent {
 }
 
 /// @nodoc
+abstract class _$$_SaveInProgressCopyWith<$Res> {
+  factory _$$_SaveInProgressCopyWith(
+          _$_SaveInProgress value, $Res Function(_$_SaveInProgress) then) =
+      __$$_SaveInProgressCopyWithImpl<$Res>;
+  $Res call({Either<TaskFailure, Unit> failureOrSuccess});
+}
+
+/// @nodoc
+class __$$_SaveInProgressCopyWithImpl<$Res>
+    extends _$TaskFormEventCopyWithImpl<$Res>
+    implements _$$_SaveInProgressCopyWith<$Res> {
+  __$$_SaveInProgressCopyWithImpl(
+      _$_SaveInProgress _value, $Res Function(_$_SaveInProgress) _then)
+      : super(_value, (v) => _then(v as _$_SaveInProgress));
+
+  @override
+  _$_SaveInProgress get _value => super._value as _$_SaveInProgress;
+
+  @override
+  $Res call({
+    Object? failureOrSuccess = freezed,
+  }) {
+    return _then(_$_SaveInProgress(
+      failureOrSuccess == freezed
+          ? _value.failureOrSuccess
+          : failureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Either<TaskFailure, Unit>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SaveInProgress implements _SaveInProgress {
+  const _$_SaveInProgress(this.failureOrSuccess);
+
+  @override
+  final Either<TaskFailure, Unit> failureOrSuccess;
+
+  @override
+  String toString() {
+    return 'TaskFormEvent.saveInProgress(failureOrSuccess: $failureOrSuccess)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SaveInProgress &&
+            const DeepCollectionEquality()
+                .equals(other.failureOrSuccess, failureOrSuccess));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failureOrSuccess));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SaveInProgressCopyWith<_$_SaveInProgress> get copyWith =>
+      __$$_SaveInProgressCopyWithImpl<_$_SaveInProgress>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Task? initialTask) initialized,
+    required TResult Function(String titleStr) titleChanged,
+    required TResult Function(String descriptionStr) descriptionChanged,
+    required TResult Function(int activeSessions) activeSessionsChanged,
+    required TResult Function(Color color) colorChanged,
+    required TResult Function(Emoji emoji) emojiChanged,
+    required TResult Function() incrementPomodoro,
+    required TResult Function() decrementPomodoro,
+    required TResult Function() saved,
+    required TResult Function(Either<TaskFailure, Unit> failureOrSuccess)
+        saveInProgress,
+  }) {
+    return saveInProgress(failureOrSuccess);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Task? initialTask)? initialized,
+    TResult Function(String titleStr)? titleChanged,
+    TResult Function(String descriptionStr)? descriptionChanged,
+    TResult Function(int activeSessions)? activeSessionsChanged,
+    TResult Function(Color color)? colorChanged,
+    TResult Function(Emoji emoji)? emojiChanged,
+    TResult Function()? incrementPomodoro,
+    TResult Function()? decrementPomodoro,
+    TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
+  }) {
+    return saveInProgress?.call(failureOrSuccess);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Task? initialTask)? initialized,
+    TResult Function(String titleStr)? titleChanged,
+    TResult Function(String descriptionStr)? descriptionChanged,
+    TResult Function(int activeSessions)? activeSessionsChanged,
+    TResult Function(Color color)? colorChanged,
+    TResult Function(Emoji emoji)? emojiChanged,
+    TResult Function()? incrementPomodoro,
+    TResult Function()? decrementPomodoro,
+    TResult Function()? saved,
+    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+        saveInProgress,
+    required TResult orElse(),
+  }) {
+    if (saveInProgress != null) {
+      return saveInProgress(failureOrSuccess);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_TitleChanged value) titleChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_ActiveSessionsChanged value)
+        activeSessionsChanged,
+    required TResult Function(_ColorChanged value) colorChanged,
+    required TResult Function(_EmojiChanged value) emojiChanged,
+    required TResult Function(_IncrementPomodoro value) incrementPomodoro,
+    required TResult Function(_DecrementPomodoro value) decrementPomodoro,
+    required TResult Function(_Saved value) saved,
+    required TResult Function(_SaveInProgress value) saveInProgress,
+  }) {
+    return saveInProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_ActiveSessionsChanged value)? activeSessionsChanged,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_EmojiChanged value)? emojiChanged,
+    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult Function(_DecrementPomodoro value)? decrementPomodoro,
+    TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
+  }) {
+    return saveInProgress?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_ActiveSessionsChanged value)? activeSessionsChanged,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_EmojiChanged value)? emojiChanged,
+    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult Function(_DecrementPomodoro value)? decrementPomodoro,
+    TResult Function(_Saved value)? saved,
+    TResult Function(_SaveInProgress value)? saveInProgress,
+    required TResult orElse(),
+  }) {
+    if (saveInProgress != null) {
+      return saveInProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SaveInProgress implements TaskFormEvent {
+  const factory _SaveInProgress(
+      final Either<TaskFailure, Unit> failureOrSuccess) = _$_SaveInProgress;
+
+  Either<TaskFailure, Unit> get failureOrSuccess;
+  @JsonKey(ignore: true)
+  _$$_SaveInProgressCopyWith<_$_SaveInProgress> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$TaskFormState {
   Task get task => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get isEditing => throw _privateConstructorUsedError;
   bool get isSaving => throw _privateConstructorUsedError;
+  Option<Either<TaskFailure, Unit>> get saveFailureOrSuccessOption =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TaskFormStateCopyWith<TaskFormState> get copyWith =>
@@ -1666,7 +1946,12 @@ abstract class $TaskFormStateCopyWith<$Res> {
   factory $TaskFormStateCopyWith(
           TaskFormState value, $Res Function(TaskFormState) then) =
       _$TaskFormStateCopyWithImpl<$Res>;
-  $Res call({Task task, bool showErrorMessages, bool isEditing, bool isSaving});
+  $Res call(
+      {Task task,
+      bool showErrorMessages,
+      bool isEditing,
+      bool isSaving,
+      Option<Either<TaskFailure, Unit>> saveFailureOrSuccessOption});
 
   $TaskCopyWith<$Res> get task;
 }
@@ -1686,6 +1971,7 @@ class _$TaskFormStateCopyWithImpl<$Res>
     Object? showErrorMessages = freezed,
     Object? isEditing = freezed,
     Object? isSaving = freezed,
+    Object? saveFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
       task: task == freezed
@@ -1704,6 +1990,10 @@ class _$TaskFormStateCopyWithImpl<$Res>
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
               as bool,
+      saveFailureOrSuccessOption: saveFailureOrSuccessOption == freezed
+          ? _value.saveFailureOrSuccessOption
+          : saveFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<TaskFailure, Unit>>,
     ));
   }
 
@@ -1722,7 +2012,12 @@ abstract class _$$_TaskFormStateCopyWith<$Res>
           _$_TaskFormState value, $Res Function(_$_TaskFormState) then) =
       __$$_TaskFormStateCopyWithImpl<$Res>;
   @override
-  $Res call({Task task, bool showErrorMessages, bool isEditing, bool isSaving});
+  $Res call(
+      {Task task,
+      bool showErrorMessages,
+      bool isEditing,
+      bool isSaving,
+      Option<Either<TaskFailure, Unit>> saveFailureOrSuccessOption});
 
   @override
   $TaskCopyWith<$Res> get task;
@@ -1745,6 +2040,7 @@ class __$$_TaskFormStateCopyWithImpl<$Res>
     Object? showErrorMessages = freezed,
     Object? isEditing = freezed,
     Object? isSaving = freezed,
+    Object? saveFailureOrSuccessOption = freezed,
   }) {
     return _then(_$_TaskFormState(
       task: task == freezed
@@ -1763,6 +2059,10 @@ class __$$_TaskFormStateCopyWithImpl<$Res>
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
               as bool,
+      saveFailureOrSuccessOption: saveFailureOrSuccessOption == freezed
+          ? _value.saveFailureOrSuccessOption
+          : saveFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<TaskFailure, Unit>>,
     ));
   }
 }
@@ -1774,7 +2074,8 @@ class _$_TaskFormState implements _TaskFormState {
       {required this.task,
       required this.showErrorMessages,
       required this.isEditing,
-      required this.isSaving});
+      required this.isSaving,
+      required this.saveFailureOrSuccessOption});
 
   @override
   final Task task;
@@ -1784,10 +2085,12 @@ class _$_TaskFormState implements _TaskFormState {
   final bool isEditing;
   @override
   final bool isSaving;
+  @override
+  final Option<Either<TaskFailure, Unit>> saveFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'TaskFormState(task: $task, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving)';
+    return 'TaskFormState(task: $task, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
@@ -1799,7 +2102,9 @@ class _$_TaskFormState implements _TaskFormState {
             const DeepCollectionEquality()
                 .equals(other.showErrorMessages, showErrorMessages) &&
             const DeepCollectionEquality().equals(other.isEditing, isEditing) &&
-            const DeepCollectionEquality().equals(other.isSaving, isSaving));
+            const DeepCollectionEquality().equals(other.isSaving, isSaving) &&
+            const DeepCollectionEquality().equals(
+                other.saveFailureOrSuccessOption, saveFailureOrSuccessOption));
   }
 
   @override
@@ -1808,7 +2113,8 @@ class _$_TaskFormState implements _TaskFormState {
       const DeepCollectionEquality().hash(task),
       const DeepCollectionEquality().hash(showErrorMessages),
       const DeepCollectionEquality().hash(isEditing),
-      const DeepCollectionEquality().hash(isSaving));
+      const DeepCollectionEquality().hash(isSaving),
+      const DeepCollectionEquality().hash(saveFailureOrSuccessOption));
 
   @JsonKey(ignore: true)
   @override
@@ -1821,7 +2127,9 @@ abstract class _TaskFormState implements TaskFormState {
       {required final Task task,
       required final bool showErrorMessages,
       required final bool isEditing,
-      required final bool isSaving}) = _$_TaskFormState;
+      required final bool isSaving,
+      required final Option<Either<TaskFailure, Unit>>
+          saveFailureOrSuccessOption}) = _$_TaskFormState;
 
   @override
   Task get task;
@@ -1831,6 +2139,8 @@ abstract class _TaskFormState implements TaskFormState {
   bool get isEditing;
   @override
   bool get isSaving;
+  @override
+  Option<Either<TaskFailure, Unit>> get saveFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$$_TaskFormStateCopyWith<_$_TaskFormState> get copyWith =>

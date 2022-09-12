@@ -5,6 +5,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:robot_timer/src/application/settings/constants.dart';
 import 'package:robot_timer/src/infrastructure/timer/ticker.dart';
 
+import '../../../domain/tasks/task.dart';
+
 part 'timer_event.dart';
 part 'timer_state.dart';
 part 'timer_bloc.freezed.dart';
@@ -75,7 +77,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
             );
           },
           updateDuration: (event) {
-            print('UPDATEDURATION');
+            print('UPDATE DURATION');
             print(event.duration);
             _tickerSubscription?.cancel();
             emit(TimerState.initial(
@@ -91,6 +93,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
               duration: state.duration,
             ));
           },
+     
         );
       },
     );
