@@ -27,7 +27,7 @@ Future<void> init() async {
   getIt.registerFactory(() => EmojisBloc(getIt()));
 
   //Cubits
-  getIt.registerFactory(() => TaskCubit());
+  getIt.registerFactory(() => TaskCubit(getIt()));
   getIt.registerFactory(() => ThemeCubit());
 
   //Router

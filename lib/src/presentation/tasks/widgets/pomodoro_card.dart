@@ -35,13 +35,7 @@ class PomodoroCard extends HookWidget {
             children: [
               Row(
                 children: [
-                  GestureDetector(
-                      onTap: () {
-                        context
-                            .read<TaskActorBloc>()
-                            .add(TaskActorEvent.incrementPomodoro(task));
-                      },
-                      child: Text(task.emoji.emoji, style: TextStyles.h2)),
+                  Text(task.emoji.emoji, style: TextStyles.h2),
                   const Spacer(),
                   if (showDeleteButton.value)
                     GestureDetector(

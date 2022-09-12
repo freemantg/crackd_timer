@@ -55,4 +55,13 @@ class TaskRepository implements TasksInterface {
       return const Left(TaskFailure.unableToUpdate());
     }
   }
+
+  @override
+  Stream<Either<TaskFailure, Task>> fetchTask(Task task) async* {
+    final taskDtoStream =
+        _localSource.fetchNoteStream(TaskDto.fromDomain(task));
+    yield* taskDtoStream.map(
+      (taskDto) => right<TaskFailure, Task>(taskDto.toDomain()),
+    );
+  }
 }

@@ -19,6 +19,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        //BLOCS
         BlocProvider(
           create: (_) => getIt<SettingsBloc>(),
         ),
@@ -32,6 +33,8 @@ class AppWidget extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<TaskActorBloc>(),
         ),
+
+        //CUBITS
         BlocProvider(
           create: (_) => getIt<TaskCubit>(),
         ),
@@ -48,14 +51,21 @@ class AppWidget extends StatelessWidget {
               listenWhen: (previous, current) =>
                   previous.timerType != current.timerType,
               listener: (context, state) => _updateDurationActor(context)),
-          BlocListener<TaskActorBloc, TaskActorState>(
+          BlocListener<TimerBloc, TimerState>(
+            listenWhen: (previous, current) => current is TimerCompleted,
+            listener: (context, state) => _updateTimerType(context),
+          ),
+          BlocListener<TimerBloc, TimerState>(
+            listenWhen: (previous, current) =>
+                current is TimerCompleted &&
+                current.timerType == TimerType.focus,
             listener: (context, state) {
-              state.maybeMap(
-                actionSuccess: (_) {},
-                orElse: () {},
-              );
+              final task = context.read<TaskCubit>().state;
+              context
+                  .read<TaskActorBloc>()
+                  .add(TaskActorEvent.incrementPomodoro(task));
             },
-          )
+          ),
         ],
         child: BlocBuilder<ThemeCubit, AppTheme>(
           builder: (context, appTheme) {
@@ -70,6 +80,22 @@ class AppWidget extends StatelessWidget {
     );
   }
 
+  _updateTimerType(BuildContext context) {
+    print('updateTimerType');
+    final timerBloc = context.read<TimerBloc>();
+    final timerCompletedCount = timerBloc.state.timerCompletedCount;
+
+    timerBloc.add(
+      TimerEvent.updateTimer(
+        timerType: (timerCompletedCount + 1) % 2 == 0
+            ? (timerCompletedCount + 1) % 4 == 0
+                ? TimerType.longBreak
+                : TimerType.shortBreak
+            : TimerType.focus,
+      ),
+    );
+  }
+
   _updateDurationActor(BuildContext context) {
     final timerBloc = context.read<TimerBloc>();
     final settingsBloc = context.read<SettingsBloc>();
@@ -77,18 +103,23 @@ class AppWidget extends StatelessWidget {
     switch (timerBloc.state.timerType) {
       case TimerType.focus:
         return timerBloc.add(
-          TimerEvent.updateDuration(duration: settingsBloc.state.focusTime),
+          TimerEvent.updateTimer(
+            duration: settingsBloc.state.focusTime,
+          ),
         );
 
       case TimerType.shortBreak:
         return timerBloc.add(
-          TimerEvent.updateDuration(
-              duration: settingsBloc.state.shortBreakTime),
+          TimerEvent.updateTimer(
+            duration: settingsBloc.state.shortBreakTime,
+          ),
         );
 
       case TimerType.longBreak:
         return timerBloc.add(
-          TimerEvent.updateDuration(duration: settingsBloc.state.longBreakTime),
+          TimerEvent.updateTimer(
+            duration: settingsBloc.state.longBreakTime,
+          ),
         );
     }
   }

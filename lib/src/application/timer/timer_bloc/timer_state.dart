@@ -11,17 +11,21 @@ class TimerState with _$TimerState {
   const factory TimerState.initial({
     @Default(DefaultSettings.focusTime * 60) int duration,
     @Default(TimerType.focus) TimerType timerType,
-  }) = _Initial;
+    @Default(0) int timerCompletedCount,
+  }) = Initial;
   const factory TimerState.running({
     required int duration,
     required TimerType timerType,
-  }) = _TimerRunning;
+    required int timerCompletedCount,
+  }) = TimerRunning;
   const factory TimerState.paused({
     required int duration,
     required TimerType timerType,
-  }) = _TimerPaused;
+    required int timerCompletedCount,
+  }) = TimerPaused;
   const factory TimerState.complete({
     required int duration,
     required TimerType timerType,
-  }) = _TimerCompleted;
+    required int timerCompletedCount,
+  }) = TimerCompleted;
 }

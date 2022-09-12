@@ -11,6 +11,16 @@ class TasksLocalSource {
 
   TasksLocalSource(this._sembastDatabase);
 
+  Stream<TaskDto> fetchNoteStream(TaskDto taskDto) async* {
+    final record =
+        _store.record(taskDto.uniqueId).onSnapshot(_sembastDatabase.instance);
+    yield* record.map(
+      (snapshot) => TaskDto.fromJson(
+        snapshot?.value ?? {},
+      ),
+    );
+  }
+
   Stream<List<TaskDto>> getTasksStream() async* {
     final records = _store
         .query(

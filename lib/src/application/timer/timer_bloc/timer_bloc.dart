@@ -5,8 +5,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:robot_timer/src/application/settings/constants.dart';
 import 'package:robot_timer/src/infrastructure/timer/ticker.dart';
 
-import '../../../domain/tasks/task.dart';
-
 part 'timer_event.dart';
 part 'timer_state.dart';
 part 'timer_bloc.freezed.dart';
@@ -30,39 +28,43 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
                 );
           },
           ticked: (event) {
-            print('TICKED');
+            print('TICKED ${event.duration}');
             emit(
               event.duration > 0
                   ? TimerState.running(
                       duration: event.duration,
                       timerType: state.timerType,
+                      timerCompletedCount: state.timerCompletedCount,
                     )
                   : TimerState.complete(
                       duration: state.duration,
                       timerType: state.timerType,
+                      timerCompletedCount: state.timerCompletedCount + 1,
                     ),
             );
           },
           paused: (_) {
             print('PAUSED');
-            if (state is _TimerRunning) {
+            if (state is TimerRunning) {
               _tickerSubscription?.pause();
               emit(
                 TimerState.paused(
                   duration: state.duration,
                   timerType: state.timerType,
+                  timerCompletedCount: state.timerCompletedCount,
                 ),
               );
             }
           },
           resumed: (_) {
             print('RESUMED');
-            if (state is _TimerPaused) {
+            if (state is TimerPaused) {
               _tickerSubscription?.resume();
               emit(
                 TimerState.running(
                   duration: state.duration,
                   timerType: state.timerType,
+                  timerCompletedCount: state.timerCompletedCount,
                 ),
               );
             }
@@ -73,27 +75,20 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
               TimerState.initial(
                 duration: event.duration * 60,
                 timerType: state.timerType,
+                timerCompletedCount: state.timerCompletedCount,
               ),
             );
           },
-          updateDuration: (event) {
+          updateTimer: (event) {
             print('UPDATE DURATION');
             print(event.duration);
             _tickerSubscription?.cancel();
             emit(TimerState.initial(
-              duration: event.duration * 60,
-              timerType: state.timerType,
-            ));
-            print(state);
-          },
-          updateTimerType: (_) {
-            _tickerSubscription?.cancel();
-            emit(TimerState.initial(
-              timerType: TimerType.shortBreak,
-              duration: state.duration,
+              duration: (event.duration ?? state.duration) * 60,
+              timerType: event.timerType ?? state.timerType,
+              timerCompletedCount: state.timerCompletedCount,
             ));
           },
-     
         );
       },
     );

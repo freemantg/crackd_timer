@@ -7,7 +7,8 @@ class TimerEvent with _$TimerEvent {
   const factory TimerEvent.resumed() = _Resumed;
   const factory TimerEvent.reset({required int duration}) = _Reset;
   const factory TimerEvent.ticked({required int duration}) = _Ticked;
-  const factory TimerEvent.updateDuration({required int duration}) =
-      _UpdateDuration;
-  const factory TimerEvent.updateTimerType() = _UpdateTimerType;
+  const factory TimerEvent.updateTimer({
+     int? duration,
+     TimerType? timerType,
+  }) = _UpdateDuration;
 }

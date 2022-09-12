@@ -16,16 +16,13 @@ class PomodoroCounter extends StatelessWidget {
   Widget build(BuildContext context) {
     final task = context.select((TaskCubit taskCubit) => taskCubit.state);
 
-    return BlocConsumer<TimerBloc, TimerState>(
-      listener: (context, state) {},
+    return BlocBuilder<TimerBloc, TimerState>(
       builder: (context, state) {
         return LayoutBuilder(
           builder: (context, constraints) {
             return _StyledLowOpacityContainer(
               child: Column(
                 children: [
-                  Text(task.completedSessions.toString()),
-                  IconButton(icon: const Icon(Icons.add), onPressed: () {}),
                   Text(
                     _buildTimerText(state.timerType),
                     style: TextStyles.title1MediumOpacity,
@@ -40,7 +37,9 @@ class PomodoroCounter extends StatelessWidget {
                       spacing: Insets.sm,
                       runSpacing: Insets.sm,
                       children: List.generate(
-                        task.activeSessions,
+                        task.activeSessions > task.completedSessions
+                            ? task.activeSessions
+                            : task.completedSessions,
                         (index) {
                           return index >= task.completedSessions
                               ? _EmojiIndicator(emoji: task.emoji)
