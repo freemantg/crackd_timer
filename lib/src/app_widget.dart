@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:robot_timer/injection_container.dart';
 import 'package:robot_timer/src/application/core/task_cubit/task_cubit.dart';
+import 'package:robot_timer/src/application/settings/alarm_cubit/alarm_cubit.dart';
 import 'package:robot_timer/src/application/settings/settings_bloc/settings_bloc.dart';
 import 'package:robot_timer/src/application/tasks/task_watcher/task_watcher_bloc.dart';
 import 'package:robot_timer/src/application/timer/timer_bloc/timer_bloc.dart';
@@ -21,14 +22,14 @@ class AppWidget extends StatelessWidget {
       providers: [
         //BLOCS
         BlocProvider(
+          create: (context) => getIt<TaskWatcherBloc>()
+            ..add(const TaskWatcherEvent.watchAllStarted()),
+        ),
+        BlocProvider(
           create: (_) => getIt<SettingsBloc>(),
         ),
         BlocProvider(
           create: (context) => getIt<TimerBloc>(),
-        ),
-        BlocProvider(
-          create: (context) => getIt<TaskWatcherBloc>()
-            ..add(const TaskWatcherEvent.watchAllStarted()),
         ),
         BlocProvider(
           create: (context) => getIt<TaskActorBloc>(),
@@ -36,11 +37,14 @@ class AppWidget extends StatelessWidget {
 
         //CUBITS
         BlocProvider(
+          create: (_) => getIt<ThemeCubit>(),
+        ),
+        BlocProvider(
           create: (_) => getIt<TaskCubit>(),
         ),
         BlocProvider(
-          create: (_) => getIt<ThemeCubit>(),
-        )
+          create: (_) => getIt<AlarmCubit>(),
+        ),
       ],
       child: MultiBlocListener(
         listeners: [
@@ -52,12 +56,25 @@ class AppWidget extends StatelessWidget {
                   previous.timerType != current.timerType,
               listener: (context, state) => _updateDurationActor(context)),
           BlocListener<TimerBloc, TimerState>(
-            listenWhen: (previous, current) => current is TimerCompleted,
-            listener: (context, state) => _updateTimerType(context),
+            listenWhen: (previous, current) =>
+                previous.status == TimerStatus.running,
+            listener: (context, state) {
+              final alarmCubit = context.read<AlarmCubit>();
+              if (!alarmCubit.state.tickingSound) return;
+              alarmCubit.playTickSound();
+            },
           ),
           BlocListener<TimerBloc, TimerState>(
             listenWhen: (previous, current) =>
-                current is TimerCompleted &&
+                current.status == TimerStatus.completed,
+            listener: (context, state) {
+              _updateTimerType(context);
+              context.read<AlarmCubit>().playAlarm();
+            },
+          ),
+          BlocListener<TimerBloc, TimerState>(
+            listenWhen: (previous, current) =>
+                current.status == TimerStatus.completed &&
                 current.timerType == TimerType.focus,
             listener: (context, state) {
               final task = context.read<TaskCubit>().state;
@@ -80,15 +97,14 @@ class AppWidget extends StatelessWidget {
     );
   }
 
-  _updateTimerType(BuildContext context) {
-    print('updateTimerType');
+  void _updateTimerType(BuildContext context) {
     final timerBloc = context.read<TimerBloc>();
-    final timerCompletedCount = timerBloc.state.timerCompletedCount;
+    final timerCompletedCount = timerBloc.state.timerCompletedCounter;
 
     timerBloc.add(
       TimerEvent.updateTimer(
         timerType: (timerCompletedCount + 1) % 2 == 0
-            ? (timerCompletedCount + 1) % 4 == 0
+            ? (timerCompletedCount + 1) % 8 == 0
                 ? TimerType.longBreak
                 : TimerType.shortBreak
             : TimerType.focus,
@@ -96,7 +112,7 @@ class AppWidget extends StatelessWidget {
     );
   }
 
-  _updateDurationActor(BuildContext context) {
+  void _updateDurationActor(BuildContext context) {
     final timerBloc = context.read<TimerBloc>();
     final settingsBloc = context.read<SettingsBloc>();
 

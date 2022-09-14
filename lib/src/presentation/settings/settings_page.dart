@@ -55,12 +55,16 @@ class _SettingsBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return StyledCurvedDecoration(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
           HSpace(size: Insets.l),
           PomodoroSettings(),
-          HSpace(size: Insets.xl),
+          HSpace(size: Insets.l),
+          Divider(),
+          HSpace(size: Insets.l),
           AlarmSettings(),
-          HSpace(size: Insets.xl),
+          Divider(),
+          HSpace(size: Insets.l),
           ThemeSettings(),
           HSpace(size: Insets.l),
         ],

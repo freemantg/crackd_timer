@@ -30,7 +30,22 @@ class TaskWatcherBloc extends Bloc<TaskWatcherEvent, TaskWatcherState> {
               add(TaskWatcherEvent.tasksReceived(tasks));
             });
           },
-          watchUncompletedStarted: () {},
+          watchActiveStarted: () async {
+            emit(const TaskWatcherState.loadInProgress());
+            await _taskStreamSubscription?.cancel();
+            _taskStreamSubscription =
+                _taskRepository.fetchActiveTasks().listen((tasks) {
+              add(TaskWatcherEvent.tasksReceived(tasks));
+            });
+          },
+          watchCompletedStarted: () async {
+            emit(const TaskWatcherState.loadInProgress());
+            await _taskStreamSubscription?.cancel();
+            _taskStreamSubscription =
+                _taskRepository.fetchCompletedTasks().listen((tasks) {
+              add(TaskWatcherEvent.tasksReceived(tasks));
+            });
+          },
           tasksReceived: (event) {
             event.fold(
               (failure) =>

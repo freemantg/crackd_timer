@@ -62,7 +62,7 @@ class StyledAppBar extends StatelessWidget implements PreferredSizeWidget {
             alignment: Alignment.center,
             children: [
               Text(
-                state.title,
+                state.title.isEmpty ? 'Select a Task' : state.title,
                 style: TextStyles.h2,
               ),
               Align(

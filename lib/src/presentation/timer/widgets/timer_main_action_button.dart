@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../injection_container.dart';
 import '../../../application/settings/settings_bloc/settings_bloc.dart';
 import '../../../application/timer/timer_bloc/timer_bloc.dart';
+import '../../../shared/app_router.gr.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
 
@@ -20,11 +22,9 @@ class TimerMainActionButton extends StatelessWidget {
     bool isPlaying = false;
 
     return BlocConsumer<TimerBloc, TimerState>(
+      listenWhen: (previous, current) => previous.status != current.status,
       listener: (context, state) {
-        isPlaying = state.maybeMap(
-          running: (_) => true,
-          orElse: () => false,
-        );
+        isPlaying = (state.status == TimerStatus.running);
       },
       builder: (context, state) {
         return Row(
@@ -40,13 +40,22 @@ class TimerMainActionButton extends StatelessWidget {
                     borderRadius: BorderRadius.circular(Corners.s5),
                   ),
                 ),
-                onPressed: () => state.maybeMap(
-                  initial: (_) => timerBloc
-                      .add(TimerEvent.started(duration: state.duration)),
-                  running: (_) => timerBloc.add(const TimerEvent.paused()),
-                  paused: (_) => timerBloc.add(const TimerEvent.resumed()),
-                  orElse: () => null,
-                ),
+                onPressed: () {
+                  switch (state.status) {
+                    case TimerStatus.initial:
+                      timerBloc
+                          .add(TimerEvent.started(duration: state.duration));
+                      break;
+                    case TimerStatus.running:
+                      timerBloc.add(const TimerEvent.paused());
+                      break;
+                    case TimerStatus.paused:
+                      timerBloc.add(const TimerEvent.resumed());
+                      break;
+                    default:
+                      null;
+                  }
+                },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20.0),
                   child: Text(
@@ -60,17 +69,22 @@ class TimerMainActionButton extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(
-              child: state.maybeMap(
-                running: (_) => const _TimerSkipButton(),
-                paused: (_) => const _TimerResetButton(),
-                orElse: () => const SizedBox(),
-              ),
-            )
+            Expanded(child: _buildSecondaryActionButton(state.status))
           ],
         );
       },
     );
+  }
+}
+
+_buildSecondaryActionButton(TimerStatus status) {
+  switch (status) {
+    case TimerStatus.running:
+      return const _TimerSkipButton();
+    case TimerStatus.paused:
+      return const _TimerResetButton();
+    default:
+      return const SizedBox.shrink();
   }
 }
 
@@ -82,7 +96,30 @@ class _TimerSkipButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () {},
+      onPressed: () => showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            backgroundColor: Theme.of(context).cardColor,
+            title: const Text('Skip Pomodoro'),
+            content:
+                const Text('Are you sure you want to finish the round early?'),
+            actions: [
+              TextButton(
+                onPressed: () => getIt<AppRouter>().popUntilRoot(),
+                child: const Text('CANCEL'),
+              ),
+              TextButton(
+                onPressed: () {
+                  context.read<TimerBloc>().add(const TimerEvent.skipped());
+                  getIt<AppRouter>().popUntilRoot();
+                },
+                child: const Text('CONFIRM'),
+              ),
+            ],
+          );
+        },
+      ),
       icon: const FaIcon(
         FontAwesomeIcons.forward,
         color: Colors.white,

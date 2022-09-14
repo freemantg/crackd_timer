@@ -10,7 +10,5 @@ void main() async {
   await di.init();
   await di.getIt<SembastDatabase>().init();
 
-  runApp(
-    const AppWidget(),
-  );
+  runApp(const AppWidget());
 }

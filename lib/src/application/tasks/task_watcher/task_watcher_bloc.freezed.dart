@@ -19,7 +19,8 @@ mixin _$TaskWatcherEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() watchAllStarted,
-    required TResult Function() watchUncompletedStarted,
+    required TResult Function() watchCompletedStarted,
+    required TResult Function() watchActiveStarted,
     required TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)
         tasksReceived,
   }) =>
@@ -27,7 +28,8 @@ mixin _$TaskWatcherEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? watchAllStarted,
-    TResult Function()? watchUncompletedStarted,
+    TResult Function()? watchCompletedStarted,
+    TResult Function()? watchActiveStarted,
     TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)?
         tasksReceived,
   }) =>
@@ -35,7 +37,8 @@ mixin _$TaskWatcherEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? watchAllStarted,
-    TResult Function()? watchUncompletedStarted,
+    TResult Function()? watchCompletedStarted,
+    TResult Function()? watchActiveStarted,
     TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)?
         tasksReceived,
     required TResult orElse(),
@@ -44,22 +47,25 @@ mixin _$TaskWatcherEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_WatchAllStarted value) watchAllStarted,
-    required TResult Function(_WatchUncompletedStarted value)
-        watchUncompletedStarted,
+    required TResult Function(_WatchCompletedStarted value)
+        watchCompletedStarted,
+    required TResult Function(_WatchActiveStarted value) watchActiveStarted,
     required TResult Function(_TasksRecieved value) tasksReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
+    TResult Function(_WatchCompletedStarted value)? watchCompletedStarted,
+    TResult Function(_WatchActiveStarted value)? watchActiveStarted,
     TResult Function(_TasksRecieved value)? tasksReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
+    TResult Function(_WatchCompletedStarted value)? watchCompletedStarted,
+    TResult Function(_WatchActiveStarted value)? watchActiveStarted,
     TResult Function(_TasksRecieved value)? tasksReceived,
     required TResult orElse(),
   }) =>
@@ -125,7 +131,8 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() watchAllStarted,
-    required TResult Function() watchUncompletedStarted,
+    required TResult Function() watchCompletedStarted,
+    required TResult Function() watchActiveStarted,
     required TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)
         tasksReceived,
   }) {
@@ -136,7 +143,8 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? watchAllStarted,
-    TResult Function()? watchUncompletedStarted,
+    TResult Function()? watchCompletedStarted,
+    TResult Function()? watchActiveStarted,
     TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)?
         tasksReceived,
   }) {
@@ -147,7 +155,8 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? watchAllStarted,
-    TResult Function()? watchUncompletedStarted,
+    TResult Function()? watchCompletedStarted,
+    TResult Function()? watchActiveStarted,
     TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)?
         tasksReceived,
     required TResult orElse(),
@@ -162,8 +171,9 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_WatchAllStarted value) watchAllStarted,
-    required TResult Function(_WatchUncompletedStarted value)
-        watchUncompletedStarted,
+    required TResult Function(_WatchCompletedStarted value)
+        watchCompletedStarted,
+    required TResult Function(_WatchActiveStarted value) watchActiveStarted,
     required TResult Function(_TasksRecieved value) tasksReceived,
   }) {
     return watchAllStarted(this);
@@ -173,7 +183,8 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
+    TResult Function(_WatchCompletedStarted value)? watchCompletedStarted,
+    TResult Function(_WatchActiveStarted value)? watchActiveStarted,
     TResult Function(_TasksRecieved value)? tasksReceived,
   }) {
     return watchAllStarted?.call(this);
@@ -183,7 +194,8 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
+    TResult Function(_WatchCompletedStarted value)? watchCompletedStarted,
+    TResult Function(_WatchActiveStarted value)? watchActiveStarted,
     TResult Function(_TasksRecieved value)? tasksReceived,
     required TResult orElse(),
   }) {
@@ -199,40 +211,39 @@ abstract class _WatchAllStarted implements TaskWatcherEvent {
 }
 
 /// @nodoc
-abstract class _$$_WatchUncompletedStartedCopyWith<$Res> {
-  factory _$$_WatchUncompletedStartedCopyWith(_$_WatchUncompletedStarted value,
-          $Res Function(_$_WatchUncompletedStarted) then) =
-      __$$_WatchUncompletedStartedCopyWithImpl<$Res>;
+abstract class _$$_WatchCompletedStartedCopyWith<$Res> {
+  factory _$$_WatchCompletedStartedCopyWith(_$_WatchCompletedStarted value,
+          $Res Function(_$_WatchCompletedStarted) then) =
+      __$$_WatchCompletedStartedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_WatchUncompletedStartedCopyWithImpl<$Res>
+class __$$_WatchCompletedStartedCopyWithImpl<$Res>
     extends _$TaskWatcherEventCopyWithImpl<$Res>
-    implements _$$_WatchUncompletedStartedCopyWith<$Res> {
-  __$$_WatchUncompletedStartedCopyWithImpl(_$_WatchUncompletedStarted _value,
-      $Res Function(_$_WatchUncompletedStarted) _then)
-      : super(_value, (v) => _then(v as _$_WatchUncompletedStarted));
+    implements _$$_WatchCompletedStartedCopyWith<$Res> {
+  __$$_WatchCompletedStartedCopyWithImpl(_$_WatchCompletedStarted _value,
+      $Res Function(_$_WatchCompletedStarted) _then)
+      : super(_value, (v) => _then(v as _$_WatchCompletedStarted));
 
   @override
-  _$_WatchUncompletedStarted get _value =>
-      super._value as _$_WatchUncompletedStarted;
+  _$_WatchCompletedStarted get _value =>
+      super._value as _$_WatchCompletedStarted;
 }
 
 /// @nodoc
 
-class _$_WatchUncompletedStarted implements _WatchUncompletedStarted {
-  const _$_WatchUncompletedStarted();
+class _$_WatchCompletedStarted implements _WatchCompletedStarted {
+  const _$_WatchCompletedStarted();
 
   @override
   String toString() {
-    return 'TaskWatcherEvent.watchUncompletedStarted()';
+    return 'TaskWatcherEvent.watchCompletedStarted()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_WatchUncompletedStarted);
+        (other.runtimeType == runtimeType && other is _$_WatchCompletedStarted);
   }
 
   @override
@@ -242,35 +253,38 @@ class _$_WatchUncompletedStarted implements _WatchUncompletedStarted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() watchAllStarted,
-    required TResult Function() watchUncompletedStarted,
+    required TResult Function() watchCompletedStarted,
+    required TResult Function() watchActiveStarted,
     required TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)
         tasksReceived,
   }) {
-    return watchUncompletedStarted();
+    return watchCompletedStarted();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? watchAllStarted,
-    TResult Function()? watchUncompletedStarted,
+    TResult Function()? watchCompletedStarted,
+    TResult Function()? watchActiveStarted,
     TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)?
         tasksReceived,
   }) {
-    return watchUncompletedStarted?.call();
+    return watchCompletedStarted?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? watchAllStarted,
-    TResult Function()? watchUncompletedStarted,
+    TResult Function()? watchCompletedStarted,
+    TResult Function()? watchActiveStarted,
     TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)?
         tasksReceived,
     required TResult orElse(),
   }) {
-    if (watchUncompletedStarted != null) {
-      return watchUncompletedStarted();
+    if (watchCompletedStarted != null) {
+      return watchCompletedStarted();
     }
     return orElse();
   }
@@ -279,40 +293,164 @@ class _$_WatchUncompletedStarted implements _WatchUncompletedStarted {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_WatchAllStarted value) watchAllStarted,
-    required TResult Function(_WatchUncompletedStarted value)
-        watchUncompletedStarted,
+    required TResult Function(_WatchCompletedStarted value)
+        watchCompletedStarted,
+    required TResult Function(_WatchActiveStarted value) watchActiveStarted,
     required TResult Function(_TasksRecieved value) tasksReceived,
   }) {
-    return watchUncompletedStarted(this);
+    return watchCompletedStarted(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
+    TResult Function(_WatchCompletedStarted value)? watchCompletedStarted,
+    TResult Function(_WatchActiveStarted value)? watchActiveStarted,
     TResult Function(_TasksRecieved value)? tasksReceived,
   }) {
-    return watchUncompletedStarted?.call(this);
+    return watchCompletedStarted?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
+    TResult Function(_WatchCompletedStarted value)? watchCompletedStarted,
+    TResult Function(_WatchActiveStarted value)? watchActiveStarted,
     TResult Function(_TasksRecieved value)? tasksReceived,
     required TResult orElse(),
   }) {
-    if (watchUncompletedStarted != null) {
-      return watchUncompletedStarted(this);
+    if (watchCompletedStarted != null) {
+      return watchCompletedStarted(this);
     }
     return orElse();
   }
 }
 
-abstract class _WatchUncompletedStarted implements TaskWatcherEvent {
-  const factory _WatchUncompletedStarted() = _$_WatchUncompletedStarted;
+abstract class _WatchCompletedStarted implements TaskWatcherEvent {
+  const factory _WatchCompletedStarted() = _$_WatchCompletedStarted;
+}
+
+/// @nodoc
+abstract class _$$_WatchActiveStartedCopyWith<$Res> {
+  factory _$$_WatchActiveStartedCopyWith(_$_WatchActiveStarted value,
+          $Res Function(_$_WatchActiveStarted) then) =
+      __$$_WatchActiveStartedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_WatchActiveStartedCopyWithImpl<$Res>
+    extends _$TaskWatcherEventCopyWithImpl<$Res>
+    implements _$$_WatchActiveStartedCopyWith<$Res> {
+  __$$_WatchActiveStartedCopyWithImpl(
+      _$_WatchActiveStarted _value, $Res Function(_$_WatchActiveStarted) _then)
+      : super(_value, (v) => _then(v as _$_WatchActiveStarted));
+
+  @override
+  _$_WatchActiveStarted get _value => super._value as _$_WatchActiveStarted;
+}
+
+/// @nodoc
+
+class _$_WatchActiveStarted implements _WatchActiveStarted {
+  const _$_WatchActiveStarted();
+
+  @override
+  String toString() {
+    return 'TaskWatcherEvent.watchActiveStarted()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WatchActiveStarted);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() watchAllStarted,
+    required TResult Function() watchCompletedStarted,
+    required TResult Function() watchActiveStarted,
+    required TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)
+        tasksReceived,
+  }) {
+    return watchActiveStarted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? watchAllStarted,
+    TResult Function()? watchCompletedStarted,
+    TResult Function()? watchActiveStarted,
+    TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)?
+        tasksReceived,
+  }) {
+    return watchActiveStarted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? watchAllStarted,
+    TResult Function()? watchCompletedStarted,
+    TResult Function()? watchActiveStarted,
+    TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)?
+        tasksReceived,
+    required TResult orElse(),
+  }) {
+    if (watchActiveStarted != null) {
+      return watchActiveStarted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WatchAllStarted value) watchAllStarted,
+    required TResult Function(_WatchCompletedStarted value)
+        watchCompletedStarted,
+    required TResult Function(_WatchActiveStarted value) watchActiveStarted,
+    required TResult Function(_TasksRecieved value) tasksReceived,
+  }) {
+    return watchActiveStarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_WatchAllStarted value)? watchAllStarted,
+    TResult Function(_WatchCompletedStarted value)? watchCompletedStarted,
+    TResult Function(_WatchActiveStarted value)? watchActiveStarted,
+    TResult Function(_TasksRecieved value)? tasksReceived,
+  }) {
+    return watchActiveStarted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WatchAllStarted value)? watchAllStarted,
+    TResult Function(_WatchCompletedStarted value)? watchCompletedStarted,
+    TResult Function(_WatchActiveStarted value)? watchActiveStarted,
+    TResult Function(_TasksRecieved value)? tasksReceived,
+    required TResult orElse(),
+  }) {
+    if (watchActiveStarted != null) {
+      return watchActiveStarted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WatchActiveStarted implements TaskWatcherEvent {
+  const factory _WatchActiveStarted() = _$_WatchActiveStarted;
 }
 
 /// @nodoc
@@ -382,7 +520,8 @@ class _$_TasksRecieved implements _TasksRecieved {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() watchAllStarted,
-    required TResult Function() watchUncompletedStarted,
+    required TResult Function() watchCompletedStarted,
+    required TResult Function() watchActiveStarted,
     required TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)
         tasksReceived,
   }) {
@@ -393,7 +532,8 @@ class _$_TasksRecieved implements _TasksRecieved {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? watchAllStarted,
-    TResult Function()? watchUncompletedStarted,
+    TResult Function()? watchCompletedStarted,
+    TResult Function()? watchActiveStarted,
     TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)?
         tasksReceived,
   }) {
@@ -404,7 +544,8 @@ class _$_TasksRecieved implements _TasksRecieved {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? watchAllStarted,
-    TResult Function()? watchUncompletedStarted,
+    TResult Function()? watchCompletedStarted,
+    TResult Function()? watchActiveStarted,
     TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)?
         tasksReceived,
     required TResult orElse(),
@@ -419,8 +560,9 @@ class _$_TasksRecieved implements _TasksRecieved {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_WatchAllStarted value) watchAllStarted,
-    required TResult Function(_WatchUncompletedStarted value)
-        watchUncompletedStarted,
+    required TResult Function(_WatchCompletedStarted value)
+        watchCompletedStarted,
+    required TResult Function(_WatchActiveStarted value) watchActiveStarted,
     required TResult Function(_TasksRecieved value) tasksReceived,
   }) {
     return tasksReceived(this);
@@ -430,7 +572,8 @@ class _$_TasksRecieved implements _TasksRecieved {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
+    TResult Function(_WatchCompletedStarted value)? watchCompletedStarted,
+    TResult Function(_WatchActiveStarted value)? watchActiveStarted,
     TResult Function(_TasksRecieved value)? tasksReceived,
   }) {
     return tasksReceived?.call(this);
@@ -440,7 +583,8 @@ class _$_TasksRecieved implements _TasksRecieved {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchUncompletedStarted value)? watchUncompletedStarted,
+    TResult Function(_WatchCompletedStarted value)? watchCompletedStarted,
+    TResult Function(_WatchActiveStarted value)? watchActiveStarted,
     TResult Function(_TasksRecieved value)? tasksReceived,
     required TResult orElse(),
   }) {

@@ -15,7 +15,7 @@ class Emoji with _$Emoji {
   factory Emoji.fromJson(Map<String, dynamic> json) => _$EmojiFromJson(json);
 
   factory Emoji.initial() => const Emoji(
-        emoji: '🍅',
+        emoji: '🥚',
         category: 'Food & Drink',
       );
 }

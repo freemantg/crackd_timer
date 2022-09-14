@@ -1,16 +1,20 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../injection_container.dart';
 import '../../../application/core/task_cubit/task_cubit.dart';
 import '../../../application/tasks/task_actor/task_actor_bloc.dart';
 import '../../../domain/tasks/task.dart';
+import '../../../shared/app_router.gr.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
 
 class PomodoroCard extends HookWidget {
   final Task task;
+
   const PomodoroCard({
     required this.task,
     Key? key,
@@ -21,7 +25,10 @@ class PomodoroCard extends HookWidget {
     final showDeleteButton = useState(false);
 
     return GestureDetector(
-      onTap: () => context.read<TaskCubit>().updateTask(task),
+      onTap: () {
+        context.read<TaskCubit>().updateTask(task);
+        getIt<AppRouter>().navigate(const TimerRoute());
+      },
       onLongPress: () => showDeleteButton.value = !showDeleteButton.value,
       child: Card(
         shape: RoundedRectangleBorder(

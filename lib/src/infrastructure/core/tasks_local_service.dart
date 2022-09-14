@@ -21,12 +21,34 @@ class TasksLocalSource {
     );
   }
 
-  Stream<List<TaskDto>> getTasksStream() async* {
+  Stream<List<TaskDto>> getAllTasksStream() async* {
     final records = _store
         .query(
             finder: Finder(
           sortOrders: [SortOrder('completed')],
         ))
+        .onSnapshots(_sembastDatabase.instance);
+    yield* records.map(
+      (snapshots) => snapshots
+          .map((snapshot) => TaskDto.fromJson(snapshot.value))
+          .toList(),
+    );
+  }
+
+  Stream<List<TaskDto>> getActiveTasksStream() async* {
+    final records = _store
+        .query(finder: Finder(filter: Filter.equals('completed', false)))
+        .onSnapshots(_sembastDatabase.instance);
+    yield* records.map(
+      (snapshots) => snapshots
+          .map((snapshot) => TaskDto.fromJson(snapshot.value))
+          .toList(),
+    );
+  }
+
+  Stream<List<TaskDto>> getCompletedTasksStream() async* {
+    final records = _store
+        .query(finder: Finder(filter: Filter.equals('completed', true)))
         .onSnapshots(_sembastDatabase.instance);
     yield* records.map(
       (snapshots) => snapshots

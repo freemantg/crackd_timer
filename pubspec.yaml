@@ -28,6 +28,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   animations: ^2.0.3
+  audioplayers: ^1.0.1
   auto_route: ^4.2.1
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
@@ -71,6 +72,7 @@ flutter:
   assets:
     - assets/images/
     - assets/emojis/
+    - assets/sounds/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -84,8 +86,8 @@ flutter:
   fonts:
     - family: Circular Standard
       fonts:
-        - asset: assets/fonts/Circular-Std-Book.ttf
-        - asset: assets/fonts/Circular-Std-Bold.ttf
+        - asset: assets/fonts/Circular-Std-Book.otf
+        - asset: assets/fonts/Circular-Std-Bold.otf
           weight: 600
     # - family: Trajan Pro
   #     fonts:

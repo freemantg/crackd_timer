@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class PurplePomodoroLogo extends StatelessWidget {
+class CrackdLogo extends StatelessWidget {
   final double size;
   final Color? color;
 
-  const PurplePomodoroLogo({
+  const CrackdLogo({
     Key? key,
     required this.size,
     this.color,
@@ -13,7 +13,7 @@ class PurplePomodoroLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      'assets/images/purple_pomodoro_logo.png',
+      'assets/images/crackd_logo.png',
       height: size,
       color: color,
     );

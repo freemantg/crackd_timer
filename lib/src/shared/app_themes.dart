@@ -25,7 +25,7 @@ class AppTheme with _$AppTheme {
         return AppTheme(
           isDark: isDark,
           themeType: themeType,
-          colorSchemeSeed: const Color(0xFF6A6DB0),
+          colorSchemeSeed: const Color(0xFF261D3A),
         );
 
       case ThemeType.SeafoamGreen:
@@ -46,16 +46,14 @@ class AppTheme with _$AppTheme {
     final t = ThemeData.from(
       textTheme: (isDark ? ThemeData.dark() : ThemeData.light()).textTheme,
       colorScheme: ColorScheme.fromSeed(
-        primaryContainer:
-            isDark ? _decreaseColorSaturation(colorSchemeSeed, 0.1) : null,
+        brightness: isDark ? Brightness.dark : Brightness.light,
         seedColor: colorSchemeSeed,
         background: isDark ? null : colorSchemeSeed,
-        brightness: isDark ? Brightness.dark : Brightness.light,
       ),
     );
     return t.copyWith(
-      cardColor: isDark ? Colors.grey[850] : const Color(0xFFF3F6FB),
       disabledColor: Colors.grey.shade300,
+      cardColor: isDark ? Colors.black12 : null,
     );
   }
 }

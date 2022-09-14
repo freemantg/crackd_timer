@@ -21,6 +21,7 @@ mixin _$TimerEvent {
     required TResult Function(int duration) started,
     required TResult Function() paused,
     required TResult Function() resumed,
+    required TResult Function() skipped,
     required TResult Function(int duration) reset,
     required TResult Function(int duration) ticked,
     required TResult Function(int? duration, TimerType? timerType) updateTimer,
@@ -31,6 +32,7 @@ mixin _$TimerEvent {
     TResult Function(int duration)? started,
     TResult Function()? paused,
     TResult Function()? resumed,
+    TResult Function()? skipped,
     TResult Function(int duration)? reset,
     TResult Function(int duration)? ticked,
     TResult Function(int? duration, TimerType? timerType)? updateTimer,
@@ -41,6 +43,7 @@ mixin _$TimerEvent {
     TResult Function(int duration)? started,
     TResult Function()? paused,
     TResult Function()? resumed,
+    TResult Function()? skipped,
     TResult Function(int duration)? reset,
     TResult Function(int duration)? ticked,
     TResult Function(int? duration, TimerType? timerType)? updateTimer,
@@ -52,6 +55,7 @@ mixin _$TimerEvent {
     required TResult Function(_Started value) started,
     required TResult Function(_Paused value) paused,
     required TResult Function(_Resumed value) resumed,
+    required TResult Function(_Skipped value) skipped,
     required TResult Function(_Reset value) reset,
     required TResult Function(_Ticked value) ticked,
     required TResult Function(_UpdateDuration value) updateTimer,
@@ -62,6 +66,7 @@ mixin _$TimerEvent {
     TResult Function(_Started value)? started,
     TResult Function(_Paused value)? paused,
     TResult Function(_Resumed value)? resumed,
+    TResult Function(_Skipped value)? skipped,
     TResult Function(_Reset value)? reset,
     TResult Function(_Ticked value)? ticked,
     TResult Function(_UpdateDuration value)? updateTimer,
@@ -72,6 +77,7 @@ mixin _$TimerEvent {
     TResult Function(_Started value)? started,
     TResult Function(_Paused value)? paused,
     TResult Function(_Resumed value)? resumed,
+    TResult Function(_Skipped value)? skipped,
     TResult Function(_Reset value)? reset,
     TResult Function(_Ticked value)? ticked,
     TResult Function(_UpdateDuration value)? updateTimer,
@@ -162,6 +168,7 @@ class _$_Started implements _Started {
     required TResult Function(int duration) started,
     required TResult Function() paused,
     required TResult Function() resumed,
+    required TResult Function() skipped,
     required TResult Function(int duration) reset,
     required TResult Function(int duration) ticked,
     required TResult Function(int? duration, TimerType? timerType) updateTimer,
@@ -175,6 +182,7 @@ class _$_Started implements _Started {
     TResult Function(int duration)? started,
     TResult Function()? paused,
     TResult Function()? resumed,
+    TResult Function()? skipped,
     TResult Function(int duration)? reset,
     TResult Function(int duration)? ticked,
     TResult Function(int? duration, TimerType? timerType)? updateTimer,
@@ -188,6 +196,7 @@ class _$_Started implements _Started {
     TResult Function(int duration)? started,
     TResult Function()? paused,
     TResult Function()? resumed,
+    TResult Function()? skipped,
     TResult Function(int duration)? reset,
     TResult Function(int duration)? ticked,
     TResult Function(int? duration, TimerType? timerType)? updateTimer,
@@ -205,6 +214,7 @@ class _$_Started implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(_Paused value) paused,
     required TResult Function(_Resumed value) resumed,
+    required TResult Function(_Skipped value) skipped,
     required TResult Function(_Reset value) reset,
     required TResult Function(_Ticked value) ticked,
     required TResult Function(_UpdateDuration value) updateTimer,
@@ -218,6 +228,7 @@ class _$_Started implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_Paused value)? paused,
     TResult Function(_Resumed value)? resumed,
+    TResult Function(_Skipped value)? skipped,
     TResult Function(_Reset value)? reset,
     TResult Function(_Ticked value)? ticked,
     TResult Function(_UpdateDuration value)? updateTimer,
@@ -231,6 +242,7 @@ class _$_Started implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_Paused value)? paused,
     TResult Function(_Resumed value)? resumed,
+    TResult Function(_Skipped value)? skipped,
     TResult Function(_Reset value)? reset,
     TResult Function(_Ticked value)? ticked,
     TResult Function(_UpdateDuration value)? updateTimer,
@@ -293,6 +305,7 @@ class _$_Paused implements _Paused {
     required TResult Function(int duration) started,
     required TResult Function() paused,
     required TResult Function() resumed,
+    required TResult Function() skipped,
     required TResult Function(int duration) reset,
     required TResult Function(int duration) ticked,
     required TResult Function(int? duration, TimerType? timerType) updateTimer,
@@ -306,6 +319,7 @@ class _$_Paused implements _Paused {
     TResult Function(int duration)? started,
     TResult Function()? paused,
     TResult Function()? resumed,
+    TResult Function()? skipped,
     TResult Function(int duration)? reset,
     TResult Function(int duration)? ticked,
     TResult Function(int? duration, TimerType? timerType)? updateTimer,
@@ -319,6 +333,7 @@ class _$_Paused implements _Paused {
     TResult Function(int duration)? started,
     TResult Function()? paused,
     TResult Function()? resumed,
+    TResult Function()? skipped,
     TResult Function(int duration)? reset,
     TResult Function(int duration)? ticked,
     TResult Function(int? duration, TimerType? timerType)? updateTimer,
@@ -336,6 +351,7 @@ class _$_Paused implements _Paused {
     required TResult Function(_Started value) started,
     required TResult Function(_Paused value) paused,
     required TResult Function(_Resumed value) resumed,
+    required TResult Function(_Skipped value) skipped,
     required TResult Function(_Reset value) reset,
     required TResult Function(_Ticked value) ticked,
     required TResult Function(_UpdateDuration value) updateTimer,
@@ -349,6 +365,7 @@ class _$_Paused implements _Paused {
     TResult Function(_Started value)? started,
     TResult Function(_Paused value)? paused,
     TResult Function(_Resumed value)? resumed,
+    TResult Function(_Skipped value)? skipped,
     TResult Function(_Reset value)? reset,
     TResult Function(_Ticked value)? ticked,
     TResult Function(_UpdateDuration value)? updateTimer,
@@ -362,6 +379,7 @@ class _$_Paused implements _Paused {
     TResult Function(_Started value)? started,
     TResult Function(_Paused value)? paused,
     TResult Function(_Resumed value)? resumed,
+    TResult Function(_Skipped value)? skipped,
     TResult Function(_Reset value)? reset,
     TResult Function(_Ticked value)? ticked,
     TResult Function(_UpdateDuration value)? updateTimer,
@@ -420,6 +438,7 @@ class _$_Resumed implements _Resumed {
     required TResult Function(int duration) started,
     required TResult Function() paused,
     required TResult Function() resumed,
+    required TResult Function() skipped,
     required TResult Function(int duration) reset,
     required TResult Function(int duration) ticked,
     required TResult Function(int? duration, TimerType? timerType) updateTimer,
@@ -433,6 +452,7 @@ class _$_Resumed implements _Resumed {
     TResult Function(int duration)? started,
     TResult Function()? paused,
     TResult Function()? resumed,
+    TResult Function()? skipped,
     TResult Function(int duration)? reset,
     TResult Function(int duration)? ticked,
     TResult Function(int? duration, TimerType? timerType)? updateTimer,
@@ -446,6 +466,7 @@ class _$_Resumed implements _Resumed {
     TResult Function(int duration)? started,
     TResult Function()? paused,
     TResult Function()? resumed,
+    TResult Function()? skipped,
     TResult Function(int duration)? reset,
     TResult Function(int duration)? ticked,
     TResult Function(int? duration, TimerType? timerType)? updateTimer,
@@ -463,6 +484,7 @@ class _$_Resumed implements _Resumed {
     required TResult Function(_Started value) started,
     required TResult Function(_Paused value) paused,
     required TResult Function(_Resumed value) resumed,
+    required TResult Function(_Skipped value) skipped,
     required TResult Function(_Reset value) reset,
     required TResult Function(_Ticked value) ticked,
     required TResult Function(_UpdateDuration value) updateTimer,
@@ -476,6 +498,7 @@ class _$_Resumed implements _Resumed {
     TResult Function(_Started value)? started,
     TResult Function(_Paused value)? paused,
     TResult Function(_Resumed value)? resumed,
+    TResult Function(_Skipped value)? skipped,
     TResult Function(_Reset value)? reset,
     TResult Function(_Ticked value)? ticked,
     TResult Function(_UpdateDuration value)? updateTimer,
@@ -489,6 +512,7 @@ class _$_Resumed implements _Resumed {
     TResult Function(_Started value)? started,
     TResult Function(_Paused value)? paused,
     TResult Function(_Resumed value)? resumed,
+    TResult Function(_Skipped value)? skipped,
     TResult Function(_Reset value)? reset,
     TResult Function(_Ticked value)? ticked,
     TResult Function(_UpdateDuration value)? updateTimer,
@@ -503,6 +527,139 @@ class _$_Resumed implements _Resumed {
 
 abstract class _Resumed implements TimerEvent {
   const factory _Resumed() = _$_Resumed;
+}
+
+/// @nodoc
+abstract class _$$_SkippedCopyWith<$Res> {
+  factory _$$_SkippedCopyWith(
+          _$_Skipped value, $Res Function(_$_Skipped) then) =
+      __$$_SkippedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SkippedCopyWithImpl<$Res> extends _$TimerEventCopyWithImpl<$Res>
+    implements _$$_SkippedCopyWith<$Res> {
+  __$$_SkippedCopyWithImpl(_$_Skipped _value, $Res Function(_$_Skipped) _then)
+      : super(_value, (v) => _then(v as _$_Skipped));
+
+  @override
+  _$_Skipped get _value => super._value as _$_Skipped;
+}
+
+/// @nodoc
+
+class _$_Skipped implements _Skipped {
+  const _$_Skipped();
+
+  @override
+  String toString() {
+    return 'TimerEvent.skipped()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Skipped);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int duration) started,
+    required TResult Function() paused,
+    required TResult Function() resumed,
+    required TResult Function() skipped,
+    required TResult Function(int duration) reset,
+    required TResult Function(int duration) ticked,
+    required TResult Function(int? duration, TimerType? timerType) updateTimer,
+  }) {
+    return skipped();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int duration)? started,
+    TResult Function()? paused,
+    TResult Function()? resumed,
+    TResult Function()? skipped,
+    TResult Function(int duration)? reset,
+    TResult Function(int duration)? ticked,
+    TResult Function(int? duration, TimerType? timerType)? updateTimer,
+  }) {
+    return skipped?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int duration)? started,
+    TResult Function()? paused,
+    TResult Function()? resumed,
+    TResult Function()? skipped,
+    TResult Function(int duration)? reset,
+    TResult Function(int duration)? ticked,
+    TResult Function(int? duration, TimerType? timerType)? updateTimer,
+    required TResult orElse(),
+  }) {
+    if (skipped != null) {
+      return skipped();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Paused value) paused,
+    required TResult Function(_Resumed value) resumed,
+    required TResult Function(_Skipped value) skipped,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_Ticked value) ticked,
+    required TResult Function(_UpdateDuration value) updateTimer,
+  }) {
+    return skipped(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Paused value)? paused,
+    TResult Function(_Resumed value)? resumed,
+    TResult Function(_Skipped value)? skipped,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_Ticked value)? ticked,
+    TResult Function(_UpdateDuration value)? updateTimer,
+  }) {
+    return skipped?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Paused value)? paused,
+    TResult Function(_Resumed value)? resumed,
+    TResult Function(_Skipped value)? skipped,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_Ticked value)? ticked,
+    TResult Function(_UpdateDuration value)? updateTimer,
+    required TResult orElse(),
+  }) {
+    if (skipped != null) {
+      return skipped(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Skipped implements TimerEvent {
+  const factory _Skipped() = _$_Skipped;
 }
 
 /// @nodoc
@@ -570,6 +727,7 @@ class _$_Reset implements _Reset {
     required TResult Function(int duration) started,
     required TResult Function() paused,
     required TResult Function() resumed,
+    required TResult Function() skipped,
     required TResult Function(int duration) reset,
     required TResult Function(int duration) ticked,
     required TResult Function(int? duration, TimerType? timerType) updateTimer,
@@ -583,6 +741,7 @@ class _$_Reset implements _Reset {
     TResult Function(int duration)? started,
     TResult Function()? paused,
     TResult Function()? resumed,
+    TResult Function()? skipped,
     TResult Function(int duration)? reset,
     TResult Function(int duration)? ticked,
     TResult Function(int? duration, TimerType? timerType)? updateTimer,
@@ -596,6 +755,7 @@ class _$_Reset implements _Reset {
     TResult Function(int duration)? started,
     TResult Function()? paused,
     TResult Function()? resumed,
+    TResult Function()? skipped,
     TResult Function(int duration)? reset,
     TResult Function(int duration)? ticked,
     TResult Function(int? duration, TimerType? timerType)? updateTimer,
@@ -613,6 +773,7 @@ class _$_Reset implements _Reset {
     required TResult Function(_Started value) started,
     required TResult Function(_Paused value) paused,
     required TResult Function(_Resumed value) resumed,
+    required TResult Function(_Skipped value) skipped,
     required TResult Function(_Reset value) reset,
     required TResult Function(_Ticked value) ticked,
     required TResult Function(_UpdateDuration value) updateTimer,
@@ -626,6 +787,7 @@ class _$_Reset implements _Reset {
     TResult Function(_Started value)? started,
     TResult Function(_Paused value)? paused,
     TResult Function(_Resumed value)? resumed,
+    TResult Function(_Skipped value)? skipped,
     TResult Function(_Reset value)? reset,
     TResult Function(_Ticked value)? ticked,
     TResult Function(_UpdateDuration value)? updateTimer,
@@ -639,6 +801,7 @@ class _$_Reset implements _Reset {
     TResult Function(_Started value)? started,
     TResult Function(_Paused value)? paused,
     TResult Function(_Resumed value)? resumed,
+    TResult Function(_Skipped value)? skipped,
     TResult Function(_Reset value)? reset,
     TResult Function(_Ticked value)? ticked,
     TResult Function(_UpdateDuration value)? updateTimer,
@@ -725,6 +888,7 @@ class _$_Ticked implements _Ticked {
     required TResult Function(int duration) started,
     required TResult Function() paused,
     required TResult Function() resumed,
+    required TResult Function() skipped,
     required TResult Function(int duration) reset,
     required TResult Function(int duration) ticked,
     required TResult Function(int? duration, TimerType? timerType) updateTimer,
@@ -738,6 +902,7 @@ class _$_Ticked implements _Ticked {
     TResult Function(int duration)? started,
     TResult Function()? paused,
     TResult Function()? resumed,
+    TResult Function()? skipped,
     TResult Function(int duration)? reset,
     TResult Function(int duration)? ticked,
     TResult Function(int? duration, TimerType? timerType)? updateTimer,
@@ -751,6 +916,7 @@ class _$_Ticked implements _Ticked {
     TResult Function(int duration)? started,
     TResult Function()? paused,
     TResult Function()? resumed,
+    TResult Function()? skipped,
     TResult Function(int duration)? reset,
     TResult Function(int duration)? ticked,
     TResult Function(int? duration, TimerType? timerType)? updateTimer,
@@ -768,6 +934,7 @@ class _$_Ticked implements _Ticked {
     required TResult Function(_Started value) started,
     required TResult Function(_Paused value) paused,
     required TResult Function(_Resumed value) resumed,
+    required TResult Function(_Skipped value) skipped,
     required TResult Function(_Reset value) reset,
     required TResult Function(_Ticked value) ticked,
     required TResult Function(_UpdateDuration value) updateTimer,
@@ -781,6 +948,7 @@ class _$_Ticked implements _Ticked {
     TResult Function(_Started value)? started,
     TResult Function(_Paused value)? paused,
     TResult Function(_Resumed value)? resumed,
+    TResult Function(_Skipped value)? skipped,
     TResult Function(_Reset value)? reset,
     TResult Function(_Ticked value)? ticked,
     TResult Function(_UpdateDuration value)? updateTimer,
@@ -794,6 +962,7 @@ class _$_Ticked implements _Ticked {
     TResult Function(_Started value)? started,
     TResult Function(_Paused value)? paused,
     TResult Function(_Resumed value)? resumed,
+    TResult Function(_Skipped value)? skipped,
     TResult Function(_Reset value)? reset,
     TResult Function(_Ticked value)? ticked,
     TResult Function(_UpdateDuration value)? updateTimer,
@@ -893,6 +1062,7 @@ class _$_UpdateDuration implements _UpdateDuration {
     required TResult Function(int duration) started,
     required TResult Function() paused,
     required TResult Function() resumed,
+    required TResult Function() skipped,
     required TResult Function(int duration) reset,
     required TResult Function(int duration) ticked,
     required TResult Function(int? duration, TimerType? timerType) updateTimer,
@@ -906,6 +1076,7 @@ class _$_UpdateDuration implements _UpdateDuration {
     TResult Function(int duration)? started,
     TResult Function()? paused,
     TResult Function()? resumed,
+    TResult Function()? skipped,
     TResult Function(int duration)? reset,
     TResult Function(int duration)? ticked,
     TResult Function(int? duration, TimerType? timerType)? updateTimer,
@@ -919,6 +1090,7 @@ class _$_UpdateDuration implements _UpdateDuration {
     TResult Function(int duration)? started,
     TResult Function()? paused,
     TResult Function()? resumed,
+    TResult Function()? skipped,
     TResult Function(int duration)? reset,
     TResult Function(int duration)? ticked,
     TResult Function(int? duration, TimerType? timerType)? updateTimer,
@@ -936,6 +1108,7 @@ class _$_UpdateDuration implements _UpdateDuration {
     required TResult Function(_Started value) started,
     required TResult Function(_Paused value) paused,
     required TResult Function(_Resumed value) resumed,
+    required TResult Function(_Skipped value) skipped,
     required TResult Function(_Reset value) reset,
     required TResult Function(_Ticked value) ticked,
     required TResult Function(_UpdateDuration value) updateTimer,
@@ -949,6 +1122,7 @@ class _$_UpdateDuration implements _UpdateDuration {
     TResult Function(_Started value)? started,
     TResult Function(_Paused value)? paused,
     TResult Function(_Resumed value)? resumed,
+    TResult Function(_Skipped value)? skipped,
     TResult Function(_Reset value)? reset,
     TResult Function(_Ticked value)? ticked,
     TResult Function(_UpdateDuration value)? updateTimer,
@@ -962,6 +1136,7 @@ class _$_UpdateDuration implements _UpdateDuration {
     TResult Function(_Started value)? started,
     TResult Function(_Paused value)? paused,
     TResult Function(_Resumed value)? resumed,
+    TResult Function(_Skipped value)? skipped,
     TResult Function(_Reset value)? reset,
     TResult Function(_Ticked value)? ticked,
     TResult Function(_UpdateDuration value)? updateTimer,
@@ -987,83 +1162,10 @@ abstract class _UpdateDuration implements TimerEvent {
 
 /// @nodoc
 mixin _$TimerState {
+  TimerStatus get status => throw _privateConstructorUsedError;
   int get duration => throw _privateConstructorUsedError;
+  int get timerCompletedCounter => throw _privateConstructorUsedError;
   TimerType get timerType => throw _privateConstructorUsedError;
-  int get timerCompletedCount => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        initial,
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        running,
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        paused,
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        complete,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        initial,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        running,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        paused,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        complete,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        initial,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        running,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        paused,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        complete,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(TimerRunning value) running,
-    required TResult Function(TimerPaused value) paused,
-    required TResult Function(TimerCompleted value) complete,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(TimerRunning value)? running,
-    TResult Function(TimerPaused value)? paused,
-    TResult Function(TimerCompleted value)? complete,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(TimerRunning value)? running,
-    TResult Function(TimerPaused value)? paused,
-    TResult Function(TimerCompleted value)? complete,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TimerStateCopyWith<TimerState> get copyWith =>
@@ -1075,7 +1177,11 @@ abstract class $TimerStateCopyWith<$Res> {
   factory $TimerStateCopyWith(
           TimerState value, $Res Function(TimerState) then) =
       _$TimerStateCopyWithImpl<$Res>;
-  $Res call({int duration, TimerType timerType, int timerCompletedCount});
+  $Res call(
+      {TimerStatus status,
+      int duration,
+      int timerCompletedCounter,
+      TimerType timerType});
 }
 
 /// @nodoc
@@ -1088,836 +1194,150 @@ class _$TimerStateCopyWithImpl<$Res> implements $TimerStateCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? status = freezed,
     Object? duration = freezed,
+    Object? timerCompletedCounter = freezed,
     Object? timerType = freezed,
-    Object? timerCompletedCount = freezed,
   }) {
     return _then(_value.copyWith(
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as TimerStatus,
       duration: duration == freezed
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
+              as int,
+      timerCompletedCounter: timerCompletedCounter == freezed
+          ? _value.timerCompletedCounter
+          : timerCompletedCounter // ignore: cast_nullable_to_non_nullable
               as int,
       timerType: timerType == freezed
           ? _value.timerType
           : timerType // ignore: cast_nullable_to_non_nullable
               as TimerType,
-      timerCompletedCount: timerCompletedCount == freezed
-          ? _value.timerCompletedCount
-          : timerCompletedCount // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$$InitialCopyWith<$Res> implements $TimerStateCopyWith<$Res> {
-  factory _$$InitialCopyWith(_$Initial value, $Res Function(_$Initial) then) =
-      __$$InitialCopyWithImpl<$Res>;
-  @override
-  $Res call({int duration, TimerType timerType, int timerCompletedCount});
-}
-
-/// @nodoc
-class __$$InitialCopyWithImpl<$Res> extends _$TimerStateCopyWithImpl<$Res>
-    implements _$$InitialCopyWith<$Res> {
-  __$$InitialCopyWithImpl(_$Initial _value, $Res Function(_$Initial) _then)
-      : super(_value, (v) => _then(v as _$Initial));
-
-  @override
-  _$Initial get _value => super._value as _$Initial;
-
-  @override
-  $Res call({
-    Object? duration = freezed,
-    Object? timerType = freezed,
-    Object? timerCompletedCount = freezed,
-  }) {
-    return _then(_$Initial(
-      duration: duration == freezed
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as int,
-      timerType: timerType == freezed
-          ? _value.timerType
-          : timerType // ignore: cast_nullable_to_non_nullable
-              as TimerType,
-      timerCompletedCount: timerCompletedCount == freezed
-          ? _value.timerCompletedCount
-          : timerCompletedCount // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$Initial implements Initial {
-  const _$Initial(
-      {this.duration = DefaultSettings.focusTime * 60,
-      this.timerType = TimerType.focus,
-      this.timerCompletedCount = 0});
-
-  @override
-  @JsonKey()
-  final int duration;
-  @override
-  @JsonKey()
-  final TimerType timerType;
-  @override
-  @JsonKey()
-  final int timerCompletedCount;
-
-  @override
-  String toString() {
-    return 'TimerState.initial(duration: $duration, timerType: $timerType, timerCompletedCount: $timerCompletedCount)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$Initial &&
-            const DeepCollectionEquality().equals(other.duration, duration) &&
-            const DeepCollectionEquality().equals(other.timerType, timerType) &&
-            const DeepCollectionEquality()
-                .equals(other.timerCompletedCount, timerCompletedCount));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(duration),
-      const DeepCollectionEquality().hash(timerType),
-      const DeepCollectionEquality().hash(timerCompletedCount));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$InitialCopyWith<_$Initial> get copyWith =>
-      __$$InitialCopyWithImpl<_$Initial>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        initial,
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        running,
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        paused,
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        complete,
-  }) {
-    return initial(duration, timerType, timerCompletedCount);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        initial,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        running,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        paused,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        complete,
-  }) {
-    return initial?.call(duration, timerType, timerCompletedCount);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        initial,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        running,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        paused,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        complete,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(duration, timerType, timerCompletedCount);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(TimerRunning value) running,
-    required TResult Function(TimerPaused value) paused,
-    required TResult Function(TimerCompleted value) complete,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(TimerRunning value)? running,
-    TResult Function(TimerPaused value)? paused,
-    TResult Function(TimerCompleted value)? complete,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(TimerRunning value)? running,
-    TResult Function(TimerPaused value)? paused,
-    TResult Function(TimerCompleted value)? complete,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Initial implements TimerState {
-  const factory Initial(
-      {final int duration,
-      final TimerType timerType,
-      final int timerCompletedCount}) = _$Initial;
-
-  @override
-  int get duration;
-  @override
-  TimerType get timerType;
-  @override
-  int get timerCompletedCount;
-  @override
-  @JsonKey(ignore: true)
-  _$$InitialCopyWith<_$Initial> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$TimerRunningCopyWith<$Res>
+abstract class _$$_TimerStateCopyWith<$Res>
     implements $TimerStateCopyWith<$Res> {
-  factory _$$TimerRunningCopyWith(
-          _$TimerRunning value, $Res Function(_$TimerRunning) then) =
-      __$$TimerRunningCopyWithImpl<$Res>;
+  factory _$$_TimerStateCopyWith(
+          _$_TimerState value, $Res Function(_$_TimerState) then) =
+      __$$_TimerStateCopyWithImpl<$Res>;
   @override
-  $Res call({int duration, TimerType timerType, int timerCompletedCount});
+  $Res call(
+      {TimerStatus status,
+      int duration,
+      int timerCompletedCounter,
+      TimerType timerType});
 }
 
 /// @nodoc
-class __$$TimerRunningCopyWithImpl<$Res> extends _$TimerStateCopyWithImpl<$Res>
-    implements _$$TimerRunningCopyWith<$Res> {
-  __$$TimerRunningCopyWithImpl(
-      _$TimerRunning _value, $Res Function(_$TimerRunning) _then)
-      : super(_value, (v) => _then(v as _$TimerRunning));
+class __$$_TimerStateCopyWithImpl<$Res> extends _$TimerStateCopyWithImpl<$Res>
+    implements _$$_TimerStateCopyWith<$Res> {
+  __$$_TimerStateCopyWithImpl(
+      _$_TimerState _value, $Res Function(_$_TimerState) _then)
+      : super(_value, (v) => _then(v as _$_TimerState));
 
   @override
-  _$TimerRunning get _value => super._value as _$TimerRunning;
+  _$_TimerState get _value => super._value as _$_TimerState;
 
   @override
   $Res call({
+    Object? status = freezed,
     Object? duration = freezed,
+    Object? timerCompletedCounter = freezed,
     Object? timerType = freezed,
-    Object? timerCompletedCount = freezed,
   }) {
-    return _then(_$TimerRunning(
+    return _then(_$_TimerState(
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as TimerStatus,
       duration: duration == freezed
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
+              as int,
+      timerCompletedCounter: timerCompletedCounter == freezed
+          ? _value.timerCompletedCounter
+          : timerCompletedCounter // ignore: cast_nullable_to_non_nullable
               as int,
       timerType: timerType == freezed
           ? _value.timerType
           : timerType // ignore: cast_nullable_to_non_nullable
               as TimerType,
-      timerCompletedCount: timerCompletedCount == freezed
-          ? _value.timerCompletedCount
-          : timerCompletedCount // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
 
 /// @nodoc
 
-class _$TimerRunning implements TimerRunning {
-  const _$TimerRunning(
-      {required this.duration,
-      required this.timerType,
-      required this.timerCompletedCount});
+class _$_TimerState implements _TimerState {
+  const _$_TimerState(
+      {required this.status,
+      required this.duration,
+      required this.timerCompletedCounter,
+      required this.timerType});
 
+  @override
+  final TimerStatus status;
   @override
   final int duration;
   @override
-  final TimerType timerType;
+  final int timerCompletedCounter;
   @override
-  final int timerCompletedCount;
+  final TimerType timerType;
 
   @override
   String toString() {
-    return 'TimerState.running(duration: $duration, timerType: $timerType, timerCompletedCount: $timerCompletedCount)';
+    return 'TimerState(status: $status, duration: $duration, timerCompletedCounter: $timerCompletedCounter, timerType: $timerType)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TimerRunning &&
+            other is _$_TimerState &&
+            const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.duration, duration) &&
-            const DeepCollectionEquality().equals(other.timerType, timerType) &&
             const DeepCollectionEquality()
-                .equals(other.timerCompletedCount, timerCompletedCount));
+                .equals(other.timerCompletedCounter, timerCompletedCounter) &&
+            const DeepCollectionEquality().equals(other.timerType, timerType));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(duration),
-      const DeepCollectionEquality().hash(timerType),
-      const DeepCollectionEquality().hash(timerCompletedCount));
+      const DeepCollectionEquality().hash(timerCompletedCounter),
+      const DeepCollectionEquality().hash(timerType));
 
   @JsonKey(ignore: true)
   @override
-  _$$TimerRunningCopyWith<_$TimerRunning> get copyWith =>
-      __$$TimerRunningCopyWithImpl<_$TimerRunning>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        initial,
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        running,
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        paused,
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        complete,
-  }) {
-    return running(duration, timerType, timerCompletedCount);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        initial,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        running,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        paused,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        complete,
-  }) {
-    return running?.call(duration, timerType, timerCompletedCount);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        initial,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        running,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        paused,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        complete,
-    required TResult orElse(),
-  }) {
-    if (running != null) {
-      return running(duration, timerType, timerCompletedCount);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(TimerRunning value) running,
-    required TResult Function(TimerPaused value) paused,
-    required TResult Function(TimerCompleted value) complete,
-  }) {
-    return running(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(TimerRunning value)? running,
-    TResult Function(TimerPaused value)? paused,
-    TResult Function(TimerCompleted value)? complete,
-  }) {
-    return running?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(TimerRunning value)? running,
-    TResult Function(TimerPaused value)? paused,
-    TResult Function(TimerCompleted value)? complete,
-    required TResult orElse(),
-  }) {
-    if (running != null) {
-      return running(this);
-    }
-    return orElse();
-  }
+  _$$_TimerStateCopyWith<_$_TimerState> get copyWith =>
+      __$$_TimerStateCopyWithImpl<_$_TimerState>(this, _$identity);
 }
 
-abstract class TimerRunning implements TimerState {
-  const factory TimerRunning(
-      {required final int duration,
-      required final TimerType timerType,
-      required final int timerCompletedCount}) = _$TimerRunning;
+abstract class _TimerState implements TimerState {
+  const factory _TimerState(
+      {required final TimerStatus status,
+      required final int duration,
+      required final int timerCompletedCounter,
+      required final TimerType timerType}) = _$_TimerState;
 
+  @override
+  TimerStatus get status;
   @override
   int get duration;
   @override
-  TimerType get timerType;
-  @override
-  int get timerCompletedCount;
-  @override
-  @JsonKey(ignore: true)
-  _$$TimerRunningCopyWith<_$TimerRunning> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$TimerPausedCopyWith<$Res>
-    implements $TimerStateCopyWith<$Res> {
-  factory _$$TimerPausedCopyWith(
-          _$TimerPaused value, $Res Function(_$TimerPaused) then) =
-      __$$TimerPausedCopyWithImpl<$Res>;
-  @override
-  $Res call({int duration, TimerType timerType, int timerCompletedCount});
-}
-
-/// @nodoc
-class __$$TimerPausedCopyWithImpl<$Res> extends _$TimerStateCopyWithImpl<$Res>
-    implements _$$TimerPausedCopyWith<$Res> {
-  __$$TimerPausedCopyWithImpl(
-      _$TimerPaused _value, $Res Function(_$TimerPaused) _then)
-      : super(_value, (v) => _then(v as _$TimerPaused));
-
-  @override
-  _$TimerPaused get _value => super._value as _$TimerPaused;
-
-  @override
-  $Res call({
-    Object? duration = freezed,
-    Object? timerType = freezed,
-    Object? timerCompletedCount = freezed,
-  }) {
-    return _then(_$TimerPaused(
-      duration: duration == freezed
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as int,
-      timerType: timerType == freezed
-          ? _value.timerType
-          : timerType // ignore: cast_nullable_to_non_nullable
-              as TimerType,
-      timerCompletedCount: timerCompletedCount == freezed
-          ? _value.timerCompletedCount
-          : timerCompletedCount // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$TimerPaused implements TimerPaused {
-  const _$TimerPaused(
-      {required this.duration,
-      required this.timerType,
-      required this.timerCompletedCount});
-
-  @override
-  final int duration;
-  @override
-  final TimerType timerType;
-  @override
-  final int timerCompletedCount;
-
-  @override
-  String toString() {
-    return 'TimerState.paused(duration: $duration, timerType: $timerType, timerCompletedCount: $timerCompletedCount)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TimerPaused &&
-            const DeepCollectionEquality().equals(other.duration, duration) &&
-            const DeepCollectionEquality().equals(other.timerType, timerType) &&
-            const DeepCollectionEquality()
-                .equals(other.timerCompletedCount, timerCompletedCount));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(duration),
-      const DeepCollectionEquality().hash(timerType),
-      const DeepCollectionEquality().hash(timerCompletedCount));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$TimerPausedCopyWith<_$TimerPaused> get copyWith =>
-      __$$TimerPausedCopyWithImpl<_$TimerPaused>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        initial,
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        running,
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        paused,
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        complete,
-  }) {
-    return paused(duration, timerType, timerCompletedCount);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        initial,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        running,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        paused,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        complete,
-  }) {
-    return paused?.call(duration, timerType, timerCompletedCount);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        initial,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        running,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        paused,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        complete,
-    required TResult orElse(),
-  }) {
-    if (paused != null) {
-      return paused(duration, timerType, timerCompletedCount);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(TimerRunning value) running,
-    required TResult Function(TimerPaused value) paused,
-    required TResult Function(TimerCompleted value) complete,
-  }) {
-    return paused(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(TimerRunning value)? running,
-    TResult Function(TimerPaused value)? paused,
-    TResult Function(TimerCompleted value)? complete,
-  }) {
-    return paused?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(TimerRunning value)? running,
-    TResult Function(TimerPaused value)? paused,
-    TResult Function(TimerCompleted value)? complete,
-    required TResult orElse(),
-  }) {
-    if (paused != null) {
-      return paused(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class TimerPaused implements TimerState {
-  const factory TimerPaused(
-      {required final int duration,
-      required final TimerType timerType,
-      required final int timerCompletedCount}) = _$TimerPaused;
-
-  @override
-  int get duration;
+  int get timerCompletedCounter;
   @override
   TimerType get timerType;
   @override
-  int get timerCompletedCount;
-  @override
   @JsonKey(ignore: true)
-  _$$TimerPausedCopyWith<_$TimerPaused> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$TimerCompletedCopyWith<$Res>
-    implements $TimerStateCopyWith<$Res> {
-  factory _$$TimerCompletedCopyWith(
-          _$TimerCompleted value, $Res Function(_$TimerCompleted) then) =
-      __$$TimerCompletedCopyWithImpl<$Res>;
-  @override
-  $Res call({int duration, TimerType timerType, int timerCompletedCount});
-}
-
-/// @nodoc
-class __$$TimerCompletedCopyWithImpl<$Res>
-    extends _$TimerStateCopyWithImpl<$Res>
-    implements _$$TimerCompletedCopyWith<$Res> {
-  __$$TimerCompletedCopyWithImpl(
-      _$TimerCompleted _value, $Res Function(_$TimerCompleted) _then)
-      : super(_value, (v) => _then(v as _$TimerCompleted));
-
-  @override
-  _$TimerCompleted get _value => super._value as _$TimerCompleted;
-
-  @override
-  $Res call({
-    Object? duration = freezed,
-    Object? timerType = freezed,
-    Object? timerCompletedCount = freezed,
-  }) {
-    return _then(_$TimerCompleted(
-      duration: duration == freezed
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as int,
-      timerType: timerType == freezed
-          ? _value.timerType
-          : timerType // ignore: cast_nullable_to_non_nullable
-              as TimerType,
-      timerCompletedCount: timerCompletedCount == freezed
-          ? _value.timerCompletedCount
-          : timerCompletedCount // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$TimerCompleted implements TimerCompleted {
-  const _$TimerCompleted(
-      {required this.duration,
-      required this.timerType,
-      required this.timerCompletedCount});
-
-  @override
-  final int duration;
-  @override
-  final TimerType timerType;
-  @override
-  final int timerCompletedCount;
-
-  @override
-  String toString() {
-    return 'TimerState.complete(duration: $duration, timerType: $timerType, timerCompletedCount: $timerCompletedCount)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TimerCompleted &&
-            const DeepCollectionEquality().equals(other.duration, duration) &&
-            const DeepCollectionEquality().equals(other.timerType, timerType) &&
-            const DeepCollectionEquality()
-                .equals(other.timerCompletedCount, timerCompletedCount));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(duration),
-      const DeepCollectionEquality().hash(timerType),
-      const DeepCollectionEquality().hash(timerCompletedCount));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$TimerCompletedCopyWith<_$TimerCompleted> get copyWith =>
-      __$$TimerCompletedCopyWithImpl<_$TimerCompleted>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        initial,
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        running,
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        paused,
-    required TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)
-        complete,
-  }) {
-    return complete(duration, timerType, timerCompletedCount);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        initial,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        running,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        paused,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        complete,
-  }) {
-    return complete?.call(duration, timerType, timerCompletedCount);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        initial,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        running,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        paused,
-    TResult Function(
-            int duration, TimerType timerType, int timerCompletedCount)?
-        complete,
-    required TResult orElse(),
-  }) {
-    if (complete != null) {
-      return complete(duration, timerType, timerCompletedCount);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(TimerRunning value) running,
-    required TResult Function(TimerPaused value) paused,
-    required TResult Function(TimerCompleted value) complete,
-  }) {
-    return complete(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(TimerRunning value)? running,
-    TResult Function(TimerPaused value)? paused,
-    TResult Function(TimerCompleted value)? complete,
-  }) {
-    return complete?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(TimerRunning value)? running,
-    TResult Function(TimerPaused value)? paused,
-    TResult Function(TimerCompleted value)? complete,
-    required TResult orElse(),
-  }) {
-    if (complete != null) {
-      return complete(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class TimerCompleted implements TimerState {
-  const factory TimerCompleted(
-      {required final int duration,
-      required final TimerType timerType,
-      required final int timerCompletedCount}) = _$TimerCompleted;
-
-  @override
-  int get duration;
-  @override
-  TimerType get timerType;
-  @override
-  int get timerCompletedCount;
-  @override
-  @JsonKey(ignore: true)
-  _$$TimerCompletedCopyWith<_$TimerCompleted> get copyWith =>
+  _$$_TimerStateCopyWith<_$_TimerState> get copyWith =>
       throw _privateConstructorUsedError;
 }

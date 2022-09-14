@@ -13,7 +13,7 @@ class TaskRepository implements TasksInterface {
 
   @override
   Stream<Either<TaskFailure, List<Task>>> fetchTasks() async* {
-    final taskDtoStream = _localSource.getTasksStream();
+    final taskDtoStream = _localSource.getAllTasksStream();
     yield* taskDtoStream.map(
       (taskDtos) => right<TaskFailure, List<Task>>(
         taskDtos.map((taskDto) => taskDto.toDomain()).toList(),
@@ -22,8 +22,23 @@ class TaskRepository implements TasksInterface {
   }
 
   @override
-  Stream<Either<TaskFailure, List<Task>>> fetchUncompleted() {
-    throw UnimplementedError();
+  Stream<Either<TaskFailure, List<Task>>> fetchActiveTasks() async* {
+    final taskDtoStream = _localSource.getActiveTasksStream();
+    yield* taskDtoStream.map(
+      (taskDtos) => right<TaskFailure, List<Task>>(
+        taskDtos.map((taskDto) => taskDto.toDomain()).toList(),
+      ),
+    );
+  }
+
+  @override
+  Stream<Either<TaskFailure, List<Task>>> fetchCompletedTasks() async* {
+    final taskDtoStream = _localSource.getCompletedTasksStream();
+    yield* taskDtoStream.map(
+      (taskDtos) => right<TaskFailure, List<Task>>(
+        taskDtos.map((taskDto) => taskDto.toDomain()).toList(),
+      ),
+    );
   }
 
   @override
