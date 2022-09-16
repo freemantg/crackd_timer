@@ -85,10 +85,10 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Circular Standard
+    - family: FuturaPT
       fonts:
-        - asset: assets/fonts/Circular-Std-Book.otf
-        - asset: assets/fonts/Circular-Std-Bold.otf
+        - asset: assets/fonts/FuturaPT-Std-Book.otf
+        - asset: assets/fonts/FuturaPT-Std-Bold.otf
           weight: 600
     # - family: Trajan Pro
   #     fonts:

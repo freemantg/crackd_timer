@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../injection_container.dart';
-import '../../../application/add_task/emojis/emojis_bloc.dart';
-import '../../../application/tasks/task_form/bloc/task_form_bloc.dart';
+import '../../../application/blocs.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
-import 'color_selector.dart';
-import 'icon_selector.dart';
+import 'widgets.dart';
+
 
 class AppearanceSelector extends StatelessWidget {
   const AppearanceSelector({
@@ -20,12 +19,8 @@ class AppearanceSelector extends StatelessWidget {
       builder: (context, state) {
         return GestureDetector(
           onTap: () => _showCustomizeModalButtonSheet(context),
-          child: Container(
-            height: 48.0,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Corners.s10),
-              color: state.task.taskColor,
-            ),
+          child: CircleAvatar(
+            backgroundColor: state.task.taskColor,
             child: Center(
               child: Text(
                 state.task.emoji.emoji,
@@ -45,7 +40,7 @@ class AppearanceSelector extends StatelessWidget {
         isScrollControlled: true,
         clipBehavior: Clip.hardEdge,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Corners.s10Radius),
+          borderRadius: BorderRadius.vertical(top: Corners.s5Radius),
         ),
         context: context,
         builder: (context) {
@@ -94,7 +89,7 @@ class _StyledContainer extends StatelessWidget {
 
     return Expanded(
       child: Container(
-        color: theme.cardColor,
+        color: theme.colorScheme.surface,
         padding: const EdgeInsets.only(
           top: Insets.m,
           left: Insets.l,

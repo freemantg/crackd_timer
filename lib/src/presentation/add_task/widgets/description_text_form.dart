@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../application/tasks/task_form/bloc/task_form_bloc.dart';
+import '../../../shared/text_styles.dart';
 
 class DescriptionTextFormField extends StatelessWidget {
-  const DescriptionTextFormField({
-    Key? key,
-  }) : super(key: key);
+  const DescriptionTextFormField({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,21 +18,15 @@ class DescriptionTextFormField extends StatelessWidget {
           textEditingController.text = state.task.description,
       builder: (context, state) {
         return TextFormField(
-          controller: textEditingController,
-          minLines: 5,
           maxLines: null,
-          decoration: InputDecoration(
-            hintText: 'Note...',
-            filled: true,
-            fillColor: Theme.of(context).colorScheme.primaryContainer,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8.0),
-              borderSide: BorderSide.none,
-            ),
+          style: TextStyles.h2.copyWith(height: 1.5),
+          decoration: const InputDecoration(
+            border: InputBorder.none,
+            hintText: 'Note',
           ),
-          onChanged: (value) => context.read<TaskFormBloc>().add(
-                TaskFormEvent.descriptionChanged(value),
-              ),
+          onChanged: (value) => context
+              .read<TaskFormBloc>()
+              .add(TaskFormEvent.descriptionChanged(value)),
         );
       },
     );

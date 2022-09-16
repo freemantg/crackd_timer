@@ -6,6 +6,7 @@ import '../../../application/core/task_cubit/task_cubit.dart';
 import '../../../application/timer/timer_bloc/timer_bloc.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
+import '../../shared/styled_components/styled_container.dart';
 
 class PomodoroCounter extends StatelessWidget {
   const PomodoroCounter({
@@ -20,7 +21,7 @@ class PomodoroCounter extends StatelessWidget {
       builder: (context, state) {
         return LayoutBuilder(
           builder: (context, constraints) {
-            return _StyledContainer(
+            return StyledContainer(
               child: Column(
                 children: [
                   Text(
@@ -91,28 +92,6 @@ class _EmojiIndicator extends StatelessWidget {
       style: TextStyles.h2.copyWith(
         color: isCompleted ? null : Colors.white.withOpacity(0.25),
       ),
-    );
-  }
-}
-
-class _StyledContainer extends StatelessWidget {
-  final Widget child;
-
-  const _StyledContainer({
-    required this.child,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return Container(
-      padding: const EdgeInsets.all(Insets.m),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(Corners.s10),
-      ),
-      child: child,
     );
   }
 }

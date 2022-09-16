@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:robot_timer/src/presentation/home/widgets/navigation_tab_items.dart';
-import 'package:robot_timer/src/shared/app_router.gr.dart';
 
-import 'widgets/styled_bottom_navigation_bar.dart';
+import '../../shared/app_router.gr.dart';
+import 'widgets/widgets.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

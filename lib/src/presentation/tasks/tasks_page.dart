@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:robot_timer/src/application/tasks/task_watcher/task_watcher_bloc.dart';
-import 'package:robot_timer/src/presentation/tasks/widgets/mini_timer_display.dart';
-import 'package:robot_timer/src/presentation/tasks/widgets/task_filter_button.dart';
-import 'package:robot_timer/src/presentation/tasks/widgets/task_list_tile.dart';
 
-import 'package:robot_timer/src/shared/styles.dart';
+
 
 import '../../../injection_container.dart';
+import '../../application/blocs.dart';
 import '../../application/settings/alarm_cubit/alarm_cubit.dart';
 import '../../shared/app_router.gr.dart';
+import '../../shared/styles.dart';
 import '../../shared/text_styles.dart';
+import 'widgets/widgets.dart';
 
 class TasksPage extends StatelessWidget {
   const TasksPage({super.key});
@@ -30,7 +29,6 @@ class TasksPage extends StatelessWidget {
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           _buildTopSection(context),
           const HSpace(size: Insets.sm),
@@ -108,8 +106,6 @@ Widget _buildTopSection(BuildContext context) {
         Row(
           children: [
             Text("crack'd", style: TextStyles.h1),
-            const VSpace(size: Insets.sm),
-            const _TimerChip(),
             const Spacer(),
             const _AlarmIconButton(),
           ],
@@ -136,34 +132,11 @@ class _AlarmIconButton extends StatelessWidget {
           onPressed: () => context.read<AlarmCubit>().toggleTickingSound(),
           icon: FaIcon(
             state.tickingSound
-                ? Icons.notifications_off_outlined
-                : Icons.notifications_active_outlined,
+                ? FontAwesomeIcons.solidBellSlash
+                : FontAwesomeIcons.solidBell,
           ),
         );
       },
-    );
-  }
-}
-
-class _TimerChip extends StatelessWidget {
-  const _TimerChip({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return Container(
-      padding: const EdgeInsets.all(Insets.sm),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(Corners.s10),
-        color: theme.colorScheme.surface,
-      ),
-      child: Text(
-        'timer',
-        style: TextStyles.body1.copyWith(fontWeight: FontWeight.bold),
-      ),
     );
   }
 }

@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Fonts {
-  static const String circularStandard = 'Circular Standard';
+  static const String futuraPT = 'FuturaPT';
 }
 
 class TextStyles {
-  static const TextStyle circularStandard = TextStyle(
-    fontFamily: Fonts.circularStandard,
+  static const TextStyle futuraPT = TextStyle(
+    fontFamily: Fonts.futuraPT,
     fontWeight: FontWeight.w400,
     height: 1,
   );
 
   static TextStyle roboto = GoogleFonts.roboto();
 
-  static TextStyle get h1 => TextStyles.circularStandard
-      .copyWith(fontWeight: FontWeight.w600, fontSize: 24);
+  static TextStyle get h1 =>
+      TextStyles.futuraPT.copyWith(fontWeight: FontWeight.w600, fontSize: 24);
   static TextStyle get h2 => h1.copyWith(fontSize: 17);
   static TextStyle get title1 =>
       roboto.copyWith(fontWeight: FontWeight.bold, fontSize: 15);

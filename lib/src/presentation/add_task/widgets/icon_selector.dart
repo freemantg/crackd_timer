@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../application/tasks/task_form/bloc/task_form_bloc.dart';
+import '../../../application/blocs.dart';
 import '../../../domain/emojis/emoji.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
@@ -32,7 +32,7 @@ class IconSelector extends StatelessWidget {
             indicatorPadding: const EdgeInsets.only(right: Insets.l),
             //LABEL
             labelPadding: const EdgeInsets.only(right: Insets.l),
-            labelStyle: TextStyles.title1,
+            labelStyle: TextStyles.h2,
             labelColor: theme.colorScheme.onSurface
                 .withOpacity(TextOpacity.mediumEmphasis),
             unselectedLabelColor: theme.highlightColor,

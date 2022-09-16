@@ -19,16 +19,7 @@ class TaskListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: EdgeInsets.zero,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(Corners.s10),
-      ),
-      leading: CircleAvatar(
-        backgroundColor: task.taskColor,
-        child: Text(
-          task.emoji.emoji,
-          style: TextStyles.h2,
-        ),
-      ),
+      leading: _CustomTaskIcon(task: task),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -60,6 +51,26 @@ class TaskListTile extends StatelessWidget {
   }
 }
 
+class _CustomTaskIcon extends StatelessWidget {
+  const _CustomTaskIcon({
+    Key? key,
+    required this.task,
+  }) : super(key: key);
+
+  final Task task;
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      backgroundColor: task.taskColor,
+      child: Text(
+        task.emoji.emoji,
+        style: TextStyles.h2,
+      ),
+    );
+  }
+}
+
 class _StyledCheckBox extends StatelessWidget {
   const _StyledCheckBox({
     Key? key,
@@ -76,8 +87,7 @@ class _StyledCheckBox extends StatelessWidget {
       child: Checkbox(
         value: task.completed,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(Corners.s5),
-        ),
+            borderRadius: BorderRadius.circular(Corners.s5)),
         onChanged: (_) => context
             .read<TaskActorBloc>()
             .add(TaskActorEvent.completeToggled(task)),
@@ -96,19 +106,34 @@ class _CounterChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return _StyledChip(
+      child: Text(
+        '${task.completedSessions} / ${task.activeSessions}',
+        style: TextStyles.body1Dark.copyWith(fontSize: 10.0),
+      ),
+    );
+  }
+}
+
+class _StyledChip extends StatelessWidget {
+  const _StyledChip({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Container(
       padding: const EdgeInsets.all(Insets.sm),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(Corners.s10),
-        color: Colors.grey.withOpacity(0.1),
+        color: theme.disabledColor.withOpacity(0.5),
       ),
-      child: Text(
-        '${task.completedSessions} / ${task.activeSessions}',
-        style: TextStyles.caption.copyWith(
-          color: Colors.black,
-          fontSize: 10.0,
-        ),
-      ),
+      child: child,
     );
   }
 }

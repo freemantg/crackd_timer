@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../application/tasks/task_form/bloc/task_form_bloc.dart';
+import '../../../application/blocs.dart';
 import '../../../shared/colors_list.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
@@ -13,7 +13,8 @@ class ColorSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      color: Theme.of(context).cardColor,
       padding: const EdgeInsets.fromLTRB(
         Insets.l,
         Insets.sm,
@@ -23,32 +24,34 @@ class ColorSelector extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Center(
-              child: Icon(
-            Icons.keyboard_arrow_down,
-            color: Colors.white54,
-          )),
-          Text(
-            'Color',
-            style: TextStyles.title1.copyWith(
-              color: Colors.white.withOpacity(TextOpacity.highEmphasis),
-            ),
-          ),
+          const Center(child: Icon(Icons.keyboard_arrow_down)),
+          Text('Color', style: TextStyles.h2),
           const HSpace(size: Insets.m),
-          SizedBox(
-            height: 48,
-            child: ListView.builder(
-              shrinkWrap: true,
-              clipBehavior: Clip.none,
-              scrollDirection: Axis.horizontal,
-              itemCount: colorsList.length,
-              itemBuilder: ((context, index) {
-                final color = colorsList[index];
-                return _ColorTile(color: color);
-              }),
-            ),
-          ),
+          const _ColorListViewBuilder(),
         ],
+      ),
+    );
+  }
+}
+
+class _ColorListViewBuilder extends StatelessWidget {
+  const _ColorListViewBuilder({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 48,
+      child: ListView.builder(
+        shrinkWrap: true,
+        clipBehavior: Clip.none,
+        scrollDirection: Axis.horizontal,
+        itemCount: colorsList.length,
+        itemBuilder: ((context, index) {
+          final color = colorsList[index];
+          return _ColorTile(color: color);
+        }),
       ),
     );
   }

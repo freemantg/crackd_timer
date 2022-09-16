@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:robot_timer/injection_container.dart';
-import 'package:robot_timer/src/application/core/task_cubit/task_cubit.dart';
-import 'package:robot_timer/src/application/settings/alarm_cubit/alarm_cubit.dart';
-import 'package:robot_timer/src/application/settings/settings_bloc/settings_bloc.dart';
-import 'package:robot_timer/src/application/tasks/task_watcher/task_watcher_bloc.dart';
-import 'package:robot_timer/src/application/timer/timer_bloc/timer_bloc.dart';
 
-import 'application/settings/theme_cubit/theme_cubit.dart';
-import 'application/tasks/task_actor/task_actor_bloc.dart';
+import 'application/blocs.dart';
+import 'application/cubits.dart';
 import 'shared/app_router.gr.dart';
 import 'shared/app_themes.dart';
 

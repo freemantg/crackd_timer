@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:robot_timer/src/presentation/shared/styled_components/styled_save_button.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:robot_timer/src/shared/styles.dart';
 
 import '../../../../injection_container.dart';
 import '../../../application/core/task_cubit/task_cubit.dart';
 import '../../../application/tasks/task_form/bloc/task_form_bloc.dart';
-import '../../../application/timer/timer_bloc/timer_bloc.dart';
 import '../../../domain/tasks/task.dart';
 import '../../../shared/app_router.gr.dart';
 import '../../../shared/text_styles.dart';
@@ -33,15 +33,34 @@ class StyledAppBar extends StatelessWidget implements PreferredSizeWidget {
     return StyledAppBar._(
       title: BlocBuilder<TaskFormBloc, TaskFormState>(
         builder: (context, state) {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          return Stack(
             children: [
               Center(
-                child: Text(
-                  state.isEditing ? 'Edit Task' : 'Add Task',
-                  style: TextStyles.h2Dark,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: Insets.m),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        state.isEditing ? 'EDIT TASK' : 'ADD TASK',
+                        style: TextStyles.h2,
+                      ),
+                      const VSpace(size: Insets.xs),
+                      const Icon(
+                        Icons.info_outline,
+                        size: 20,
+                      ),
+                    ],
+                  ),
                 ),
               ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: IconButton(
+                  onPressed: () => getIt<AppRouter>().popUntilRoot(),
+                  icon: const FaIcon(FontAwesomeIcons.xmark),
+                ),
+              )
             ],
           );
         },
@@ -83,22 +102,9 @@ class StyledAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   factory StyledAppBar.settingsPage() {
-    return StyledAppBar._(
+    return const StyledAppBar._(
       centerTitle: true,
-      title: BlocBuilder<TimerBloc, TimerState>(
-        builder: (context, state) {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            textBaseline: TextBaseline.ideographic,
-            crossAxisAlignment: CrossAxisAlignment.baseline,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Spacer(),
-              StyledSaveButton(onTap: () {}),
-            ],
-          );
-        },
-      ),
+      title: SizedBox.shrink(),
     );
   }
 

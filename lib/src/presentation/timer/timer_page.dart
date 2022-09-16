@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:robot_timer/src/presentation/shared/styled_components/styled_app_bar.dart';
-import 'package:robot_timer/src/presentation/timer/widgets/timer_main_action_button.dart';
 
 import '../../shared/styles.dart';
-
-import 'widgets/pomodoro_counter.dart';
-import 'widgets/styled_timer_display.dart';
-import 'widgets/styled_timer_text_display.dart';
+import '../shared/widgets.dart';
+import 'widgets/widgets.dart';
 
 class TimerPage extends StatelessWidget {
   const TimerPage({super.key});

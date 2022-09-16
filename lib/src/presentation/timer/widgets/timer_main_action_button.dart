@@ -23,9 +23,8 @@ class TimerMainActionButton extends StatelessWidget {
 
     return BlocConsumer<TimerBloc, TimerState>(
       listenWhen: (previous, current) => previous.status != current.status,
-      listener: (context, state) {
-        isPlaying = (state.status == TimerStatus.running);
-      },
+      listener: (context, state) =>
+          isPlaying = (state.status == TimerStatus.running),
       builder: (context, state) {
         return Row(
           children: [
@@ -56,19 +55,33 @@ class TimerMainActionButton extends StatelessWidget {
                       null;
                   }
                 },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  child: Text(
-                    isPlaying ? 'STOP' : 'START',
-                    style: TextStyles.h1Dark,
-                  ),
-                ),
+                child: _TimerMainActionButtonText(isPlaying: isPlaying),
               ),
             ),
             Expanded(child: _buildSecondaryActionButton(state.status))
           ],
         );
       },
+    );
+  }
+}
+
+class _TimerMainActionButtonText extends StatelessWidget {
+  const _TimerMainActionButtonText({
+    Key? key,
+    required this.isPlaying,
+  }) : super(key: key);
+
+  final bool isPlaying;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20.0),
+      child: Text(
+        isPlaying ? 'STOP' : 'START',
+        style: TextStyles.h1Dark,
+      ),
     );
   }
 }
@@ -96,10 +109,11 @@ class _TimerSkipButton extends StatelessWidget {
         context: context,
         builder: (context) {
           return AlertDialog(
-            backgroundColor: Theme.of(context).cardColor,
-            title: const Text('Skip Pomodoro'),
-            content:
-                const Text('Are you sure you want to finish the round early?'),
+            title: Text('Skip Pomodoro', style: TextStyles.h2),
+            content: Text(
+              'Are you sure you want to finish the round early?',
+              style: TextStyles.body1,
+            ),
             actions: [
               TextButton(
                 onPressed: () => getIt<AppRouter>().popUntilRoot(),
@@ -116,10 +130,7 @@ class _TimerSkipButton extends StatelessWidget {
           );
         },
       ),
-      icon: const FaIcon(
-        FontAwesomeIcons.forward,
-        color: Colors.white,
-      ),
+      icon: const FaIcon(FontAwesomeIcons.forward),
     );
   }
 }
@@ -132,10 +143,7 @@ class _TimerResetButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: const FaIcon(
-        FontAwesomeIcons.rotateLeft,
-        color: Colors.white,
-      ),
+      icon: const FaIcon(FontAwesomeIcons.rotateLeft),
       onPressed: () =>
           context.read<TimerBloc>().add(_buildResetAction(context)),
     );

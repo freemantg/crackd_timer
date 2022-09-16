@@ -3,11 +3,20 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'app_themes.freezed.dart';
 
-enum ThemeType { PurplePomodoro, SeafoamGreen, CornflowerBlue }
+enum ThemeType { CrackdYellow, SeafoamGreen, CornflowerBlue }
 
 @freezed
 class AppTheme with _$AppTheme {
   AppTheme._();
+
+  //THEME COLORS
+  static const crackdYellowColorSeed = Color(0xFFFEE400);
+  static const seafoamGreen = Color(0xFF00D0A5);
+  static const cornflowerBlue = Color(0xFF6495ED);
+
+  //SURFACE VARIANTS
+  static const surfaceColorLight = Color(0xFFF9F9F9);
+  static const surfaceColorDark = Color(0xFF222328);
 
   factory AppTheme({
     required bool isDark,
@@ -20,24 +29,24 @@ class AppTheme with _$AppTheme {
     required bool isDark,
   }) {
     switch (themeType) {
-      case ThemeType.PurplePomodoro:
+      case ThemeType.CrackdYellow:
         return AppTheme(
           isDark: isDark,
           themeType: themeType,
-          colorSchemeSeed: const Color(0xFFFEE400),
+          colorSchemeSeed: crackdYellowColorSeed,
         );
 
       case ThemeType.SeafoamGreen:
         return AppTheme(
           isDark: isDark,
           themeType: themeType,
-          colorSchemeSeed: const Color(0xFF00D0A5),
+          colorSchemeSeed: seafoamGreen,
         );
       case ThemeType.CornflowerBlue:
         return AppTheme(
           isDark: isDark,
           themeType: themeType,
-          colorSchemeSeed: const Color(0xFF6495ED),
+          colorSchemeSeed: cornflowerBlue,
         );
     }
   }
@@ -46,21 +55,20 @@ class AppTheme with _$AppTheme {
       textTheme: (isDark ? ThemeData.dark() : ThemeData.light()).textTheme,
       colorScheme: ColorScheme.fromSeed(
         brightness: isDark ? Brightness.dark : Brightness.light,
+        surface: isDark ? surfaceColorDark : surfaceColorLight,
         seedColor: colorSchemeSeed,
-        surface: isDark ? const Color(0xFF222328) : const Color(0xFFF9F9F9),
       ),
     );
-    return t.copyWith(cardColor: colorSchemeSeed);
+    return t.copyWith(
+      disabledColor: Colors.grey[300],
+      cardColor: colorSchemeSeed,
+      appBarTheme: isDark
+          ? null
+          : const AppBarTheme(
+              foregroundColor: surfaceColorDark,
+            ),
+    );
   }
 }
 
-extension ThemeExtension on ThemeType {
-  String get themeName {
-    final pascalCaseName = RegExp(r"(?:[A-Z]+|^)[a-z]*")
-        .allMatches(name)
-        .map((e) => e[0])
-        .toList();
 
-    return pascalCaseName.join(' ');
-  }
-}

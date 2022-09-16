@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:robot_timer/src/presentation/settings/widgets/alarm_settings.dart';
-import 'package:robot_timer/src/presentation/settings/widgets/theme_settings.dart';
-import 'package:robot_timer/src/presentation/shared/styled_components/styled_app_bar.dart';
+
 
 import '../../shared/styles.dart';
-import '../shared/styled_components/styled_curved_decoration.dart';
-import 'widgets/pomodoro_settings.dart';
-import 'widgets/styled_title_text.dart';
+import '../shared/widgets.dart';
+import 'widgets/widgets.dart';
+
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -15,15 +13,19 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: StyledAppBar.settingsPage(),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            _SettingsHeader(),
-            _SettingsBottomSheet(),
-          ],
-        ),
+      body: _buildScaffoldBody(),
+    );
+  }
+
+  SingleChildScrollView _buildScaffoldBody() {
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          _SettingsHeader(),
+          _SettingsBottomSheet(),
+        ],
       ),
     );
   }
@@ -57,7 +59,6 @@ class _SettingsBottomSheet extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
-          HSpace(size: Insets.l),
           PomodoroSettings(),
           HSpace(size: Insets.l),
           Divider(),
@@ -66,7 +67,6 @@ class _SettingsBottomSheet extends StatelessWidget {
           Divider(),
           HSpace(size: Insets.l),
           ThemeSettings(),
-          HSpace(size: Insets.l),
         ],
       ),
     );

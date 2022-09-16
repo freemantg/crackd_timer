@@ -5,7 +5,7 @@ class ThemeCubit extends Cubit<AppTheme> {
   ThemeCubit()
       : super(
           AppTheme.fromType(
-            themeType: ThemeType.PurplePomodoro,
+            themeType: ThemeType.CrackdYellow,
             isDark: false,
           ),
         );

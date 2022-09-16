@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 
 import '../../../injection_container.dart';
-import '../../application/tasks/task_form/bloc/task_form_bloc.dart';
+import '../../application/blocs.dart';
 import '../../domain/tasks/task.dart';
 import '../../shared/app_router.gr.dart';
 import '../../shared/styles.dart';
-import '../shared/styled_components/styled_app_bar.dart';
-import '../shared/styled_components/styled_curved_decoration.dart';
-import '../shared/styled_components/styled_title_subtitle.dart';
 import '../../shared/text_styles.dart';
-import 'widgets/description_text_form_field.dart';
-import 'widgets/pomodoro_selector.dart';
-import 'widgets/title_text_form_field.dart';
+import '../shared/widgets.dart';
+import 'widgets/widgets.dart';
+
+
 
 class AddTaskPage extends StatelessWidget {
   final Task? task;
@@ -38,102 +35,54 @@ class AddTaskPage extends StatelessWidget {
         },
         child: Scaffold(
           appBar: StyledAppBar.addTaskPage(),
-          body: Stack(
-            children: [
-              // const _StyledInstructions(),
-              _StyledAddTaskBottomSheet(task: task),
-            ],
-          ),
+          body: const _BuildBody(),
+          bottomSheet: const StyledBottomSheet(),
         ),
       ),
     );
   }
 }
 
-class _StyledInstructions extends StatelessWidget {
-  const _StyledInstructions({
+class _BuildBody extends StatelessWidget {
+  const _BuildBody({
     Key? key,
   }) : super(key: key);
-
-  static const String _pomodoroInstructions = '''
-  1.  **Add tasks**  to work on today
-  2.  **Set estimate pomodoros** for each tasks
-  3.  **Start timer**  and focus on the task
-  4.  **Take a break**  when the alarm ring
-  5.  **Iterate**  2-5 until you finish the tasks
-''';
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: Insets.l,
-        vertical: Insets.m,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: Insets.l),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'How to use the Pomodoro?',
-            style: TextStyles.h2.copyWith(color: Colors.white),
-          ),
-          const HSpace(size: Insets.sm),
-          Expanded(
-            child: Markdown(
-              padding: EdgeInsets.zero,
-              data: _pomodoroInstructions,
-              styleSheet: MarkdownStyleSheet(
-                p: TextStyles.title2,
-                listBullet: TextStyles.title2,
-              ),
-            ),
-          ),
+        children: const [
+          AppearanceSelector(),
+          HSpace(size: Insets.m),
+          TitleTextFormField(),
+          DescriptionTextFormField(),
         ],
       ),
     );
   }
 }
 
-class _StyledAddTaskBottomSheet extends StatelessWidget {
-  final Task? task;
-  const _StyledAddTaskBottomSheet({
-    this.task,
+class _IconChip extends StatelessWidget {
+  const _IconChip({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: SingleChildScrollView(
-        child: BlocBuilder<TaskFormBloc, TaskFormState>(
-          builder: (context, state) {
-            return StyledCurvedDecoration(
-              grid: true,
-              padding: const EdgeInsets.all(Insets.l),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  StyledTitleAndSubtitle(
-                    title: state.isEditing ? 'Edit Task' : 'Add Task',
-                    subTitle: 'What are you working on?',
-                  ),
-                  const TitleTextFormField(),
-                  const HSpace(size: Insets.m),
-                  const DescriptionTextFormField(),
-                  const HSpace(size: Insets.xl),
-                  const StyledTitleAndSubtitle(
-                    title: 'Pomodoros',
-                    subTitle: 'How many working sessions?',
-                  ),
-                  const HSpace(size: Insets.m),
-                  const PomodoroSelector(),
-                  const HSpace(size: Insets.l),
-                ],
-              ),
-            );
-          },
-        ),
+    final theme = Theme.of(context);
+
+    return Container(
+      padding: const EdgeInsets.all(Insets.sm),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(Corners.s10),
+        color: theme.colorScheme.surface,
+      ),
+      child: Text(
+        'task icon',
+        style: TextStyles.body1.copyWith(fontWeight: FontWeight.bold),
       ),
     );
   }

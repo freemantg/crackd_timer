@@ -17,12 +17,12 @@ class MiniTimerDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final task = context.select((TaskCubit taskCubit) => taskCubit.state);
 
     return BlocBuilder<TimerBloc, TimerState>(
       builder: (context, state) {
         return StyledCard(
+          color: task.taskColor,
           child: Column(
             children: [
               Row(
@@ -53,9 +53,8 @@ class MiniTimerDisplay extends StatelessWidget {
                       Icons.more_vert,
                       color: Color(0xFF1E1E1E),
                     ),
-                    onTap: () => getIt<AppRouter>().push(
-                      AddTaskRoute(task: task),
-                    ),
+                    onTap: () =>
+                        getIt<AppRouter>().push(AddTaskRoute(task: task)),
                   )
                 ],
               ),
@@ -151,7 +150,7 @@ class StyledCard extends StatelessWidget {
       color: color ?? theme.cardColor,
       elevation: elevation,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(Corners.s10),
+        borderRadius: BorderRadius.circular(Corners.s5),
       ),
       child: Padding(
         padding: const EdgeInsets.all(Insets.m),
@@ -195,12 +194,7 @@ class SelectedTaskCard extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
-                    child: Text(
-                      state.title,
-                      style: TextStyles.body1.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    child: Text(state.title, style: TextStyles.title1Dark),
                   ),
                   const VSpace(size: Insets.sm),
                   Text(state.emoji.emoji, style: TextStyles.title1),
