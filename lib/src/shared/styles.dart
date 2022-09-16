@@ -10,7 +10,7 @@ class Insets {
   static double topGutter = 16;
   static const double xs = 2 * scale;
   static const double sm = 6 * scale;
-  static const double m = 12 * scale;
+  static const double m = 16 * scale;
   static const double l = 24 * scale;
   static const double xl = 36 * scale;
 }

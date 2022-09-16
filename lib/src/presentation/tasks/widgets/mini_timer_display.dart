@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:robot_timer/src/application/core/task_cubit/task_cubit.dart';
+import 'package:robot_timer/src/shared/extensions.dart';
 
+import '../../../../injection_container.dart';
 import '../../../application/timer/timer_bloc/timer_bloc.dart';
+import '../../../domain/tasks/task.dart';
+import '../../../shared/app_router.gr.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
-import '../../../shared/extensions.dart';
 
 class MiniTimerDisplay extends StatelessWidget {
   const MiniTimerDisplay({
@@ -13,35 +17,199 @@ class MiniTimerDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(Insets.m),
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(Corners.s10),
-          ),
-          child: BlocBuilder<TimerBloc, TimerState>(
-            builder: (context, state) {
-              return Column(
+    final theme = Theme.of(context);
+    final task = context.select((TaskCubit taskCubit) => taskCubit.state);
+
+    return BlocBuilder<TimerBloc, TimerState>(
+      builder: (context, state) {
+        return StyledCard(
+          child: Column(
+            children: [
+              Row(
                 children: [
-                  Text(
-                    state.duration.durationToString(),
-                    style: TextStyles.h1HighOpacity,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            _buildTimerText(state.timerType),
+                            style: TextStyles.title1Dark,
+                          ),
+                          const VSpace(size: Insets.sm),
+                          const StatusChip(),
+                        ],
+                      ),
+                      const HSpace(size: Insets.xs),
+                      Text(
+                        'Stay focused',
+                        style: TextStyles.captionDark,
+                      ),
+                    ],
                   ),
-                  const HSpace(size: Insets.sm),
-                  Text(
-                    _buildTimerText(state.timerType),
-                    style: TextStyles.title1MediumOpacity.copyWith(
-                      fontSize: 12.0,
+                  const Spacer(),
+                  GestureDetector(
+                    child: const Icon(
+                      Icons.more_vert,
+                      color: Color(0xFF1E1E1E),
                     ),
+                    onTap: () => getIt<AppRouter>().push(
+                      AddTaskRoute(task: task),
+                    ),
+                  )
+                ],
+              ),
+              const HSpace(size: Insets.m),
+              Text(
+                state.duration.durationToString(),
+                style: TextStyles.h1Dark.copyWith(fontSize: 36),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconButton(
+                    icon: const Icon(
+                      Icons.play_arrow,
+                      color: Color(0xFF1E1E1E),
+                    ),
+                    onPressed: () => context
+                        .read<TimerBloc>()
+                        .add(TimerEvent.started(duration: state.duration)),
+                  ),
+                  const _StyledVerticalDivider(),
+                  IconButton(
+                    icon: const Icon(
+                      Icons.pause,
+                      color: Color(0xFF1E1E1E),
+                    ),
+                    onPressed: () => context.read<TimerBloc>().add(
+                          const TimerEvent.paused(),
+                        ),
                   ),
                 ],
-              );
-            },
+              ),
+            ],
           ),
-        ),
-      ],
+        );
+      },
+    );
+  }
+}
+
+class _StyledVerticalDivider extends StatelessWidget {
+  const _StyledVerticalDivider({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxHeight: 14.0),
+      child: const VerticalDivider(thickness: 1.5),
+    );
+  }
+}
+
+class StatusChip extends StatelessWidget {
+  const StatusChip({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(Insets.sm),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(Corners.s10),
+        color: Colors.black.withOpacity(0.05),
+      ),
+      child: Text(
+        'active',
+        style: TextStyles.caption,
+      ),
+    );
+  }
+}
+
+class StyledCard extends StatelessWidget {
+  final Widget child;
+  final Color? color;
+  final double? elevation;
+
+  const StyledCard({
+    super.key,
+    required this.child,
+    this.color,
+    this.elevation,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Card(
+      color: color ?? theme.cardColor,
+      elevation: elevation,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(Corners.s10),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(Insets.m),
+        child: child,
+      ),
+    );
+  }
+}
+
+class SelectedTaskCard extends StatelessWidget {
+  const SelectedTaskCard({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<TaskCubit, Task>(
+      builder: (context, state) {
+        return StyledCard(
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Text(
+                    'Sessions:',
+                    style: TextStyles.body1Dark,
+                  ),
+                  const Spacer(),
+                  Text(
+                    state.completedSessions.toString(),
+                    style: TextStyles.title1Dark,
+                  ),
+                  Text(' / ', style: TextStyles.title2Dark),
+                  Text(
+                    state.activeSessions.toString(),
+                    style: TextStyles.title2Dark,
+                  )
+                ],
+              ),
+              const Divider(),
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      state.title,
+                      style: TextStyles.body1.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const VSpace(size: Insets.sm),
+                  Text(state.emoji.emoji, style: TextStyles.title1),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

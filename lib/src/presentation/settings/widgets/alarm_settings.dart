@@ -55,9 +55,7 @@ class _StyledCheckBox extends StatelessWidget {
             height: 24,
             width: 24,
             decoration: BoxDecoration(
-              color: state.tickingSound
-                  ? theme.colorScheme.primaryContainer
-                  : theme.disabledColor,
+              color: state.tickingSound ? theme.cardColor : theme.disabledColor,
               borderRadius: BorderRadius.circular(Insets.sm),
             ),
             duration: kThemeAnimationDuration,
@@ -99,7 +97,7 @@ class _AlarmTile extends StatelessWidget {
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         color: state.alarmSound == alarmSound
-                            ? theme.colorScheme.primaryContainer
+                            ? theme.cardColor
                             : theme.disabledColor,
                         shape: BoxShape.circle,
                       ),

@@ -34,8 +34,8 @@ class TimerMainActionButton extends StatelessWidget {
               flex: 2,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  elevation: isPlaying ? 0 : Elevation.button,
                   primary: theme.cardColor,
+                  elevation: isPlaying ? 0 : Elevation.button,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(Corners.s5),
                   ),
@@ -60,11 +60,7 @@ class TimerMainActionButton extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 20.0),
                   child: Text(
                     isPlaying ? 'STOP' : 'START',
-                    style: TextStyles.h1.copyWith(
-                      color: theme.brightness == Brightness.dark
-                          ? Colors.white.withOpacity(TextOpacity.highEmphasis)
-                          : theme.backgroundColor,
-                    ),
+                    style: TextStyles.h1Dark,
                   ),
                 ),
               ),

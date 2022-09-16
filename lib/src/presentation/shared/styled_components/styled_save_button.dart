@@ -12,20 +12,15 @@ class StyledSaveButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return GestureDetector(
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: Insets.m),
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(TextOpacity.highEmphasis),
+          color: const Color(0xFF313C4A),
           borderRadius: BorderRadius.circular(18.0),
         ),
-        child: Icon(
-          Icons.check_rounded,
-          color: theme.primaryColor,
-        ),
+        child: const Icon(Icons.check_rounded),
       ),
     );
   }

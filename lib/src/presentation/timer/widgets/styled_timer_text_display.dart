@@ -15,7 +15,7 @@ class StyledTimerTextDisplay extends StatelessWidget {
       builder: (context, state) {
         return Text(
           _buildTimerText(state.timerType),
-          style: TextStyles.title1MediumOpacity,
+          style: TextStyles.title1,
         );
       },
     );

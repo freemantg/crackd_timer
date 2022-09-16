@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:robot_timer/src/presentation/tasks/widgets/pomodoro_card.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:robot_timer/src/application/tasks/task_watcher/task_watcher_bloc.dart';
+import 'package:robot_timer/src/presentation/tasks/widgets/mini_timer_display.dart';
+import 'package:robot_timer/src/presentation/tasks/widgets/task_filter_button.dart';
+import 'package:robot_timer/src/presentation/tasks/widgets/task_list_tile.dart';
 
-import 'package:robot_timer/src/shared/text_styles.dart';
 import 'package:robot_timer/src/shared/styles.dart';
 
-import '../../application/tasks/task_watcher/task_watcher_bloc.dart';
-import '../shared/styled_components/styled_curved_decoration.dart';
-import 'widgets/add_pomodoro_card.dart';
-import 'widgets/date_displayer.dart';
-import 'widgets/mini_timer_display.dart';
-import 'widgets/task_filter_button.dart';
+import '../../../injection_container.dart';
+import '../../application/settings/alarm_cubit/alarm_cubit.dart';
+import '../../shared/app_router.gr.dart';
+import '../../shared/text_styles.dart';
 
 class TasksPage extends StatelessWidget {
   const TasksPage({super.key});
@@ -27,103 +27,143 @@ class TasksPage extends StatelessWidget {
   }
 
   Widget _buildScaffoldBody(BuildContext context) {
-    return Stack(
-      children: [
-        _buildBackground(),
-        _buildForeground(),
-      ],
-    );
-  }
-
-  Widget _buildForeground() {
-    return DraggableScrollableSheet(
-      snap: true,
-      maxChildSize: 1,
-      initialChildSize: 0.8,
-      minChildSize: 0.8,
-      builder: ((context, scrollController) {
-        return StyledCurvedDecoration(
-          grid: true,
-          child: SingleChildScrollView(
-            controller: scrollController,
-            physics: const BouncingScrollPhysics(),
-            child: BlocBuilder<TaskWatcherBloc, TaskWatcherState>(
-              buildWhen: (previous, current) => previous != current,
-              builder: (context, state) {
-                return Column(
-                  children: [
-                    const TaskFilterButton(),
-                    state.maybeMap(
-                      loadInProgress: (_) => const CircularProgressIndicator(),
-                      loadSuccess: (state) {
-                        return StaggeredGrid.count(
-                          crossAxisCount: state.tasks.length > 1 ? 2 : 1,
-                          children: [
-                            ...state.tasks
-                                .map((task) => PomodoroCard(task: task))
-                                .toList(),
-                            const AddPomodoroCard(),
-                          ],
-                        );
-                      },
-                      orElse: SizedBox.shrink,
-                    ),
-                    const HSpace(size: Insets.m),
-                  ],
-                );
-              },
-            ),
-          ),
-        );
-      }),
-    );
-  }
-
-  Widget _buildBackground() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: Insets.l),
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          HSpace(size: Insets.topGutter),
-          Row(
-            children: const [
-              Spacer(),
-            ],
-          ),
-          const HSpace(size: Insets.l),
-          Row(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Timers', style: TextStyles.h1HighOpacity),
-                  const HSpace(size: Insets.sm),
-                  const DateDisplay(),
-                ],
-              ),
-              const Spacer(),
-              const MiniTimerDisplay(),
-            ],
-          ),
+          _buildTopSection(context),
+          const HSpace(size: Insets.sm),
+          _buildTasksSection(context),
+          const _AddTaskListTile()
         ],
+      ),
+    );
+  }
+
+  Widget _buildTasksSection(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: Insets.m),
+      child: StyledCard(
+        elevation: 0,
+        color: Theme.of(context).colorScheme.surface,
+        child: Column(
+          children: [
+            const TaskFilterButton(),
+            const HSpace(size: Insets.m),
+            BlocBuilder<TaskWatcherBloc, TaskWatcherState>(
+              builder: ((context, state) {
+                return state.maybeMap(
+                  loadSuccess: (state) => ListView.separated(
+                    padding: EdgeInsets.zero,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: state.tasks.length,
+                    separatorBuilder: (context, index) => const Divider(),
+                    itemBuilder: (context, index) {
+                      final task = state.tasks[index];
+                      return TaskListTile(task: task);
+                    },
+                  ),
+                  orElse: () => const SizedBox.shrink(),
+                );
+              }),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-  // BlocBuilder<AlarmCubit, AlarmState>(
-  //               builder: (context, state) {
-  //                 return IconButton(
-  //                   onPressed: () =>
-  //                       context.read<AlarmCubit>().toggleTickingSound(),
-  //                   icon: FaIcon(
-  //                     state.tickingSound
-  //                         ? FontAwesomeIcons.bellSlash
-  //                         : FontAwesomeIcons.bell,
-  //                     color: Colors.white.withOpacity(
-  //                       TextOpacity.mediumEmphasis,
-  //                     ),
-  //                   ),
-  //                 );
-  //               },
-  //             ),
+class _AddTaskListTile extends StatelessWidget {
+  const _AddTaskListTile({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: Insets.m),
+      child: GestureDetector(
+        onTap: () => getIt<AppRouter>().push(AddTaskRoute()),
+        child: StyledCard(
+          elevation: 0,
+          color: theme.colorScheme.surface,
+          child: const Center(child: FaIcon(FontAwesomeIcons.plus)),
+        ),
+      ),
+    );
+  }
+}
+
+Widget _buildTopSection(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: Insets.m),
+    child: Column(
+      children: [
+        HSpace(size: Insets.topGutter),
+        Row(
+          children: [
+            Text("crack'd", style: TextStyles.h1),
+            const VSpace(size: Insets.sm),
+            const _TimerChip(),
+            const Spacer(),
+            const _AlarmIconButton(),
+          ],
+        ),
+        const HSpace(size: Insets.sm),
+        const MiniTimerDisplay(),
+        const HSpace(size: Insets.xs),
+        const SelectedTaskCard(),
+      ],
+    ),
+  );
+}
+
+class _AlarmIconButton extends StatelessWidget {
+  const _AlarmIconButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<AlarmCubit, AlarmState>(
+      builder: (context, state) {
+        return IconButton(
+          onPressed: () => context.read<AlarmCubit>().toggleTickingSound(),
+          icon: FaIcon(
+            state.tickingSound
+                ? Icons.notifications_off_outlined
+                : Icons.notifications_active_outlined,
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _TimerChip extends StatelessWidget {
+  const _TimerChip({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Container(
+      padding: const EdgeInsets.all(Insets.sm),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(Corners.s10),
+        color: theme.colorScheme.surface,
+      ),
+      child: Text(
+        'timer',
+        style: TextStyles.body1.copyWith(fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+}

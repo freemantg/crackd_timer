@@ -15,7 +15,7 @@ class StyledTimerDisplay extends StatelessWidget {
       builder: (context, state) {
         return Text(
           state.duration.durationToString(),
-          style: TextStyles.h1HighOpacity.copyWith(
+          style: TextStyles.h1.copyWith(
             fontSize: state.duration >= 3600 ? 72 : 96.0,
           ),
         );

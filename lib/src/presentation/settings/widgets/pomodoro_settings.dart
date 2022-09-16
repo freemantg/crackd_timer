@@ -80,14 +80,14 @@ class _StyledDurationInputTile extends HookWidget {
             keyboardType: TextInputType.number,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             textAlign: TextAlign.center,
-            style: TextStyles.h1,
+            style: TextStyles.h1.copyWith(color: Colors.black),
             decoration: const InputDecoration(
               border: InputBorder.none,
               counterText: '',
             ),
             onChanged: onChange,
           ),
-          Text(title, style: TextStyles.body1),
+          Text(title, style: TextStyles.caption.copyWith(color: Colors.black)),
         ],
       ),
     );
@@ -108,7 +108,7 @@ class _StyledContainer extends StatelessWidget {
     return Expanded(
       child: Container(
         decoration: BoxDecoration(
-          color: theme.colorScheme.primaryContainer,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(Corners.s10),
         ),
         child: Padding(

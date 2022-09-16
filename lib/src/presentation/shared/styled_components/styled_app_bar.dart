@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:robot_timer/src/presentation/shared/styled_components/styled_save_button.dart';
 
 import '../../../../injection_container.dart';
@@ -23,8 +22,8 @@ class StyledAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       title: title,
-      centerTitle: centerTitle,
       backgroundColor: Colors.transparent,
       elevation: 0,
     );
@@ -35,16 +34,13 @@ class StyledAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: BlocBuilder<TaskFormBloc, TaskFormState>(
         builder: (context, state) {
           return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                state.isEditing ? 'Edit Task' : 'Add Task',
-                style: TextStyles.h2,
-              ),
-              const Spacer(),
-              StyledSaveButton(
-                onTap: () => context
-                    .read<TaskFormBloc>()
-                    .add(const TaskFormEvent.saved()),
+              Center(
+                child: Text(
+                  state.isEditing ? 'Edit Task' : 'Add Task',
+                  style: TextStyles.h2Dark,
+                ),
               ),
             ],
           );
@@ -58,19 +54,25 @@ class StyledAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       title: BlocBuilder<TaskCubit, Task>(
         builder: (context, state) {
+          final theme = Theme.of(context);
+          final bool isDark = theme.brightness == Brightness.dark;
+
           return Stack(
             alignment: Alignment.center,
             children: [
               Text(
                 state.title.isEmpty ? 'Select a Task' : state.title,
-                style: TextStyles.h2,
+                style: isDark ? TextStyles.h2 : TextStyles.h2Dark,
               ),
               Align(
                 alignment: Alignment.centerRight,
                 child: IconButton(
                   onPressed: () =>
                       getIt<AppRouter>().push(AddTaskRoute(task: state)),
-                  icon: const FaIcon(FontAwesomeIcons.pencil),
+                  icon: Icon(
+                    Icons.more_horiz,
+                    color: isDark ? null : const Color(0xFF222328),
+                  ),
                 ),
               )
             ],

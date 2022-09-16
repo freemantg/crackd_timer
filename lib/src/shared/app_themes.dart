@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'app_themes.freezed.dart';
@@ -25,7 +24,7 @@ class AppTheme with _$AppTheme {
         return AppTheme(
           isDark: isDark,
           themeType: themeType,
-          colorSchemeSeed: const Color(0xFF261D3A),
+          colorSchemeSeed: const Color(0xFFFEE400),
         );
 
       case ThemeType.SeafoamGreen:
@@ -48,13 +47,10 @@ class AppTheme with _$AppTheme {
       colorScheme: ColorScheme.fromSeed(
         brightness: isDark ? Brightness.dark : Brightness.light,
         seedColor: colorSchemeSeed,
-        background: isDark ? null : colorSchemeSeed,
+        surface: isDark ? const Color(0xFF222328) : const Color(0xFFF9F9F9),
       ),
     );
-    return t.copyWith(
-      disabledColor: Colors.grey.shade300,
-      cardColor: isDark ? Colors.black12 : null,
-    );
+    return t.copyWith(cardColor: colorSchemeSeed);
   }
 }
 
@@ -67,10 +63,4 @@ extension ThemeExtension on ThemeType {
 
     return pascalCaseName.join(' ');
   }
-}
-
-Color _decreaseColorSaturation(Color color, double decrement) {
-  var hslColor = HSLColor.fromColor(color);
-  var newValue = min(max(hslColor.saturation - decrement, 0.0), 1.0);
-  return hslColor.withSaturation(newValue).toColor();
 }

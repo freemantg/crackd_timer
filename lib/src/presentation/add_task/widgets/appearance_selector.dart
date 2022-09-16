@@ -21,7 +21,7 @@ class AppearanceSelector extends StatelessWidget {
         return GestureDetector(
           onTap: () => _showCustomizeModalButtonSheet(context),
           child: Container(
-            height: 48.0 + Insets.m,
+            height: 48.0,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(Corners.s10),
               color: state.task.taskColor,

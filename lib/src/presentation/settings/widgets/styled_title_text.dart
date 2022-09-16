@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:robot_timer/src/shared/styles.dart';
 
 import '../../../shared/text_styles.dart';
 
@@ -7,30 +8,20 @@ class StyledHeadingAndSubHeading extends StatelessWidget {
     Key? key,
     required this.title,
     required this.text,
-    this.textAlign = TextAlign.start,
   }) : super(key: key);
 
   final String title;
   final String text;
-  final TextAlign textAlign;
 
   @override
   Widget build(BuildContext context) {
-    return RichText(
-      textAlign: textAlign,
-      text: TextSpan(
-        text: '$title\n',
-        style: TextStyles.h1HighOpacity,
-        children: [
-          TextSpan(
-            text: text,
-            style: TextStyles.title1.copyWith(
-              fontWeight: FontWeight.normal,
-              height: 2.0,
-            ),
-          )
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(title, style: TextStyles.h1),
+        const HSpace(size: Insets.sm),
+        Text(text, style: TextStyles.body1)
+      ],
     );
   }
 }

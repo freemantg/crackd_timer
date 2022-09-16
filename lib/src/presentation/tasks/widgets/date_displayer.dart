@@ -11,8 +11,8 @@ class DateDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      DateFormat('EEEE, MMMM d').format(DateTime.now()),
-      style: TextStyles.title1MediumOpacity,
+      DateFormat('d MMMM, yy').format(DateTime.now()),
+      style: TextStyles.title2,
     );
   }
 }

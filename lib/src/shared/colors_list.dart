@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 final List<Color> colorsList = [
+  const Color(0xFFFFDB00),
   const Color(0xFFACDEE7),
   const Color(0xFFCCAACB),
   const Color(0xFFFFFFB5),

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:robot_timer/src/presentation/shared/styled_components/styled_app_bar.dart';
 
 import '../../../injection_container.dart';
 import '../../application/tasks/task_form/bloc/task_form_bloc.dart';
 import '../../domain/tasks/task.dart';
 import '../../shared/app_router.gr.dart';
 import '../../shared/styles.dart';
+import '../shared/styled_components/styled_app_bar.dart';
 import '../shared/styled_components/styled_curved_decoration.dart';
 import '../shared/styled_components/styled_title_subtitle.dart';
 import '../../shared/text_styles.dart';
@@ -40,7 +40,7 @@ class AddTaskPage extends StatelessWidget {
           appBar: StyledAppBar.addTaskPage(),
           body: Stack(
             children: [
-              const _StyledInstructions(),
+              // const _StyledInstructions(),
               _StyledAddTaskBottomSheet(task: task),
             ],
           ),
@@ -71,31 +71,20 @@ class _StyledInstructions extends StatelessWidget {
         vertical: Insets.m,
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Text(
-                'How to use the Pomodoro?',
-                style: TextStyles.h2.copyWith(
-                  color: Colors.white.withOpacity(TextOpacity.mediumEmphasis),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(Insets.sm),
-                child: Icon(
-                  Icons.keyboard_arrow_down,
-                  color: Colors.white.withOpacity(TextOpacity.lowEmphasis),
-                ),
-              ),
-            ],
+          Text(
+            'How to use the Pomodoro?',
+            style: TextStyles.h2.copyWith(color: Colors.white),
           ),
+          const HSpace(size: Insets.sm),
           Expanded(
             child: Markdown(
               padding: EdgeInsets.zero,
               data: _pomodoroInstructions,
               styleSheet: MarkdownStyleSheet(
-                p: TextStyles.title2LowOpacity,
-                listBullet: TextStyles.title2LowOpacity,
+                p: TextStyles.title2,
+                listBullet: TextStyles.title2,
               ),
             ),
           ),

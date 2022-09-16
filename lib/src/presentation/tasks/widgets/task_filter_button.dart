@@ -4,7 +4,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:intl/intl.dart';
 import 'package:robot_timer/src/application/tasks/task_watcher/task_watcher_bloc.dart';
 
-import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
 
 enum TaskFilter { all, active, complete }
@@ -20,6 +19,10 @@ class TaskFilterButton extends HookWidget {
 
     return Row(
       children: [
+        _StyledHeading(toBeginningOfSentenceCase(
+          TaskFilter.values[index.value].name,
+        )!),
+        const Spacer(),
         GestureDetector(
           child: const Icon(Icons.filter_list),
           onTap: () {
@@ -29,9 +32,6 @@ class TaskFilterButton extends HookWidget {
             _buildTaskFilterAction(context, TaskFilter.values[index.value]);
           },
         ),
-        _StyledGridHeading(toBeginningOfSentenceCase(
-          TaskFilter.values[index.value].name,
-        )!),
       ],
     );
   }
@@ -57,8 +57,8 @@ void _buildTaskFilterAction(
   }
 }
 
-class _StyledGridHeading extends StatelessWidget {
-  const _StyledGridHeading(
+class _StyledHeading extends StatelessWidget {
+  const _StyledHeading(
     this.title, {
     Key? key,
   }) : super(key: key);
@@ -67,12 +67,6 @@ class _StyledGridHeading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: Insets.m,
-        horizontal: Insets.sm,
-      ),
-      child: Text(title, style: TextStyles.h2),
-    );
+    return Text(title, style: TextStyles.title1);
   }
 }

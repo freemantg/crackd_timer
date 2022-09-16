@@ -20,12 +20,12 @@ class PomodoroCounter extends StatelessWidget {
       builder: (context, state) {
         return LayoutBuilder(
           builder: (context, constraints) {
-            return _StyledLowOpacityContainer(
+            return _StyledContainer(
               child: Column(
                 children: [
                   Text(
                     _buildTimerText(state.timerType),
-                    style: TextStyles.title1MediumOpacity,
+                    style: TextStyles.title1,
                   ),
                   const HSpace(size: Insets.m),
                   ConstrainedBox(
@@ -95,19 +95,21 @@ class _EmojiIndicator extends StatelessWidget {
   }
 }
 
-class _StyledLowOpacityContainer extends StatelessWidget {
+class _StyledContainer extends StatelessWidget {
   final Widget child;
 
-  const _StyledLowOpacityContainer({
+  const _StyledContainer({
     required this.child,
   });
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Container(
       padding: const EdgeInsets.all(Insets.m),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.1),
+        color: theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(Corners.s10),
       ),
       child: child,

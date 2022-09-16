@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../shared/styles.dart';
-import 'styled_grid_paper.dart';
 
 class StyledCurvedDecoration extends StatelessWidget {
   const StyledCurvedDecoration({
@@ -27,17 +26,14 @@ class StyledCurvedDecoration extends StatelessWidget {
     return Container(
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
-        color: theme.cardColor,
+        color: theme.colorScheme.surface,
         borderRadius: const BorderRadius.vertical(
           top: Radius.circular(Corners.btn),
         ),
       ),
-      child: StyledGridPaper(
-        color: grid ? theme.primaryColor.withOpacity(0.1) : Colors.transparent,
-        child: Padding(
-          padding: padding,
-          child: child,
-        ),
+      child: Padding(
+        padding: const EdgeInsets.all(Insets.l),
+        child: child,
       ),
     );
   }

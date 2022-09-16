@@ -70,7 +70,7 @@ class _ThemeTile extends StatelessWidget {
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         color: state.themeType == themeType
-                            ? theme.colorScheme.primaryContainer
+                            ? theme.cardColor
                             : theme.disabledColor,
                         shape: BoxShape.circle,
                       ),
@@ -103,9 +103,7 @@ class _StyledCheckBox extends StatelessWidget {
             height: 24,
             width: 24,
             decoration: BoxDecoration(
-              color: state.isDark
-                  ? theme.colorScheme.primaryContainer
-                  : theme.disabledColor,
+              color: state.isDark ? theme.cardColor : theme.disabledColor,
               borderRadius: BorderRadius.circular(Insets.sm),
             ),
             duration: kThemeAnimationDuration,
