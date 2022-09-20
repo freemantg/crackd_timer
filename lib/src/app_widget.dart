@@ -82,6 +82,7 @@ class AppWidget extends StatelessWidget {
         child: BlocBuilder<ThemeCubit, AppTheme>(
           builder: (context, appTheme) {
             return MaterialApp.router(
+              debugShowCheckedModeBanner: false,
               routerDelegate: getIt<AppRouter>().delegate(),
               routeInformationParser: getIt<AppRouter>().defaultRouteParser(),
               theme: appTheme.themeData,

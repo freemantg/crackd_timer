@@ -5,7 +5,6 @@ import 'package:robot_timer/src/shared/extensions.dart';
 
 import '../../../../injection_container.dart';
 import '../../../application/timer/timer_bloc/timer_bloc.dart';
-import '../../../domain/tasks/task.dart';
 import '../../../shared/app_router.gr.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
@@ -156,54 +155,6 @@ class StyledCard extends StatelessWidget {
         padding: const EdgeInsets.all(Insets.m),
         child: child,
       ),
-    );
-  }
-}
-
-class SelectedTaskCard extends StatelessWidget {
-  const SelectedTaskCard({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<TaskCubit, Task>(
-      builder: (context, state) {
-        return StyledCard(
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Text(
-                    'Sessions:',
-                    style: TextStyles.body1Dark,
-                  ),
-                  const Spacer(),
-                  Text(
-                    state.completedSessions.toString(),
-                    style: TextStyles.title1Dark,
-                  ),
-                  Text(' / ', style: TextStyles.title2Dark),
-                  Text(
-                    state.activeSessions.toString(),
-                    style: TextStyles.title2Dark,
-                  )
-                ],
-              ),
-              const Divider(),
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(state.title, style: TextStyles.title1Dark),
-                  ),
-                  const VSpace(size: Insets.sm),
-                  Text(state.emoji.emoji, style: TextStyles.title1),
-                ],
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 }
