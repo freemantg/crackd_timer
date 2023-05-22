@@ -23,8 +23,8 @@ class _TimerBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
+    return const Column(
+      children: [
         Spacer(),
         PomodoroCounter(),
         HSpace(size: Insets.xl),

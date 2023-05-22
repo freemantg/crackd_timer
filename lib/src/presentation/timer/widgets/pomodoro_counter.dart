@@ -25,7 +25,7 @@ class PomodoroCounter extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    _buildTimerText(state.timerType),
+                    state.timerType.getTimerName,
                     style: TextStyles.title1,
                   ),
                   const HSpace(size: Insets.m),
@@ -60,19 +60,6 @@ class PomodoroCounter extends StatelessWidget {
       },
     );
   }
-
-  String _buildTimerText(TimerType timerType) {
-    switch (timerType) {
-      case TimerType.focus:
-        return 'Pomodoro';
-
-      case TimerType.shortBreak:
-        return 'Short Break';
-
-      case TimerType.longBreak:
-        return 'Long Break';
-    }
-  }
 }
 
 class _EmojiIndicator extends StatelessWidget {
@@ -93,5 +80,20 @@ class _EmojiIndicator extends StatelessWidget {
         color: isCompleted ? null : Colors.white.withOpacity(0.25),
       ),
     );
+  }
+}
+
+extension TimerTypeX on TimerType {
+  String get getTimerName {
+    switch (this) {
+      case TimerType.focus:
+        return 'Pomodoro';
+      case TimerType.longBreak:
+        return 'Long Break';
+      case TimerType.shortBreak:
+        return 'Short Break';
+      default:
+        return 'ERROR LOADING TIMER';
+    }
   }
 }

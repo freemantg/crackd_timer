@@ -13,7 +13,7 @@ extension IntX on int {
   }
 }
 
-extension ThemeExtension on ThemeType {
+extension ThemeX on ThemeType {
   String get themeName {
     final pascalCaseName = RegExp(r"(?:[A-Z]+|^)[a-z]*")
         .allMatches(name)

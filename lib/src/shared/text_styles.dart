@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 
 class Fonts {
   static const String futuraPT = 'FuturaPT';
@@ -12,7 +12,7 @@ class TextStyles {
     height: 1,
   );
 
-  static TextStyle roboto = GoogleFonts.roboto();
+  static TextStyle roboto = const TextStyle();
 
   static TextStyle get h1 =>
       TextStyles.futuraPT.copyWith(fontWeight: FontWeight.w600, fontSize: 24);
