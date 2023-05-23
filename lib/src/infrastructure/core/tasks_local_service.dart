@@ -10,6 +10,15 @@ class TasksLocalSource {
 
   TasksLocalSource(this._database);
 
+  Stream<List<TaskDto>> _getTasksStream(Finder finder) async* {
+    final records = _store.query(finder: finder).onSnapshots(_database);
+    yield* records.map(
+      (snapshots) => snapshots
+          .map((snapshot) => TaskDto.fromJson(snapshot.value))
+          .toList(),
+    );
+  }
+
   Stream<TaskDto> fetchNoteStream(TaskDto taskDto) async* {
     final record = _store.record(taskDto.uniqueId).onSnapshot(_database);
     yield* record.map(
@@ -20,38 +29,26 @@ class TasksLocalSource {
   }
 
   Stream<List<TaskDto>> getAllTasksStream() async* {
-    final records = _store
-        .query(
-            finder: Finder(
-          sortOrders: [SortOrder('completed')],
-        ))
-        .onSnapshots(_database);
-    yield* records.map(
-      (snapshots) => snapshots
-          .map((snapshot) => TaskDto.fromJson(snapshot.value))
-          .toList(),
+    yield* _getTasksStream(
+      Finder(
+        sortOrders: [SortOrder('completed')],
+      ),
     );
   }
 
   Stream<List<TaskDto>> getActiveTasksStream() async* {
-    final records = _store
-        .query(finder: Finder(filter: Filter.equals('completed', false)))
-        .onSnapshots(_database);
-    yield* records.map(
-      (snapshots) => snapshots
-          .map((snapshot) => TaskDto.fromJson(snapshot.value))
-          .toList(),
+    yield* _getTasksStream(
+      Finder(
+        filter: Filter.equals('completed', false),
+      ),
     );
   }
 
   Stream<List<TaskDto>> getCompletedTasksStream() async* {
-    final records = _store
-        .query(finder: Finder(filter: Filter.equals('completed', true)))
-        .onSnapshots(_database);
-    yield* records.map(
-      (snapshots) => snapshots
-          .map((snapshot) => TaskDto.fromJson(snapshot.value))
-          .toList(),
+    yield* _getTasksStream(
+      Finder(
+        filter: Filter.equals('completed', true),
+      ),
     );
   }
 
