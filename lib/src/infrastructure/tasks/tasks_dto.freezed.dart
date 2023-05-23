@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'tasks_dto.dart';
 
@@ -37,7 +37,8 @@ mixin _$TaskDto {
 /// @nodoc
 abstract class $TaskDtoCopyWith<$Res> {
   factory $TaskDtoCopyWith(TaskDto value, $Res Function(TaskDto) then) =
-      _$TaskDtoCopyWithImpl<$Res>;
+      _$TaskDtoCopyWithImpl<$Res, TaskDto>;
+  @useResult
   $Res call(
       {String uniqueId,
       String title,
@@ -52,64 +53,68 @@ abstract class $TaskDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TaskDtoCopyWithImpl<$Res> implements $TaskDtoCopyWith<$Res> {
+class _$TaskDtoCopyWithImpl<$Res, $Val extends TaskDto>
+    implements $TaskDtoCopyWith<$Res> {
   _$TaskDtoCopyWithImpl(this._value, this._then);
 
-  final TaskDto _value;
   // ignore: unused_field
-  final $Res Function(TaskDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? uniqueId = freezed,
-    Object? title = freezed,
-    Object? description = freezed,
-    Object? emoji = freezed,
-    Object? taskColor = freezed,
-    Object? activeSessions = freezed,
-    Object? completedSessions = freezed,
-    Object? completed = freezed,
+    Object? uniqueId = null,
+    Object? title = null,
+    Object? description = null,
+    Object? emoji = null,
+    Object? taskColor = null,
+    Object? activeSessions = null,
+    Object? completedSessions = null,
+    Object? completed = null,
   }) {
     return _then(_value.copyWith(
-      uniqueId: uniqueId == freezed
+      uniqueId: null == uniqueId
           ? _value.uniqueId
           : uniqueId // ignore: cast_nullable_to_non_nullable
               as String,
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      emoji: emoji == freezed
+      emoji: null == emoji
           ? _value.emoji
           : emoji // ignore: cast_nullable_to_non_nullable
               as Emoji,
-      taskColor: taskColor == freezed
+      taskColor: null == taskColor
           ? _value.taskColor
           : taskColor // ignore: cast_nullable_to_non_nullable
               as int,
-      activeSessions: activeSessions == freezed
+      activeSessions: null == activeSessions
           ? _value.activeSessions
           : activeSessions // ignore: cast_nullable_to_non_nullable
               as int,
-      completedSessions: completedSessions == freezed
+      completedSessions: null == completedSessions
           ? _value.completedSessions
           : completedSessions // ignore: cast_nullable_to_non_nullable
               as int,
-      completed: completed == freezed
+      completed: null == completed
           ? _value.completed
           : completed // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $EmojiCopyWith<$Res> get emoji {
     return $EmojiCopyWith<$Res>(_value.emoji, (value) {
-      return _then(_value.copyWith(emoji: value));
+      return _then(_value.copyWith(emoji: value) as $Val);
     });
   }
 }
@@ -120,6 +125,7 @@ abstract class _$$_TaskDtoCopyWith<$Res> implements $TaskDtoCopyWith<$Res> {
           _$_TaskDto value, $Res Function(_$_TaskDto) then) =
       __$$_TaskDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String uniqueId,
       String title,
@@ -135,55 +141,54 @@ abstract class _$$_TaskDtoCopyWith<$Res> implements $TaskDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TaskDtoCopyWithImpl<$Res> extends _$TaskDtoCopyWithImpl<$Res>
+class __$$_TaskDtoCopyWithImpl<$Res>
+    extends _$TaskDtoCopyWithImpl<$Res, _$_TaskDto>
     implements _$$_TaskDtoCopyWith<$Res> {
   __$$_TaskDtoCopyWithImpl(_$_TaskDto _value, $Res Function(_$_TaskDto) _then)
-      : super(_value, (v) => _then(v as _$_TaskDto));
+      : super(_value, _then);
 
-  @override
-  _$_TaskDto get _value => super._value as _$_TaskDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? uniqueId = freezed,
-    Object? title = freezed,
-    Object? description = freezed,
-    Object? emoji = freezed,
-    Object? taskColor = freezed,
-    Object? activeSessions = freezed,
-    Object? completedSessions = freezed,
-    Object? completed = freezed,
+    Object? uniqueId = null,
+    Object? title = null,
+    Object? description = null,
+    Object? emoji = null,
+    Object? taskColor = null,
+    Object? activeSessions = null,
+    Object? completedSessions = null,
+    Object? completed = null,
   }) {
     return _then(_$_TaskDto(
-      uniqueId: uniqueId == freezed
+      uniqueId: null == uniqueId
           ? _value.uniqueId
           : uniqueId // ignore: cast_nullable_to_non_nullable
               as String,
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      emoji: emoji == freezed
+      emoji: null == emoji
           ? _value.emoji
           : emoji // ignore: cast_nullable_to_non_nullable
               as Emoji,
-      taskColor: taskColor == freezed
+      taskColor: null == taskColor
           ? _value.taskColor
           : taskColor // ignore: cast_nullable_to_non_nullable
               as int,
-      activeSessions: activeSessions == freezed
+      activeSessions: null == activeSessions
           ? _value.activeSessions
           : activeSessions // ignore: cast_nullable_to_non_nullable
               as int,
-      completedSessions: completedSessions == freezed
+      completedSessions: null == completedSessions
           ? _value.completedSessions
           : completedSessions // ignore: cast_nullable_to_non_nullable
               as int,
-      completed: completed == freezed
+      completed: null == completed
           ? _value.completed
           : completed // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -235,34 +240,30 @@ class _$_TaskDto extends _TaskDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TaskDto &&
-            const DeepCollectionEquality().equals(other.uniqueId, uniqueId) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.emoji, emoji) &&
-            const DeepCollectionEquality().equals(other.taskColor, taskColor) &&
-            const DeepCollectionEquality()
-                .equals(other.activeSessions, activeSessions) &&
-            const DeepCollectionEquality()
-                .equals(other.completedSessions, completedSessions) &&
-            const DeepCollectionEquality().equals(other.completed, completed));
+            (identical(other.uniqueId, uniqueId) ||
+                other.uniqueId == uniqueId) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.emoji, emoji) || other.emoji == emoji) &&
+            (identical(other.taskColor, taskColor) ||
+                other.taskColor == taskColor) &&
+            (identical(other.activeSessions, activeSessions) ||
+                other.activeSessions == activeSessions) &&
+            (identical(other.completedSessions, completedSessions) ||
+                other.completedSessions == completedSessions) &&
+            (identical(other.completed, completed) ||
+                other.completed == completed));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(uniqueId),
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(emoji),
-      const DeepCollectionEquality().hash(taskColor),
-      const DeepCollectionEquality().hash(activeSessions),
-      const DeepCollectionEquality().hash(completedSessions),
-      const DeepCollectionEquality().hash(completed));
+  int get hashCode => Object.hash(runtimeType, uniqueId, title, description,
+      emoji, taskColor, activeSessions, completedSessions, completed);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TaskDtoCopyWith<_$_TaskDto> get copyWith =>
       __$$_TaskDtoCopyWithImpl<_$_TaskDto>(this, _$identity);
 

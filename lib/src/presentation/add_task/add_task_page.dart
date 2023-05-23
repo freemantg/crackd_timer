@@ -1,17 +1,17 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../injection_container.dart';
 import '../../application/blocs.dart';
 import '../../domain/tasks/task.dart';
-import '../../shared/app_router.gr.dart';
+import '../../shared/app_router.dart';
 import '../../shared/styles.dart';
 import '../../shared/text_styles.dart';
 import '../shared/widgets.dart';
 import 'widgets/widgets.dart';
 
-
-
+@RoutePage()
 class AddTaskPage extends StatelessWidget {
   final Task? task;
   const AddTaskPage({Key? key, this.task}) : super(key: key);
@@ -50,11 +50,11 @@ class _BuildBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: Insets.l),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: Insets.l),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children: [
           AppearanceSelector(),
           HSpace(size: Insets.m),
           TitleTextFormField(),

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../shared/app_router.gr.dart';
 import 'widgets/widgets.dart';
 
-
+@RoutePage()
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 

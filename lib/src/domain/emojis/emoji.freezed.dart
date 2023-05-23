@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'emoji.dart';
 
@@ -31,33 +31,37 @@ mixin _$Emoji {
 /// @nodoc
 abstract class $EmojiCopyWith<$Res> {
   factory $EmojiCopyWith(Emoji value, $Res Function(Emoji) then) =
-      _$EmojiCopyWithImpl<$Res>;
+      _$EmojiCopyWithImpl<$Res, Emoji>;
+  @useResult
   $Res call({String emoji, String category});
 }
 
 /// @nodoc
-class _$EmojiCopyWithImpl<$Res> implements $EmojiCopyWith<$Res> {
+class _$EmojiCopyWithImpl<$Res, $Val extends Emoji>
+    implements $EmojiCopyWith<$Res> {
   _$EmojiCopyWithImpl(this._value, this._then);
 
-  final Emoji _value;
   // ignore: unused_field
-  final $Res Function(Emoji) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? emoji = freezed,
-    Object? category = freezed,
+    Object? emoji = null,
+    Object? category = null,
   }) {
     return _then(_value.copyWith(
-      emoji: emoji == freezed
+      emoji: null == emoji
           ? _value.emoji
           : emoji // ignore: cast_nullable_to_non_nullable
               as String,
-      category: category == freezed
+      category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -66,29 +70,28 @@ abstract class _$$_EmojiCopyWith<$Res> implements $EmojiCopyWith<$Res> {
   factory _$$_EmojiCopyWith(_$_Emoji value, $Res Function(_$_Emoji) then) =
       __$$_EmojiCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String emoji, String category});
 }
 
 /// @nodoc
-class __$$_EmojiCopyWithImpl<$Res> extends _$EmojiCopyWithImpl<$Res>
+class __$$_EmojiCopyWithImpl<$Res> extends _$EmojiCopyWithImpl<$Res, _$_Emoji>
     implements _$$_EmojiCopyWith<$Res> {
   __$$_EmojiCopyWithImpl(_$_Emoji _value, $Res Function(_$_Emoji) _then)
-      : super(_value, (v) => _then(v as _$_Emoji));
+      : super(_value, _then);
 
-  @override
-  _$_Emoji get _value => super._value as _$_Emoji;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? emoji = freezed,
-    Object? category = freezed,
+    Object? emoji = null,
+    Object? category = null,
   }) {
     return _then(_$_Emoji(
-      emoji: emoji == freezed
+      emoji: null == emoji
           ? _value.emoji
           : emoji // ignore: cast_nullable_to_non_nullable
               as String,
-      category: category == freezed
+      category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String,
@@ -120,19 +123,18 @@ class _$_Emoji extends _Emoji {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Emoji &&
-            const DeepCollectionEquality().equals(other.emoji, emoji) &&
-            const DeepCollectionEquality().equals(other.category, category));
+            (identical(other.emoji, emoji) || other.emoji == emoji) &&
+            (identical(other.category, category) ||
+                other.category == category));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(emoji),
-      const DeepCollectionEquality().hash(category));
+  int get hashCode => Object.hash(runtimeType, emoji, category);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EmojiCopyWith<_$_Emoji> get copyWith =>
       __$$_EmojiCopyWithImpl<_$_Emoji>(this, _$identity);
 

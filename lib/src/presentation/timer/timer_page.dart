@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../shared/styles.dart';
 import '../shared/widgets.dart';
 import 'widgets/widgets.dart';
 
+@RoutePage()
 class TimerPage extends StatelessWidget {
   const TimerPage({super.key});
 

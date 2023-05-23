@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:robot_timer/src/domain/core/unique_id.dart';
-import 'package:robot_timer/src/shared/colors_list.dart';
 
+import '../../shared/colors_list.dart';
+import '../core/unique_id.dart';
 import '../emojis/emoji.dart';
 
 part 'task.freezed.dart';

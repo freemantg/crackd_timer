@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'alarm_cubit.dart';
 
@@ -28,33 +28,37 @@ mixin _$AlarmState {
 abstract class $AlarmStateCopyWith<$Res> {
   factory $AlarmStateCopyWith(
           AlarmState value, $Res Function(AlarmState) then) =
-      _$AlarmStateCopyWithImpl<$Res>;
+      _$AlarmStateCopyWithImpl<$Res, AlarmState>;
+  @useResult
   $Res call({AlarmSound alarmSound, bool tickingSound});
 }
 
 /// @nodoc
-class _$AlarmStateCopyWithImpl<$Res> implements $AlarmStateCopyWith<$Res> {
+class _$AlarmStateCopyWithImpl<$Res, $Val extends AlarmState>
+    implements $AlarmStateCopyWith<$Res> {
   _$AlarmStateCopyWithImpl(this._value, this._then);
 
-  final AlarmState _value;
   // ignore: unused_field
-  final $Res Function(AlarmState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? alarmSound = freezed,
-    Object? tickingSound = freezed,
+    Object? alarmSound = null,
+    Object? tickingSound = null,
   }) {
     return _then(_value.copyWith(
-      alarmSound: alarmSound == freezed
+      alarmSound: null == alarmSound
           ? _value.alarmSound
           : alarmSound // ignore: cast_nullable_to_non_nullable
               as AlarmSound,
-      tickingSound: tickingSound == freezed
+      tickingSound: null == tickingSound
           ? _value.tickingSound
           : tickingSound // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -65,31 +69,30 @@ abstract class _$$_AlarmCubitStateCopyWith<$Res>
           _$_AlarmCubitState value, $Res Function(_$_AlarmCubitState) then) =
       __$$_AlarmCubitStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({AlarmSound alarmSound, bool tickingSound});
 }
 
 /// @nodoc
 class __$$_AlarmCubitStateCopyWithImpl<$Res>
-    extends _$AlarmStateCopyWithImpl<$Res>
+    extends _$AlarmStateCopyWithImpl<$Res, _$_AlarmCubitState>
     implements _$$_AlarmCubitStateCopyWith<$Res> {
   __$$_AlarmCubitStateCopyWithImpl(
       _$_AlarmCubitState _value, $Res Function(_$_AlarmCubitState) _then)
-      : super(_value, (v) => _then(v as _$_AlarmCubitState));
+      : super(_value, _then);
 
-  @override
-  _$_AlarmCubitState get _value => super._value as _$_AlarmCubitState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? alarmSound = freezed,
-    Object? tickingSound = freezed,
+    Object? alarmSound = null,
+    Object? tickingSound = null,
   }) {
     return _then(_$_AlarmCubitState(
-      alarmSound: alarmSound == freezed
+      alarmSound: null == alarmSound
           ? _value.alarmSound
           : alarmSound // ignore: cast_nullable_to_non_nullable
               as AlarmSound,
-      tickingSound: tickingSound == freezed
+      tickingSound: null == tickingSound
           ? _value.tickingSound
           : tickingSound // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -118,20 +121,18 @@ class _$_AlarmCubitState implements _AlarmCubitState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AlarmCubitState &&
-            const DeepCollectionEquality()
-                .equals(other.alarmSound, alarmSound) &&
-            const DeepCollectionEquality()
-                .equals(other.tickingSound, tickingSound));
+            (identical(other.alarmSound, alarmSound) ||
+                other.alarmSound == alarmSound) &&
+            (identical(other.tickingSound, tickingSound) ||
+                other.tickingSound == tickingSound));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(alarmSound),
-      const DeepCollectionEquality().hash(tickingSound));
+  int get hashCode => Object.hash(runtimeType, alarmSound, tickingSound);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AlarmCubitStateCopyWith<_$_AlarmCubitState> get copyWith =>
       __$$_AlarmCubitStateCopyWithImpl<_$_AlarmCubitState>(this, _$identity);
 }

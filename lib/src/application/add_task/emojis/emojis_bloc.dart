@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:robot_timer/src/infrastructure/emojis/emoji_repository.dart';
 
 import '../../../domain/emojis/emoji.dart';
+import '../../../infrastructure/emojis/emoji_repository.dart';
 
 part 'emojis_event.dart';
 part 'emojis_state.dart';

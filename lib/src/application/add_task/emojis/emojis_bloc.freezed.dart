@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'emojis_bloc.dart';
 
@@ -24,8 +24,8 @@ mixin _$EmojisEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(List<Emoji> emojis)? emojisReceived,
+    TResult? Function()? started,
+    TResult? Function(List<Emoji> emojis)? emojisReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,8 +43,8 @@ mixin _$EmojisEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_EmojisRecieved value)? emojisReceived,
+    TResult? Function(_Started value)? started,
+    TResult? Function(_EmojisRecieved value)? emojisReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,16 +60,18 @@ mixin _$EmojisEvent {
 abstract class $EmojisEventCopyWith<$Res> {
   factory $EmojisEventCopyWith(
           EmojisEvent value, $Res Function(EmojisEvent) then) =
-      _$EmojisEventCopyWithImpl<$Res>;
+      _$EmojisEventCopyWithImpl<$Res, EmojisEvent>;
 }
 
 /// @nodoc
-class _$EmojisEventCopyWithImpl<$Res> implements $EmojisEventCopyWith<$Res> {
+class _$EmojisEventCopyWithImpl<$Res, $Val extends EmojisEvent>
+    implements $EmojisEventCopyWith<$Res> {
   _$EmojisEventCopyWithImpl(this._value, this._then);
 
-  final EmojisEvent _value;
   // ignore: unused_field
-  final $Res Function(EmojisEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -80,13 +82,11 @@ abstract class _$$_StartedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res> extends _$EmojisEventCopyWithImpl<$Res>
+class __$$_StartedCopyWithImpl<$Res>
+    extends _$EmojisEventCopyWithImpl<$Res, _$_Started>
     implements _$$_StartedCopyWith<$Res> {
   __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
-      : super(_value, (v) => _then(v as _$_Started));
-
-  @override
-  _$_Started get _value => super._value as _$_Started;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -120,8 +120,8 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(List<Emoji> emojis)? emojisReceived,
+    TResult? Function()? started,
+    TResult? Function(List<Emoji> emojis)? emojisReceived,
   }) {
     return started?.call();
   }
@@ -151,8 +151,8 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_EmojisRecieved value)? emojisReceived,
+    TResult? Function(_Started value)? started,
+    TResult? Function(_EmojisRecieved value)? emojisReceived,
   }) {
     return started?.call(this);
   }
@@ -180,26 +180,25 @@ abstract class _$$_EmojisRecievedCopyWith<$Res> {
   factory _$$_EmojisRecievedCopyWith(
           _$_EmojisRecieved value, $Res Function(_$_EmojisRecieved) then) =
       __$$_EmojisRecievedCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<Emoji> emojis});
 }
 
 /// @nodoc
 class __$$_EmojisRecievedCopyWithImpl<$Res>
-    extends _$EmojisEventCopyWithImpl<$Res>
+    extends _$EmojisEventCopyWithImpl<$Res, _$_EmojisRecieved>
     implements _$$_EmojisRecievedCopyWith<$Res> {
   __$$_EmojisRecievedCopyWithImpl(
       _$_EmojisRecieved _value, $Res Function(_$_EmojisRecieved) _then)
-      : super(_value, (v) => _then(v as _$_EmojisRecieved));
+      : super(_value, _then);
 
-  @override
-  _$_EmojisRecieved get _value => super._value as _$_EmojisRecieved;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? emojis = freezed,
+    Object? emojis = null,
   }) {
     return _then(_$_EmojisRecieved(
-      emojis == freezed
+      null == emojis
           ? _value._emojis
           : emojis // ignore: cast_nullable_to_non_nullable
               as List<Emoji>,
@@ -215,6 +214,7 @@ class _$_EmojisRecieved implements _EmojisRecieved {
   final List<Emoji> _emojis;
   @override
   List<Emoji> get emojis {
+    if (_emojis is EqualUnmodifiableListView) return _emojis;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_emojis);
   }
@@ -238,6 +238,7 @@ class _$_EmojisRecieved implements _EmojisRecieved {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EmojisRecievedCopyWith<_$_EmojisRecieved> get copyWith =>
       __$$_EmojisRecievedCopyWithImpl<_$_EmojisRecieved>(this, _$identity);
 
@@ -253,8 +254,8 @@ class _$_EmojisRecieved implements _EmojisRecieved {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(List<Emoji> emojis)? emojisReceived,
+    TResult? Function()? started,
+    TResult? Function(List<Emoji> emojis)? emojisReceived,
   }) {
     return emojisReceived?.call(emojis);
   }
@@ -284,8 +285,8 @@ class _$_EmojisRecieved implements _EmojisRecieved {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_EmojisRecieved value)? emojisReceived,
+    TResult? Function(_Started value)? started,
+    TResult? Function(_EmojisRecieved value)? emojisReceived,
   }) {
     return emojisReceived?.call(this);
   }
@@ -325,10 +326,10 @@ mixin _$EmojisState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<Emoji> emojis)? loadSuccess,
-    TResult Function(Exception failure)? loadFailure,
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function(List<Emoji> emojis)? loadSuccess,
+    TResult? Function(Exception failure)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -350,10 +351,10 @@ mixin _$EmojisState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(EmojisLoadInProgress value)? loadInProgress,
-    TResult Function(LoadSuccess value)? loadSuccess,
-    TResult Function(LoadFailure value)? loadFailure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(EmojisLoadInProgress value)? loadInProgress,
+    TResult? Function(LoadSuccess value)? loadSuccess,
+    TResult? Function(LoadFailure value)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -371,16 +372,18 @@ mixin _$EmojisState {
 abstract class $EmojisStateCopyWith<$Res> {
   factory $EmojisStateCopyWith(
           EmojisState value, $Res Function(EmojisState) then) =
-      _$EmojisStateCopyWithImpl<$Res>;
+      _$EmojisStateCopyWithImpl<$Res, EmojisState>;
 }
 
 /// @nodoc
-class _$EmojisStateCopyWithImpl<$Res> implements $EmojisStateCopyWith<$Res> {
+class _$EmojisStateCopyWithImpl<$Res, $Val extends EmojisState>
+    implements $EmojisStateCopyWith<$Res> {
   _$EmojisStateCopyWithImpl(this._value, this._then);
 
-  final EmojisState _value;
   // ignore: unused_field
-  final $Res Function(EmojisState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -390,13 +393,11 @@ abstract class _$$InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$InitialCopyWithImpl<$Res> extends _$EmojisStateCopyWithImpl<$Res>
+class __$$InitialCopyWithImpl<$Res>
+    extends _$EmojisStateCopyWithImpl<$Res, _$Initial>
     implements _$$InitialCopyWith<$Res> {
   __$$InitialCopyWithImpl(_$Initial _value, $Res Function(_$Initial) _then)
-      : super(_value, (v) => _then(v as _$Initial));
-
-  @override
-  _$Initial get _value => super._value as _$Initial;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -432,10 +433,10 @@ class _$Initial implements Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<Emoji> emojis)? loadSuccess,
-    TResult Function(Exception failure)? loadFailure,
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function(List<Emoji> emojis)? loadSuccess,
+    TResult? Function(Exception failure)? loadFailure,
   }) {
     return initial?.call();
   }
@@ -469,10 +470,10 @@ class _$Initial implements Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(EmojisLoadInProgress value)? loadInProgress,
-    TResult Function(LoadSuccess value)? loadSuccess,
-    TResult Function(LoadFailure value)? loadFailure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(EmojisLoadInProgress value)? loadInProgress,
+    TResult? Function(LoadSuccess value)? loadSuccess,
+    TResult? Function(LoadFailure value)? loadFailure,
   }) {
     return initial?.call(this);
   }
@@ -506,14 +507,11 @@ abstract class _$$EmojisLoadInProgressCopyWith<$Res> {
 
 /// @nodoc
 class __$$EmojisLoadInProgressCopyWithImpl<$Res>
-    extends _$EmojisStateCopyWithImpl<$Res>
+    extends _$EmojisStateCopyWithImpl<$Res, _$EmojisLoadInProgress>
     implements _$$EmojisLoadInProgressCopyWith<$Res> {
   __$$EmojisLoadInProgressCopyWithImpl(_$EmojisLoadInProgress _value,
       $Res Function(_$EmojisLoadInProgress) _then)
-      : super(_value, (v) => _then(v as _$EmojisLoadInProgress));
-
-  @override
-  _$EmojisLoadInProgress get _value => super._value as _$EmojisLoadInProgress;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -549,10 +547,10 @@ class _$EmojisLoadInProgress implements EmojisLoadInProgress {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<Emoji> emojis)? loadSuccess,
-    TResult Function(Exception failure)? loadFailure,
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function(List<Emoji> emojis)? loadSuccess,
+    TResult? Function(Exception failure)? loadFailure,
   }) {
     return loadInProgress?.call();
   }
@@ -586,10 +584,10 @@ class _$EmojisLoadInProgress implements EmojisLoadInProgress {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(EmojisLoadInProgress value)? loadInProgress,
-    TResult Function(LoadSuccess value)? loadSuccess,
-    TResult Function(LoadFailure value)? loadFailure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(EmojisLoadInProgress value)? loadInProgress,
+    TResult? Function(LoadSuccess value)? loadSuccess,
+    TResult? Function(LoadFailure value)? loadFailure,
   }) {
     return loadInProgress?.call(this);
   }
@@ -619,25 +617,25 @@ abstract class _$$LoadSuccessCopyWith<$Res> {
   factory _$$LoadSuccessCopyWith(
           _$LoadSuccess value, $Res Function(_$LoadSuccess) then) =
       __$$LoadSuccessCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<Emoji> emojis});
 }
 
 /// @nodoc
-class __$$LoadSuccessCopyWithImpl<$Res> extends _$EmojisStateCopyWithImpl<$Res>
+class __$$LoadSuccessCopyWithImpl<$Res>
+    extends _$EmojisStateCopyWithImpl<$Res, _$LoadSuccess>
     implements _$$LoadSuccessCopyWith<$Res> {
   __$$LoadSuccessCopyWithImpl(
       _$LoadSuccess _value, $Res Function(_$LoadSuccess) _then)
-      : super(_value, (v) => _then(v as _$LoadSuccess));
+      : super(_value, _then);
 
-  @override
-  _$LoadSuccess get _value => super._value as _$LoadSuccess;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? emojis = freezed,
+    Object? emojis = null,
   }) {
     return _then(_$LoadSuccess(
-      emojis == freezed
+      null == emojis
           ? _value._emojis
           : emojis // ignore: cast_nullable_to_non_nullable
               as List<Emoji>,
@@ -653,6 +651,7 @@ class _$LoadSuccess implements LoadSuccess {
   final List<Emoji> _emojis;
   @override
   List<Emoji> get emojis {
+    if (_emojis is EqualUnmodifiableListView) return _emojis;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_emojis);
   }
@@ -676,6 +675,7 @@ class _$LoadSuccess implements LoadSuccess {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$LoadSuccessCopyWith<_$LoadSuccess> get copyWith =>
       __$$LoadSuccessCopyWithImpl<_$LoadSuccess>(this, _$identity);
 
@@ -693,10 +693,10 @@ class _$LoadSuccess implements LoadSuccess {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<Emoji> emojis)? loadSuccess,
-    TResult Function(Exception failure)? loadFailure,
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function(List<Emoji> emojis)? loadSuccess,
+    TResult? Function(Exception failure)? loadFailure,
   }) {
     return loadSuccess?.call(emojis);
   }
@@ -730,10 +730,10 @@ class _$LoadSuccess implements LoadSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(EmojisLoadInProgress value)? loadInProgress,
-    TResult Function(LoadSuccess value)? loadSuccess,
-    TResult Function(LoadFailure value)? loadFailure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(EmojisLoadInProgress value)? loadInProgress,
+    TResult? Function(LoadSuccess value)? loadSuccess,
+    TResult? Function(LoadFailure value)? loadFailure,
   }) {
     return loadSuccess?.call(this);
   }
@@ -768,25 +768,25 @@ abstract class _$$LoadFailureCopyWith<$Res> {
   factory _$$LoadFailureCopyWith(
           _$LoadFailure value, $Res Function(_$LoadFailure) then) =
       __$$LoadFailureCopyWithImpl<$Res>;
+  @useResult
   $Res call({Exception failure});
 }
 
 /// @nodoc
-class __$$LoadFailureCopyWithImpl<$Res> extends _$EmojisStateCopyWithImpl<$Res>
+class __$$LoadFailureCopyWithImpl<$Res>
+    extends _$EmojisStateCopyWithImpl<$Res, _$LoadFailure>
     implements _$$LoadFailureCopyWith<$Res> {
   __$$LoadFailureCopyWithImpl(
       _$LoadFailure _value, $Res Function(_$LoadFailure) _then)
-      : super(_value, (v) => _then(v as _$LoadFailure));
+      : super(_value, _then);
 
-  @override
-  _$LoadFailure get _value => super._value as _$LoadFailure;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? failure = freezed,
+    Object? failure = null,
   }) {
     return _then(_$LoadFailure(
-      failure == freezed
+      null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
               as Exception,
@@ -812,15 +812,15 @@ class _$LoadFailure implements LoadFailure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadFailure &&
-            const DeepCollectionEquality().equals(other.failure, failure));
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
+  int get hashCode => Object.hash(runtimeType, failure);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$LoadFailureCopyWith<_$LoadFailure> get copyWith =>
       __$$LoadFailureCopyWithImpl<_$LoadFailure>(this, _$identity);
 
@@ -838,10 +838,10 @@ class _$LoadFailure implements LoadFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<Emoji> emojis)? loadSuccess,
-    TResult Function(Exception failure)? loadFailure,
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function(List<Emoji> emojis)? loadSuccess,
+    TResult? Function(Exception failure)? loadFailure,
   }) {
     return loadFailure?.call(failure);
   }
@@ -875,10 +875,10 @@ class _$LoadFailure implements LoadFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(EmojisLoadInProgress value)? loadInProgress,
-    TResult Function(LoadSuccess value)? loadSuccess,
-    TResult Function(LoadFailure value)? loadFailure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(EmojisLoadInProgress value)? loadInProgress,
+    TResult? Function(LoadSuccess value)? loadSuccess,
+    TResult? Function(LoadFailure value)? loadFailure,
   }) {
     return loadFailure?.call(this);
   }

@@ -1,10 +1,10 @@
-import 'package:robot_timer/src/domain/core/task_failure.dart';
+import 'package:crackd_timer/src/infrastructure/tasks/tasks_dto.dart';
 import 'package:dartz/dartz.dart' hide Task;
-import 'package:robot_timer/src/domain/core/tasks_interface.dart';
-import 'package:robot_timer/src/infrastructure/core/tasks_local_service.dart';
-import 'package:robot_timer/src/infrastructure/tasks/tasks_dto.dart';
 
+import '../../domain/core/task_failure.dart';
+import '../../domain/core/tasks_interface.dart';
 import '../../domain/tasks/task.dart';
+import 'tasks_local_service.dart';
 
 class TaskRepository implements TasksInterface {
   final TasksLocalSource _localSource;

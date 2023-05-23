@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'app_themes.dart';
 
@@ -28,38 +28,42 @@ mixin _$AppTheme {
 /// @nodoc
 abstract class $AppThemeCopyWith<$Res> {
   factory $AppThemeCopyWith(AppTheme value, $Res Function(AppTheme) then) =
-      _$AppThemeCopyWithImpl<$Res>;
+      _$AppThemeCopyWithImpl<$Res, AppTheme>;
+  @useResult
   $Res call({bool isDark, Color colorSchemeSeed, ThemeType themeType});
 }
 
 /// @nodoc
-class _$AppThemeCopyWithImpl<$Res> implements $AppThemeCopyWith<$Res> {
+class _$AppThemeCopyWithImpl<$Res, $Val extends AppTheme>
+    implements $AppThemeCopyWith<$Res> {
   _$AppThemeCopyWithImpl(this._value, this._then);
 
-  final AppTheme _value;
   // ignore: unused_field
-  final $Res Function(AppTheme) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isDark = freezed,
-    Object? colorSchemeSeed = freezed,
-    Object? themeType = freezed,
+    Object? isDark = null,
+    Object? colorSchemeSeed = null,
+    Object? themeType = null,
   }) {
     return _then(_value.copyWith(
-      isDark: isDark == freezed
+      isDark: null == isDark
           ? _value.isDark
           : isDark // ignore: cast_nullable_to_non_nullable
               as bool,
-      colorSchemeSeed: colorSchemeSeed == freezed
+      colorSchemeSeed: null == colorSchemeSeed
           ? _value.colorSchemeSeed
           : colorSchemeSeed // ignore: cast_nullable_to_non_nullable
               as Color,
-      themeType: themeType == freezed
+      themeType: null == themeType
           ? _value.themeType
           : themeType // ignore: cast_nullable_to_non_nullable
               as ThemeType,
-    ));
+    ) as $Val);
   }
 }
 
@@ -69,35 +73,35 @@ abstract class _$$_AppThemeCopyWith<$Res> implements $AppThemeCopyWith<$Res> {
           _$_AppTheme value, $Res Function(_$_AppTheme) then) =
       __$$_AppThemeCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({bool isDark, Color colorSchemeSeed, ThemeType themeType});
 }
 
 /// @nodoc
-class __$$_AppThemeCopyWithImpl<$Res> extends _$AppThemeCopyWithImpl<$Res>
+class __$$_AppThemeCopyWithImpl<$Res>
+    extends _$AppThemeCopyWithImpl<$Res, _$_AppTheme>
     implements _$$_AppThemeCopyWith<$Res> {
   __$$_AppThemeCopyWithImpl(
       _$_AppTheme _value, $Res Function(_$_AppTheme) _then)
-      : super(_value, (v) => _then(v as _$_AppTheme));
+      : super(_value, _then);
 
-  @override
-  _$_AppTheme get _value => super._value as _$_AppTheme;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isDark = freezed,
-    Object? colorSchemeSeed = freezed,
-    Object? themeType = freezed,
+    Object? isDark = null,
+    Object? colorSchemeSeed = null,
+    Object? themeType = null,
   }) {
     return _then(_$_AppTheme(
-      isDark: isDark == freezed
+      isDark: null == isDark
           ? _value.isDark
           : isDark // ignore: cast_nullable_to_non_nullable
               as bool,
-      colorSchemeSeed: colorSchemeSeed == freezed
+      colorSchemeSeed: null == colorSchemeSeed
           ? _value.colorSchemeSeed
           : colorSchemeSeed // ignore: cast_nullable_to_non_nullable
               as Color,
-      themeType: themeType == freezed
+      themeType: null == themeType
           ? _value.themeType
           : themeType // ignore: cast_nullable_to_non_nullable
               as ThemeType,
@@ -131,21 +135,20 @@ class _$_AppTheme extends _AppTheme {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AppTheme &&
-            const DeepCollectionEquality().equals(other.isDark, isDark) &&
-            const DeepCollectionEquality()
-                .equals(other.colorSchemeSeed, colorSchemeSeed) &&
-            const DeepCollectionEquality().equals(other.themeType, themeType));
+            (identical(other.isDark, isDark) || other.isDark == isDark) &&
+            (identical(other.colorSchemeSeed, colorSchemeSeed) ||
+                other.colorSchemeSeed == colorSchemeSeed) &&
+            (identical(other.themeType, themeType) ||
+                other.themeType == themeType));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(isDark),
-      const DeepCollectionEquality().hash(colorSchemeSeed),
-      const DeepCollectionEquality().hash(themeType));
+  int get hashCode =>
+      Object.hash(runtimeType, isDark, colorSchemeSeed, themeType);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AppThemeCopyWith<_$_AppTheme> get copyWith =>
       __$$_AppThemeCopyWithImpl<_$_AppTheme>(this, _$identity);
 }

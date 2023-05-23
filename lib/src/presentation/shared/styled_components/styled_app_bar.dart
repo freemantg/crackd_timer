@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:robot_timer/src/shared/styles.dart';
 
 import '../../../../injection_container.dart';
 import '../../../application/core/task_cubit/task_cubit.dart';
 import '../../../application/tasks/task_form/bloc/task_form_bloc.dart';
 import '../../../domain/tasks/task.dart';
+import '../../../shared/app_router.dart';
 import '../../../shared/app_router.gr.dart';
+import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
 
 class StyledAppBar extends StatelessWidget implements PreferredSizeWidget {

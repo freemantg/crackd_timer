@@ -1,9 +1,9 @@
+import 'package:crackd_timer/src/presentation/timer/widgets/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:robot_timer/src/domain/emojis/emoji.dart';
-
 import '../../../application/core/task_cubit/task_cubit.dart';
 import '../../../application/timer/timer_bloc/timer_bloc.dart';
+import '../../../domain/emojis/emoji.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
 import '../../shared/styled_components/styled_container.dart';
@@ -80,20 +80,5 @@ class _EmojiIndicator extends StatelessWidget {
         color: isCompleted ? null : Colors.white.withOpacity(0.25),
       ),
     );
-  }
-}
-
-extension TimerTypeX on TimerType {
-  String get getTimerName {
-    switch (this) {
-      case TimerType.focus:
-        return 'Pomodoro';
-      case TimerType.longBreak:
-        return 'Long Break';
-      case TimerType.shortBreak:
-        return 'Short Break';
-      default:
-        return 'ERROR LOADING TIMER';
-    }
   }
 }

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:robot_timer/src/application/settings/constants.dart';
+
+import '../constants.dart';
 
 part 'settings_event.dart';
 part 'settings_state.dart';

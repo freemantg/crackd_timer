@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:robot_timer/src/presentation/home/widgets/crackd_logo.dart';
+
+import 'widgets/widgets.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});

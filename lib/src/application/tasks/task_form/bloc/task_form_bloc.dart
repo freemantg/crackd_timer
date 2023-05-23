@@ -1,12 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:robot_timer/src/infrastructure/core/task_repository.dart';
 import 'package:dartz/dartz.dart' hide Task;
 
 import '../../../../domain/core/task_failure.dart';
 import '../../../../domain/emojis/emoji.dart';
 import '../../../../domain/tasks/task.dart';
+import '../../../../infrastructure/core/task_repository.dart';
 
 part 'task_form_event.dart';
 part 'task_form_state.dart';
@@ -18,7 +18,7 @@ class TaskFormBloc extends Bloc<TaskFormEvent, TaskFormState> {
   TaskFormBloc(TaskRepository taskRepository)
       : _taskRepository = taskRepository,
         super(TaskFormState.initial()) {
-    on<TaskFormEvent>((event, emit)  {
+    on<TaskFormEvent>((event, emit) {
       event.when(
         initialized: (event) {
           final initialTask = event;

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:intl/intl.dart';
-import 'package:robot_timer/src/application/tasks/task_watcher/task_watcher_bloc.dart';
 
+import '../../../application/blocs.dart';
 import '../../../shared/text_styles.dart';
 
 enum TaskFilter { all, active, complete }

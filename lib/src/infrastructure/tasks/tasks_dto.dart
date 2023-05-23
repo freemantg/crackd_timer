@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:robot_timer/src/domain/core/unique_id.dart';
 
+import '../../domain/core/unique_id.dart';
 import '../../domain/emojis/emoji.dart';
 import '../../domain/tasks/task.dart';
 

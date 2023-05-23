@@ -1,7 +1,7 @@
-import 'package:robot_timer/src/infrastructure/core/sembast_database.dart';
 import 'package:sembast/sembast.dart';
 
 import '../tasks/tasks_dto.dart';
+import 'sembast_database.dart';
 
 class TasksLocalSource {
   final SembastDatabase _sembastDatabase;

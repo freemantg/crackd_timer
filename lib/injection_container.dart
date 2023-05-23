@@ -9,7 +9,7 @@ import 'src/infrastructure/core/tasks_local_service.dart';
 import 'src/infrastructure/emojis/emoji_repository.dart';
 import 'src/infrastructure/timer/audio_repository.dart';
 import 'src/infrastructure/timer/ticker.dart';
-import 'src/shared/app_router.gr.dart';
+import 'src/shared/app_router.dart';
 
 final getIt = GetIt.instance;
 

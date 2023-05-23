@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'task_form_bloc.dart';
 
@@ -33,16 +33,16 @@ mixin _$TaskFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task? initialTask)? initialized,
-    TResult Function(String titleStr)? titleChanged,
-    TResult Function(String descriptionStr)? descriptionChanged,
-    TResult Function(int activeSessions)? activeSessionsChanged,
-    TResult Function(Color color)? colorChanged,
-    TResult Function(Emoji emoji)? emojiChanged,
-    TResult Function()? incrementPomodoro,
-    TResult Function()? decrementPomodoro,
-    TResult Function()? saved,
-    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+    TResult? Function(Task? initialTask)? initialized,
+    TResult? Function(String titleStr)? titleChanged,
+    TResult? Function(String descriptionStr)? descriptionChanged,
+    TResult? Function(int activeSessions)? activeSessionsChanged,
+    TResult? Function(Color color)? colorChanged,
+    TResult? Function(Emoji emoji)? emojiChanged,
+    TResult? Function()? incrementPomodoro,
+    TResult? Function()? decrementPomodoro,
+    TResult? Function()? saved,
+    TResult? Function(Either<TaskFailure, Unit> failureOrSuccess)?
         saveInProgress,
   }) =>
       throw _privateConstructorUsedError;
@@ -79,16 +79,16 @@ mixin _$TaskFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_TitleChanged value)? titleChanged,
-    TResult Function(_DescriptionChanged value)? descriptionChanged,
-    TResult Function(_ActiveSessionsChanged value)? activeSessionsChanged,
-    TResult Function(_ColorChanged value)? colorChanged,
-    TResult Function(_EmojiChanged value)? emojiChanged,
-    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
-    TResult Function(_DecrementPomodoro value)? decrementPomodoro,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_SaveInProgress value)? saveInProgress,
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_ActiveSessionsChanged value)? activeSessionsChanged,
+    TResult? Function(_ColorChanged value)? colorChanged,
+    TResult? Function(_EmojiChanged value)? emojiChanged,
+    TResult? Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult? Function(_DecrementPomodoro value)? decrementPomodoro,
+    TResult? Function(_Saved value)? saved,
+    TResult? Function(_SaveInProgress value)? saveInProgress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -112,17 +112,18 @@ mixin _$TaskFormEvent {
 abstract class $TaskFormEventCopyWith<$Res> {
   factory $TaskFormEventCopyWith(
           TaskFormEvent value, $Res Function(TaskFormEvent) then) =
-      _$TaskFormEventCopyWithImpl<$Res>;
+      _$TaskFormEventCopyWithImpl<$Res, TaskFormEvent>;
 }
 
 /// @nodoc
-class _$TaskFormEventCopyWithImpl<$Res>
+class _$TaskFormEventCopyWithImpl<$Res, $Val extends TaskFormEvent>
     implements $TaskFormEventCopyWith<$Res> {
   _$TaskFormEventCopyWithImpl(this._value, this._then);
 
-  final TaskFormEvent _value;
   // ignore: unused_field
-  final $Res Function(TaskFormEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -130,6 +131,7 @@ abstract class _$$_InitializedCopyWith<$Res> {
   factory _$$_InitializedCopyWith(
           _$_Initialized value, $Res Function(_$_Initialized) then) =
       __$$_InitializedCopyWithImpl<$Res>;
+  @useResult
   $Res call({Task? initialTask});
 
   $TaskCopyWith<$Res>? get initialTask;
@@ -137,21 +139,19 @@ abstract class _$$_InitializedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitializedCopyWithImpl<$Res>
-    extends _$TaskFormEventCopyWithImpl<$Res>
+    extends _$TaskFormEventCopyWithImpl<$Res, _$_Initialized>
     implements _$$_InitializedCopyWith<$Res> {
   __$$_InitializedCopyWithImpl(
       _$_Initialized _value, $Res Function(_$_Initialized) _then)
-      : super(_value, (v) => _then(v as _$_Initialized));
+      : super(_value, _then);
 
-  @override
-  _$_Initialized get _value => super._value as _$_Initialized;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? initialTask = freezed,
   }) {
     return _then(_$_Initialized(
-      initialTask: initialTask == freezed
+      initialTask: freezed == initialTask
           ? _value.initialTask
           : initialTask // ignore: cast_nullable_to_non_nullable
               as Task?,
@@ -159,6 +159,7 @@ class __$$_InitializedCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $TaskCopyWith<$Res>? get initialTask {
     if (_value.initialTask == null) {
       return null;
@@ -188,16 +189,16 @@ class _$_Initialized implements _Initialized {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Initialized &&
-            const DeepCollectionEquality()
-                .equals(other.initialTask, initialTask));
+            (identical(other.initialTask, initialTask) ||
+                other.initialTask == initialTask));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(initialTask));
+  int get hashCode => Object.hash(runtimeType, initialTask);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_InitializedCopyWith<_$_Initialized> get copyWith =>
       __$$_InitializedCopyWithImpl<_$_Initialized>(this, _$identity);
 
@@ -222,16 +223,16 @@ class _$_Initialized implements _Initialized {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task? initialTask)? initialized,
-    TResult Function(String titleStr)? titleChanged,
-    TResult Function(String descriptionStr)? descriptionChanged,
-    TResult Function(int activeSessions)? activeSessionsChanged,
-    TResult Function(Color color)? colorChanged,
-    TResult Function(Emoji emoji)? emojiChanged,
-    TResult Function()? incrementPomodoro,
-    TResult Function()? decrementPomodoro,
-    TResult Function()? saved,
-    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+    TResult? Function(Task? initialTask)? initialized,
+    TResult? Function(String titleStr)? titleChanged,
+    TResult? Function(String descriptionStr)? descriptionChanged,
+    TResult? Function(int activeSessions)? activeSessionsChanged,
+    TResult? Function(Color color)? colorChanged,
+    TResult? Function(Emoji emoji)? emojiChanged,
+    TResult? Function()? incrementPomodoro,
+    TResult? Function()? decrementPomodoro,
+    TResult? Function()? saved,
+    TResult? Function(Either<TaskFailure, Unit> failureOrSuccess)?
         saveInProgress,
   }) {
     return initialized?.call(initialTask);
@@ -280,16 +281,16 @@ class _$_Initialized implements _Initialized {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_TitleChanged value)? titleChanged,
-    TResult Function(_DescriptionChanged value)? descriptionChanged,
-    TResult Function(_ActiveSessionsChanged value)? activeSessionsChanged,
-    TResult Function(_ColorChanged value)? colorChanged,
-    TResult Function(_EmojiChanged value)? emojiChanged,
-    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
-    TResult Function(_DecrementPomodoro value)? decrementPomodoro,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_SaveInProgress value)? saveInProgress,
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_ActiveSessionsChanged value)? activeSessionsChanged,
+    TResult? Function(_ColorChanged value)? colorChanged,
+    TResult? Function(_EmojiChanged value)? emojiChanged,
+    TResult? Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult? Function(_DecrementPomodoro value)? decrementPomodoro,
+    TResult? Function(_Saved value)? saved,
+    TResult? Function(_SaveInProgress value)? saveInProgress,
   }) {
     return initialized?.call(this);
   }
@@ -330,26 +331,25 @@ abstract class _$$_TitleChangedCopyWith<$Res> {
   factory _$$_TitleChangedCopyWith(
           _$_TitleChanged value, $Res Function(_$_TitleChanged) then) =
       __$$_TitleChangedCopyWithImpl<$Res>;
+  @useResult
   $Res call({String titleStr});
 }
 
 /// @nodoc
 class __$$_TitleChangedCopyWithImpl<$Res>
-    extends _$TaskFormEventCopyWithImpl<$Res>
+    extends _$TaskFormEventCopyWithImpl<$Res, _$_TitleChanged>
     implements _$$_TitleChangedCopyWith<$Res> {
   __$$_TitleChangedCopyWithImpl(
       _$_TitleChanged _value, $Res Function(_$_TitleChanged) _then)
-      : super(_value, (v) => _then(v as _$_TitleChanged));
+      : super(_value, _then);
 
-  @override
-  _$_TitleChanged get _value => super._value as _$_TitleChanged;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? titleStr = freezed,
+    Object? titleStr = null,
   }) {
     return _then(_$_TitleChanged(
-      titleStr == freezed
+      null == titleStr
           ? _value.titleStr
           : titleStr // ignore: cast_nullable_to_non_nullable
               as String,
@@ -375,15 +375,16 @@ class _$_TitleChanged implements _TitleChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TitleChanged &&
-            const DeepCollectionEquality().equals(other.titleStr, titleStr));
+            (identical(other.titleStr, titleStr) ||
+                other.titleStr == titleStr));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(titleStr));
+  int get hashCode => Object.hash(runtimeType, titleStr);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TitleChangedCopyWith<_$_TitleChanged> get copyWith =>
       __$$_TitleChangedCopyWithImpl<_$_TitleChanged>(this, _$identity);
 
@@ -408,16 +409,16 @@ class _$_TitleChanged implements _TitleChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task? initialTask)? initialized,
-    TResult Function(String titleStr)? titleChanged,
-    TResult Function(String descriptionStr)? descriptionChanged,
-    TResult Function(int activeSessions)? activeSessionsChanged,
-    TResult Function(Color color)? colorChanged,
-    TResult Function(Emoji emoji)? emojiChanged,
-    TResult Function()? incrementPomodoro,
-    TResult Function()? decrementPomodoro,
-    TResult Function()? saved,
-    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+    TResult? Function(Task? initialTask)? initialized,
+    TResult? Function(String titleStr)? titleChanged,
+    TResult? Function(String descriptionStr)? descriptionChanged,
+    TResult? Function(int activeSessions)? activeSessionsChanged,
+    TResult? Function(Color color)? colorChanged,
+    TResult? Function(Emoji emoji)? emojiChanged,
+    TResult? Function()? incrementPomodoro,
+    TResult? Function()? decrementPomodoro,
+    TResult? Function()? saved,
+    TResult? Function(Either<TaskFailure, Unit> failureOrSuccess)?
         saveInProgress,
   }) {
     return titleChanged?.call(titleStr);
@@ -466,16 +467,16 @@ class _$_TitleChanged implements _TitleChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_TitleChanged value)? titleChanged,
-    TResult Function(_DescriptionChanged value)? descriptionChanged,
-    TResult Function(_ActiveSessionsChanged value)? activeSessionsChanged,
-    TResult Function(_ColorChanged value)? colorChanged,
-    TResult Function(_EmojiChanged value)? emojiChanged,
-    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
-    TResult Function(_DecrementPomodoro value)? decrementPomodoro,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_SaveInProgress value)? saveInProgress,
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_ActiveSessionsChanged value)? activeSessionsChanged,
+    TResult? Function(_ColorChanged value)? colorChanged,
+    TResult? Function(_EmojiChanged value)? emojiChanged,
+    TResult? Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult? Function(_DecrementPomodoro value)? decrementPomodoro,
+    TResult? Function(_Saved value)? saved,
+    TResult? Function(_SaveInProgress value)? saveInProgress,
   }) {
     return titleChanged?.call(this);
   }
@@ -516,26 +517,25 @@ abstract class _$$_DescriptionChangedCopyWith<$Res> {
   factory _$$_DescriptionChangedCopyWith(_$_DescriptionChanged value,
           $Res Function(_$_DescriptionChanged) then) =
       __$$_DescriptionChangedCopyWithImpl<$Res>;
+  @useResult
   $Res call({String descriptionStr});
 }
 
 /// @nodoc
 class __$$_DescriptionChangedCopyWithImpl<$Res>
-    extends _$TaskFormEventCopyWithImpl<$Res>
+    extends _$TaskFormEventCopyWithImpl<$Res, _$_DescriptionChanged>
     implements _$$_DescriptionChangedCopyWith<$Res> {
   __$$_DescriptionChangedCopyWithImpl(
       _$_DescriptionChanged _value, $Res Function(_$_DescriptionChanged) _then)
-      : super(_value, (v) => _then(v as _$_DescriptionChanged));
+      : super(_value, _then);
 
-  @override
-  _$_DescriptionChanged get _value => super._value as _$_DescriptionChanged;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? descriptionStr = freezed,
+    Object? descriptionStr = null,
   }) {
     return _then(_$_DescriptionChanged(
-      descriptionStr == freezed
+      null == descriptionStr
           ? _value.descriptionStr
           : descriptionStr // ignore: cast_nullable_to_non_nullable
               as String,
@@ -561,16 +561,16 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DescriptionChanged &&
-            const DeepCollectionEquality()
-                .equals(other.descriptionStr, descriptionStr));
+            (identical(other.descriptionStr, descriptionStr) ||
+                other.descriptionStr == descriptionStr));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(descriptionStr));
+  int get hashCode => Object.hash(runtimeType, descriptionStr);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DescriptionChangedCopyWith<_$_DescriptionChanged> get copyWith =>
       __$$_DescriptionChangedCopyWithImpl<_$_DescriptionChanged>(
           this, _$identity);
@@ -596,16 +596,16 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task? initialTask)? initialized,
-    TResult Function(String titleStr)? titleChanged,
-    TResult Function(String descriptionStr)? descriptionChanged,
-    TResult Function(int activeSessions)? activeSessionsChanged,
-    TResult Function(Color color)? colorChanged,
-    TResult Function(Emoji emoji)? emojiChanged,
-    TResult Function()? incrementPomodoro,
-    TResult Function()? decrementPomodoro,
-    TResult Function()? saved,
-    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+    TResult? Function(Task? initialTask)? initialized,
+    TResult? Function(String titleStr)? titleChanged,
+    TResult? Function(String descriptionStr)? descriptionChanged,
+    TResult? Function(int activeSessions)? activeSessionsChanged,
+    TResult? Function(Color color)? colorChanged,
+    TResult? Function(Emoji emoji)? emojiChanged,
+    TResult? Function()? incrementPomodoro,
+    TResult? Function()? decrementPomodoro,
+    TResult? Function()? saved,
+    TResult? Function(Either<TaskFailure, Unit> failureOrSuccess)?
         saveInProgress,
   }) {
     return descriptionChanged?.call(descriptionStr);
@@ -654,16 +654,16 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_TitleChanged value)? titleChanged,
-    TResult Function(_DescriptionChanged value)? descriptionChanged,
-    TResult Function(_ActiveSessionsChanged value)? activeSessionsChanged,
-    TResult Function(_ColorChanged value)? colorChanged,
-    TResult Function(_EmojiChanged value)? emojiChanged,
-    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
-    TResult Function(_DecrementPomodoro value)? decrementPomodoro,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_SaveInProgress value)? saveInProgress,
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_ActiveSessionsChanged value)? activeSessionsChanged,
+    TResult? Function(_ColorChanged value)? colorChanged,
+    TResult? Function(_EmojiChanged value)? emojiChanged,
+    TResult? Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult? Function(_DecrementPomodoro value)? decrementPomodoro,
+    TResult? Function(_Saved value)? saved,
+    TResult? Function(_SaveInProgress value)? saveInProgress,
   }) {
     return descriptionChanged?.call(this);
   }
@@ -705,27 +705,25 @@ abstract class _$$_ActiveSessionsChangedCopyWith<$Res> {
   factory _$$_ActiveSessionsChangedCopyWith(_$_ActiveSessionsChanged value,
           $Res Function(_$_ActiveSessionsChanged) then) =
       __$$_ActiveSessionsChangedCopyWithImpl<$Res>;
+  @useResult
   $Res call({int activeSessions});
 }
 
 /// @nodoc
 class __$$_ActiveSessionsChangedCopyWithImpl<$Res>
-    extends _$TaskFormEventCopyWithImpl<$Res>
+    extends _$TaskFormEventCopyWithImpl<$Res, _$_ActiveSessionsChanged>
     implements _$$_ActiveSessionsChangedCopyWith<$Res> {
   __$$_ActiveSessionsChangedCopyWithImpl(_$_ActiveSessionsChanged _value,
       $Res Function(_$_ActiveSessionsChanged) _then)
-      : super(_value, (v) => _then(v as _$_ActiveSessionsChanged));
+      : super(_value, _then);
 
-  @override
-  _$_ActiveSessionsChanged get _value =>
-      super._value as _$_ActiveSessionsChanged;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? activeSessions = freezed,
+    Object? activeSessions = null,
   }) {
     return _then(_$_ActiveSessionsChanged(
-      activeSessions == freezed
+      null == activeSessions
           ? _value.activeSessions
           : activeSessions // ignore: cast_nullable_to_non_nullable
               as int,
@@ -751,16 +749,16 @@ class _$_ActiveSessionsChanged implements _ActiveSessionsChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ActiveSessionsChanged &&
-            const DeepCollectionEquality()
-                .equals(other.activeSessions, activeSessions));
+            (identical(other.activeSessions, activeSessions) ||
+                other.activeSessions == activeSessions));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(activeSessions));
+  int get hashCode => Object.hash(runtimeType, activeSessions);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ActiveSessionsChangedCopyWith<_$_ActiveSessionsChanged> get copyWith =>
       __$$_ActiveSessionsChangedCopyWithImpl<_$_ActiveSessionsChanged>(
           this, _$identity);
@@ -786,16 +784,16 @@ class _$_ActiveSessionsChanged implements _ActiveSessionsChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task? initialTask)? initialized,
-    TResult Function(String titleStr)? titleChanged,
-    TResult Function(String descriptionStr)? descriptionChanged,
-    TResult Function(int activeSessions)? activeSessionsChanged,
-    TResult Function(Color color)? colorChanged,
-    TResult Function(Emoji emoji)? emojiChanged,
-    TResult Function()? incrementPomodoro,
-    TResult Function()? decrementPomodoro,
-    TResult Function()? saved,
-    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+    TResult? Function(Task? initialTask)? initialized,
+    TResult? Function(String titleStr)? titleChanged,
+    TResult? Function(String descriptionStr)? descriptionChanged,
+    TResult? Function(int activeSessions)? activeSessionsChanged,
+    TResult? Function(Color color)? colorChanged,
+    TResult? Function(Emoji emoji)? emojiChanged,
+    TResult? Function()? incrementPomodoro,
+    TResult? Function()? decrementPomodoro,
+    TResult? Function()? saved,
+    TResult? Function(Either<TaskFailure, Unit> failureOrSuccess)?
         saveInProgress,
   }) {
     return activeSessionsChanged?.call(activeSessions);
@@ -844,16 +842,16 @@ class _$_ActiveSessionsChanged implements _ActiveSessionsChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_TitleChanged value)? titleChanged,
-    TResult Function(_DescriptionChanged value)? descriptionChanged,
-    TResult Function(_ActiveSessionsChanged value)? activeSessionsChanged,
-    TResult Function(_ColorChanged value)? colorChanged,
-    TResult Function(_EmojiChanged value)? emojiChanged,
-    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
-    TResult Function(_DecrementPomodoro value)? decrementPomodoro,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_SaveInProgress value)? saveInProgress,
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_ActiveSessionsChanged value)? activeSessionsChanged,
+    TResult? Function(_ColorChanged value)? colorChanged,
+    TResult? Function(_EmojiChanged value)? emojiChanged,
+    TResult? Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult? Function(_DecrementPomodoro value)? decrementPomodoro,
+    TResult? Function(_Saved value)? saved,
+    TResult? Function(_SaveInProgress value)? saveInProgress,
   }) {
     return activeSessionsChanged?.call(this);
   }
@@ -895,26 +893,25 @@ abstract class _$$_ColorChangedCopyWith<$Res> {
   factory _$$_ColorChangedCopyWith(
           _$_ColorChanged value, $Res Function(_$_ColorChanged) then) =
       __$$_ColorChangedCopyWithImpl<$Res>;
+  @useResult
   $Res call({Color color});
 }
 
 /// @nodoc
 class __$$_ColorChangedCopyWithImpl<$Res>
-    extends _$TaskFormEventCopyWithImpl<$Res>
+    extends _$TaskFormEventCopyWithImpl<$Res, _$_ColorChanged>
     implements _$$_ColorChangedCopyWith<$Res> {
   __$$_ColorChangedCopyWithImpl(
       _$_ColorChanged _value, $Res Function(_$_ColorChanged) _then)
-      : super(_value, (v) => _then(v as _$_ColorChanged));
+      : super(_value, _then);
 
-  @override
-  _$_ColorChanged get _value => super._value as _$_ColorChanged;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? color = freezed,
+    Object? color = null,
   }) {
     return _then(_$_ColorChanged(
-      color == freezed
+      null == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
               as Color,
@@ -940,15 +937,15 @@ class _$_ColorChanged implements _ColorChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ColorChanged &&
-            const DeepCollectionEquality().equals(other.color, color));
+            (identical(other.color, color) || other.color == color));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(color));
+  int get hashCode => Object.hash(runtimeType, color);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ColorChangedCopyWith<_$_ColorChanged> get copyWith =>
       __$$_ColorChangedCopyWithImpl<_$_ColorChanged>(this, _$identity);
 
@@ -973,16 +970,16 @@ class _$_ColorChanged implements _ColorChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task? initialTask)? initialized,
-    TResult Function(String titleStr)? titleChanged,
-    TResult Function(String descriptionStr)? descriptionChanged,
-    TResult Function(int activeSessions)? activeSessionsChanged,
-    TResult Function(Color color)? colorChanged,
-    TResult Function(Emoji emoji)? emojiChanged,
-    TResult Function()? incrementPomodoro,
-    TResult Function()? decrementPomodoro,
-    TResult Function()? saved,
-    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+    TResult? Function(Task? initialTask)? initialized,
+    TResult? Function(String titleStr)? titleChanged,
+    TResult? Function(String descriptionStr)? descriptionChanged,
+    TResult? Function(int activeSessions)? activeSessionsChanged,
+    TResult? Function(Color color)? colorChanged,
+    TResult? Function(Emoji emoji)? emojiChanged,
+    TResult? Function()? incrementPomodoro,
+    TResult? Function()? decrementPomodoro,
+    TResult? Function()? saved,
+    TResult? Function(Either<TaskFailure, Unit> failureOrSuccess)?
         saveInProgress,
   }) {
     return colorChanged?.call(color);
@@ -1031,16 +1028,16 @@ class _$_ColorChanged implements _ColorChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_TitleChanged value)? titleChanged,
-    TResult Function(_DescriptionChanged value)? descriptionChanged,
-    TResult Function(_ActiveSessionsChanged value)? activeSessionsChanged,
-    TResult Function(_ColorChanged value)? colorChanged,
-    TResult Function(_EmojiChanged value)? emojiChanged,
-    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
-    TResult Function(_DecrementPomodoro value)? decrementPomodoro,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_SaveInProgress value)? saveInProgress,
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_ActiveSessionsChanged value)? activeSessionsChanged,
+    TResult? Function(_ColorChanged value)? colorChanged,
+    TResult? Function(_EmojiChanged value)? emojiChanged,
+    TResult? Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult? Function(_DecrementPomodoro value)? decrementPomodoro,
+    TResult? Function(_Saved value)? saved,
+    TResult? Function(_SaveInProgress value)? saveInProgress,
   }) {
     return colorChanged?.call(this);
   }
@@ -1081,6 +1078,7 @@ abstract class _$$_EmojiChangedCopyWith<$Res> {
   factory _$$_EmojiChangedCopyWith(
           _$_EmojiChanged value, $Res Function(_$_EmojiChanged) then) =
       __$$_EmojiChangedCopyWithImpl<$Res>;
+  @useResult
   $Res call({Emoji emoji});
 
   $EmojiCopyWith<$Res> get emoji;
@@ -1088,21 +1086,19 @@ abstract class _$$_EmojiChangedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_EmojiChangedCopyWithImpl<$Res>
-    extends _$TaskFormEventCopyWithImpl<$Res>
+    extends _$TaskFormEventCopyWithImpl<$Res, _$_EmojiChanged>
     implements _$$_EmojiChangedCopyWith<$Res> {
   __$$_EmojiChangedCopyWithImpl(
       _$_EmojiChanged _value, $Res Function(_$_EmojiChanged) _then)
-      : super(_value, (v) => _then(v as _$_EmojiChanged));
+      : super(_value, _then);
 
-  @override
-  _$_EmojiChanged get _value => super._value as _$_EmojiChanged;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? emoji = freezed,
+    Object? emoji = null,
   }) {
     return _then(_$_EmojiChanged(
-      emoji == freezed
+      null == emoji
           ? _value.emoji
           : emoji // ignore: cast_nullable_to_non_nullable
               as Emoji,
@@ -1110,6 +1106,7 @@ class __$$_EmojiChangedCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $EmojiCopyWith<$Res> get emoji {
     return $EmojiCopyWith<$Res>(_value.emoji, (value) {
       return _then(_value.copyWith(emoji: value));
@@ -1135,15 +1132,15 @@ class _$_EmojiChanged implements _EmojiChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EmojiChanged &&
-            const DeepCollectionEquality().equals(other.emoji, emoji));
+            (identical(other.emoji, emoji) || other.emoji == emoji));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(emoji));
+  int get hashCode => Object.hash(runtimeType, emoji);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EmojiChangedCopyWith<_$_EmojiChanged> get copyWith =>
       __$$_EmojiChangedCopyWithImpl<_$_EmojiChanged>(this, _$identity);
 
@@ -1168,16 +1165,16 @@ class _$_EmojiChanged implements _EmojiChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task? initialTask)? initialized,
-    TResult Function(String titleStr)? titleChanged,
-    TResult Function(String descriptionStr)? descriptionChanged,
-    TResult Function(int activeSessions)? activeSessionsChanged,
-    TResult Function(Color color)? colorChanged,
-    TResult Function(Emoji emoji)? emojiChanged,
-    TResult Function()? incrementPomodoro,
-    TResult Function()? decrementPomodoro,
-    TResult Function()? saved,
-    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+    TResult? Function(Task? initialTask)? initialized,
+    TResult? Function(String titleStr)? titleChanged,
+    TResult? Function(String descriptionStr)? descriptionChanged,
+    TResult? Function(int activeSessions)? activeSessionsChanged,
+    TResult? Function(Color color)? colorChanged,
+    TResult? Function(Emoji emoji)? emojiChanged,
+    TResult? Function()? incrementPomodoro,
+    TResult? Function()? decrementPomodoro,
+    TResult? Function()? saved,
+    TResult? Function(Either<TaskFailure, Unit> failureOrSuccess)?
         saveInProgress,
   }) {
     return emojiChanged?.call(emoji);
@@ -1226,16 +1223,16 @@ class _$_EmojiChanged implements _EmojiChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_TitleChanged value)? titleChanged,
-    TResult Function(_DescriptionChanged value)? descriptionChanged,
-    TResult Function(_ActiveSessionsChanged value)? activeSessionsChanged,
-    TResult Function(_ColorChanged value)? colorChanged,
-    TResult Function(_EmojiChanged value)? emojiChanged,
-    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
-    TResult Function(_DecrementPomodoro value)? decrementPomodoro,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_SaveInProgress value)? saveInProgress,
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_ActiveSessionsChanged value)? activeSessionsChanged,
+    TResult? Function(_ColorChanged value)? colorChanged,
+    TResult? Function(_EmojiChanged value)? emojiChanged,
+    TResult? Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult? Function(_DecrementPomodoro value)? decrementPomodoro,
+    TResult? Function(_Saved value)? saved,
+    TResult? Function(_SaveInProgress value)? saveInProgress,
   }) {
     return emojiChanged?.call(this);
   }
@@ -1280,14 +1277,11 @@ abstract class _$$_IncrementPomodoroCopyWith<$Res> {
 
 /// @nodoc
 class __$$_IncrementPomodoroCopyWithImpl<$Res>
-    extends _$TaskFormEventCopyWithImpl<$Res>
+    extends _$TaskFormEventCopyWithImpl<$Res, _$_IncrementPomodoro>
     implements _$$_IncrementPomodoroCopyWith<$Res> {
   __$$_IncrementPomodoroCopyWithImpl(
       _$_IncrementPomodoro _value, $Res Function(_$_IncrementPomodoro) _then)
-      : super(_value, (v) => _then(v as _$_IncrementPomodoro));
-
-  @override
-  _$_IncrementPomodoro get _value => super._value as _$_IncrementPomodoro;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1330,16 +1324,16 @@ class _$_IncrementPomodoro implements _IncrementPomodoro {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task? initialTask)? initialized,
-    TResult Function(String titleStr)? titleChanged,
-    TResult Function(String descriptionStr)? descriptionChanged,
-    TResult Function(int activeSessions)? activeSessionsChanged,
-    TResult Function(Color color)? colorChanged,
-    TResult Function(Emoji emoji)? emojiChanged,
-    TResult Function()? incrementPomodoro,
-    TResult Function()? decrementPomodoro,
-    TResult Function()? saved,
-    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+    TResult? Function(Task? initialTask)? initialized,
+    TResult? Function(String titleStr)? titleChanged,
+    TResult? Function(String descriptionStr)? descriptionChanged,
+    TResult? Function(int activeSessions)? activeSessionsChanged,
+    TResult? Function(Color color)? colorChanged,
+    TResult? Function(Emoji emoji)? emojiChanged,
+    TResult? Function()? incrementPomodoro,
+    TResult? Function()? decrementPomodoro,
+    TResult? Function()? saved,
+    TResult? Function(Either<TaskFailure, Unit> failureOrSuccess)?
         saveInProgress,
   }) {
     return incrementPomodoro?.call();
@@ -1388,16 +1382,16 @@ class _$_IncrementPomodoro implements _IncrementPomodoro {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_TitleChanged value)? titleChanged,
-    TResult Function(_DescriptionChanged value)? descriptionChanged,
-    TResult Function(_ActiveSessionsChanged value)? activeSessionsChanged,
-    TResult Function(_ColorChanged value)? colorChanged,
-    TResult Function(_EmojiChanged value)? emojiChanged,
-    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
-    TResult Function(_DecrementPomodoro value)? decrementPomodoro,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_SaveInProgress value)? saveInProgress,
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_ActiveSessionsChanged value)? activeSessionsChanged,
+    TResult? Function(_ColorChanged value)? colorChanged,
+    TResult? Function(_EmojiChanged value)? emojiChanged,
+    TResult? Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult? Function(_DecrementPomodoro value)? decrementPomodoro,
+    TResult? Function(_Saved value)? saved,
+    TResult? Function(_SaveInProgress value)? saveInProgress,
   }) {
     return incrementPomodoro?.call(this);
   }
@@ -1437,14 +1431,11 @@ abstract class _$$_DecrementPomodoroCopyWith<$Res> {
 
 /// @nodoc
 class __$$_DecrementPomodoroCopyWithImpl<$Res>
-    extends _$TaskFormEventCopyWithImpl<$Res>
+    extends _$TaskFormEventCopyWithImpl<$Res, _$_DecrementPomodoro>
     implements _$$_DecrementPomodoroCopyWith<$Res> {
   __$$_DecrementPomodoroCopyWithImpl(
       _$_DecrementPomodoro _value, $Res Function(_$_DecrementPomodoro) _then)
-      : super(_value, (v) => _then(v as _$_DecrementPomodoro));
-
-  @override
-  _$_DecrementPomodoro get _value => super._value as _$_DecrementPomodoro;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1487,16 +1478,16 @@ class _$_DecrementPomodoro implements _DecrementPomodoro {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task? initialTask)? initialized,
-    TResult Function(String titleStr)? titleChanged,
-    TResult Function(String descriptionStr)? descriptionChanged,
-    TResult Function(int activeSessions)? activeSessionsChanged,
-    TResult Function(Color color)? colorChanged,
-    TResult Function(Emoji emoji)? emojiChanged,
-    TResult Function()? incrementPomodoro,
-    TResult Function()? decrementPomodoro,
-    TResult Function()? saved,
-    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+    TResult? Function(Task? initialTask)? initialized,
+    TResult? Function(String titleStr)? titleChanged,
+    TResult? Function(String descriptionStr)? descriptionChanged,
+    TResult? Function(int activeSessions)? activeSessionsChanged,
+    TResult? Function(Color color)? colorChanged,
+    TResult? Function(Emoji emoji)? emojiChanged,
+    TResult? Function()? incrementPomodoro,
+    TResult? Function()? decrementPomodoro,
+    TResult? Function()? saved,
+    TResult? Function(Either<TaskFailure, Unit> failureOrSuccess)?
         saveInProgress,
   }) {
     return decrementPomodoro?.call();
@@ -1545,16 +1536,16 @@ class _$_DecrementPomodoro implements _DecrementPomodoro {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_TitleChanged value)? titleChanged,
-    TResult Function(_DescriptionChanged value)? descriptionChanged,
-    TResult Function(_ActiveSessionsChanged value)? activeSessionsChanged,
-    TResult Function(_ColorChanged value)? colorChanged,
-    TResult Function(_EmojiChanged value)? emojiChanged,
-    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
-    TResult Function(_DecrementPomodoro value)? decrementPomodoro,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_SaveInProgress value)? saveInProgress,
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_ActiveSessionsChanged value)? activeSessionsChanged,
+    TResult? Function(_ColorChanged value)? colorChanged,
+    TResult? Function(_EmojiChanged value)? emojiChanged,
+    TResult? Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult? Function(_DecrementPomodoro value)? decrementPomodoro,
+    TResult? Function(_Saved value)? saved,
+    TResult? Function(_SaveInProgress value)? saveInProgress,
   }) {
     return decrementPomodoro?.call(this);
   }
@@ -1592,13 +1583,11 @@ abstract class _$$_SavedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SavedCopyWithImpl<$Res> extends _$TaskFormEventCopyWithImpl<$Res>
+class __$$_SavedCopyWithImpl<$Res>
+    extends _$TaskFormEventCopyWithImpl<$Res, _$_Saved>
     implements _$$_SavedCopyWith<$Res> {
   __$$_SavedCopyWithImpl(_$_Saved _value, $Res Function(_$_Saved) _then)
-      : super(_value, (v) => _then(v as _$_Saved));
-
-  @override
-  _$_Saved get _value => super._value as _$_Saved;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1641,16 +1630,16 @@ class _$_Saved implements _Saved {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task? initialTask)? initialized,
-    TResult Function(String titleStr)? titleChanged,
-    TResult Function(String descriptionStr)? descriptionChanged,
-    TResult Function(int activeSessions)? activeSessionsChanged,
-    TResult Function(Color color)? colorChanged,
-    TResult Function(Emoji emoji)? emojiChanged,
-    TResult Function()? incrementPomodoro,
-    TResult Function()? decrementPomodoro,
-    TResult Function()? saved,
-    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+    TResult? Function(Task? initialTask)? initialized,
+    TResult? Function(String titleStr)? titleChanged,
+    TResult? Function(String descriptionStr)? descriptionChanged,
+    TResult? Function(int activeSessions)? activeSessionsChanged,
+    TResult? Function(Color color)? colorChanged,
+    TResult? Function(Emoji emoji)? emojiChanged,
+    TResult? Function()? incrementPomodoro,
+    TResult? Function()? decrementPomodoro,
+    TResult? Function()? saved,
+    TResult? Function(Either<TaskFailure, Unit> failureOrSuccess)?
         saveInProgress,
   }) {
     return saved?.call();
@@ -1699,16 +1688,16 @@ class _$_Saved implements _Saved {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_TitleChanged value)? titleChanged,
-    TResult Function(_DescriptionChanged value)? descriptionChanged,
-    TResult Function(_ActiveSessionsChanged value)? activeSessionsChanged,
-    TResult Function(_ColorChanged value)? colorChanged,
-    TResult Function(_EmojiChanged value)? emojiChanged,
-    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
-    TResult Function(_DecrementPomodoro value)? decrementPomodoro,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_SaveInProgress value)? saveInProgress,
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_ActiveSessionsChanged value)? activeSessionsChanged,
+    TResult? Function(_ColorChanged value)? colorChanged,
+    TResult? Function(_EmojiChanged value)? emojiChanged,
+    TResult? Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult? Function(_DecrementPomodoro value)? decrementPomodoro,
+    TResult? Function(_Saved value)? saved,
+    TResult? Function(_SaveInProgress value)? saveInProgress,
   }) {
     return saved?.call(this);
   }
@@ -1744,26 +1733,25 @@ abstract class _$$_SaveInProgressCopyWith<$Res> {
   factory _$$_SaveInProgressCopyWith(
           _$_SaveInProgress value, $Res Function(_$_SaveInProgress) then) =
       __$$_SaveInProgressCopyWithImpl<$Res>;
+  @useResult
   $Res call({Either<TaskFailure, Unit> failureOrSuccess});
 }
 
 /// @nodoc
 class __$$_SaveInProgressCopyWithImpl<$Res>
-    extends _$TaskFormEventCopyWithImpl<$Res>
+    extends _$TaskFormEventCopyWithImpl<$Res, _$_SaveInProgress>
     implements _$$_SaveInProgressCopyWith<$Res> {
   __$$_SaveInProgressCopyWithImpl(
       _$_SaveInProgress _value, $Res Function(_$_SaveInProgress) _then)
-      : super(_value, (v) => _then(v as _$_SaveInProgress));
+      : super(_value, _then);
 
-  @override
-  _$_SaveInProgress get _value => super._value as _$_SaveInProgress;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? failureOrSuccess = freezed,
+    Object? failureOrSuccess = null,
   }) {
     return _then(_$_SaveInProgress(
-      failureOrSuccess == freezed
+      null == failureOrSuccess
           ? _value.failureOrSuccess
           : failureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Either<TaskFailure, Unit>,
@@ -1789,16 +1777,16 @@ class _$_SaveInProgress implements _SaveInProgress {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SaveInProgress &&
-            const DeepCollectionEquality()
-                .equals(other.failureOrSuccess, failureOrSuccess));
+            (identical(other.failureOrSuccess, failureOrSuccess) ||
+                other.failureOrSuccess == failureOrSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(failureOrSuccess));
+  int get hashCode => Object.hash(runtimeType, failureOrSuccess);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SaveInProgressCopyWith<_$_SaveInProgress> get copyWith =>
       __$$_SaveInProgressCopyWithImpl<_$_SaveInProgress>(this, _$identity);
 
@@ -1823,16 +1811,16 @@ class _$_SaveInProgress implements _SaveInProgress {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task? initialTask)? initialized,
-    TResult Function(String titleStr)? titleChanged,
-    TResult Function(String descriptionStr)? descriptionChanged,
-    TResult Function(int activeSessions)? activeSessionsChanged,
-    TResult Function(Color color)? colorChanged,
-    TResult Function(Emoji emoji)? emojiChanged,
-    TResult Function()? incrementPomodoro,
-    TResult Function()? decrementPomodoro,
-    TResult Function()? saved,
-    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)?
+    TResult? Function(Task? initialTask)? initialized,
+    TResult? Function(String titleStr)? titleChanged,
+    TResult? Function(String descriptionStr)? descriptionChanged,
+    TResult? Function(int activeSessions)? activeSessionsChanged,
+    TResult? Function(Color color)? colorChanged,
+    TResult? Function(Emoji emoji)? emojiChanged,
+    TResult? Function()? incrementPomodoro,
+    TResult? Function()? decrementPomodoro,
+    TResult? Function()? saved,
+    TResult? Function(Either<TaskFailure, Unit> failureOrSuccess)?
         saveInProgress,
   }) {
     return saveInProgress?.call(failureOrSuccess);
@@ -1881,16 +1869,16 @@ class _$_SaveInProgress implements _SaveInProgress {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initialized value)? initialized,
-    TResult Function(_TitleChanged value)? titleChanged,
-    TResult Function(_DescriptionChanged value)? descriptionChanged,
-    TResult Function(_ActiveSessionsChanged value)? activeSessionsChanged,
-    TResult Function(_ColorChanged value)? colorChanged,
-    TResult Function(_EmojiChanged value)? emojiChanged,
-    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
-    TResult Function(_DecrementPomodoro value)? decrementPomodoro,
-    TResult Function(_Saved value)? saved,
-    TResult Function(_SaveInProgress value)? saveInProgress,
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_TitleChanged value)? titleChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_ActiveSessionsChanged value)? activeSessionsChanged,
+    TResult? Function(_ColorChanged value)? colorChanged,
+    TResult? Function(_EmojiChanged value)? emojiChanged,
+    TResult? Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult? Function(_DecrementPomodoro value)? decrementPomodoro,
+    TResult? Function(_Saved value)? saved,
+    TResult? Function(_SaveInProgress value)? saveInProgress,
   }) {
     return saveInProgress?.call(this);
   }
@@ -1945,7 +1933,8 @@ mixin _$TaskFormState {
 abstract class $TaskFormStateCopyWith<$Res> {
   factory $TaskFormStateCopyWith(
           TaskFormState value, $Res Function(TaskFormState) then) =
-      _$TaskFormStateCopyWithImpl<$Res>;
+      _$TaskFormStateCopyWithImpl<$Res, TaskFormState>;
+  @useResult
   $Res call(
       {Task task,
       bool showErrorMessages,
@@ -1957,50 +1946,53 @@ abstract class $TaskFormStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TaskFormStateCopyWithImpl<$Res>
+class _$TaskFormStateCopyWithImpl<$Res, $Val extends TaskFormState>
     implements $TaskFormStateCopyWith<$Res> {
   _$TaskFormStateCopyWithImpl(this._value, this._then);
 
-  final TaskFormState _value;
   // ignore: unused_field
-  final $Res Function(TaskFormState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? task = freezed,
-    Object? showErrorMessages = freezed,
-    Object? isEditing = freezed,
-    Object? isSaving = freezed,
-    Object? saveFailureOrSuccessOption = freezed,
+    Object? task = null,
+    Object? showErrorMessages = null,
+    Object? isEditing = null,
+    Object? isSaving = null,
+    Object? saveFailureOrSuccessOption = null,
   }) {
     return _then(_value.copyWith(
-      task: task == freezed
+      task: null == task
           ? _value.task
           : task // ignore: cast_nullable_to_non_nullable
               as Task,
-      showErrorMessages: showErrorMessages == freezed
+      showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
               as bool,
-      isEditing: isEditing == freezed
+      isEditing: null == isEditing
           ? _value.isEditing
           : isEditing // ignore: cast_nullable_to_non_nullable
               as bool,
-      isSaving: isSaving == freezed
+      isSaving: null == isSaving
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
               as bool,
-      saveFailureOrSuccessOption: saveFailureOrSuccessOption == freezed
+      saveFailureOrSuccessOption: null == saveFailureOrSuccessOption
           ? _value.saveFailureOrSuccessOption
           : saveFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<TaskFailure, Unit>>,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $TaskCopyWith<$Res> get task {
     return $TaskCopyWith<$Res>(_value.task, (value) {
-      return _then(_value.copyWith(task: value));
+      return _then(_value.copyWith(task: value) as $Val);
     });
   }
 }
@@ -2012,6 +2004,7 @@ abstract class _$$_TaskFormStateCopyWith<$Res>
           _$_TaskFormState value, $Res Function(_$_TaskFormState) then) =
       __$$_TaskFormStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {Task task,
       bool showErrorMessages,
@@ -2025,41 +2018,39 @@ abstract class _$$_TaskFormStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_TaskFormStateCopyWithImpl<$Res>
-    extends _$TaskFormStateCopyWithImpl<$Res>
+    extends _$TaskFormStateCopyWithImpl<$Res, _$_TaskFormState>
     implements _$$_TaskFormStateCopyWith<$Res> {
   __$$_TaskFormStateCopyWithImpl(
       _$_TaskFormState _value, $Res Function(_$_TaskFormState) _then)
-      : super(_value, (v) => _then(v as _$_TaskFormState));
+      : super(_value, _then);
 
-  @override
-  _$_TaskFormState get _value => super._value as _$_TaskFormState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? task = freezed,
-    Object? showErrorMessages = freezed,
-    Object? isEditing = freezed,
-    Object? isSaving = freezed,
-    Object? saveFailureOrSuccessOption = freezed,
+    Object? task = null,
+    Object? showErrorMessages = null,
+    Object? isEditing = null,
+    Object? isSaving = null,
+    Object? saveFailureOrSuccessOption = null,
   }) {
     return _then(_$_TaskFormState(
-      task: task == freezed
+      task: null == task
           ? _value.task
           : task // ignore: cast_nullable_to_non_nullable
               as Task,
-      showErrorMessages: showErrorMessages == freezed
+      showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
               as bool,
-      isEditing: isEditing == freezed
+      isEditing: null == isEditing
           ? _value.isEditing
           : isEditing // ignore: cast_nullable_to_non_nullable
               as bool,
-      isSaving: isSaving == freezed
+      isSaving: null == isSaving
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
               as bool,
-      saveFailureOrSuccessOption: saveFailureOrSuccessOption == freezed
+      saveFailureOrSuccessOption: null == saveFailureOrSuccessOption
           ? _value.saveFailureOrSuccessOption
           : saveFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<TaskFailure, Unit>>,
@@ -2098,26 +2089,26 @@ class _$_TaskFormState implements _TaskFormState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TaskFormState &&
-            const DeepCollectionEquality().equals(other.task, task) &&
-            const DeepCollectionEquality()
-                .equals(other.showErrorMessages, showErrorMessages) &&
-            const DeepCollectionEquality().equals(other.isEditing, isEditing) &&
-            const DeepCollectionEquality().equals(other.isSaving, isSaving) &&
-            const DeepCollectionEquality().equals(
-                other.saveFailureOrSuccessOption, saveFailureOrSuccessOption));
+            (identical(other.task, task) || other.task == task) &&
+            (identical(other.showErrorMessages, showErrorMessages) ||
+                other.showErrorMessages == showErrorMessages) &&
+            (identical(other.isEditing, isEditing) ||
+                other.isEditing == isEditing) &&
+            (identical(other.isSaving, isSaving) ||
+                other.isSaving == isSaving) &&
+            (identical(other.saveFailureOrSuccessOption,
+                    saveFailureOrSuccessOption) ||
+                other.saveFailureOrSuccessOption ==
+                    saveFailureOrSuccessOption));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(task),
-      const DeepCollectionEquality().hash(showErrorMessages),
-      const DeepCollectionEquality().hash(isEditing),
-      const DeepCollectionEquality().hash(isSaving),
-      const DeepCollectionEquality().hash(saveFailureOrSuccessOption));
+  int get hashCode => Object.hash(runtimeType, task, showErrorMessages,
+      isEditing, isSaving, saveFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TaskFormStateCopyWith<_$_TaskFormState> get copyWith =>
       __$$_TaskFormStateCopyWithImpl<_$_TaskFormState>(this, _$identity);
 }

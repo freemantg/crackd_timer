@@ -1,5 +1,6 @@
-import 'package:bloc/bloc.dart';
-import 'package:robot_timer/src/shared/app_themes.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../shared/app_themes.dart';
 
 class ThemeCubit extends Cubit<AppTheme> {
   ThemeCubit()

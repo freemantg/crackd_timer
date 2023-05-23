@@ -1,10 +1,11 @@
+import 'package:crackd_timer/src/shared/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:robot_timer/src/application/core/task_cubit/task_cubit.dart';
-import 'package:robot_timer/src/shared/extensions.dart';
 
 import '../../../../injection_container.dart';
+import '../../../application/cubits.dart';
 import '../../../application/timer/timer_bloc/timer_bloc.dart';
+import '../../../shared/app_router.dart';
 import '../../../shared/app_router.gr.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';

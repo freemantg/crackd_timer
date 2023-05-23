@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'task_watcher_bloc.dart';
 
@@ -27,10 +27,10 @@ mixin _$TaskWatcherEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? watchAllStarted,
-    TResult Function()? watchCompletedStarted,
-    TResult Function()? watchActiveStarted,
-    TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)?
+    TResult? Function()? watchAllStarted,
+    TResult? Function()? watchCompletedStarted,
+    TResult? Function()? watchActiveStarted,
+    TResult? Function(Either<TaskFailure, List<Task>> failureOrTasks)?
         tasksReceived,
   }) =>
       throw _privateConstructorUsedError;
@@ -55,10 +55,10 @@ mixin _$TaskWatcherEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchCompletedStarted value)? watchCompletedStarted,
-    TResult Function(_WatchActiveStarted value)? watchActiveStarted,
-    TResult Function(_TasksRecieved value)? tasksReceived,
+    TResult? Function(_WatchAllStarted value)? watchAllStarted,
+    TResult? Function(_WatchCompletedStarted value)? watchCompletedStarted,
+    TResult? Function(_WatchActiveStarted value)? watchActiveStarted,
+    TResult? Function(_TasksRecieved value)? tasksReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -76,17 +76,18 @@ mixin _$TaskWatcherEvent {
 abstract class $TaskWatcherEventCopyWith<$Res> {
   factory $TaskWatcherEventCopyWith(
           TaskWatcherEvent value, $Res Function(TaskWatcherEvent) then) =
-      _$TaskWatcherEventCopyWithImpl<$Res>;
+      _$TaskWatcherEventCopyWithImpl<$Res, TaskWatcherEvent>;
 }
 
 /// @nodoc
-class _$TaskWatcherEventCopyWithImpl<$Res>
+class _$TaskWatcherEventCopyWithImpl<$Res, $Val extends TaskWatcherEvent>
     implements $TaskWatcherEventCopyWith<$Res> {
   _$TaskWatcherEventCopyWithImpl(this._value, this._then);
 
-  final TaskWatcherEvent _value;
   // ignore: unused_field
-  final $Res Function(TaskWatcherEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -98,14 +99,11 @@ abstract class _$$_WatchAllStartedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_WatchAllStartedCopyWithImpl<$Res>
-    extends _$TaskWatcherEventCopyWithImpl<$Res>
+    extends _$TaskWatcherEventCopyWithImpl<$Res, _$_WatchAllStarted>
     implements _$$_WatchAllStartedCopyWith<$Res> {
   __$$_WatchAllStartedCopyWithImpl(
       _$_WatchAllStarted _value, $Res Function(_$_WatchAllStarted) _then)
-      : super(_value, (v) => _then(v as _$_WatchAllStarted));
-
-  @override
-  _$_WatchAllStarted get _value => super._value as _$_WatchAllStarted;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -142,10 +140,10 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? watchAllStarted,
-    TResult Function()? watchCompletedStarted,
-    TResult Function()? watchActiveStarted,
-    TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)?
+    TResult? Function()? watchAllStarted,
+    TResult? Function()? watchCompletedStarted,
+    TResult? Function()? watchActiveStarted,
+    TResult? Function(Either<TaskFailure, List<Task>> failureOrTasks)?
         tasksReceived,
   }) {
     return watchAllStarted?.call();
@@ -182,10 +180,10 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchCompletedStarted value)? watchCompletedStarted,
-    TResult Function(_WatchActiveStarted value)? watchActiveStarted,
-    TResult Function(_TasksRecieved value)? tasksReceived,
+    TResult? Function(_WatchAllStarted value)? watchAllStarted,
+    TResult? Function(_WatchCompletedStarted value)? watchCompletedStarted,
+    TResult? Function(_WatchActiveStarted value)? watchActiveStarted,
+    TResult? Function(_TasksRecieved value)? tasksReceived,
   }) {
     return watchAllStarted?.call(this);
   }
@@ -219,15 +217,11 @@ abstract class _$$_WatchCompletedStartedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_WatchCompletedStartedCopyWithImpl<$Res>
-    extends _$TaskWatcherEventCopyWithImpl<$Res>
+    extends _$TaskWatcherEventCopyWithImpl<$Res, _$_WatchCompletedStarted>
     implements _$$_WatchCompletedStartedCopyWith<$Res> {
   __$$_WatchCompletedStartedCopyWithImpl(_$_WatchCompletedStarted _value,
       $Res Function(_$_WatchCompletedStarted) _then)
-      : super(_value, (v) => _then(v as _$_WatchCompletedStarted));
-
-  @override
-  _$_WatchCompletedStarted get _value =>
-      super._value as _$_WatchCompletedStarted;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -264,10 +258,10 @@ class _$_WatchCompletedStarted implements _WatchCompletedStarted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? watchAllStarted,
-    TResult Function()? watchCompletedStarted,
-    TResult Function()? watchActiveStarted,
-    TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)?
+    TResult? Function()? watchAllStarted,
+    TResult? Function()? watchCompletedStarted,
+    TResult? Function()? watchActiveStarted,
+    TResult? Function(Either<TaskFailure, List<Task>> failureOrTasks)?
         tasksReceived,
   }) {
     return watchCompletedStarted?.call();
@@ -304,10 +298,10 @@ class _$_WatchCompletedStarted implements _WatchCompletedStarted {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchCompletedStarted value)? watchCompletedStarted,
-    TResult Function(_WatchActiveStarted value)? watchActiveStarted,
-    TResult Function(_TasksRecieved value)? tasksReceived,
+    TResult? Function(_WatchAllStarted value)? watchAllStarted,
+    TResult? Function(_WatchCompletedStarted value)? watchCompletedStarted,
+    TResult? Function(_WatchActiveStarted value)? watchActiveStarted,
+    TResult? Function(_TasksRecieved value)? tasksReceived,
   }) {
     return watchCompletedStarted?.call(this);
   }
@@ -341,14 +335,11 @@ abstract class _$$_WatchActiveStartedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_WatchActiveStartedCopyWithImpl<$Res>
-    extends _$TaskWatcherEventCopyWithImpl<$Res>
+    extends _$TaskWatcherEventCopyWithImpl<$Res, _$_WatchActiveStarted>
     implements _$$_WatchActiveStartedCopyWith<$Res> {
   __$$_WatchActiveStartedCopyWithImpl(
       _$_WatchActiveStarted _value, $Res Function(_$_WatchActiveStarted) _then)
-      : super(_value, (v) => _then(v as _$_WatchActiveStarted));
-
-  @override
-  _$_WatchActiveStarted get _value => super._value as _$_WatchActiveStarted;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -385,10 +376,10 @@ class _$_WatchActiveStarted implements _WatchActiveStarted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? watchAllStarted,
-    TResult Function()? watchCompletedStarted,
-    TResult Function()? watchActiveStarted,
-    TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)?
+    TResult? Function()? watchAllStarted,
+    TResult? Function()? watchCompletedStarted,
+    TResult? Function()? watchActiveStarted,
+    TResult? Function(Either<TaskFailure, List<Task>> failureOrTasks)?
         tasksReceived,
   }) {
     return watchActiveStarted?.call();
@@ -425,10 +416,10 @@ class _$_WatchActiveStarted implements _WatchActiveStarted {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchCompletedStarted value)? watchCompletedStarted,
-    TResult Function(_WatchActiveStarted value)? watchActiveStarted,
-    TResult Function(_TasksRecieved value)? tasksReceived,
+    TResult? Function(_WatchAllStarted value)? watchAllStarted,
+    TResult? Function(_WatchCompletedStarted value)? watchCompletedStarted,
+    TResult? Function(_WatchActiveStarted value)? watchActiveStarted,
+    TResult? Function(_TasksRecieved value)? tasksReceived,
   }) {
     return watchActiveStarted?.call(this);
   }
@@ -458,26 +449,25 @@ abstract class _$$_TasksRecievedCopyWith<$Res> {
   factory _$$_TasksRecievedCopyWith(
           _$_TasksRecieved value, $Res Function(_$_TasksRecieved) then) =
       __$$_TasksRecievedCopyWithImpl<$Res>;
+  @useResult
   $Res call({Either<TaskFailure, List<Task>> failureOrTasks});
 }
 
 /// @nodoc
 class __$$_TasksRecievedCopyWithImpl<$Res>
-    extends _$TaskWatcherEventCopyWithImpl<$Res>
+    extends _$TaskWatcherEventCopyWithImpl<$Res, _$_TasksRecieved>
     implements _$$_TasksRecievedCopyWith<$Res> {
   __$$_TasksRecievedCopyWithImpl(
       _$_TasksRecieved _value, $Res Function(_$_TasksRecieved) _then)
-      : super(_value, (v) => _then(v as _$_TasksRecieved));
+      : super(_value, _then);
 
-  @override
-  _$_TasksRecieved get _value => super._value as _$_TasksRecieved;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? failureOrTasks = freezed,
+    Object? failureOrTasks = null,
   }) {
     return _then(_$_TasksRecieved(
-      failureOrTasks == freezed
+      null == failureOrTasks
           ? _value.failureOrTasks
           : failureOrTasks // ignore: cast_nullable_to_non_nullable
               as Either<TaskFailure, List<Task>>,
@@ -503,16 +493,16 @@ class _$_TasksRecieved implements _TasksRecieved {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TasksRecieved &&
-            const DeepCollectionEquality()
-                .equals(other.failureOrTasks, failureOrTasks));
+            (identical(other.failureOrTasks, failureOrTasks) ||
+                other.failureOrTasks == failureOrTasks));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(failureOrTasks));
+  int get hashCode => Object.hash(runtimeType, failureOrTasks);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TasksRecievedCopyWith<_$_TasksRecieved> get copyWith =>
       __$$_TasksRecievedCopyWithImpl<_$_TasksRecieved>(this, _$identity);
 
@@ -531,10 +521,10 @@ class _$_TasksRecieved implements _TasksRecieved {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? watchAllStarted,
-    TResult Function()? watchCompletedStarted,
-    TResult Function()? watchActiveStarted,
-    TResult Function(Either<TaskFailure, List<Task>> failureOrTasks)?
+    TResult? Function()? watchAllStarted,
+    TResult? Function()? watchCompletedStarted,
+    TResult? Function()? watchActiveStarted,
+    TResult? Function(Either<TaskFailure, List<Task>> failureOrTasks)?
         tasksReceived,
   }) {
     return tasksReceived?.call(failureOrTasks);
@@ -571,10 +561,10 @@ class _$_TasksRecieved implements _TasksRecieved {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_WatchAllStarted value)? watchAllStarted,
-    TResult Function(_WatchCompletedStarted value)? watchCompletedStarted,
-    TResult Function(_WatchActiveStarted value)? watchActiveStarted,
-    TResult Function(_TasksRecieved value)? tasksReceived,
+    TResult? Function(_WatchAllStarted value)? watchAllStarted,
+    TResult? Function(_WatchCompletedStarted value)? watchCompletedStarted,
+    TResult? Function(_WatchActiveStarted value)? watchActiveStarted,
+    TResult? Function(_TasksRecieved value)? tasksReceived,
   }) {
     return tasksReceived?.call(this);
   }
@@ -617,10 +607,10 @@ mixin _$TaskWatcherState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<Task> tasks)? loadSuccess,
-    TResult Function(TaskFailure taskFailure)? loadFailure,
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function(List<Task> tasks)? loadSuccess,
+    TResult? Function(TaskFailure taskFailure)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -642,10 +632,10 @@ mixin _$TaskWatcherState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -663,17 +653,18 @@ mixin _$TaskWatcherState {
 abstract class $TaskWatcherStateCopyWith<$Res> {
   factory $TaskWatcherStateCopyWith(
           TaskWatcherState value, $Res Function(TaskWatcherState) then) =
-      _$TaskWatcherStateCopyWithImpl<$Res>;
+      _$TaskWatcherStateCopyWithImpl<$Res, TaskWatcherState>;
 }
 
 /// @nodoc
-class _$TaskWatcherStateCopyWithImpl<$Res>
+class _$TaskWatcherStateCopyWithImpl<$Res, $Val extends TaskWatcherState>
     implements $TaskWatcherStateCopyWith<$Res> {
   _$TaskWatcherStateCopyWithImpl(this._value, this._then);
 
-  final TaskWatcherState _value;
   // ignore: unused_field
-  final $Res Function(TaskWatcherState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -685,13 +676,10 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$TaskWatcherStateCopyWithImpl<$Res>
+    extends _$TaskWatcherStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -727,10 +715,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<Task> tasks)? loadSuccess,
-    TResult Function(TaskFailure taskFailure)? loadFailure,
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function(List<Task> tasks)? loadSuccess,
+    TResult? Function(TaskFailure taskFailure)? loadFailure,
   }) {
     return initial?.call();
   }
@@ -764,10 +752,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
   }) {
     return initial?.call(this);
   }
@@ -801,14 +789,11 @@ abstract class _$$_LoadInProgressCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadInProgressCopyWithImpl<$Res>
-    extends _$TaskWatcherStateCopyWithImpl<$Res>
+    extends _$TaskWatcherStateCopyWithImpl<$Res, _$_LoadInProgress>
     implements _$$_LoadInProgressCopyWith<$Res> {
   __$$_LoadInProgressCopyWithImpl(
       _$_LoadInProgress _value, $Res Function(_$_LoadInProgress) _then)
-      : super(_value, (v) => _then(v as _$_LoadInProgress));
-
-  @override
-  _$_LoadInProgress get _value => super._value as _$_LoadInProgress;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -844,10 +829,10 @@ class _$_LoadInProgress implements _LoadInProgress {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<Task> tasks)? loadSuccess,
-    TResult Function(TaskFailure taskFailure)? loadFailure,
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function(List<Task> tasks)? loadSuccess,
+    TResult? Function(TaskFailure taskFailure)? loadFailure,
   }) {
     return loadInProgress?.call();
   }
@@ -881,10 +866,10 @@ class _$_LoadInProgress implements _LoadInProgress {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
   }) {
     return loadInProgress?.call(this);
   }
@@ -914,26 +899,25 @@ abstract class _$$_LoadSuccessCopyWith<$Res> {
   factory _$$_LoadSuccessCopyWith(
           _$_LoadSuccess value, $Res Function(_$_LoadSuccess) then) =
       __$$_LoadSuccessCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<Task> tasks});
 }
 
 /// @nodoc
 class __$$_LoadSuccessCopyWithImpl<$Res>
-    extends _$TaskWatcherStateCopyWithImpl<$Res>
+    extends _$TaskWatcherStateCopyWithImpl<$Res, _$_LoadSuccess>
     implements _$$_LoadSuccessCopyWith<$Res> {
   __$$_LoadSuccessCopyWithImpl(
       _$_LoadSuccess _value, $Res Function(_$_LoadSuccess) _then)
-      : super(_value, (v) => _then(v as _$_LoadSuccess));
+      : super(_value, _then);
 
-  @override
-  _$_LoadSuccess get _value => super._value as _$_LoadSuccess;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tasks = freezed,
+    Object? tasks = null,
   }) {
     return _then(_$_LoadSuccess(
-      tasks: tasks == freezed
+      tasks: null == tasks
           ? _value._tasks
           : tasks // ignore: cast_nullable_to_non_nullable
               as List<Task>,
@@ -949,6 +933,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   final List<Task> _tasks;
   @override
   List<Task> get tasks {
+    if (_tasks is EqualUnmodifiableListView) return _tasks;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tasks);
   }
@@ -972,6 +957,7 @@ class _$_LoadSuccess implements _LoadSuccess {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
       __$$_LoadSuccessCopyWithImpl<_$_LoadSuccess>(this, _$identity);
 
@@ -989,10 +975,10 @@ class _$_LoadSuccess implements _LoadSuccess {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<Task> tasks)? loadSuccess,
-    TResult Function(TaskFailure taskFailure)? loadFailure,
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function(List<Task> tasks)? loadSuccess,
+    TResult? Function(TaskFailure taskFailure)? loadFailure,
   }) {
     return loadSuccess?.call(tasks);
   }
@@ -1026,10 +1012,10 @@ class _$_LoadSuccess implements _LoadSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
   }) {
     return loadSuccess?.call(this);
   }
@@ -1065,6 +1051,7 @@ abstract class _$$_LoadFailureCopyWith<$Res> {
   factory _$$_LoadFailureCopyWith(
           _$_LoadFailure value, $Res Function(_$_LoadFailure) then) =
       __$$_LoadFailureCopyWithImpl<$Res>;
+  @useResult
   $Res call({TaskFailure taskFailure});
 
   $TaskFailureCopyWith<$Res> get taskFailure;
@@ -1072,21 +1059,19 @@ abstract class _$$_LoadFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadFailureCopyWithImpl<$Res>
-    extends _$TaskWatcherStateCopyWithImpl<$Res>
+    extends _$TaskWatcherStateCopyWithImpl<$Res, _$_LoadFailure>
     implements _$$_LoadFailureCopyWith<$Res> {
   __$$_LoadFailureCopyWithImpl(
       _$_LoadFailure _value, $Res Function(_$_LoadFailure) _then)
-      : super(_value, (v) => _then(v as _$_LoadFailure));
+      : super(_value, _then);
 
-  @override
-  _$_LoadFailure get _value => super._value as _$_LoadFailure;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? taskFailure = freezed,
+    Object? taskFailure = null,
   }) {
     return _then(_$_LoadFailure(
-      taskFailure: taskFailure == freezed
+      taskFailure: null == taskFailure
           ? _value.taskFailure
           : taskFailure // ignore: cast_nullable_to_non_nullable
               as TaskFailure,
@@ -1094,6 +1079,7 @@ class __$$_LoadFailureCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $TaskFailureCopyWith<$Res> get taskFailure {
     return $TaskFailureCopyWith<$Res>(_value.taskFailure, (value) {
       return _then(_value.copyWith(taskFailure: value));
@@ -1119,16 +1105,16 @@ class _$_LoadFailure implements _LoadFailure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoadFailure &&
-            const DeepCollectionEquality()
-                .equals(other.taskFailure, taskFailure));
+            (identical(other.taskFailure, taskFailure) ||
+                other.taskFailure == taskFailure));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(taskFailure));
+  int get hashCode => Object.hash(runtimeType, taskFailure);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
       __$$_LoadFailureCopyWithImpl<_$_LoadFailure>(this, _$identity);
 
@@ -1146,10 +1132,10 @@ class _$_LoadFailure implements _LoadFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<Task> tasks)? loadSuccess,
-    TResult Function(TaskFailure taskFailure)? loadFailure,
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function(List<Task> tasks)? loadSuccess,
+    TResult? Function(TaskFailure taskFailure)? loadFailure,
   }) {
     return loadFailure?.call(taskFailure);
   }
@@ -1183,10 +1169,10 @@ class _$_LoadFailure implements _LoadFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
   }) {
     return loadFailure?.call(this);
   }

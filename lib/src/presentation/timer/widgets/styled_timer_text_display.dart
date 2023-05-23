@@ -1,3 +1,4 @@
+import 'package:crackd_timer/src/presentation/timer/widgets/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,19 +15,10 @@ class StyledTimerTextDisplay extends StatelessWidget {
     return BlocBuilder<TimerBloc, TimerState>(
       builder: (context, state) {
         return Text(
-          _buildTimerText(state.timerType),
+          state.timerType.getTimerDescription,
           style: TextStyles.title1,
         );
       },
     );
-  }
-
-  String _buildTimerText(TimerType timerType) {
-    switch (timerType) {
-      case TimerType.focus:
-        return 'Pomodoro time. Stay focused!';
-      default:
-        return 'Time for a break!';
-    }
   }
 }

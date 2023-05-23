@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:robot_timer/injection_container.dart';
 
+import '../injection_container.dart';
 import 'application/blocs.dart';
 import 'application/cubits.dart';
-import 'shared/app_router.gr.dart';
+import 'shared/app_router.dart';
 import 'shared/app_themes.dart';
 
 class AppWidget extends StatelessWidget {

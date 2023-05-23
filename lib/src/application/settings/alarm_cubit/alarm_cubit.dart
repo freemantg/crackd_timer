@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:robot_timer/src/infrastructure/timer/audio_repository.dart';
+
+import '../../../infrastructure/timer/audio_repository.dart';
 
 part 'alarm_cubit_state.dart';
 part 'alarm_cubit.freezed.dart';

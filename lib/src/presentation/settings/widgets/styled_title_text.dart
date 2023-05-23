@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:robot_timer/src/shared/styles.dart';
 
+import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
 
 class StyledHeadingAndSubHeading extends StatelessWidget {

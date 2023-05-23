@@ -1,11 +1,11 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
-
 
 import '../../shared/styles.dart';
 import '../shared/widgets.dart';
 import 'widgets/widgets.dart';
 
-
+@RoutePage()
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
@@ -18,11 +18,11 @@ class SettingsPage extends StatelessWidget {
   }
 
   SingleChildScrollView _buildScaffoldBody() {
-    return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
+    return const SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children: [
           _SettingsHeader(),
           _SettingsBottomSheet(),
         ],
@@ -55,10 +55,10 @@ class _SettingsBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StyledCurvedDecoration(
+    return const StyledCurvedDecoration(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children: [
           PomodoroSettings(),
           HSpace(size: Insets.l),
           Divider(),

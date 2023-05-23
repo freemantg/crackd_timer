@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../injection_container.dart';
 import '../../../application/settings/settings_bloc/settings_bloc.dart';
 import '../../../application/timer/timer_bloc/timer_bloc.dart';
-import '../../../shared/app_router.gr.dart';
+import '../../../shared/app_router.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
 
@@ -33,7 +33,7 @@ class TimerMainActionButton extends StatelessWidget {
               flex: 2,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: theme.cardColor,
+                  backgroundColor: theme.cardColor,
                   elevation: isPlaying ? 0 : Elevation.button,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(Corners.s5),

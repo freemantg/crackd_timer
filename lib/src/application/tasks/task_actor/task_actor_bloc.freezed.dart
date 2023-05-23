@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'task_actor_bloc.dart';
 
@@ -27,10 +27,10 @@ mixin _$TaskActorEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task task)? deleted,
-    TResult Function(Task task)? completeToggled,
-    TResult Function(Task task)? incrementPomodoro,
-    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
+    TResult? Function(Task task)? deleted,
+    TResult? Function(Task task)? completeToggled,
+    TResult? Function(Task task)? incrementPomodoro,
+    TResult? Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,10 +52,10 @@ mixin _$TaskActorEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Deleted value)? deleted,
-    TResult Function(_CompleteToggled value)? completeToggled,
-    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
-    TResult Function(_Updated value)? update,
+    TResult? Function(_Deleted value)? deleted,
+    TResult? Function(_CompleteToggled value)? completeToggled,
+    TResult? Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult? Function(_Updated value)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,17 +73,18 @@ mixin _$TaskActorEvent {
 abstract class $TaskActorEventCopyWith<$Res> {
   factory $TaskActorEventCopyWith(
           TaskActorEvent value, $Res Function(TaskActorEvent) then) =
-      _$TaskActorEventCopyWithImpl<$Res>;
+      _$TaskActorEventCopyWithImpl<$Res, TaskActorEvent>;
 }
 
 /// @nodoc
-class _$TaskActorEventCopyWithImpl<$Res>
+class _$TaskActorEventCopyWithImpl<$Res, $Val extends TaskActorEvent>
     implements $TaskActorEventCopyWith<$Res> {
   _$TaskActorEventCopyWithImpl(this._value, this._then);
 
-  final TaskActorEvent _value;
   // ignore: unused_field
-  final $Res Function(TaskActorEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -91,26 +92,26 @@ abstract class _$$_DeletedCopyWith<$Res> {
   factory _$$_DeletedCopyWith(
           _$_Deleted value, $Res Function(_$_Deleted) then) =
       __$$_DeletedCopyWithImpl<$Res>;
+  @useResult
   $Res call({Task task});
 
   $TaskCopyWith<$Res> get task;
 }
 
 /// @nodoc
-class __$$_DeletedCopyWithImpl<$Res> extends _$TaskActorEventCopyWithImpl<$Res>
+class __$$_DeletedCopyWithImpl<$Res>
+    extends _$TaskActorEventCopyWithImpl<$Res, _$_Deleted>
     implements _$$_DeletedCopyWith<$Res> {
   __$$_DeletedCopyWithImpl(_$_Deleted _value, $Res Function(_$_Deleted) _then)
-      : super(_value, (v) => _then(v as _$_Deleted));
+      : super(_value, _then);
 
-  @override
-  _$_Deleted get _value => super._value as _$_Deleted;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? task = freezed,
+    Object? task = null,
   }) {
     return _then(_$_Deleted(
-      task == freezed
+      null == task
           ? _value.task
           : task // ignore: cast_nullable_to_non_nullable
               as Task,
@@ -118,6 +119,7 @@ class __$$_DeletedCopyWithImpl<$Res> extends _$TaskActorEventCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $TaskCopyWith<$Res> get task {
     return $TaskCopyWith<$Res>(_value.task, (value) {
       return _then(_value.copyWith(task: value));
@@ -143,15 +145,15 @@ class _$_Deleted implements _Deleted {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Deleted &&
-            const DeepCollectionEquality().equals(other.task, task));
+            (identical(other.task, task) || other.task == task));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(task));
+  int get hashCode => Object.hash(runtimeType, task);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DeletedCopyWith<_$_Deleted> get copyWith =>
       __$$_DeletedCopyWithImpl<_$_Deleted>(this, _$identity);
 
@@ -170,10 +172,10 @@ class _$_Deleted implements _Deleted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task task)? deleted,
-    TResult Function(Task task)? completeToggled,
-    TResult Function(Task task)? incrementPomodoro,
-    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
+    TResult? Function(Task task)? deleted,
+    TResult? Function(Task task)? completeToggled,
+    TResult? Function(Task task)? incrementPomodoro,
+    TResult? Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
   }) {
     return deleted?.call(task);
   }
@@ -207,10 +209,10 @@ class _$_Deleted implements _Deleted {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Deleted value)? deleted,
-    TResult Function(_CompleteToggled value)? completeToggled,
-    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
-    TResult Function(_Updated value)? update,
+    TResult? Function(_Deleted value)? deleted,
+    TResult? Function(_CompleteToggled value)? completeToggled,
+    TResult? Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult? Function(_Updated value)? update,
   }) {
     return deleted?.call(this);
   }
@@ -245,6 +247,7 @@ abstract class _$$_CompleteToggledCopyWith<$Res> {
   factory _$$_CompleteToggledCopyWith(
           _$_CompleteToggled value, $Res Function(_$_CompleteToggled) then) =
       __$$_CompleteToggledCopyWithImpl<$Res>;
+  @useResult
   $Res call({Task task});
 
   $TaskCopyWith<$Res> get task;
@@ -252,21 +255,19 @@ abstract class _$$_CompleteToggledCopyWith<$Res> {
 
 /// @nodoc
 class __$$_CompleteToggledCopyWithImpl<$Res>
-    extends _$TaskActorEventCopyWithImpl<$Res>
+    extends _$TaskActorEventCopyWithImpl<$Res, _$_CompleteToggled>
     implements _$$_CompleteToggledCopyWith<$Res> {
   __$$_CompleteToggledCopyWithImpl(
       _$_CompleteToggled _value, $Res Function(_$_CompleteToggled) _then)
-      : super(_value, (v) => _then(v as _$_CompleteToggled));
+      : super(_value, _then);
 
-  @override
-  _$_CompleteToggled get _value => super._value as _$_CompleteToggled;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? task = freezed,
+    Object? task = null,
   }) {
     return _then(_$_CompleteToggled(
-      task == freezed
+      null == task
           ? _value.task
           : task // ignore: cast_nullable_to_non_nullable
               as Task,
@@ -274,6 +275,7 @@ class __$$_CompleteToggledCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $TaskCopyWith<$Res> get task {
     return $TaskCopyWith<$Res>(_value.task, (value) {
       return _then(_value.copyWith(task: value));
@@ -299,15 +301,15 @@ class _$_CompleteToggled implements _CompleteToggled {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CompleteToggled &&
-            const DeepCollectionEquality().equals(other.task, task));
+            (identical(other.task, task) || other.task == task));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(task));
+  int get hashCode => Object.hash(runtimeType, task);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CompleteToggledCopyWith<_$_CompleteToggled> get copyWith =>
       __$$_CompleteToggledCopyWithImpl<_$_CompleteToggled>(this, _$identity);
 
@@ -326,10 +328,10 @@ class _$_CompleteToggled implements _CompleteToggled {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task task)? deleted,
-    TResult Function(Task task)? completeToggled,
-    TResult Function(Task task)? incrementPomodoro,
-    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
+    TResult? Function(Task task)? deleted,
+    TResult? Function(Task task)? completeToggled,
+    TResult? Function(Task task)? incrementPomodoro,
+    TResult? Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
   }) {
     return completeToggled?.call(task);
   }
@@ -363,10 +365,10 @@ class _$_CompleteToggled implements _CompleteToggled {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Deleted value)? deleted,
-    TResult Function(_CompleteToggled value)? completeToggled,
-    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
-    TResult Function(_Updated value)? update,
+    TResult? Function(_Deleted value)? deleted,
+    TResult? Function(_CompleteToggled value)? completeToggled,
+    TResult? Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult? Function(_Updated value)? update,
   }) {
     return completeToggled?.call(this);
   }
@@ -401,6 +403,7 @@ abstract class _$$_IncrementPomodoroCopyWith<$Res> {
   factory _$$_IncrementPomodoroCopyWith(_$_IncrementPomodoro value,
           $Res Function(_$_IncrementPomodoro) then) =
       __$$_IncrementPomodoroCopyWithImpl<$Res>;
+  @useResult
   $Res call({Task task});
 
   $TaskCopyWith<$Res> get task;
@@ -408,21 +411,19 @@ abstract class _$$_IncrementPomodoroCopyWith<$Res> {
 
 /// @nodoc
 class __$$_IncrementPomodoroCopyWithImpl<$Res>
-    extends _$TaskActorEventCopyWithImpl<$Res>
+    extends _$TaskActorEventCopyWithImpl<$Res, _$_IncrementPomodoro>
     implements _$$_IncrementPomodoroCopyWith<$Res> {
   __$$_IncrementPomodoroCopyWithImpl(
       _$_IncrementPomodoro _value, $Res Function(_$_IncrementPomodoro) _then)
-      : super(_value, (v) => _then(v as _$_IncrementPomodoro));
+      : super(_value, _then);
 
-  @override
-  _$_IncrementPomodoro get _value => super._value as _$_IncrementPomodoro;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? task = freezed,
+    Object? task = null,
   }) {
     return _then(_$_IncrementPomodoro(
-      task == freezed
+      null == task
           ? _value.task
           : task // ignore: cast_nullable_to_non_nullable
               as Task,
@@ -430,6 +431,7 @@ class __$$_IncrementPomodoroCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $TaskCopyWith<$Res> get task {
     return $TaskCopyWith<$Res>(_value.task, (value) {
       return _then(_value.copyWith(task: value));
@@ -455,15 +457,15 @@ class _$_IncrementPomodoro implements _IncrementPomodoro {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IncrementPomodoro &&
-            const DeepCollectionEquality().equals(other.task, task));
+            (identical(other.task, task) || other.task == task));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(task));
+  int get hashCode => Object.hash(runtimeType, task);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_IncrementPomodoroCopyWith<_$_IncrementPomodoro> get copyWith =>
       __$$_IncrementPomodoroCopyWithImpl<_$_IncrementPomodoro>(
           this, _$identity);
@@ -483,10 +485,10 @@ class _$_IncrementPomodoro implements _IncrementPomodoro {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task task)? deleted,
-    TResult Function(Task task)? completeToggled,
-    TResult Function(Task task)? incrementPomodoro,
-    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
+    TResult? Function(Task task)? deleted,
+    TResult? Function(Task task)? completeToggled,
+    TResult? Function(Task task)? incrementPomodoro,
+    TResult? Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
   }) {
     return incrementPomodoro?.call(task);
   }
@@ -520,10 +522,10 @@ class _$_IncrementPomodoro implements _IncrementPomodoro {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Deleted value)? deleted,
-    TResult Function(_CompleteToggled value)? completeToggled,
-    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
-    TResult Function(_Updated value)? update,
+    TResult? Function(_Deleted value)? deleted,
+    TResult? Function(_CompleteToggled value)? completeToggled,
+    TResult? Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult? Function(_Updated value)? update,
   }) {
     return incrementPomodoro?.call(this);
   }
@@ -558,24 +560,24 @@ abstract class _$$_UpdatedCopyWith<$Res> {
   factory _$$_UpdatedCopyWith(
           _$_Updated value, $Res Function(_$_Updated) then) =
       __$$_UpdatedCopyWithImpl<$Res>;
+  @useResult
   $Res call({Either<TaskFailure, Unit> failureOrSuccess});
 }
 
 /// @nodoc
-class __$$_UpdatedCopyWithImpl<$Res> extends _$TaskActorEventCopyWithImpl<$Res>
+class __$$_UpdatedCopyWithImpl<$Res>
+    extends _$TaskActorEventCopyWithImpl<$Res, _$_Updated>
     implements _$$_UpdatedCopyWith<$Res> {
   __$$_UpdatedCopyWithImpl(_$_Updated _value, $Res Function(_$_Updated) _then)
-      : super(_value, (v) => _then(v as _$_Updated));
+      : super(_value, _then);
 
-  @override
-  _$_Updated get _value => super._value as _$_Updated;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? failureOrSuccess = freezed,
+    Object? failureOrSuccess = null,
   }) {
     return _then(_$_Updated(
-      failureOrSuccess == freezed
+      null == failureOrSuccess
           ? _value.failureOrSuccess
           : failureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Either<TaskFailure, Unit>,
@@ -601,16 +603,16 @@ class _$_Updated implements _Updated {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Updated &&
-            const DeepCollectionEquality()
-                .equals(other.failureOrSuccess, failureOrSuccess));
+            (identical(other.failureOrSuccess, failureOrSuccess) ||
+                other.failureOrSuccess == failureOrSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(failureOrSuccess));
+  int get hashCode => Object.hash(runtimeType, failureOrSuccess);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UpdatedCopyWith<_$_Updated> get copyWith =>
       __$$_UpdatedCopyWithImpl<_$_Updated>(this, _$identity);
 
@@ -629,10 +631,10 @@ class _$_Updated implements _Updated {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Task task)? deleted,
-    TResult Function(Task task)? completeToggled,
-    TResult Function(Task task)? incrementPomodoro,
-    TResult Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
+    TResult? Function(Task task)? deleted,
+    TResult? Function(Task task)? completeToggled,
+    TResult? Function(Task task)? incrementPomodoro,
+    TResult? Function(Either<TaskFailure, Unit> failureOrSuccess)? update,
   }) {
     return update?.call(failureOrSuccess);
   }
@@ -666,10 +668,10 @@ class _$_Updated implements _Updated {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Deleted value)? deleted,
-    TResult Function(_CompleteToggled value)? completeToggled,
-    TResult Function(_IncrementPomodoro value)? incrementPomodoro,
-    TResult Function(_Updated value)? update,
+    TResult? Function(_Deleted value)? deleted,
+    TResult? Function(_CompleteToggled value)? completeToggled,
+    TResult? Function(_IncrementPomodoro value)? incrementPomodoro,
+    TResult? Function(_Updated value)? update,
   }) {
     return update?.call(this);
   }
@@ -712,10 +714,10 @@ mixin _$TaskActorState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? actionInProgress,
-    TResult Function()? actionSuccess,
-    TResult Function(TaskFailure taskFailure)? actionFailure,
+    TResult? Function()? initial,
+    TResult? Function()? actionInProgress,
+    TResult? Function()? actionSuccess,
+    TResult? Function(TaskFailure taskFailure)? actionFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -737,10 +739,10 @@ mixin _$TaskActorState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ActionInProgress value)? actionInProgress,
-    TResult Function(_ActionSuccess value)? actionSuccess,
-    TResult Function(_ActionFailure value)? actionFailure,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ActionInProgress value)? actionInProgress,
+    TResult? Function(_ActionSuccess value)? actionSuccess,
+    TResult? Function(_ActionFailure value)? actionFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -758,17 +760,18 @@ mixin _$TaskActorState {
 abstract class $TaskActorStateCopyWith<$Res> {
   factory $TaskActorStateCopyWith(
           TaskActorState value, $Res Function(TaskActorState) then) =
-      _$TaskActorStateCopyWithImpl<$Res>;
+      _$TaskActorStateCopyWithImpl<$Res, TaskActorState>;
 }
 
 /// @nodoc
-class _$TaskActorStateCopyWithImpl<$Res>
+class _$TaskActorStateCopyWithImpl<$Res, $Val extends TaskActorState>
     implements $TaskActorStateCopyWith<$Res> {
   _$TaskActorStateCopyWithImpl(this._value, this._then);
 
-  final TaskActorState _value;
   // ignore: unused_field
-  final $Res Function(TaskActorState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -779,13 +782,11 @@ abstract class _$$_InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$TaskActorStateCopyWithImpl<$Res>
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$TaskActorStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -821,10 +822,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? actionInProgress,
-    TResult Function()? actionSuccess,
-    TResult Function(TaskFailure taskFailure)? actionFailure,
+    TResult? Function()? initial,
+    TResult? Function()? actionInProgress,
+    TResult? Function()? actionSuccess,
+    TResult? Function(TaskFailure taskFailure)? actionFailure,
   }) {
     return initial?.call();
   }
@@ -858,10 +859,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ActionInProgress value)? actionInProgress,
-    TResult Function(_ActionSuccess value)? actionSuccess,
-    TResult Function(_ActionFailure value)? actionFailure,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ActionInProgress value)? actionInProgress,
+    TResult? Function(_ActionSuccess value)? actionSuccess,
+    TResult? Function(_ActionFailure value)? actionFailure,
   }) {
     return initial?.call(this);
   }
@@ -895,14 +896,11 @@ abstract class _$$_ActionInProgressCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ActionInProgressCopyWithImpl<$Res>
-    extends _$TaskActorStateCopyWithImpl<$Res>
+    extends _$TaskActorStateCopyWithImpl<$Res, _$_ActionInProgress>
     implements _$$_ActionInProgressCopyWith<$Res> {
   __$$_ActionInProgressCopyWithImpl(
       _$_ActionInProgress _value, $Res Function(_$_ActionInProgress) _then)
-      : super(_value, (v) => _then(v as _$_ActionInProgress));
-
-  @override
-  _$_ActionInProgress get _value => super._value as _$_ActionInProgress;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -938,10 +936,10 @@ class _$_ActionInProgress implements _ActionInProgress {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? actionInProgress,
-    TResult Function()? actionSuccess,
-    TResult Function(TaskFailure taskFailure)? actionFailure,
+    TResult? Function()? initial,
+    TResult? Function()? actionInProgress,
+    TResult? Function()? actionSuccess,
+    TResult? Function(TaskFailure taskFailure)? actionFailure,
   }) {
     return actionInProgress?.call();
   }
@@ -975,10 +973,10 @@ class _$_ActionInProgress implements _ActionInProgress {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ActionInProgress value)? actionInProgress,
-    TResult Function(_ActionSuccess value)? actionSuccess,
-    TResult Function(_ActionFailure value)? actionFailure,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ActionInProgress value)? actionInProgress,
+    TResult? Function(_ActionSuccess value)? actionSuccess,
+    TResult? Function(_ActionFailure value)? actionFailure,
   }) {
     return actionInProgress?.call(this);
   }
@@ -1012,14 +1010,11 @@ abstract class _$$_ActionSuccessCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ActionSuccessCopyWithImpl<$Res>
-    extends _$TaskActorStateCopyWithImpl<$Res>
+    extends _$TaskActorStateCopyWithImpl<$Res, _$_ActionSuccess>
     implements _$$_ActionSuccessCopyWith<$Res> {
   __$$_ActionSuccessCopyWithImpl(
       _$_ActionSuccess _value, $Res Function(_$_ActionSuccess) _then)
-      : super(_value, (v) => _then(v as _$_ActionSuccess));
-
-  @override
-  _$_ActionSuccess get _value => super._value as _$_ActionSuccess;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1055,10 +1050,10 @@ class _$_ActionSuccess implements _ActionSuccess {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? actionInProgress,
-    TResult Function()? actionSuccess,
-    TResult Function(TaskFailure taskFailure)? actionFailure,
+    TResult? Function()? initial,
+    TResult? Function()? actionInProgress,
+    TResult? Function()? actionSuccess,
+    TResult? Function(TaskFailure taskFailure)? actionFailure,
   }) {
     return actionSuccess?.call();
   }
@@ -1092,10 +1087,10 @@ class _$_ActionSuccess implements _ActionSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ActionInProgress value)? actionInProgress,
-    TResult Function(_ActionSuccess value)? actionSuccess,
-    TResult Function(_ActionFailure value)? actionFailure,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ActionInProgress value)? actionInProgress,
+    TResult? Function(_ActionSuccess value)? actionSuccess,
+    TResult? Function(_ActionFailure value)? actionFailure,
   }) {
     return actionSuccess?.call(this);
   }
@@ -1125,6 +1120,7 @@ abstract class _$$_ActionFailureCopyWith<$Res> {
   factory _$$_ActionFailureCopyWith(
           _$_ActionFailure value, $Res Function(_$_ActionFailure) then) =
       __$$_ActionFailureCopyWithImpl<$Res>;
+  @useResult
   $Res call({TaskFailure taskFailure});
 
   $TaskFailureCopyWith<$Res> get taskFailure;
@@ -1132,21 +1128,19 @@ abstract class _$$_ActionFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ActionFailureCopyWithImpl<$Res>
-    extends _$TaskActorStateCopyWithImpl<$Res>
+    extends _$TaskActorStateCopyWithImpl<$Res, _$_ActionFailure>
     implements _$$_ActionFailureCopyWith<$Res> {
   __$$_ActionFailureCopyWithImpl(
       _$_ActionFailure _value, $Res Function(_$_ActionFailure) _then)
-      : super(_value, (v) => _then(v as _$_ActionFailure));
+      : super(_value, _then);
 
-  @override
-  _$_ActionFailure get _value => super._value as _$_ActionFailure;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? taskFailure = freezed,
+    Object? taskFailure = null,
   }) {
     return _then(_$_ActionFailure(
-      taskFailure == freezed
+      null == taskFailure
           ? _value.taskFailure
           : taskFailure // ignore: cast_nullable_to_non_nullable
               as TaskFailure,
@@ -1154,6 +1148,7 @@ class __$$_ActionFailureCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $TaskFailureCopyWith<$Res> get taskFailure {
     return $TaskFailureCopyWith<$Res>(_value.taskFailure, (value) {
       return _then(_value.copyWith(taskFailure: value));
@@ -1179,16 +1174,16 @@ class _$_ActionFailure implements _ActionFailure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ActionFailure &&
-            const DeepCollectionEquality()
-                .equals(other.taskFailure, taskFailure));
+            (identical(other.taskFailure, taskFailure) ||
+                other.taskFailure == taskFailure));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(taskFailure));
+  int get hashCode => Object.hash(runtimeType, taskFailure);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ActionFailureCopyWith<_$_ActionFailure> get copyWith =>
       __$$_ActionFailureCopyWithImpl<_$_ActionFailure>(this, _$identity);
 
@@ -1206,10 +1201,10 @@ class _$_ActionFailure implements _ActionFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? actionInProgress,
-    TResult Function()? actionSuccess,
-    TResult Function(TaskFailure taskFailure)? actionFailure,
+    TResult? Function()? initial,
+    TResult? Function()? actionInProgress,
+    TResult? Function()? actionSuccess,
+    TResult? Function(TaskFailure taskFailure)? actionFailure,
   }) {
     return actionFailure?.call(taskFailure);
   }
@@ -1243,10 +1238,10 @@ class _$_ActionFailure implements _ActionFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ActionInProgress value)? actionInProgress,
-    TResult Function(_ActionSuccess value)? actionSuccess,
-    TResult Function(_ActionFailure value)? actionFailure,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ActionInProgress value)? actionInProgress,
+    TResult? Function(_ActionSuccess value)? actionSuccess,
+    TResult? Function(_ActionFailure value)? actionFailure,
   }) {
     return actionFailure?.call(this);
   }

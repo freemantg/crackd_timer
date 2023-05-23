@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'settings_bloc.dart';
 
@@ -26,10 +26,10 @@ mixin _$SettingsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String minutes)? updateFocusTime,
-    TResult Function(String minutes)? updateShortBreakTime,
-    TResult Function(String minutes)? updateLongBreakTime,
-    TResult Function()? saved,
+    TResult? Function(String minutes)? updateFocusTime,
+    TResult? Function(String minutes)? updateShortBreakTime,
+    TResult? Function(String minutes)? updateLongBreakTime,
+    TResult? Function()? saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,10 +51,10 @@ mixin _$SettingsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UpdateFocusTime value)? updateFocusTime,
-    TResult Function(_UpdateShortBreakTime value)? updateShortBreakTime,
-    TResult Function(_UpdateLongBreakTime value)? updateLongBreakTime,
-    TResult Function(_Saved value)? saved,
+    TResult? Function(_UpdateFocusTime value)? updateFocusTime,
+    TResult? Function(_UpdateShortBreakTime value)? updateShortBreakTime,
+    TResult? Function(_UpdateLongBreakTime value)? updateLongBreakTime,
+    TResult? Function(_Saved value)? saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -72,17 +72,18 @@ mixin _$SettingsEvent {
 abstract class $SettingsEventCopyWith<$Res> {
   factory $SettingsEventCopyWith(
           SettingsEvent value, $Res Function(SettingsEvent) then) =
-      _$SettingsEventCopyWithImpl<$Res>;
+      _$SettingsEventCopyWithImpl<$Res, SettingsEvent>;
 }
 
 /// @nodoc
-class _$SettingsEventCopyWithImpl<$Res>
+class _$SettingsEventCopyWithImpl<$Res, $Val extends SettingsEvent>
     implements $SettingsEventCopyWith<$Res> {
   _$SettingsEventCopyWithImpl(this._value, this._then);
 
-  final SettingsEvent _value;
   // ignore: unused_field
-  final $Res Function(SettingsEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -90,26 +91,25 @@ abstract class _$$_UpdateFocusTimeCopyWith<$Res> {
   factory _$$_UpdateFocusTimeCopyWith(
           _$_UpdateFocusTime value, $Res Function(_$_UpdateFocusTime) then) =
       __$$_UpdateFocusTimeCopyWithImpl<$Res>;
+  @useResult
   $Res call({String minutes});
 }
 
 /// @nodoc
 class __$$_UpdateFocusTimeCopyWithImpl<$Res>
-    extends _$SettingsEventCopyWithImpl<$Res>
+    extends _$SettingsEventCopyWithImpl<$Res, _$_UpdateFocusTime>
     implements _$$_UpdateFocusTimeCopyWith<$Res> {
   __$$_UpdateFocusTimeCopyWithImpl(
       _$_UpdateFocusTime _value, $Res Function(_$_UpdateFocusTime) _then)
-      : super(_value, (v) => _then(v as _$_UpdateFocusTime));
+      : super(_value, _then);
 
-  @override
-  _$_UpdateFocusTime get _value => super._value as _$_UpdateFocusTime;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? minutes = freezed,
+    Object? minutes = null,
   }) {
     return _then(_$_UpdateFocusTime(
-      minutes: minutes == freezed
+      minutes: null == minutes
           ? _value.minutes
           : minutes // ignore: cast_nullable_to_non_nullable
               as String,
@@ -135,15 +135,15 @@ class _$_UpdateFocusTime implements _UpdateFocusTime {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UpdateFocusTime &&
-            const DeepCollectionEquality().equals(other.minutes, minutes));
+            (identical(other.minutes, minutes) || other.minutes == minutes));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(minutes));
+  int get hashCode => Object.hash(runtimeType, minutes);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UpdateFocusTimeCopyWith<_$_UpdateFocusTime> get copyWith =>
       __$$_UpdateFocusTimeCopyWithImpl<_$_UpdateFocusTime>(this, _$identity);
 
@@ -161,10 +161,10 @@ class _$_UpdateFocusTime implements _UpdateFocusTime {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String minutes)? updateFocusTime,
-    TResult Function(String minutes)? updateShortBreakTime,
-    TResult Function(String minutes)? updateLongBreakTime,
-    TResult Function()? saved,
+    TResult? Function(String minutes)? updateFocusTime,
+    TResult? Function(String minutes)? updateShortBreakTime,
+    TResult? Function(String minutes)? updateLongBreakTime,
+    TResult? Function()? saved,
   }) {
     return updateFocusTime?.call(minutes);
   }
@@ -198,10 +198,10 @@ class _$_UpdateFocusTime implements _UpdateFocusTime {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UpdateFocusTime value)? updateFocusTime,
-    TResult Function(_UpdateShortBreakTime value)? updateShortBreakTime,
-    TResult Function(_UpdateLongBreakTime value)? updateLongBreakTime,
-    TResult Function(_Saved value)? saved,
+    TResult? Function(_UpdateFocusTime value)? updateFocusTime,
+    TResult? Function(_UpdateShortBreakTime value)? updateShortBreakTime,
+    TResult? Function(_UpdateLongBreakTime value)? updateLongBreakTime,
+    TResult? Function(_Saved value)? saved,
   }) {
     return updateFocusTime?.call(this);
   }
@@ -237,26 +237,25 @@ abstract class _$$_UpdateShortBreakTimeCopyWith<$Res> {
   factory _$$_UpdateShortBreakTimeCopyWith(_$_UpdateShortBreakTime value,
           $Res Function(_$_UpdateShortBreakTime) then) =
       __$$_UpdateShortBreakTimeCopyWithImpl<$Res>;
+  @useResult
   $Res call({String minutes});
 }
 
 /// @nodoc
 class __$$_UpdateShortBreakTimeCopyWithImpl<$Res>
-    extends _$SettingsEventCopyWithImpl<$Res>
+    extends _$SettingsEventCopyWithImpl<$Res, _$_UpdateShortBreakTime>
     implements _$$_UpdateShortBreakTimeCopyWith<$Res> {
   __$$_UpdateShortBreakTimeCopyWithImpl(_$_UpdateShortBreakTime _value,
       $Res Function(_$_UpdateShortBreakTime) _then)
-      : super(_value, (v) => _then(v as _$_UpdateShortBreakTime));
+      : super(_value, _then);
 
-  @override
-  _$_UpdateShortBreakTime get _value => super._value as _$_UpdateShortBreakTime;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? minutes = freezed,
+    Object? minutes = null,
   }) {
     return _then(_$_UpdateShortBreakTime(
-      minutes: minutes == freezed
+      minutes: null == minutes
           ? _value.minutes
           : minutes // ignore: cast_nullable_to_non_nullable
               as String,
@@ -282,15 +281,15 @@ class _$_UpdateShortBreakTime implements _UpdateShortBreakTime {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UpdateShortBreakTime &&
-            const DeepCollectionEquality().equals(other.minutes, minutes));
+            (identical(other.minutes, minutes) || other.minutes == minutes));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(minutes));
+  int get hashCode => Object.hash(runtimeType, minutes);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UpdateShortBreakTimeCopyWith<_$_UpdateShortBreakTime> get copyWith =>
       __$$_UpdateShortBreakTimeCopyWithImpl<_$_UpdateShortBreakTime>(
           this, _$identity);
@@ -309,10 +308,10 @@ class _$_UpdateShortBreakTime implements _UpdateShortBreakTime {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String minutes)? updateFocusTime,
-    TResult Function(String minutes)? updateShortBreakTime,
-    TResult Function(String minutes)? updateLongBreakTime,
-    TResult Function()? saved,
+    TResult? Function(String minutes)? updateFocusTime,
+    TResult? Function(String minutes)? updateShortBreakTime,
+    TResult? Function(String minutes)? updateLongBreakTime,
+    TResult? Function()? saved,
   }) {
     return updateShortBreakTime?.call(minutes);
   }
@@ -346,10 +345,10 @@ class _$_UpdateShortBreakTime implements _UpdateShortBreakTime {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UpdateFocusTime value)? updateFocusTime,
-    TResult Function(_UpdateShortBreakTime value)? updateShortBreakTime,
-    TResult Function(_UpdateLongBreakTime value)? updateLongBreakTime,
-    TResult Function(_Saved value)? saved,
+    TResult? Function(_UpdateFocusTime value)? updateFocusTime,
+    TResult? Function(_UpdateShortBreakTime value)? updateShortBreakTime,
+    TResult? Function(_UpdateLongBreakTime value)? updateLongBreakTime,
+    TResult? Function(_Saved value)? saved,
   }) {
     return updateShortBreakTime?.call(this);
   }
@@ -385,26 +384,25 @@ abstract class _$$_UpdateLongBreakTimeCopyWith<$Res> {
   factory _$$_UpdateLongBreakTimeCopyWith(_$_UpdateLongBreakTime value,
           $Res Function(_$_UpdateLongBreakTime) then) =
       __$$_UpdateLongBreakTimeCopyWithImpl<$Res>;
+  @useResult
   $Res call({String minutes});
 }
 
 /// @nodoc
 class __$$_UpdateLongBreakTimeCopyWithImpl<$Res>
-    extends _$SettingsEventCopyWithImpl<$Res>
+    extends _$SettingsEventCopyWithImpl<$Res, _$_UpdateLongBreakTime>
     implements _$$_UpdateLongBreakTimeCopyWith<$Res> {
   __$$_UpdateLongBreakTimeCopyWithImpl(_$_UpdateLongBreakTime _value,
       $Res Function(_$_UpdateLongBreakTime) _then)
-      : super(_value, (v) => _then(v as _$_UpdateLongBreakTime));
+      : super(_value, _then);
 
-  @override
-  _$_UpdateLongBreakTime get _value => super._value as _$_UpdateLongBreakTime;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? minutes = freezed,
+    Object? minutes = null,
   }) {
     return _then(_$_UpdateLongBreakTime(
-      minutes: minutes == freezed
+      minutes: null == minutes
           ? _value.minutes
           : minutes // ignore: cast_nullable_to_non_nullable
               as String,
@@ -430,15 +428,15 @@ class _$_UpdateLongBreakTime implements _UpdateLongBreakTime {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UpdateLongBreakTime &&
-            const DeepCollectionEquality().equals(other.minutes, minutes));
+            (identical(other.minutes, minutes) || other.minutes == minutes));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(minutes));
+  int get hashCode => Object.hash(runtimeType, minutes);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UpdateLongBreakTimeCopyWith<_$_UpdateLongBreakTime> get copyWith =>
       __$$_UpdateLongBreakTimeCopyWithImpl<_$_UpdateLongBreakTime>(
           this, _$identity);
@@ -457,10 +455,10 @@ class _$_UpdateLongBreakTime implements _UpdateLongBreakTime {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String minutes)? updateFocusTime,
-    TResult Function(String minutes)? updateShortBreakTime,
-    TResult Function(String minutes)? updateLongBreakTime,
-    TResult Function()? saved,
+    TResult? Function(String minutes)? updateFocusTime,
+    TResult? Function(String minutes)? updateShortBreakTime,
+    TResult? Function(String minutes)? updateLongBreakTime,
+    TResult? Function()? saved,
   }) {
     return updateLongBreakTime?.call(minutes);
   }
@@ -494,10 +492,10 @@ class _$_UpdateLongBreakTime implements _UpdateLongBreakTime {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UpdateFocusTime value)? updateFocusTime,
-    TResult Function(_UpdateShortBreakTime value)? updateShortBreakTime,
-    TResult Function(_UpdateLongBreakTime value)? updateLongBreakTime,
-    TResult Function(_Saved value)? saved,
+    TResult? Function(_UpdateFocusTime value)? updateFocusTime,
+    TResult? Function(_UpdateShortBreakTime value)? updateShortBreakTime,
+    TResult? Function(_UpdateLongBreakTime value)? updateLongBreakTime,
+    TResult? Function(_Saved value)? saved,
   }) {
     return updateLongBreakTime?.call(this);
   }
@@ -535,13 +533,11 @@ abstract class _$$_SavedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SavedCopyWithImpl<$Res> extends _$SettingsEventCopyWithImpl<$Res>
+class __$$_SavedCopyWithImpl<$Res>
+    extends _$SettingsEventCopyWithImpl<$Res, _$_Saved>
     implements _$$_SavedCopyWith<$Res> {
   __$$_SavedCopyWithImpl(_$_Saved _value, $Res Function(_$_Saved) _then)
-      : super(_value, (v) => _then(v as _$_Saved));
-
-  @override
-  _$_Saved get _value => super._value as _$_Saved;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -577,10 +573,10 @@ class _$_Saved implements _Saved {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String minutes)? updateFocusTime,
-    TResult Function(String minutes)? updateShortBreakTime,
-    TResult Function(String minutes)? updateLongBreakTime,
-    TResult Function()? saved,
+    TResult? Function(String minutes)? updateFocusTime,
+    TResult? Function(String minutes)? updateShortBreakTime,
+    TResult? Function(String minutes)? updateLongBreakTime,
+    TResult? Function()? saved,
   }) {
     return saved?.call();
   }
@@ -614,10 +610,10 @@ class _$_Saved implements _Saved {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UpdateFocusTime value)? updateFocusTime,
-    TResult Function(_UpdateShortBreakTime value)? updateShortBreakTime,
-    TResult Function(_UpdateLongBreakTime value)? updateLongBreakTime,
-    TResult Function(_Saved value)? saved,
+    TResult? Function(_UpdateFocusTime value)? updateFocusTime,
+    TResult? Function(_UpdateShortBreakTime value)? updateShortBreakTime,
+    TResult? Function(_UpdateLongBreakTime value)? updateLongBreakTime,
+    TResult? Function(_Saved value)? saved,
   }) {
     return saved?.call(this);
   }
@@ -657,39 +653,42 @@ mixin _$SettingsState {
 abstract class $SettingsStateCopyWith<$Res> {
   factory $SettingsStateCopyWith(
           SettingsState value, $Res Function(SettingsState) then) =
-      _$SettingsStateCopyWithImpl<$Res>;
+      _$SettingsStateCopyWithImpl<$Res, SettingsState>;
+  @useResult
   $Res call({int focusTime, int shortBreakTime, int longBreakTime});
 }
 
 /// @nodoc
-class _$SettingsStateCopyWithImpl<$Res>
+class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
     implements $SettingsStateCopyWith<$Res> {
   _$SettingsStateCopyWithImpl(this._value, this._then);
 
-  final SettingsState _value;
   // ignore: unused_field
-  final $Res Function(SettingsState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? focusTime = freezed,
-    Object? shortBreakTime = freezed,
-    Object? longBreakTime = freezed,
+    Object? focusTime = null,
+    Object? shortBreakTime = null,
+    Object? longBreakTime = null,
   }) {
     return _then(_value.copyWith(
-      focusTime: focusTime == freezed
+      focusTime: null == focusTime
           ? _value.focusTime
           : focusTime // ignore: cast_nullable_to_non_nullable
               as int,
-      shortBreakTime: shortBreakTime == freezed
+      shortBreakTime: null == shortBreakTime
           ? _value.shortBreakTime
           : shortBreakTime // ignore: cast_nullable_to_non_nullable
               as int,
-      longBreakTime: longBreakTime == freezed
+      longBreakTime: null == longBreakTime
           ? _value.longBreakTime
           : longBreakTime // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -700,36 +699,35 @@ abstract class _$$_SettingsStateCopyWith<$Res>
           _$_SettingsState value, $Res Function(_$_SettingsState) then) =
       __$$_SettingsStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int focusTime, int shortBreakTime, int longBreakTime});
 }
 
 /// @nodoc
 class __$$_SettingsStateCopyWithImpl<$Res>
-    extends _$SettingsStateCopyWithImpl<$Res>
+    extends _$SettingsStateCopyWithImpl<$Res, _$_SettingsState>
     implements _$$_SettingsStateCopyWith<$Res> {
   __$$_SettingsStateCopyWithImpl(
       _$_SettingsState _value, $Res Function(_$_SettingsState) _then)
-      : super(_value, (v) => _then(v as _$_SettingsState));
+      : super(_value, _then);
 
-  @override
-  _$_SettingsState get _value => super._value as _$_SettingsState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? focusTime = freezed,
-    Object? shortBreakTime = freezed,
-    Object? longBreakTime = freezed,
+    Object? focusTime = null,
+    Object? shortBreakTime = null,
+    Object? longBreakTime = null,
   }) {
     return _then(_$_SettingsState(
-      focusTime: focusTime == freezed
+      focusTime: null == focusTime
           ? _value.focusTime
           : focusTime // ignore: cast_nullable_to_non_nullable
               as int,
-      shortBreakTime: shortBreakTime == freezed
+      shortBreakTime: null == shortBreakTime
           ? _value.shortBreakTime
           : shortBreakTime // ignore: cast_nullable_to_non_nullable
               as int,
-      longBreakTime: longBreakTime == freezed
+      longBreakTime: null == longBreakTime
           ? _value.longBreakTime
           : longBreakTime // ignore: cast_nullable_to_non_nullable
               as int,
@@ -762,22 +760,21 @@ class _$_SettingsState implements _SettingsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SettingsState &&
-            const DeepCollectionEquality().equals(other.focusTime, focusTime) &&
-            const DeepCollectionEquality()
-                .equals(other.shortBreakTime, shortBreakTime) &&
-            const DeepCollectionEquality()
-                .equals(other.longBreakTime, longBreakTime));
+            (identical(other.focusTime, focusTime) ||
+                other.focusTime == focusTime) &&
+            (identical(other.shortBreakTime, shortBreakTime) ||
+                other.shortBreakTime == shortBreakTime) &&
+            (identical(other.longBreakTime, longBreakTime) ||
+                other.longBreakTime == longBreakTime));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(focusTime),
-      const DeepCollectionEquality().hash(shortBreakTime),
-      const DeepCollectionEquality().hash(longBreakTime));
+  int get hashCode =>
+      Object.hash(runtimeType, focusTime, shortBreakTime, longBreakTime);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SettingsStateCopyWith<_$_SettingsState> get copyWith =>
       __$$_SettingsStateCopyWithImpl<_$_SettingsState>(this, _$identity);
 }

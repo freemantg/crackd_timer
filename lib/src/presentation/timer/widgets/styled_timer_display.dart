@@ -6,6 +6,9 @@ import '../../../shared/text_styles.dart';
 import '../../../shared/extensions.dart';
 
 class StyledTimerDisplay extends StatelessWidget {
+  static final _smallStyle = TextStyles.h1.copyWith(fontSize: 72);
+  static final _largeStyle = TextStyles.h1.copyWith(fontSize: 96.0);
+
   const StyledTimerDisplay({super.key});
 
   @override
@@ -15,9 +18,7 @@ class StyledTimerDisplay extends StatelessWidget {
       builder: (context, state) {
         return Text(
           state.duration.durationToString(),
-          style: TextStyles.h1.copyWith(
-            fontSize: state.duration >= 3600 ? 72 : 96.0,
-          ),
+          style: state.duration >= 3600 ? _smallStyle : _largeStyle,
         );
       },
     );

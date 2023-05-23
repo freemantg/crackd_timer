@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart' hide Task;
-import 'package:robot_timer/src/infrastructure/core/task_repository.dart';
 
 import '../../../domain/core/task_failure.dart';
 import '../../../domain/tasks/task.dart';
+import '../../../infrastructure/core/task_repository.dart';
 
 class TaskCubit extends Cubit<Task> {
   final TaskRepository _taskRepository;
