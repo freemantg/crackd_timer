@@ -11,5 +11,5 @@ class TimerEvent with _$TimerEvent {
   const factory TimerEvent.updateTimer({
     int? duration,
     TimerType? timerType,
-  }) = _UpdateDuration;
+  }) = UpdatedDuration;
 }
