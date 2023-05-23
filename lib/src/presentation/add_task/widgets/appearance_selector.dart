@@ -1,12 +1,12 @@
+import 'package:crackd_timer/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../injection_container.dart';
 import '../../../application/blocs.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
 import 'widgets.dart';
-
 
 class AppearanceSelector extends StatelessWidget {
   const AppearanceSelector({
@@ -52,19 +52,24 @@ class AppearanceSelector extends StatelessWidget {
                 children: [
                   const ColorSelector(),
                   _StyledContainer(
-                    child: BlocProvider(
-                      create: (context) =>
-                          getIt<EmojisBloc>()..add(const EmojisEvent.started()),
-                      child: BlocBuilder<EmojisBloc, EmojisState>(
-                        builder: (context, state) {
-                          return state.maybeMap(
-                            loadSuccess: (state) =>
-                                IconSelector(emojis: state.emojis),
-                            orElse: () => const Center(
-                                child: CircularProgressIndicator()),
-                          );
-                        },
-                      ),
+                    child: Consumer(
+                      builder: (context, ref, child) {
+                        return BlocProvider(
+                          create: (context) => ref.watch(emojisBlocProvider)
+                            ..add(const EmojisEvent.started()),
+                          child: BlocBuilder<EmojisBloc, EmojisState>(
+                            builder: (context, state) {
+                              return state.maybeMap(
+                                loadSuccess: (state) =>
+                                    IconSelector(emojis: state.emojis),
+                                orElse: () => const Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                              );
+                            },
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ],

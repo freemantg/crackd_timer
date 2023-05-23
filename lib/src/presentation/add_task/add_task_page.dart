@@ -1,25 +1,24 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:crackd_timer/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../injection_container.dart';
 import '../../application/blocs.dart';
 import '../../domain/tasks/task.dart';
-import '../../shared/app_router.dart';
 import '../../shared/styles.dart';
-import '../../shared/text_styles.dart';
 import '../shared/widgets.dart';
 import 'widgets/widgets.dart';
 
 @RoutePage()
-class AddTaskPage extends StatelessWidget {
+class AddTaskPage extends ConsumerWidget {
   final Task? task;
   const AddTaskPage({Key? key, this.task}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return BlocProvider(
-      create: (context) => getIt<TaskFormBloc>()
+      create: (context) => ref.watch(taskFormBlocProvider)
         ..add(TaskFormEvent.initialized(initialTask: task)),
       child: BlocListener<TaskFormBloc, TaskFormState>(
         listenWhen: (previous, current) =>
@@ -30,7 +29,7 @@ class AddTaskPage extends StatelessWidget {
               () {},
               (either) => either.fold(
                     (failure) => null,
-                    (success) => getIt<AppRouter>().popUntilRoot(),
+                    (success) => context.router.popUntilRoot(),
                   ));
         },
         child: Scaffold(
@@ -60,29 +59,6 @@ class _BuildBody extends StatelessWidget {
           TitleTextFormField(),
           DescriptionTextFormField(),
         ],
-      ),
-    );
-  }
-}
-
-class _IconChip extends StatelessWidget {
-  const _IconChip({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return Container(
-      padding: const EdgeInsets.all(Insets.sm),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(Corners.s10),
-        color: theme.colorScheme.surface,
-      ),
-      child: Text(
-        'task icon',
-        style: TextStyles.body1.copyWith(fontWeight: FontWeight.bold),
       ),
     );
   }

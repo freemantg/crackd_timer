@@ -36,7 +36,6 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
               return;
             }
           },
-          saved: (_) {},
         );
       },
     );

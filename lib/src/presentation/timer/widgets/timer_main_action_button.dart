@@ -1,11 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../../injection_container.dart';
 import '../../../application/settings/settings_bloc/settings_bloc.dart';
 import '../../../application/timer/timer_bloc/timer_bloc.dart';
-import '../../../shared/app_router.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
 
@@ -116,13 +115,13 @@ class _TimerSkipButton extends StatelessWidget {
             ),
             actions: [
               TextButton(
-                onPressed: () => getIt<AppRouter>().popUntilRoot(),
+                onPressed: () => context.router.popUntilRoot(),
                 child: const Text('CANCEL'),
               ),
               TextButton(
                 onPressed: () {
                   context.read<TimerBloc>().add(const TimerEvent.skipped());
-                  getIt<AppRouter>().popUntilRoot();
+                  context.router.popUntilRoot();
                 },
                 child: const Text('CONFIRM'),
               ),

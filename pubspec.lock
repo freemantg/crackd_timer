@@ -334,22 +334,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
-  flutter_markdown:
+  flutter_riverpod:
     dependency: "direct main"
     description:
-      name: flutter_markdown
-      sha256: "7b25c10de1fea883f3c4f9b8389506b54053cd00807beab69fd65c8653a2711f"
+      name: flutter_riverpod
+      sha256: b83ac5827baadefd331ea1d85110f34645827ea234ccabf53a655f41901a9bf4
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.14"
-  flutter_staggered_grid_view:
-    dependency: "direct main"
-    description:
-      name: flutter_staggered_grid_view
-      sha256: "1312314293acceb65b92754298754801b0e1f26a1845833b740b30415bbbcf07"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.6.2"
+    version: "2.3.6"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -448,14 +440,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
-  infinite_listview:
-    dependency: transitive
-    description:
-      name: infinite_listview
-      sha256: f6062c1720eb59be553dfa6b89813d3e8dd2f054538445aaa5edaddfa5195ce6
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.0"
   intl:
     dependency: "direct main"
     description:
@@ -512,14 +496,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
-  markdown:
-    dependency: transitive
-    description:
-      name: markdown
-      sha256: "8e332924094383133cee218b676871f42db2514f1f6ac617b6cf6152a7faab8e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "7.1.0"
   matcher:
     dependency: transitive
     description:
@@ -560,14 +536,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
-  numberpicker:
-    dependency: "direct main"
-    description:
-      name: numberpicker
-      sha256: "4c129154944b0f6b133e693f8749c3f8bfb67c4d07ef9dcab48b595c22d1f156"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.2"
   package_config:
     dependency: transitive
     description:

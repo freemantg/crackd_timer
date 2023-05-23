@@ -8,5 +8,4 @@ class SettingsEvent with _$SettingsEvent {
       _UpdateShortBreakTime;
   const factory SettingsEvent.updateLongBreakTime({required String minutes}) =
       _UpdateLongBreakTime;
-  const factory SettingsEvent.saved() = _Saved;
 }

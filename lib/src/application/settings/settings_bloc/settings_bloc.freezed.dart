@@ -16,12 +16,12 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SettingsEvent {
+  String get minutes => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String minutes) updateFocusTime,
     required TResult Function(String minutes) updateShortBreakTime,
     required TResult Function(String minutes) updateLongBreakTime,
-    required TResult Function() saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,6 @@ mixin _$SettingsEvent {
     TResult? Function(String minutes)? updateFocusTime,
     TResult? Function(String minutes)? updateShortBreakTime,
     TResult? Function(String minutes)? updateLongBreakTime,
-    TResult? Function()? saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +36,6 @@ mixin _$SettingsEvent {
     TResult Function(String minutes)? updateFocusTime,
     TResult Function(String minutes)? updateShortBreakTime,
     TResult Function(String minutes)? updateLongBreakTime,
-    TResult Function()? saved,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -46,7 +44,6 @@ mixin _$SettingsEvent {
     required TResult Function(_UpdateFocusTime value) updateFocusTime,
     required TResult Function(_UpdateShortBreakTime value) updateShortBreakTime,
     required TResult Function(_UpdateLongBreakTime value) updateLongBreakTime,
-    required TResult Function(_Saved value) saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,7 +51,6 @@ mixin _$SettingsEvent {
     TResult? Function(_UpdateFocusTime value)? updateFocusTime,
     TResult? Function(_UpdateShortBreakTime value)? updateShortBreakTime,
     TResult? Function(_UpdateLongBreakTime value)? updateLongBreakTime,
-    TResult? Function(_Saved value)? saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,9 +58,12 @@ mixin _$SettingsEvent {
     TResult Function(_UpdateFocusTime value)? updateFocusTime,
     TResult Function(_UpdateShortBreakTime value)? updateShortBreakTime,
     TResult Function(_UpdateLongBreakTime value)? updateLongBreakTime,
-    TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SettingsEventCopyWith<SettingsEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -73,6 +72,8 @@ abstract class $SettingsEventCopyWith<$Res> {
   factory $SettingsEventCopyWith(
           SettingsEvent value, $Res Function(SettingsEvent) then) =
       _$SettingsEventCopyWithImpl<$Res, SettingsEvent>;
+  @useResult
+  $Res call({String minutes});
 }
 
 /// @nodoc
@@ -84,13 +85,28 @@ class _$SettingsEventCopyWithImpl<$Res, $Val extends SettingsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? minutes = null,
+  }) {
+    return _then(_value.copyWith(
+      minutes: null == minutes
+          ? _value.minutes
+          : minutes // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_UpdateFocusTimeCopyWith<$Res> {
+abstract class _$$_UpdateFocusTimeCopyWith<$Res>
+    implements $SettingsEventCopyWith<$Res> {
   factory _$$_UpdateFocusTimeCopyWith(
           _$_UpdateFocusTime value, $Res Function(_$_UpdateFocusTime) then) =
       __$$_UpdateFocusTimeCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({String minutes});
 }
@@ -153,7 +169,6 @@ class _$_UpdateFocusTime implements _UpdateFocusTime {
     required TResult Function(String minutes) updateFocusTime,
     required TResult Function(String minutes) updateShortBreakTime,
     required TResult Function(String minutes) updateLongBreakTime,
-    required TResult Function() saved,
   }) {
     return updateFocusTime(minutes);
   }
@@ -164,7 +179,6 @@ class _$_UpdateFocusTime implements _UpdateFocusTime {
     TResult? Function(String minutes)? updateFocusTime,
     TResult? Function(String minutes)? updateShortBreakTime,
     TResult? Function(String minutes)? updateLongBreakTime,
-    TResult? Function()? saved,
   }) {
     return updateFocusTime?.call(minutes);
   }
@@ -175,7 +189,6 @@ class _$_UpdateFocusTime implements _UpdateFocusTime {
     TResult Function(String minutes)? updateFocusTime,
     TResult Function(String minutes)? updateShortBreakTime,
     TResult Function(String minutes)? updateLongBreakTime,
-    TResult Function()? saved,
     required TResult orElse(),
   }) {
     if (updateFocusTime != null) {
@@ -190,7 +203,6 @@ class _$_UpdateFocusTime implements _UpdateFocusTime {
     required TResult Function(_UpdateFocusTime value) updateFocusTime,
     required TResult Function(_UpdateShortBreakTime value) updateShortBreakTime,
     required TResult Function(_UpdateLongBreakTime value) updateLongBreakTime,
-    required TResult Function(_Saved value) saved,
   }) {
     return updateFocusTime(this);
   }
@@ -201,7 +213,6 @@ class _$_UpdateFocusTime implements _UpdateFocusTime {
     TResult? Function(_UpdateFocusTime value)? updateFocusTime,
     TResult? Function(_UpdateShortBreakTime value)? updateShortBreakTime,
     TResult? Function(_UpdateLongBreakTime value)? updateLongBreakTime,
-    TResult? Function(_Saved value)? saved,
   }) {
     return updateFocusTime?.call(this);
   }
@@ -212,7 +223,6 @@ class _$_UpdateFocusTime implements _UpdateFocusTime {
     TResult Function(_UpdateFocusTime value)? updateFocusTime,
     TResult Function(_UpdateShortBreakTime value)? updateShortBreakTime,
     TResult Function(_UpdateLongBreakTime value)? updateLongBreakTime,
-    TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
     if (updateFocusTime != null) {
@@ -226,17 +236,21 @@ abstract class _UpdateFocusTime implements SettingsEvent {
   const factory _UpdateFocusTime({required final String minutes}) =
       _$_UpdateFocusTime;
 
+  @override
   String get minutes;
+  @override
   @JsonKey(ignore: true)
   _$$_UpdateFocusTimeCopyWith<_$_UpdateFocusTime> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_UpdateShortBreakTimeCopyWith<$Res> {
+abstract class _$$_UpdateShortBreakTimeCopyWith<$Res>
+    implements $SettingsEventCopyWith<$Res> {
   factory _$$_UpdateShortBreakTimeCopyWith(_$_UpdateShortBreakTime value,
           $Res Function(_$_UpdateShortBreakTime) then) =
       __$$_UpdateShortBreakTimeCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({String minutes});
 }
@@ -300,7 +314,6 @@ class _$_UpdateShortBreakTime implements _UpdateShortBreakTime {
     required TResult Function(String minutes) updateFocusTime,
     required TResult Function(String minutes) updateShortBreakTime,
     required TResult Function(String minutes) updateLongBreakTime,
-    required TResult Function() saved,
   }) {
     return updateShortBreakTime(minutes);
   }
@@ -311,7 +324,6 @@ class _$_UpdateShortBreakTime implements _UpdateShortBreakTime {
     TResult? Function(String minutes)? updateFocusTime,
     TResult? Function(String minutes)? updateShortBreakTime,
     TResult? Function(String minutes)? updateLongBreakTime,
-    TResult? Function()? saved,
   }) {
     return updateShortBreakTime?.call(minutes);
   }
@@ -322,7 +334,6 @@ class _$_UpdateShortBreakTime implements _UpdateShortBreakTime {
     TResult Function(String minutes)? updateFocusTime,
     TResult Function(String minutes)? updateShortBreakTime,
     TResult Function(String minutes)? updateLongBreakTime,
-    TResult Function()? saved,
     required TResult orElse(),
   }) {
     if (updateShortBreakTime != null) {
@@ -337,7 +348,6 @@ class _$_UpdateShortBreakTime implements _UpdateShortBreakTime {
     required TResult Function(_UpdateFocusTime value) updateFocusTime,
     required TResult Function(_UpdateShortBreakTime value) updateShortBreakTime,
     required TResult Function(_UpdateLongBreakTime value) updateLongBreakTime,
-    required TResult Function(_Saved value) saved,
   }) {
     return updateShortBreakTime(this);
   }
@@ -348,7 +358,6 @@ class _$_UpdateShortBreakTime implements _UpdateShortBreakTime {
     TResult? Function(_UpdateFocusTime value)? updateFocusTime,
     TResult? Function(_UpdateShortBreakTime value)? updateShortBreakTime,
     TResult? Function(_UpdateLongBreakTime value)? updateLongBreakTime,
-    TResult? Function(_Saved value)? saved,
   }) {
     return updateShortBreakTime?.call(this);
   }
@@ -359,7 +368,6 @@ class _$_UpdateShortBreakTime implements _UpdateShortBreakTime {
     TResult Function(_UpdateFocusTime value)? updateFocusTime,
     TResult Function(_UpdateShortBreakTime value)? updateShortBreakTime,
     TResult Function(_UpdateLongBreakTime value)? updateLongBreakTime,
-    TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
     if (updateShortBreakTime != null) {
@@ -373,17 +381,21 @@ abstract class _UpdateShortBreakTime implements SettingsEvent {
   const factory _UpdateShortBreakTime({required final String minutes}) =
       _$_UpdateShortBreakTime;
 
+  @override
   String get minutes;
+  @override
   @JsonKey(ignore: true)
   _$$_UpdateShortBreakTimeCopyWith<_$_UpdateShortBreakTime> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_UpdateLongBreakTimeCopyWith<$Res> {
+abstract class _$$_UpdateLongBreakTimeCopyWith<$Res>
+    implements $SettingsEventCopyWith<$Res> {
   factory _$$_UpdateLongBreakTimeCopyWith(_$_UpdateLongBreakTime value,
           $Res Function(_$_UpdateLongBreakTime) then) =
       __$$_UpdateLongBreakTimeCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({String minutes});
 }
@@ -447,7 +459,6 @@ class _$_UpdateLongBreakTime implements _UpdateLongBreakTime {
     required TResult Function(String minutes) updateFocusTime,
     required TResult Function(String minutes) updateShortBreakTime,
     required TResult Function(String minutes) updateLongBreakTime,
-    required TResult Function() saved,
   }) {
     return updateLongBreakTime(minutes);
   }
@@ -458,7 +469,6 @@ class _$_UpdateLongBreakTime implements _UpdateLongBreakTime {
     TResult? Function(String minutes)? updateFocusTime,
     TResult? Function(String minutes)? updateShortBreakTime,
     TResult? Function(String minutes)? updateLongBreakTime,
-    TResult? Function()? saved,
   }) {
     return updateLongBreakTime?.call(minutes);
   }
@@ -469,7 +479,6 @@ class _$_UpdateLongBreakTime implements _UpdateLongBreakTime {
     TResult Function(String minutes)? updateFocusTime,
     TResult Function(String minutes)? updateShortBreakTime,
     TResult Function(String minutes)? updateLongBreakTime,
-    TResult Function()? saved,
     required TResult orElse(),
   }) {
     if (updateLongBreakTime != null) {
@@ -484,7 +493,6 @@ class _$_UpdateLongBreakTime implements _UpdateLongBreakTime {
     required TResult Function(_UpdateFocusTime value) updateFocusTime,
     required TResult Function(_UpdateShortBreakTime value) updateShortBreakTime,
     required TResult Function(_UpdateLongBreakTime value) updateLongBreakTime,
-    required TResult Function(_Saved value) saved,
   }) {
     return updateLongBreakTime(this);
   }
@@ -495,7 +503,6 @@ class _$_UpdateLongBreakTime implements _UpdateLongBreakTime {
     TResult? Function(_UpdateFocusTime value)? updateFocusTime,
     TResult? Function(_UpdateShortBreakTime value)? updateShortBreakTime,
     TResult? Function(_UpdateLongBreakTime value)? updateLongBreakTime,
-    TResult? Function(_Saved value)? saved,
   }) {
     return updateLongBreakTime?.call(this);
   }
@@ -506,7 +513,6 @@ class _$_UpdateLongBreakTime implements _UpdateLongBreakTime {
     TResult Function(_UpdateFocusTime value)? updateFocusTime,
     TResult Function(_UpdateShortBreakTime value)? updateShortBreakTime,
     TResult Function(_UpdateLongBreakTime value)? updateLongBreakTime,
-    TResult Function(_Saved value)? saved,
     required TResult orElse(),
   }) {
     if (updateLongBreakTime != null) {
@@ -520,122 +526,12 @@ abstract class _UpdateLongBreakTime implements SettingsEvent {
   const factory _UpdateLongBreakTime({required final String minutes}) =
       _$_UpdateLongBreakTime;
 
+  @override
   String get minutes;
+  @override
   @JsonKey(ignore: true)
   _$$_UpdateLongBreakTimeCopyWith<_$_UpdateLongBreakTime> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_SavedCopyWith<$Res> {
-  factory _$$_SavedCopyWith(_$_Saved value, $Res Function(_$_Saved) then) =
-      __$$_SavedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_SavedCopyWithImpl<$Res>
-    extends _$SettingsEventCopyWithImpl<$Res, _$_Saved>
-    implements _$$_SavedCopyWith<$Res> {
-  __$$_SavedCopyWithImpl(_$_Saved _value, $Res Function(_$_Saved) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_Saved implements _Saved {
-  const _$_Saved();
-
-  @override
-  String toString() {
-    return 'SettingsEvent.saved()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Saved);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String minutes) updateFocusTime,
-    required TResult Function(String minutes) updateShortBreakTime,
-    required TResult Function(String minutes) updateLongBreakTime,
-    required TResult Function() saved,
-  }) {
-    return saved();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String minutes)? updateFocusTime,
-    TResult? Function(String minutes)? updateShortBreakTime,
-    TResult? Function(String minutes)? updateLongBreakTime,
-    TResult? Function()? saved,
-  }) {
-    return saved?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String minutes)? updateFocusTime,
-    TResult Function(String minutes)? updateShortBreakTime,
-    TResult Function(String minutes)? updateLongBreakTime,
-    TResult Function()? saved,
-    required TResult orElse(),
-  }) {
-    if (saved != null) {
-      return saved();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_UpdateFocusTime value) updateFocusTime,
-    required TResult Function(_UpdateShortBreakTime value) updateShortBreakTime,
-    required TResult Function(_UpdateLongBreakTime value) updateLongBreakTime,
-    required TResult Function(_Saved value) saved,
-  }) {
-    return saved(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UpdateFocusTime value)? updateFocusTime,
-    TResult? Function(_UpdateShortBreakTime value)? updateShortBreakTime,
-    TResult? Function(_UpdateLongBreakTime value)? updateLongBreakTime,
-    TResult? Function(_Saved value)? saved,
-  }) {
-    return saved?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UpdateFocusTime value)? updateFocusTime,
-    TResult Function(_UpdateShortBreakTime value)? updateShortBreakTime,
-    TResult Function(_UpdateLongBreakTime value)? updateLongBreakTime,
-    TResult Function(_Saved value)? saved,
-    required TResult orElse(),
-  }) {
-    if (saved != null) {
-      return saved(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Saved implements SettingsEvent {
-  const factory _Saved() = _$_Saved;
 }
 
 /// @nodoc

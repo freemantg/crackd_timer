@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../injection_container.dart';
 import '../../application/blocs.dart';
 import '../../application/settings/alarm_cubit/alarm_cubit.dart';
-import '../../shared/app_router.dart';
 import '../../shared/app_router.gr.dart';
 import '../../shared/styles.dart';
 import '../../shared/text_styles.dart';
@@ -87,7 +85,7 @@ class _AddTaskListTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: Insets.m),
       child: GestureDetector(
-        onTap: () => getIt<AppRouter>().push(AddTaskRoute()),
+        onTap: () => context.router.push(AddTaskRoute()),
         child: StyledCard(
           elevation: 0,
           color: theme.colorScheme.surface,

@@ -1,44 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../injection_container.dart';
+import '../providers.dart';
 import 'application/blocs.dart';
 import 'application/cubits.dart';
-import 'shared/app_router.dart';
 import 'shared/app_themes.dart';
 
-class AppWidget extends StatelessWidget {
+class AppWidget extends ConsumerWidget {
   const AppWidget({super.key});
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final appRouter = ref.watch(appRouterProvider);
+
     return MultiBlocProvider(
       providers: [
         //BLOCS
         BlocProvider(
-          create: (context) => getIt<TaskWatcherBloc>()
+          create: (context) => ref.watch(taskWatcherBlocProvider)
             ..add(const TaskWatcherEvent.watchAllStarted()),
         ),
         BlocProvider(
-          create: (_) => getIt<SettingsBloc>(),
+          create: (_) => ref.watch(settingsBlocProvider),
         ),
         BlocProvider(
-          create: (context) => getIt<TimerBloc>(),
+          create: (context) => ref.watch(timerBlocProvider),
         ),
         BlocProvider(
-          create: (context) => getIt<TaskActorBloc>(),
+          create: (context) => ref.watch(taskActorBlocProvider),
         ),
 
         //CUBITS
         BlocProvider(
-          create: (_) => getIt<ThemeCubit>(),
+          create: (_) => ref.watch(themeCubitProvider),
         ),
         BlocProvider(
-          create: (_) => getIt<TaskCubit>(),
+          create: (_) => ref.watch(taskCubitProvider),
         ),
         BlocProvider(
-          create: (_) => getIt<AlarmCubit>(),
+          create: (_) => ref.watch(alarmCubitProvider),
         ),
       ],
       child: MultiBlocListener(
@@ -83,8 +84,8 @@ class AppWidget extends StatelessWidget {
           builder: (context, appTheme) {
             return MaterialApp.router(
               debugShowCheckedModeBanner: false,
-              routerDelegate: getIt<AppRouter>().delegate(),
-              routeInformationParser: getIt<AppRouter>().defaultRouteParser(),
+              routerDelegate: appRouter.delegate(),
+              routeInformationParser: appRouter.defaultRouteParser(),
               theme: appTheme.themeData,
             );
           },

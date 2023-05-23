@@ -1,11 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:crackd_timer/src/shared/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../injection_container.dart';
 import '../../../application/cubits.dart';
 import '../../../application/timer/timer_bloc/timer_bloc.dart';
-import '../../../shared/app_router.dart';
 import '../../../shared/app_router.gr.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
@@ -53,8 +52,7 @@ class MiniTimerDisplay extends StatelessWidget {
                       Icons.more_vert,
                       color: Color(0xFF1E1E1E),
                     ),
-                    onTap: () =>
-                        getIt<AppRouter>().push(AddTaskRoute(task: task)),
+                    onTap: () => context.router.push(AddTaskRoute(task: task)),
                   )
                 ],
               ),

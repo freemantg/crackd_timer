@@ -1,12 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../../injection_container.dart';
 import '../../../application/core/task_cubit/task_cubit.dart';
 import '../../../application/tasks/task_form/bloc/task_form_bloc.dart';
 import '../../../domain/tasks/task.dart';
-import '../../../shared/app_router.dart';
 import '../../../shared/app_router.gr.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
@@ -58,7 +57,7 @@ class StyledAppBar extends StatelessWidget implements PreferredSizeWidget {
               Align(
                 alignment: Alignment.centerRight,
                 child: IconButton(
-                  onPressed: () => getIt<AppRouter>().popUntilRoot(),
+                  onPressed: () => context.router.popUntilRoot(),
                   icon: const FaIcon(FontAwesomeIcons.xmark),
                 ),
               )
@@ -88,7 +87,7 @@ class StyledAppBar extends StatelessWidget implements PreferredSizeWidget {
                 alignment: Alignment.centerRight,
                 child: IconButton(
                   onPressed: () =>
-                      getIt<AppRouter>().push(AddTaskRoute(task: state)),
+                      context.router.push(AddTaskRoute(task: state)),
                   icon: Icon(
                     Icons.more_horiz,
                     color: isDark ? null : const Color(0xFF222328),
