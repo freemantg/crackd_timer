@@ -13,70 +13,49 @@ class AppWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final appRouter = ref.watch(appRouterProvider);
+    final taskWatcherBloc = ref.watch(taskWatcherBlocProvider)
+      ..add(const TaskWatcherEvent.watchAllStarted());
+    final timerBloc = ref.watch(timerBlocProvider);
+    final settingsBloc = ref.watch(settingsBlocProvider);
+    final alarmCubit = ref.watch(alarmCubitProvider);
+    final taskCubit = ref.watch(taskCubitProvider);
+    final taskActorBloc = ref.watch(taskActorBlocProvider);
+    final themeCubit = ref.watch(themeCubitProvider);
 
     return MultiBlocProvider(
       providers: [
         //BLOCS
-        BlocProvider(
-          create: (context) => ref.watch(taskWatcherBlocProvider)
-            ..add(const TaskWatcherEvent.watchAllStarted()),
-        ),
-        BlocProvider(
-          create: (_) => ref.watch(settingsBlocProvider),
-        ),
-        BlocProvider(
-          create: (context) => ref.watch(timerBlocProvider),
-        ),
-        BlocProvider(
-          create: (context) => ref.watch(taskActorBlocProvider),
-        ),
+        BlocProvider.value(value: taskWatcherBloc),
+        BlocProvider.value(value: timerBloc),
+        BlocProvider.value(value: settingsBloc),
+        BlocProvider.value(value: taskActorBloc),
 
         //CUBITS
-        BlocProvider(
-          create: (_) => ref.watch(themeCubitProvider),
-        ),
-        BlocProvider(
-          create: (_) => ref.watch(taskCubitProvider),
-        ),
-        BlocProvider(
-          create: (_) => ref.watch(alarmCubitProvider),
-        ),
+        BlocProvider.value(value: themeCubit),
+        BlocProvider.value(value: taskCubit),
+        BlocProvider.value(value: alarmCubit),
       ],
       child: MultiBlocListener(
         listeners: [
           BlocListener<SettingsBloc, SettingsState>(
-              listenWhen: (previous, current) => previous != current,
-              listener: (context, state) => _updateDurationActor(context)),
-          BlocListener<TimerBloc, TimerState>(
-              listenWhen: (previous, current) =>
-                  previous.timerType != current.timerType,
-              listener: (context, state) => _updateDurationActor(context)),
-          BlocListener<TimerBloc, TimerState>(
-            listenWhen: (previous, current) =>
-                previous.status == TimerStatus.running,
             listener: (context, state) {
-              final alarmCubit = context.read<AlarmCubit>();
-              if (!alarmCubit.state.tickingSound) return;
-              alarmCubit.playTickSound();
+              _updateDurationActor(timerBloc, state);
             },
           ),
           BlocListener<TimerBloc, TimerState>(
-            listenWhen: (previous, current) =>
-                current.status == TimerStatus.completed,
             listener: (context, state) {
-              _updateTimerType(context);
-              context.read<AlarmCubit>().playAlarm();
-            },
-          ),
-          BlocListener<TimerBloc, TimerState>(
-            listenWhen: (previous, current) =>
-                current.status == TimerStatus.completed &&
-                current.timerType == TimerType.focus,
-            listener: (context, state) {
-              final task = context.read<TaskCubit>().state;
-              context
-                  .read<TaskActorBloc>()
-                  .add(TaskActorEvent.incrementPomodoro(task));
+              if (state.status == TimerStatus.running &&
+                  alarmCubit.state.tickingSound) {
+                alarmCubit.playTickSound();
+              } else if (state.status == TimerStatus.completed) {
+                _updateTimerType(timerBloc);
+                alarmCubit.playAlarm();
+
+                if (state.timerType == TimerType.focus) {
+                  taskActorBloc
+                      .add(TaskActorEvent.incrementPomodoro(taskCubit.state));
+                }
+              }
             },
           ),
         ],
@@ -94,8 +73,7 @@ class AppWidget extends ConsumerWidget {
     );
   }
 
-  void _updateTimerType(BuildContext context) {
-    final timerBloc = context.read<TimerBloc>();
+  void _updateTimerType(TimerBloc timerBloc) {
     final timerCompletedCount = timerBloc.state.timerCompletedCounter;
 
     timerBloc.add(
@@ -109,31 +87,21 @@ class AppWidget extends ConsumerWidget {
     );
   }
 
-  void _updateDurationActor(BuildContext context) {
-    final timerBloc = context.read<TimerBloc>();
-    final settingsBloc = context.read<SettingsBloc>();
+  void _updateDurationActor(TimerBloc timerBloc, SettingsState settingsState) {
+    int duration;
 
     switch (timerBloc.state.timerType) {
       case TimerType.focus:
-        return timerBloc.add(
-          TimerEvent.updateTimer(
-            duration: settingsBloc.state.focusTime,
-          ),
-        );
-
+        duration = settingsState.focusTime;
+        break;
       case TimerType.shortBreak:
-        return timerBloc.add(
-          TimerEvent.updateTimer(
-            duration: settingsBloc.state.shortBreakTime,
-          ),
-        );
-
+        duration = settingsState.shortBreakTime;
+        break;
       case TimerType.longBreak:
-        return timerBloc.add(
-          TimerEvent.updateTimer(
-            duration: settingsBloc.state.longBreakTime,
-          ),
-        );
+        duration = settingsState.longBreakTime;
+        break;
     }
+
+    timerBloc.add(TimerEvent.updateTimer(duration: duration));
   }
 }
