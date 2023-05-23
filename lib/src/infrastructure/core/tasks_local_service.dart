@@ -1,19 +1,17 @@
 import 'package:sembast/sembast.dart';
 
 import '../tasks/tasks_dto.dart';
-import 'sembast_database.dart';
 
 class TasksLocalSource {
-  final SembastDatabase _sembastDatabase;
+  final Database _database;
 
   static const String taskStoreName = 'tasks';
   final _store = stringMapStoreFactory.store(taskStoreName);
 
-  TasksLocalSource(this._sembastDatabase);
+  TasksLocalSource(this._database);
 
   Stream<TaskDto> fetchNoteStream(TaskDto taskDto) async* {
-    final record =
-        _store.record(taskDto.uniqueId).onSnapshot(_sembastDatabase.instance);
+    final record = _store.record(taskDto.uniqueId).onSnapshot(_database);
     yield* record.map(
       (snapshot) => TaskDto.fromJson(
         snapshot?.value ?? {},
@@ -27,7 +25,7 @@ class TasksLocalSource {
             finder: Finder(
           sortOrders: [SortOrder('completed')],
         ))
-        .onSnapshots(_sembastDatabase.instance);
+        .onSnapshots(_database);
     yield* records.map(
       (snapshots) => snapshots
           .map((snapshot) => TaskDto.fromJson(snapshot.value))
@@ -38,7 +36,7 @@ class TasksLocalSource {
   Stream<List<TaskDto>> getActiveTasksStream() async* {
     final records = _store
         .query(finder: Finder(filter: Filter.equals('completed', false)))
-        .onSnapshots(_sembastDatabase.instance);
+        .onSnapshots(_database);
     yield* records.map(
       (snapshots) => snapshots
           .map((snapshot) => TaskDto.fromJson(snapshot.value))
@@ -49,7 +47,7 @@ class TasksLocalSource {
   Stream<List<TaskDto>> getCompletedTasksStream() async* {
     final records = _store
         .query(finder: Finder(filter: Filter.equals('completed', true)))
-        .onSnapshots(_sembastDatabase.instance);
+        .onSnapshots(_database);
     yield* records.map(
       (snapshots) => snapshots
           .map((snapshot) => TaskDto.fromJson(snapshot.value))
@@ -59,14 +57,14 @@ class TasksLocalSource {
 
   Future<void> insert(TaskDto taskDto) async {
     _store.record(taskDto.uniqueId).put(
-          _sembastDatabase.instance,
+          _database,
           taskDto.toJson(),
         );
   }
 
   Future<void> delete(TaskDto taskDto) async {
     await _store.delete(
-      _sembastDatabase.instance,
+      _database,
       finder: Finder(filter: Filter.byKey(taskDto.uniqueId)),
     );
   }
@@ -75,7 +73,7 @@ class TasksLocalSource {
     final finder = Finder(filter: Filter.byKey(taskDto.uniqueId));
 
     await _store.update(
-      _sembastDatabase.instance,
+      _database,
       taskDto.toJson(),
       finder: finder,
     );
