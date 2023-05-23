@@ -12,42 +12,29 @@ class TaskRepository implements TasksInterface {
   TaskRepository(this._localSource);
 
   @override
-  Stream<Either<TaskFailure, List<Task>>> fetchTasks() async* {
-    final taskDtoStream = _localSource.getAllTasksStream();
-    yield* taskDtoStream.map(
-      (taskDtos) => right<TaskFailure, List<Task>>(
-        taskDtos.map((taskDto) => taskDto.toDomain()).toList(),
-      ),
-    );
-  }
+  Stream<Either<TaskFailure, List<Task>>> fetchTasks() =>
+      _handleTaskStream(_localSource.getAllTasksStream());
 
   @override
-  Stream<Either<TaskFailure, List<Task>>> fetchActiveTasks() async* {
-    final taskDtoStream = _localSource.getActiveTasksStream();
-    yield* taskDtoStream.map(
-      (taskDtos) => right<TaskFailure, List<Task>>(
-        taskDtos.map((taskDto) => taskDto.toDomain()).toList(),
-      ),
-    );
-  }
+  Stream<Either<TaskFailure, List<Task>>> fetchActiveTasks() =>
+      _handleTaskStream(_localSource.getActiveTasksStream());
 
   @override
-  Stream<Either<TaskFailure, List<Task>>> fetchCompletedTasks() async* {
-    final taskDtoStream = _localSource.getCompletedTasksStream();
-    yield* taskDtoStream.map(
-      (taskDtos) => right<TaskFailure, List<Task>>(
-        taskDtos.map((taskDto) => taskDto.toDomain()).toList(),
-      ),
-    );
-  }
+  Stream<Either<TaskFailure, List<Task>>> fetchCompletedTasks() =>
+      _handleTaskStream(_localSource.getCompletedTasksStream());
+
+  @override
+  Stream<Either<TaskFailure, Task>> fetchTask(Task task) =>
+      _handleSingleTaskStream(
+          _localSource.fetchNoteStream(TaskDto.fromDomain(task)));
 
   @override
   Future<Either<TaskFailure, Unit>> create(Task task) async {
     try {
       await _localSource.insert(TaskDto.fromDomain(task));
-      return const Right(unit);
+      return right(unit);
     } catch (e) {
-      return Left(TaskFailure.unexpected(message: e.toString()));
+      return left(const TaskFailure.unableToCreate());
     }
   }
 
@@ -55,9 +42,9 @@ class TaskRepository implements TasksInterface {
   Future<Either<TaskFailure, Unit>> delete(Task task) async {
     try {
       await _localSource.delete(TaskDto.fromDomain(task));
-      return const Right(unit);
+      return right(unit);
     } catch (e) {
-      return Left(TaskFailure.unexpected(message: e.toString()));
+      return left(const TaskFailure.unableToDelete());
     }
   }
 
@@ -65,18 +52,27 @@ class TaskRepository implements TasksInterface {
   Future<Either<TaskFailure, Unit>> update(Task task) async {
     try {
       await _localSource.update(TaskDto.fromDomain(task));
-      return const Right(unit);
+      return right(unit);
     } catch (e) {
-      return const Left(TaskFailure.unableToUpdate());
+      return left(const TaskFailure.unableToUpdate());
     }
   }
 
-  @override
-  Stream<Either<TaskFailure, Task>> fetchTask(Task task) async* {
-    final taskDtoStream =
-        _localSource.fetchNoteStream(TaskDto.fromDomain(task));
-    yield* taskDtoStream.map(
-      (taskDto) => right<TaskFailure, Task>(taskDto.toDomain()),
+  Stream<Either<TaskFailure, List<Task>>> _handleTaskStream(
+      Stream<List<TaskDto>> taskDtoStream) async* {
+    yield* taskDtoStream.asyncMap(
+      (taskDtos) => right<TaskFailure, List<Task>>(
+        taskDtos.map(_mapTaskDtoToTask).toList(),
+      ),
     );
   }
+
+  Stream<Either<TaskFailure, Task>> _handleSingleTaskStream(
+      Stream<TaskDto> taskDtoStream) async* {
+    yield* taskDtoStream.map(
+      (taskDto) => right<TaskFailure, Task>(_mapTaskDtoToTask(taskDto)),
+    );
+  }
+
+  Task _mapTaskDtoToTask(TaskDto taskDto) => taskDto.toDomain();
 }
