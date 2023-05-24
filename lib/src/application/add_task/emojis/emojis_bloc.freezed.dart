@@ -321,7 +321,7 @@ mixin _$EmojisState {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function(List<Emoji> emojis) loadSuccess,
-    required TResult Function(Exception failure) loadFailure,
+    required TResult Function(EmojiFailure failure) loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -329,7 +329,7 @@ mixin _$EmojisState {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function(List<Emoji> emojis)? loadSuccess,
-    TResult? Function(Exception failure)? loadFailure,
+    TResult? Function(EmojiFailure failure)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -337,7 +337,7 @@ mixin _$EmojisState {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function(List<Emoji> emojis)? loadSuccess,
-    TResult Function(Exception failure)? loadFailure,
+    TResult Function(EmojiFailure failure)? loadFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -425,7 +425,7 @@ class _$Initial implements Initial {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function(List<Emoji> emojis) loadSuccess,
-    required TResult Function(Exception failure) loadFailure,
+    required TResult Function(EmojiFailure failure) loadFailure,
   }) {
     return initial();
   }
@@ -436,7 +436,7 @@ class _$Initial implements Initial {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function(List<Emoji> emojis)? loadSuccess,
-    TResult? Function(Exception failure)? loadFailure,
+    TResult? Function(EmojiFailure failure)? loadFailure,
   }) {
     return initial?.call();
   }
@@ -447,7 +447,7 @@ class _$Initial implements Initial {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function(List<Emoji> emojis)? loadSuccess,
-    TResult Function(Exception failure)? loadFailure,
+    TResult Function(EmojiFailure failure)? loadFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -539,7 +539,7 @@ class _$EmojisLoadInProgress implements EmojisLoadInProgress {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function(List<Emoji> emojis) loadSuccess,
-    required TResult Function(Exception failure) loadFailure,
+    required TResult Function(EmojiFailure failure) loadFailure,
   }) {
     return loadInProgress();
   }
@@ -550,7 +550,7 @@ class _$EmojisLoadInProgress implements EmojisLoadInProgress {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function(List<Emoji> emojis)? loadSuccess,
-    TResult? Function(Exception failure)? loadFailure,
+    TResult? Function(EmojiFailure failure)? loadFailure,
   }) {
     return loadInProgress?.call();
   }
@@ -561,7 +561,7 @@ class _$EmojisLoadInProgress implements EmojisLoadInProgress {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function(List<Emoji> emojis)? loadSuccess,
-    TResult Function(Exception failure)? loadFailure,
+    TResult Function(EmojiFailure failure)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -685,7 +685,7 @@ class _$LoadSuccess implements LoadSuccess {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function(List<Emoji> emojis) loadSuccess,
-    required TResult Function(Exception failure) loadFailure,
+    required TResult Function(EmojiFailure failure) loadFailure,
   }) {
     return loadSuccess(emojis);
   }
@@ -696,7 +696,7 @@ class _$LoadSuccess implements LoadSuccess {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function(List<Emoji> emojis)? loadSuccess,
-    TResult? Function(Exception failure)? loadFailure,
+    TResult? Function(EmojiFailure failure)? loadFailure,
   }) {
     return loadSuccess?.call(emojis);
   }
@@ -707,7 +707,7 @@ class _$LoadSuccess implements LoadSuccess {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function(List<Emoji> emojis)? loadSuccess,
-    TResult Function(Exception failure)? loadFailure,
+    TResult Function(EmojiFailure failure)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -769,7 +769,9 @@ abstract class _$$LoadFailureCopyWith<$Res> {
           _$LoadFailure value, $Res Function(_$LoadFailure) then) =
       __$$LoadFailureCopyWithImpl<$Res>;
   @useResult
-  $Res call({Exception failure});
+  $Res call({EmojiFailure failure});
+
+  $EmojiFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
@@ -789,8 +791,16 @@ class __$$LoadFailureCopyWithImpl<$Res>
       null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
-              as Exception,
+              as EmojiFailure,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EmojiFailureCopyWith<$Res> get failure {
+    return $EmojiFailureCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
+    });
   }
 }
 
@@ -800,7 +810,7 @@ class _$LoadFailure implements LoadFailure {
   const _$LoadFailure(this.failure);
 
   @override
-  final Exception failure;
+  final EmojiFailure failure;
 
   @override
   String toString() {
@@ -830,7 +840,7 @@ class _$LoadFailure implements LoadFailure {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function(List<Emoji> emojis) loadSuccess,
-    required TResult Function(Exception failure) loadFailure,
+    required TResult Function(EmojiFailure failure) loadFailure,
   }) {
     return loadFailure(failure);
   }
@@ -841,7 +851,7 @@ class _$LoadFailure implements LoadFailure {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function(List<Emoji> emojis)? loadSuccess,
-    TResult? Function(Exception failure)? loadFailure,
+    TResult? Function(EmojiFailure failure)? loadFailure,
   }) {
     return loadFailure?.call(failure);
   }
@@ -852,7 +862,7 @@ class _$LoadFailure implements LoadFailure {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function(List<Emoji> emojis)? loadSuccess,
-    TResult Function(Exception failure)? loadFailure,
+    TResult Function(EmojiFailure failure)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
@@ -900,9 +910,9 @@ class _$LoadFailure implements LoadFailure {
 }
 
 abstract class LoadFailure implements EmojisState {
-  const factory LoadFailure(final Exception failure) = _$LoadFailure;
+  const factory LoadFailure(final EmojiFailure failure) = _$LoadFailure;
 
-  Exception get failure;
+  EmojiFailure get failure;
   @JsonKey(ignore: true)
   _$$LoadFailureCopyWith<_$LoadFailure> get copyWith =>
       throw _privateConstructorUsedError;
