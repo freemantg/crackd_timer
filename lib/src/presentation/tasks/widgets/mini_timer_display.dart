@@ -5,14 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../application/cubits.dart';
 import '../../../application/timer/timer_bloc/timer_bloc.dart';
+import '../../../domain/tasks/task.dart';
 import '../../../shared/app_router.gr.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
 
 class MiniTimerDisplay extends StatelessWidget {
-  const MiniTimerDisplay({
-    Key? key,
-  }) : super(key: key);
+  const MiniTimerDisplay({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,79 +23,96 @@ class MiniTimerDisplay extends StatelessWidget {
           color: task.taskColor,
           child: Column(
             children: [
-              Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            _buildTimerText(state.timerType),
-                            style: TextStyles.title1Dark,
-                          ),
-                          const VSpace(size: Insets.sm),
-                          const StatusChip(),
-                        ],
-                      ),
-                      const HSpace(size: Insets.xs),
-                      Text(
-                        'Stay focused',
-                        style: TextStyles.captionDark,
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  GestureDetector(
-                    child: const Icon(
-                      Icons.more_vert,
-                      color: Color(0xFF1E1E1E),
-                    ),
-                    onTap: () => context.router.push(AddTaskRoute(task: task)),
-                  )
-                ],
-              ),
+              _buildTaskInfoRow(context, state, task),
               const HSpace(size: Insets.m),
               Text(
                 state.duration.durationToString(),
                 style: TextStyles.h1Dark.copyWith(fontSize: 36),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.play_arrow,
-                      color: Color(0xFF1E1E1E),
-                    ),
-                    onPressed: () => context
-                        .read<TimerBloc>()
-                        .add(TimerEvent.started(duration: state.duration)),
-                  ),
-                  const _StyledVerticalDivider(),
-                  IconButton(
-                    icon: const Icon(
-                      Icons.pause,
-                      color: Color(0xFF1E1E1E),
-                    ),
-                    onPressed: () => context.read<TimerBloc>().add(
-                          const TimerEvent.paused(),
-                        ),
-                  ),
-                ],
-              ),
+              _buildTimerControlsRow(context, state),
             ],
           ),
         );
       },
     );
   }
+
+  Widget _buildTaskInfoRow(BuildContext context, TimerState state, Task task) {
+    return Row(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Text(
+                  _buildTimerText(state.timerType),
+                  style: TextStyles.title1Dark,
+                ),
+                const VSpace(size: Insets.sm),
+                const StatusChip(),
+              ],
+            ),
+            const HSpace(size: Insets.xs),
+            Text(
+              'Stay focused',
+              style: TextStyles.captionDark,
+            ),
+          ],
+        ),
+        const Spacer(),
+        GestureDetector(
+          child: const Icon(
+            Icons.more_vert,
+            color: Color(0xFF1E1E1E),
+          ),
+          onTap: () => context.router.push(AddTaskRoute(task: task)),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTimerControlsRow(BuildContext context, TimerState state) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        IconButton(
+          icon: const Icon(
+            Icons.play_arrow,
+            color: Color(0xFF1E1E1E),
+          ),
+          onPressed: () => context
+              .read<TimerBloc>()
+              .add(TimerEvent.started(duration: state.duration)),
+        ),
+        const _StyledVerticalDivider(),
+        IconButton(
+          icon: const Icon(
+            Icons.pause,
+            color: Color(0xFF1E1E1E),
+          ),
+          onPressed: () => context.read<TimerBloc>().add(
+                const TimerEvent.paused(),
+              ),
+        ),
+      ],
+    );
+  }
+
+  String _buildTimerText(TimerType timerType) {
+    switch (timerType) {
+      case TimerType.focus:
+        return 'Focus Time';
+      case TimerType.shortBreak:
+        return 'Short Break';
+      case TimerType.longBreak:
+        return 'Long Break';
+    }
+  }
 }
 
 class _StyledVerticalDivider extends StatelessWidget {
-  const _StyledVerticalDivider({
-    Key? key,
-  }) : super(key: key);
+  const _StyledVerticalDivider({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -108,9 +124,7 @@ class _StyledVerticalDivider extends StatelessWidget {
 }
 
 class StatusChip extends StatelessWidget {
-  const StatusChip({
-    Key? key,
-  }) : super(key: key);
+  const StatusChip({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -134,11 +148,11 @@ class StyledCard extends StatelessWidget {
   final double? elevation;
 
   const StyledCard({
-    super.key,
+    Key? key,
     required this.child,
     this.color,
     this.elevation,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -155,18 +169,5 @@ class StyledCard extends StatelessWidget {
         child: child,
       ),
     );
-  }
-}
-
-String _buildTimerText(TimerType timerType) {
-  switch (timerType) {
-    case TimerType.focus:
-      return 'Focus Time';
-
-    case TimerType.shortBreak:
-      return 'Short Break';
-
-    case TimerType.longBreak:
-      return 'Long Break';
   }
 }

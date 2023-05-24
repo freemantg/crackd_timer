@@ -41,7 +41,7 @@ class TaskDto with _$TaskDto {
 extension TaskDtoX on TaskDto {
   Task toDomain() {
     return Task(
-      uniqueId: UniqueId.fromUniqueString(uniqueId),
+      id: UniqueId.fromUniqueString(uniqueId),
       title: title,
       description: description,
       emoji: emoji,

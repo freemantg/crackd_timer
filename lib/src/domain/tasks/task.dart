@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../shared/colors_list.dart';
-import '../core/unique_id.dart';
 import '../emojis/emoji.dart';
 
 part 'task.freezed.dart';
@@ -10,7 +10,7 @@ part 'task.freezed.dart';
 @freezed
 abstract class Task with _$Task {
   const factory Task({
-    required UniqueId uniqueId,
+    required String id,
     required String title,
     required String description,
     required Emoji emoji,
@@ -21,7 +21,7 @@ abstract class Task with _$Task {
   }) = _Task;
 
   factory Task.empty() => Task(
-        uniqueId: UniqueId(),
+        id: const Uuid().v4(),
         title: '',
         description: '',
         emoji: Emoji.initial(),
