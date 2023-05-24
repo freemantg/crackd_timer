@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../domain/core/unique_id.dart';
 import '../../domain/emojis/emoji.dart';
 import '../../domain/tasks/task.dart';
 
@@ -13,7 +12,7 @@ class TaskDto with _$TaskDto {
   const TaskDto._();
 
   const factory TaskDto({
-    required String uniqueId,
+    required String id,
     required String title,
     required String description,
     required Emoji emoji,
@@ -24,7 +23,7 @@ class TaskDto with _$TaskDto {
   }) = _TaskDto;
 
   factory TaskDto.fromDomain(Task task) => TaskDto(
-        uniqueId: task.uniqueId.value,
+        id: task.id,
         title: task.title,
         description: task.description,
         emoji: task.emoji,
@@ -41,7 +40,7 @@ class TaskDto with _$TaskDto {
 extension TaskDtoX on TaskDto {
   Task toDomain() {
     return Task(
-      id: UniqueId.fromUniqueString(uniqueId),
+      id: id,
       title: title,
       description: description,
       emoji: emoji,

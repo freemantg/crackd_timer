@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Task {
-  UniqueId get uniqueId => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   Emoji get emoji => throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $TaskCopyWith<$Res> {
       _$TaskCopyWithImpl<$Res, Task>;
   @useResult
   $Res call(
-      {UniqueId uniqueId,
+      {String id,
       String title,
       String description,
       Emoji emoji,
@@ -60,7 +60,7 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? uniqueId = null,
+    Object? id = null,
     Object? title = null,
     Object? description = null,
     Object? emoji = null,
@@ -70,10 +70,10 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
     Object? completed = null,
   }) {
     return _then(_value.copyWith(
-      uniqueId: null == uniqueId
-          ? _value.uniqueId
-          : uniqueId // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -121,7 +121,7 @@ abstract class _$$_TaskCopyWith<$Res> implements $TaskCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {UniqueId uniqueId,
+      {String id,
       String title,
       String description,
       Emoji emoji,
@@ -143,7 +143,7 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? uniqueId = null,
+    Object? id = null,
     Object? title = null,
     Object? description = null,
     Object? emoji = null,
@@ -153,10 +153,10 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
     Object? completed = null,
   }) {
     return _then(_$_Task(
-      uniqueId: null == uniqueId
-          ? _value.uniqueId
-          : uniqueId // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -193,7 +193,7 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
 
 class _$_Task implements _Task {
   const _$_Task(
-      {required this.uniqueId,
+      {required this.id,
       required this.title,
       required this.description,
       required this.emoji,
@@ -203,7 +203,7 @@ class _$_Task implements _Task {
       required this.completed});
 
   @override
-  final UniqueId uniqueId;
+  final String id;
   @override
   final String title;
   @override
@@ -221,7 +221,7 @@ class _$_Task implements _Task {
 
   @override
   String toString() {
-    return 'Task(uniqueId: $uniqueId, title: $title, description: $description, emoji: $emoji, taskColor: $taskColor, activeSessions: $activeSessions, completedSessions: $completedSessions, completed: $completed)';
+    return 'Task(id: $id, title: $title, description: $description, emoji: $emoji, taskColor: $taskColor, activeSessions: $activeSessions, completedSessions: $completedSessions, completed: $completed)';
   }
 
   @override
@@ -229,8 +229,7 @@ class _$_Task implements _Task {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Task &&
-            (identical(other.uniqueId, uniqueId) ||
-                other.uniqueId == uniqueId) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -246,8 +245,8 @@ class _$_Task implements _Task {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, uniqueId, title, description,
-      emoji, taskColor, activeSessions, completedSessions, completed);
+  int get hashCode => Object.hash(runtimeType, id, title, description, emoji,
+      taskColor, activeSessions, completedSessions, completed);
 
   @JsonKey(ignore: true)
   @override
@@ -258,7 +257,7 @@ class _$_Task implements _Task {
 
 abstract class _Task implements Task {
   const factory _Task(
-      {required final UniqueId uniqueId,
+      {required final String id,
       required final String title,
       required final String description,
       required final Emoji emoji,
@@ -268,7 +267,7 @@ abstract class _Task implements Task {
       required final bool completed}) = _$_Task;
 
   @override
-  UniqueId get uniqueId;
+  String get id;
   @override
   String get title;
   @override

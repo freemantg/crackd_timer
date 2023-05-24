@@ -20,7 +20,7 @@ class TasksLocalSource {
   }
 
   Stream<TaskDto> fetchNoteStream(TaskDto taskDto) async* {
-    final record = _store.record(taskDto.uniqueId).onSnapshot(_database);
+    final record = _store.record(taskDto.id).onSnapshot(_database);
     yield* record.map(
       (snapshot) => TaskDto.fromJson(
         snapshot?.value ?? {},
@@ -53,7 +53,7 @@ class TasksLocalSource {
   }
 
   Future<void> insert(TaskDto taskDto) async {
-    _store.record(taskDto.uniqueId).put(
+    _store.record(taskDto.id).put(
           _database,
           taskDto.toJson(),
         );
@@ -62,12 +62,12 @@ class TasksLocalSource {
   Future<void> delete(TaskDto taskDto) async {
     await _store.delete(
       _database,
-      finder: Finder(filter: Filter.byKey(taskDto.uniqueId)),
+      finder: Finder(filter: Filter.byKey(taskDto.id)),
     );
   }
 
   Future<void> update(TaskDto taskDto) async {
-    final finder = Finder(filter: Filter.byKey(taskDto.uniqueId));
+    final finder = Finder(filter: Filter.byKey(taskDto.id));
 
     await _store.update(
       _database,

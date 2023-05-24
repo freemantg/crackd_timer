@@ -20,7 +20,7 @@ TaskDto _$TaskDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TaskDto {
-  String get uniqueId => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   Emoji get emoji => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $TaskDtoCopyWith<$Res> {
       _$TaskDtoCopyWithImpl<$Res, TaskDto>;
   @useResult
   $Res call(
-      {String uniqueId,
+      {String id,
       String title,
       String description,
       Emoji emoji,
@@ -65,7 +65,7 @@ class _$TaskDtoCopyWithImpl<$Res, $Val extends TaskDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? uniqueId = null,
+    Object? id = null,
     Object? title = null,
     Object? description = null,
     Object? emoji = null,
@@ -75,9 +75,9 @@ class _$TaskDtoCopyWithImpl<$Res, $Val extends TaskDto>
     Object? completed = null,
   }) {
     return _then(_value.copyWith(
-      uniqueId: null == uniqueId
-          ? _value.uniqueId
-          : uniqueId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       title: null == title
           ? _value.title
@@ -127,7 +127,7 @@ abstract class _$$_TaskDtoCopyWith<$Res> implements $TaskDtoCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String uniqueId,
+      {String id,
       String title,
       String description,
       Emoji emoji,
@@ -150,7 +150,7 @@ class __$$_TaskDtoCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? uniqueId = null,
+    Object? id = null,
     Object? title = null,
     Object? description = null,
     Object? emoji = null,
@@ -160,9 +160,9 @@ class __$$_TaskDtoCopyWithImpl<$Res>
     Object? completed = null,
   }) {
     return _then(_$_TaskDto(
-      uniqueId: null == uniqueId
-          ? _value.uniqueId
-          : uniqueId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       title: null == title
           ? _value.title
@@ -200,7 +200,7 @@ class __$$_TaskDtoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TaskDto extends _TaskDto {
   const _$_TaskDto(
-      {required this.uniqueId,
+      {required this.id,
       required this.title,
       required this.description,
       required this.emoji,
@@ -214,7 +214,7 @@ class _$_TaskDto extends _TaskDto {
       _$$_TaskDtoFromJson(json);
 
   @override
-  final String uniqueId;
+  final String id;
   @override
   final String title;
   @override
@@ -232,7 +232,7 @@ class _$_TaskDto extends _TaskDto {
 
   @override
   String toString() {
-    return 'TaskDto(uniqueId: $uniqueId, title: $title, description: $description, emoji: $emoji, taskColor: $taskColor, activeSessions: $activeSessions, completedSessions: $completedSessions, completed: $completed)';
+    return 'TaskDto(id: $id, title: $title, description: $description, emoji: $emoji, taskColor: $taskColor, activeSessions: $activeSessions, completedSessions: $completedSessions, completed: $completed)';
   }
 
   @override
@@ -240,8 +240,7 @@ class _$_TaskDto extends _TaskDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TaskDto &&
-            (identical(other.uniqueId, uniqueId) ||
-                other.uniqueId == uniqueId) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -258,8 +257,8 @@ class _$_TaskDto extends _TaskDto {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, uniqueId, title, description,
-      emoji, taskColor, activeSessions, completedSessions, completed);
+  int get hashCode => Object.hash(runtimeType, id, title, description, emoji,
+      taskColor, activeSessions, completedSessions, completed);
 
   @JsonKey(ignore: true)
   @override
@@ -277,7 +276,7 @@ class _$_TaskDto extends _TaskDto {
 
 abstract class _TaskDto extends TaskDto {
   const factory _TaskDto(
-      {required final String uniqueId,
+      {required final String id,
       required final String title,
       required final String description,
       required final Emoji emoji,
@@ -290,7 +289,7 @@ abstract class _TaskDto extends TaskDto {
   factory _TaskDto.fromJson(Map<String, dynamic> json) = _$_TaskDto.fromJson;
 
   @override
-  String get uniqueId;
+  String get id;
   @override
   String get title;
   @override

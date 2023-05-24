@@ -7,7 +7,7 @@ part of 'tasks_dto.dart';
 // **************************************************************************
 
 _$_TaskDto _$$_TaskDtoFromJson(Map<String, dynamic> json) => _$_TaskDto(
-      uniqueId: json['uniqueId'] as String,
+      id: json['id'] as String,
       title: json['title'] as String,
       description: json['description'] as String,
       emoji: Emoji.fromJson(json['emoji'] as Map<String, dynamic>),
@@ -19,7 +19,7 @@ _$_TaskDto _$$_TaskDtoFromJson(Map<String, dynamic> json) => _$_TaskDto(
 
 Map<String, dynamic> _$$_TaskDtoToJson(_$_TaskDto instance) =>
     <String, dynamic>{
-      'uniqueId': instance.uniqueId,
+      'id': instance.id,
       'title': instance.title,
       'description': instance.description,
       'emoji': instance.emoji.toJson(),
