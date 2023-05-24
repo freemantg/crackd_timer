@@ -102,11 +102,11 @@ Widget _buildTopSection(BuildContext context) {
     child: Column(
       children: [
         HSpace(size: Insets.topGutter),
-        Row(
+        const Row(
           children: [
             Text("crack'd", style: TextStyles.h1),
-            const Spacer(),
-            const _AlarmIconButton(),
+            Spacer(),
+            _AlarmIconButton(),
           ],
         ),
         const HSpace(size: Insets.sm),

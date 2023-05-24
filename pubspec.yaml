@@ -19,7 +19,7 @@ dependencies:
   flutter_riverpod: ^2.3.6
   font_awesome_flutter: ^10.1.0
   freezed_annotation: ^2.1.0
-  google_fonts: ^3.0.1
+  google_fonts: ^4.0.4
   intl: ^0.18.1
   json_annotation: ^4.6.0
   json_serializable: ^6.3.1
