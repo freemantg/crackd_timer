@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart' show toBeginningOfSentenceCase;
 
-import '../../../application/settings/alarm_cubit/alarm_cubit.dart';
+import '../../../application/cubits.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
 import '../../shared/styled_components/styled_title_subtitle.dart';

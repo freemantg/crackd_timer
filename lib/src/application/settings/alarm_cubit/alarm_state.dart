@@ -7,10 +7,12 @@ class AlarmState with _$AlarmState {
   const factory AlarmState({
     required AlarmSound alarmSound,
     required bool tickingSound,
-  }) = _AlarmCubitState;
+    AudioPlaybackFailure? failure,
+  }) = _AlarmState;
 
   factory AlarmState.initial() => const AlarmState(
         alarmSound: AlarmSound.digital,
         tickingSound: true,
+        failure: null,
       );
 }

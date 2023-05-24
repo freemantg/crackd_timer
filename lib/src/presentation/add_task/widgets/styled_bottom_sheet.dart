@@ -6,8 +6,6 @@ import '../../../application/blocs.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
 
-
-
 class StyledBottomSheet extends StatelessWidget {
   const StyledBottomSheet({
     Key? key,

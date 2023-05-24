@@ -1,9 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../domain/audio/audio_playback_failure.dart';
 import '../../../infrastructure/timer/audio_repository.dart';
 
-part 'alarm_cubit_state.dart';
+part 'alarm_state.dart';
 part 'alarm_cubit.freezed.dart';
 
 class AlarmCubit extends Cubit<AlarmState> {
@@ -13,14 +14,31 @@ class AlarmCubit extends Cubit<AlarmState> {
       : _audioRepository = audioRepository,
         super(AlarmState.initial());
 
-  void updateAlarmSound(AlarmSound alarmSound) =>
-      emit(state.copyWith(alarmSound: alarmSound));
+  /// Update the alarm sound.
+  void updateAlarmSound(AlarmSound alarmSound) {
+    emit(state.copyWith(alarmSound: alarmSound));
+  }
 
-  void toggleTickingSound() =>
-      emit(state.copyWith(tickingSound: !state.tickingSound));
+  /// Toggle whether the tick sound is playing.
+  void toggleTickingSound() {
+    emit(state.copyWith(tickingSound: !state.tickingSound));
+  }
 
-  void playTickSound() async => await _audioRepository.play('tick.wav');
+  /// Play the ticking sound.
+  void playTickSound() async {
+    var result = await _audioRepository.play('tick.wav');
+    result.fold(
+      (failure) => emit(state.copyWith(failure: failure)),
+      (_) => emit(state.copyWith(failure: null)),
+    );
+  }
 
-  void playAlarm() async =>
-      await _audioRepository.play('${state.alarmSound.name}.wav');
+  /// Play the alarm sound.
+  void playAlarm() async {
+    var result = await _audioRepository.play('${state.alarmSound.name}.wav');
+    result.fold(
+      (failure) => emit(state.copyWith(failure: failure)),
+      (_) => emit(state.copyWith(failure: null)),
+    );
+  }
 }

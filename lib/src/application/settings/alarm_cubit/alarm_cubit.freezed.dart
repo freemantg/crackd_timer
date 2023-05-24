@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AlarmState {
   AlarmSound get alarmSound => throw _privateConstructorUsedError;
   bool get tickingSound => throw _privateConstructorUsedError;
+  AudioPlaybackFailure? get failure => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AlarmStateCopyWith<AlarmState> get copyWith =>
@@ -30,7 +31,12 @@ abstract class $AlarmStateCopyWith<$Res> {
           AlarmState value, $Res Function(AlarmState) then) =
       _$AlarmStateCopyWithImpl<$Res, AlarmState>;
   @useResult
-  $Res call({AlarmSound alarmSound, bool tickingSound});
+  $Res call(
+      {AlarmSound alarmSound,
+      bool tickingSound,
+      AudioPlaybackFailure? failure});
+
+  $AudioPlaybackFailureCopyWith<$Res>? get failure;
 }
 
 /// @nodoc
@@ -48,6 +54,7 @@ class _$AlarmStateCopyWithImpl<$Res, $Val extends AlarmState>
   $Res call({
     Object? alarmSound = null,
     Object? tickingSound = null,
+    Object? failure = freezed,
   }) {
     return _then(_value.copyWith(
       alarmSound: null == alarmSound
@@ -58,27 +65,49 @@ class _$AlarmStateCopyWithImpl<$Res, $Val extends AlarmState>
           ? _value.tickingSound
           : tickingSound // ignore: cast_nullable_to_non_nullable
               as bool,
+      failure: freezed == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as AudioPlaybackFailure?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AudioPlaybackFailureCopyWith<$Res>? get failure {
+    if (_value.failure == null) {
+      return null;
+    }
+
+    return $AudioPlaybackFailureCopyWith<$Res>(_value.failure!, (value) {
+      return _then(_value.copyWith(failure: value) as $Val);
+    });
   }
 }
 
 /// @nodoc
-abstract class _$$_AlarmCubitStateCopyWith<$Res>
+abstract class _$$_AlarmStateCopyWith<$Res>
     implements $AlarmStateCopyWith<$Res> {
-  factory _$$_AlarmCubitStateCopyWith(
-          _$_AlarmCubitState value, $Res Function(_$_AlarmCubitState) then) =
-      __$$_AlarmCubitStateCopyWithImpl<$Res>;
+  factory _$$_AlarmStateCopyWith(
+          _$_AlarmState value, $Res Function(_$_AlarmState) then) =
+      __$$_AlarmStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AlarmSound alarmSound, bool tickingSound});
+  $Res call(
+      {AlarmSound alarmSound,
+      bool tickingSound,
+      AudioPlaybackFailure? failure});
+
+  @override
+  $AudioPlaybackFailureCopyWith<$Res>? get failure;
 }
 
 /// @nodoc
-class __$$_AlarmCubitStateCopyWithImpl<$Res>
-    extends _$AlarmStateCopyWithImpl<$Res, _$_AlarmCubitState>
-    implements _$$_AlarmCubitStateCopyWith<$Res> {
-  __$$_AlarmCubitStateCopyWithImpl(
-      _$_AlarmCubitState _value, $Res Function(_$_AlarmCubitState) _then)
+class __$$_AlarmStateCopyWithImpl<$Res>
+    extends _$AlarmStateCopyWithImpl<$Res, _$_AlarmState>
+    implements _$$_AlarmStateCopyWith<$Res> {
+  __$$_AlarmStateCopyWithImpl(
+      _$_AlarmState _value, $Res Function(_$_AlarmState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,8 +115,9 @@ class __$$_AlarmCubitStateCopyWithImpl<$Res>
   $Res call({
     Object? alarmSound = null,
     Object? tickingSound = null,
+    Object? failure = freezed,
   }) {
-    return _then(_$_AlarmCubitState(
+    return _then(_$_AlarmState(
       alarmSound: null == alarmSound
           ? _value.alarmSound
           : alarmSound // ignore: cast_nullable_to_non_nullable
@@ -96,58 +126,69 @@ class __$$_AlarmCubitStateCopyWithImpl<$Res>
           ? _value.tickingSound
           : tickingSound // ignore: cast_nullable_to_non_nullable
               as bool,
+      failure: freezed == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as AudioPlaybackFailure?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_AlarmCubitState implements _AlarmCubitState {
-  const _$_AlarmCubitState(
-      {required this.alarmSound, required this.tickingSound});
+class _$_AlarmState implements _AlarmState {
+  const _$_AlarmState(
+      {required this.alarmSound, required this.tickingSound, this.failure});
 
   @override
   final AlarmSound alarmSound;
   @override
   final bool tickingSound;
+  @override
+  final AudioPlaybackFailure? failure;
 
   @override
   String toString() {
-    return 'AlarmState(alarmSound: $alarmSound, tickingSound: $tickingSound)';
+    return 'AlarmState(alarmSound: $alarmSound, tickingSound: $tickingSound, failure: $failure)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AlarmCubitState &&
+            other is _$_AlarmState &&
             (identical(other.alarmSound, alarmSound) ||
                 other.alarmSound == alarmSound) &&
             (identical(other.tickingSound, tickingSound) ||
-                other.tickingSound == tickingSound));
+                other.tickingSound == tickingSound) &&
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, alarmSound, tickingSound);
+  int get hashCode =>
+      Object.hash(runtimeType, alarmSound, tickingSound, failure);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AlarmCubitStateCopyWith<_$_AlarmCubitState> get copyWith =>
-      __$$_AlarmCubitStateCopyWithImpl<_$_AlarmCubitState>(this, _$identity);
+  _$$_AlarmStateCopyWith<_$_AlarmState> get copyWith =>
+      __$$_AlarmStateCopyWithImpl<_$_AlarmState>(this, _$identity);
 }
 
-abstract class _AlarmCubitState implements AlarmState {
-  const factory _AlarmCubitState(
+abstract class _AlarmState implements AlarmState {
+  const factory _AlarmState(
       {required final AlarmSound alarmSound,
-      required final bool tickingSound}) = _$_AlarmCubitState;
+      required final bool tickingSound,
+      final AudioPlaybackFailure? failure}) = _$_AlarmState;
 
   @override
   AlarmSound get alarmSound;
   @override
   bool get tickingSound;
   @override
+  AudioPlaybackFailure? get failure;
+  @override
   @JsonKey(ignore: true)
-  _$$_AlarmCubitStateCopyWith<_$_AlarmCubitState> get copyWith =>
+  _$$_AlarmStateCopyWith<_$_AlarmState> get copyWith =>
       throw _privateConstructorUsedError;
 }
