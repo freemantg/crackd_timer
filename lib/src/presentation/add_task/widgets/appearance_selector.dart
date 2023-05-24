@@ -1,7 +1,5 @@
-import 'package:crackd_timer/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../application/blocs.dart';
 import '../../../shared/styles.dart';
@@ -33,74 +31,59 @@ class AppearanceSelector extends StatelessWidget {
     );
   }
 
-  _showCustomizeModalButtonSheet(BuildContext context) {
+  void _showCustomizeModalButtonSheet(BuildContext context) {
     final taskFormBloc = context.read<TaskFormBloc>();
 
-    return showModalBottomSheet(
-        isScrollControlled: true,
-        clipBehavior: Clip.hardEdge,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Corners.s5Radius),
-        ),
-        context: context,
-        builder: (context) {
-          return BlocProvider.value(
-            value: taskFormBloc,
-            child: FractionallySizedBox(
-              heightFactor: 0.8,
-              child: Column(
-                children: [
-                  const ColorSelector(),
-                  _StyledContainer(
-                    child: Consumer(
-                      builder: (context, ref, child) {
-                        return BlocProvider(
-                          create: (context) => ref.watch(emojisBlocProvider)
-                            ..add(const EmojisEvent.started()),
-                          child: BlocBuilder<EmojisBloc, EmojisState>(
-                            builder: (context, state) {
-                              return state.maybeMap(
-                                loadSuccess: (state) =>
-                                    IconSelector(emojis: state.emojis),
-                                orElse: () => const Center(
-                                  child: CircularProgressIndicator(),
-                                ),
-                              );
-                            },
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ],
+    showModalBottomSheet(
+      isScrollControlled: true,
+      clipBehavior: Clip.hardEdge,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Corners.s5Radius),
+      ),
+      context: context,
+      builder: (context) {
+        return BlocProvider.value(
+          value: taskFormBloc,
+          child: _buildCustomizeModalContent(context),
+        );
+      },
+    );
+  }
+
+  Widget _buildCustomizeModalContent(BuildContext context) {
+    return FractionallySizedBox(
+      heightFactor: 0.8,
+      child: Column(
+        children: [
+          const ColorSelector(),
+          Expanded(
+            child: Container(
+              color: Theme.of(context).colorScheme.surface,
+              padding: const EdgeInsets.only(
+                top: Insets.m,
+                left: Insets.l,
+                right: Insets.l,
               ),
+              child: _buildIconSelector(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildIconSelector() {
+    return BlocProvider<EmojisBloc>(
+      create: (context) => context.watch()..add(const EmojisEvent.started()),
+      child: BlocBuilder<EmojisBloc, EmojisState>(
+        builder: (context, state) {
+          return state.maybeMap(
+            loadSuccess: (state) => IconSelector(emojis: state.emojis),
+            orElse: () => const Center(
+              child: CircularProgressIndicator(),
             ),
           );
-        });
-  }
-}
-
-class _StyledContainer extends StatelessWidget {
-  final Widget child;
-
-  const _StyledContainer({
-    Key? key,
-    required this.child,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return Expanded(
-      child: Container(
-        color: theme.colorScheme.surface,
-        padding: const EdgeInsets.only(
-          top: Insets.m,
-          left: Insets.l,
-          right: Insets.l,
-        ),
-        child: child,
+        },
       ),
     );
   }
