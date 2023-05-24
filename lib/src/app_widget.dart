@@ -21,6 +21,7 @@ class AppWidget extends ConsumerWidget {
     final taskCubit = ref.watch(taskCubitProvider);
     final taskActorBloc = ref.watch(taskActorBlocProvider);
     final themeCubit = ref.watch(themeCubitProvider);
+    final emojisBloc = ref.watch(emojisBlocProvider);
 
     return MultiBlocProvider(
       providers: [
@@ -29,6 +30,7 @@ class AppWidget extends ConsumerWidget {
         BlocProvider.value(value: timerBloc),
         BlocProvider.value(value: settingsBloc),
         BlocProvider.value(value: taskActorBloc),
+        BlocProvider.value(value: emojisBloc),
 
         //CUBITS
         BlocProvider.value(value: themeCubit),

@@ -64,7 +64,7 @@ class AppearanceSelector extends StatelessWidget {
                 left: Insets.l,
                 right: Insets.l,
               ),
-              child: _buildIconSelector(),
+              child: _buildIconSelector(context),
             ),
           ),
         ],
@@ -72,19 +72,20 @@ class AppearanceSelector extends StatelessWidget {
     );
   }
 
-  Widget _buildIconSelector() {
-    return BlocProvider<EmojisBloc>(
-      create: (context) => context.watch()..add(const EmojisEvent.started()),
-      child: BlocBuilder<EmojisBloc, EmojisState>(
-        builder: (context, state) {
-          return state.maybeMap(
-            loadSuccess: (state) => IconSelector(emojis: state.emojis),
-            orElse: () => const Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        },
-      ),
+  Widget _buildIconSelector(BuildContext context) {
+    final emojisBloc = context.read<EmojisBloc>()
+      ..add(const EmojisEvent.started());
+
+    return BlocBuilder<EmojisBloc, EmojisState>(
+      bloc: emojisBloc,
+      builder: (context, state) {
+        return state.maybeMap(
+          loadSuccess: (state) => IconSelector(emojis: state.emojis),
+          orElse: () => const Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
+      },
     );
   }
 }
