@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../../application/blocs.dart';
 import '../../../domain/emojis/emoji.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
 
-class IconSelector extends StatelessWidget {
+class IconSelector extends HookWidget {
   final List<Emoji> emojis;
 
   const IconSelector({
@@ -17,47 +18,54 @@ class IconSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final categories = emojis.map((e) => e.category).toSet().toList();
+    final categories =
+        useMemoized(() => emojis.map((e) => e.category).toSet().toList());
 
-    return DefaultTabController(
-      length: categories.length,
-      child: Column(
-        children: [
-          TabBar(
-            isScrollable: true,
-            physics: const BouncingScrollPhysics(),
-            //INDICATOR
-            indicatorColor: theme.primaryColor,
-            indicatorSize: TabBarIndicatorSize.label,
-            indicatorPadding: const EdgeInsets.only(right: Insets.l),
-            //LABEL
-            labelPadding: const EdgeInsets.only(right: Insets.l),
-            labelStyle: TextStyles.h2,
-            labelColor: theme.colorScheme.onSurface
-                .withOpacity(TextOpacity.mediumEmphasis),
-            unselectedLabelColor: theme.highlightColor,
-            tabs: categories.map((e) => Tab(text: e)).toList(),
+    return Column(
+      children: [
+        TabBar(
+          isScrollable: true,
+          physics: const BouncingScrollPhysics(),
+          //INDICATOR
+          indicatorColor: theme.primaryColor,
+          indicatorSize: TabBarIndicatorSize.label,
+          indicatorPadding: const EdgeInsets.only(right: Insets.l),
+          //LABEL
+          labelPadding: const EdgeInsets.only(right: Insets.l),
+          labelStyle: TextStyles.h2,
+          labelColor: theme.colorScheme.onSurface
+              .withOpacity(TextOpacity.mediumEmphasis),
+          unselectedLabelColor: theme.highlightColor,
+          tabs: useMemoized(
+            () => categories.map((e) => Tab(text: e)).toList(),
+            [categories],
           ),
-          Expanded(
-            child: TabBarView(
-              clipBehavior: Clip.none,
-              children: categories.map(
+        ),
+        Expanded(
+          child: TabBarView(
+            clipBehavior: Clip.none,
+            children: useMemoized(
+              () => categories.map(
                 (category) {
-                  final categoryEmojis = emojis
-                      .where((emoji) => emoji.category == category)
-                      .toList();
+                  final categoryEmojis = useMemoized(
+                    () => emojis
+                        .where((emoji) => emoji.category == category)
+                        .toList(),
+                    [category],
+                  );
                   return _EmojiGridView(emojis: categoryEmojis);
                 },
               ).toList(),
+              [categories],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
 
-class _EmojiGridView extends StatelessWidget {
+class _EmojiGridView extends HookWidget {
   const _EmojiGridView({
     Key? key,
     required this.emojis,
@@ -98,9 +106,9 @@ class _EmojiTile extends StatelessWidget {
         bool isSelected = state.task.emoji == emoji;
 
         return GestureDetector(
-          onTap: () => context.read<TaskFormBloc>().add(
-                TaskFormEvent.emojiChanged(emoji),
-              ),
+          onTap: () => context
+              .read<TaskFormBloc>()
+              .add(TaskFormEvent.emojiChanged(emoji)),
           child: Container(
             decoration: isSelected
                 ? BoxDecoration(
