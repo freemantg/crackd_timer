@@ -16,7 +16,6 @@ void main() {
   late MockAudioPlayer mockAudioPlayer;
 
   setUp(() {
-    // Change `mockAudioPlayer` to the generated class, MockAudioPlayer
     mockAudioPlayer = MockAudioPlayer();
     audioRepository = AudioRepository(mockAudioPlayer);
   });
@@ -46,7 +45,7 @@ void main() {
         expect(result, left(const AudioPlaybackFailure.fileNotFound()));
       });
 
-         test('should return fileNotFound when file is not found', () async {
+      test('should return fileNotFound when file is not found', () async {
         when(mockAudioPlayer.source).thenReturn(AssetSource(testFilePath));
         when(mockAudioPlayer.play(any)).thenThrow(
             AudioPlayerException(mockAudioPlayer, cause: 'File not found'));
@@ -69,8 +68,7 @@ void main() {
         expect(result, left(const AudioPlaybackFailure.unsupportedFormat()));
       });
 
-
-test(
+      test(
           'should return invalidState when audio player is in an invalid state',
           () async {
         when(mockAudioPlayer.source).thenReturn(AssetSource(testFilePath));
@@ -83,8 +81,7 @@ test(
         expect(result, left(const AudioPlaybackFailure.invalidState()));
       });
 
-
-test('should return unknown when an unknown error occurs', () async {
+      test('should return unknown when an unknown error occurs', () async {
         when(mockAudioPlayer.source).thenReturn(AssetSource(testFilePath));
         when(mockAudioPlayer.play(any)).thenThrow(Exception('Unknown error'));
 
@@ -93,7 +90,6 @@ test('should return unknown when an unknown error occurs', () async {
         verify(mockAudioPlayer.play(any)).called(1);
         expect(result, left(const AudioPlaybackFailure.unknown()));
       });
-
     },
   );
 }
