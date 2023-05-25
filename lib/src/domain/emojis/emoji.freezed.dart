@@ -118,20 +118,6 @@ class _$_Emoji extends _Emoji {
     return 'Emoji(emoji: $emoji, category: $category)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Emoji &&
-            (identical(other.emoji, emoji) || other.emoji == emoji) &&
-            (identical(other.category, category) ||
-                other.category == category));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, emoji, category);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
