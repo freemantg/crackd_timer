@@ -13,6 +13,7 @@ class AudioRepository {
       await _audioPlayer.play(AssetSource('sounds/$path'));
       return right(unit);
     } catch (e) {
+      print('ERROR $e');
       if (e is AudioPlayerException) {
         if (e.cause == 'File not found') {
           return left(const AudioPlaybackFailure.fileNotFound());
