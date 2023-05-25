@@ -7,11 +7,15 @@ import '../../domain/emojis/emoji.dart';
 import '../../domain/emojis/emoji_failure.dart';
 
 class EmojiRepository {
+  final AssetBundle assetBundle;
+
   static const emojiJson = 'assets/emojis/emojis.json';
+
+  EmojiRepository(this.assetBundle);
 
   Future<Either<EmojiFailure, String>> getJson() async {
     try {
-      final jsonStr = await rootBundle.loadString(emojiJson);
+      final jsonStr = await assetBundle.loadString(emojiJson);
       return Right(jsonStr);
     } catch (e) {
       return Left(EmojiFailure.loadError(e.toString()));

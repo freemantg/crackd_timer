@@ -1,4 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/services.dart';
 import 'package:riverpod/riverpod.dart';
 
 import 'src/application/blocs.dart';
@@ -38,13 +39,14 @@ final appRouterProvider = Provider<AppRouter>((ref) => AppRouter());
 //Bloc Dependencies
 final taskRepositoryProvider = Provider<TaskRepository>(
     (ref) => TaskRepository(ref.read(tasksLocalSourceProvider)));
-final emojiRepositoryProvider =
-    Provider<EmojiRepository>((ref) => EmojiRepository());
+final emojiRepositoryProvider = Provider<EmojiRepository>(
+    (ref) => EmojiRepository(ref.read(assetBundleProvider)));
 final audioRepositoryProvider = Provider<AudioRepository>(
     (ref) => AudioRepository(ref.read(audioPlayerProvider)));
 
 final tickerProvider = Provider<Ticker>((ref) => const Ticker());
 final audioPlayerProvider = Provider<AudioPlayer>((ref) => AudioPlayer());
+final assetBundleProvider = Provider<AssetBundle>((ref) => rootBundle);
 
 //Data
 final tasksLocalSourceProvider = Provider<TasksLocalSource>(
