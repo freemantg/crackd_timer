@@ -80,7 +80,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   }
 
   void _tickEvent(Ticked event, Emitter<TimerState> emit) {
-    event.duration >= 0
+    event.duration > 0
         ? emit(state.copyWith(
             status: TimerStatus.running,
             duration: event.duration,
