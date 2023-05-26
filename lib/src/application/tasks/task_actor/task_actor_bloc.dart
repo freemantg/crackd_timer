@@ -12,6 +12,7 @@ part 'task_actor_bloc.freezed.dart';
 
 class TaskActorBloc extends Bloc<TaskActorEvent, TaskActorState> {
   final TaskRepository _taskRepository;
+
   TaskActorBloc(TaskRepository taskRepository)
       : _taskRepository = taskRepository,
         super(const _Initial()) {
