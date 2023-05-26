@@ -19,9 +19,8 @@ final taskFormBlocProvider = Provider<TaskFormBloc>(
     (ref) => TaskFormBloc(ref.read(taskRepositoryProvider)));
 final taskActorBlocProvider = Provider<TaskActorBloc>(
     (ref) => TaskActorBloc(ref.read(taskRepositoryProvider)));
-final timerBlocProvider = Provider<TimerBloc>((ref) => TimerBloc(
-    ticker: ref.read(tickerProvider),
-    audioRepository: ref.read(audioRepositoryProvider)));
+final timerBlocProvider =
+    Provider<TimerBloc>((ref) => TimerBloc(ticker: ref.read(tickerProvider)));
 final settingsBlocProvider = Provider<SettingsBloc>((ref) => SettingsBloc());
 final emojisBlocProvider = Provider<EmojisBloc>(
     (ref) => EmojisBloc(ref.read(emojiRepositoryProvider)));

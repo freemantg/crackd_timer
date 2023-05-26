@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../infrastructure/timer/audio_repository.dart';
 import '../../../infrastructure/timer/ticker.dart';
 import '../../settings/constants.dart';
 
@@ -15,7 +14,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   final Ticker _ticker;
   StreamSubscription<int>? _tickerSubscription;
 
-  TimerBloc({required Ticker ticker, required AudioRepository audioRepository})
+  TimerBloc({required Ticker ticker})
       : _ticker = ticker,
         super(TimerState.initial()) {
     on<TimerEvent>((event, emit) => _mapEventToState(event, emit));
@@ -81,7 +80,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   }
 
   void _tickEvent(Ticked event, Emitter<TimerState> emit) {
-    event.duration > 0
+    event.duration >= 0
         ? emit(state.copyWith(
             status: TimerStatus.running,
             duration: event.duration,
