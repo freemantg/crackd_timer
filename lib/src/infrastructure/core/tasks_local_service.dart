@@ -1,20 +1,22 @@
 import 'package:sembast/sembast.dart';
 
 import '../tasks/tasks_dto.dart';
+import 'store_ref_wrapper.dart';
 
 class TasksLocalSource {
   final Database _database;
-
   static const String taskStoreName = 'tasks';
-  final _store = stringMapStoreFactory.store(taskStoreName);
+  final StoreRefWrapper _store;
 
-  TasksLocalSource(this._database);
+  TasksLocalSource(this._database)
+      : _store = StoreRefWrapper(stringMapStoreFactory.store(taskStoreName));
 
   Stream<List<TaskDto>> _getTasksStream(Finder finder) async* {
     final records = _store.query(finder: finder).onSnapshots(_database);
     yield* records.map(
       (snapshots) => snapshots
-          .map((snapshot) => TaskDto.fromJson(snapshot.value))
+          .map((snapshot) =>
+              TaskDto.fromJson(snapshot.value as Map<String, dynamic>))
           .toList(),
     );
   }
@@ -22,9 +24,7 @@ class TasksLocalSource {
   Stream<TaskDto> fetchNoteStream(TaskDto taskDto) async* {
     final record = _store.record(taskDto.id).onSnapshot(_database);
     yield* record.map(
-      (snapshot) => TaskDto.fromJson(
-        snapshot?.value ?? {},
-      ),
+      (snapshot) => TaskDto.fromJson((snapshot?.value as Map<String, dynamic>)),
     );
   }
 

@@ -11,7 +11,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   final sembastDatabase = await SembastDatabase.init(
-      DatabaseFactoryWrapper(), PathProviderWrapperImpl());
+    DatabaseFactoryWrapper(),
+    PathProviderWrapperImpl(),
+  );
 
   runApp(
     ProviderScope(
