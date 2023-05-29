@@ -40,6 +40,12 @@ Our architecture is split into the following layers:
 
 The use of Dartz `Either` type for error handling allows us to wrap computations that can potentially fail, making the system more robust and easier to debug.
 
+![1](screenshots/crackd_1.png)
+![2](screenshots/crackd_2.png)
+![3](screenshots/crackd_3.png)
+![4](screenshots/crackd_4.png)
+![5](screenshots/crackd_5.png)
+
 ## 🔧 Technical Stack
 
 Crack'd Timer is crafted using the following technology stack:
