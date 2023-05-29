@@ -70,10 +70,15 @@ Crack'd Timer is crafted using the following technology stack:
 3. Run `flutter packages get` in the root directory to fetch the project dependencies.
 4. Finally, execute `flutter run` to run the project on your device/emulator.
 
-## 🤝 Contributing
 
-Please read our [Contributing Guidelines](CONTRIBUTING.md) for details on the process for submitting pull requests to us.
+## Contributing 🤝
 
-## 📝 License
+We welcome contributions from the community. If you wish to contribute, please take a look at our contributing guidelines.
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
+## License 📄
+
+Repo Viewer is licensed under the MIT License. See `LICENSE` for more information.
+
+## Contact 📞
+
+If you have any questions or suggestions, please reach out to us at <contact@freemantang.dev>. We'd love to hear from you!
