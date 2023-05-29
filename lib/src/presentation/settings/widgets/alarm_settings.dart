@@ -5,7 +5,7 @@ import 'package:intl/intl.dart' show toBeginningOfSentenceCase;
 import '../../../application/cubits.dart';
 import '../../../shared/styles.dart';
 import '../../../shared/text_styles.dart';
-import '../../shared/styled_components/styled_title_subtitle.dart';
+import '../../shared/styled_components/styled_components.dart';
 
 class AlarmSettings extends StatelessWidget {
   const AlarmSettings({super.key});

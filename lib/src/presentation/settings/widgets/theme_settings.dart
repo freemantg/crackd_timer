@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../application/settings/theme_cubit/theme_cubit.dart';
 import '../../../shared/app_themes.dart';
 import '../../../shared/styles.dart';
-import '../../shared/styled_components/styled_title_subtitle.dart';
 import '../../../shared/text_styles.dart';
+import '../../shared/styled_components/styled_components.dart';
 
 class ThemeSettings extends StatelessWidget {
   const ThemeSettings({super.key});

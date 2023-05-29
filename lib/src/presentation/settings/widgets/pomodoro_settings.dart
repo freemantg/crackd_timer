@@ -5,8 +5,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../../../application/settings/settings_bloc/settings_bloc.dart';
 import '../../../shared/styles.dart';
-import '../../shared/styled_components/styled_title_subtitle.dart';
 import '../../../shared/text_styles.dart';
+import '../../shared/widgets.dart';
 
 class PomodoroSettings extends StatelessWidget {
   const PomodoroSettings({super.key});
